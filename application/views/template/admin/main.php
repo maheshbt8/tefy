@@ -37,6 +37,12 @@
         	<!-- Content
         	================================================== -->
         	<div class="dashboard-content">
+                <!-- start: page -->
+                    <?php if($this->session->flashdata('error_message')!=''){
+                                        echo '<div class="alert alert-danger alert_message">'.$this->session->flashdata('error_message').'</div>';
+                                    }elseif($this->session->flashdata('success_message')!=''){
+                                        echo '<div class="alert alert-success alert_message">'.$this->session->flashdata('success_message').'</div>';
+                                    }?>
         		<?php $this->load->view($content);?>
         			<!-- Copyrights -->
         			<div class="col-md-12">
@@ -52,6 +58,14 @@
 <!-- Scripts
 ================================================== -->
 <?php $this->load->view('template/admin/scripts');?>
-
+<script>
+         $(document).ready(function()  {
+<?php if($this->session->flashdata('error_message')!='' || $this->session->flashdata('success_message')!=''){?>
+   setTimeout(function() {
+       $(".alert_message").fadeOut(1500);
+   },1500);
+ <?php }?>
+       });
+       </script>
 </body>
 </html>
