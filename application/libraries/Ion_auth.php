@@ -479,6 +479,32 @@ class Ion_auth
 
 		return $this->in_group($admin_group, $id);
 	}
+	
+	/**
+	 * is_student
+	 *
+	 * @return bool
+	 * @author Mehar
+	 **/
+	public function is_student($id=false)
+	{
+		$this->ion_auth_model->trigger_events('default_group');
+		$general_group = $this->config->item('default_group', 'ion_auth');
+		return $this->in_group($general_group, $id);
+	}
+	
+	/**
+	 * is_school
+	 *
+	 * @return bool
+	 * @author Mehar
+	 **/
+	public function is_school($id=false)
+	{
+	    $this->ion_auth_model->trigger_events('school_group');
+	    $general_group = $this->config->item('school_group', 'ion_auth');
+	    return $this->in_group($general_group, $id);
+	}
 
 	/**
 	 * in_group

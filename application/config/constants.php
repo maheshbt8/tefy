@@ -83,3 +83,18 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+/* User Defined Constants*/
+define('DS', '/');
+define('DS_PATH', DIRECTORY_SEPARATOR);
+define('FOLERNAME', ltrim(str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']), "/") );
+define('RESOURCES', 'assets');
+define('TBL_PREFIX', '');
+
+
+$base = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http';
+$base .= '://'.$_SERVER['HTTP_HOST'].DS . FOLERNAME;
+//define('SITEURL2',$base . "index.php");
+define('SITEURL2',rtrim($base, "/"));
+define('SITEURL',$base);
+define('URL_AUTH_LOGIN', SITEURL2. DS .'auth'. DS .'login');

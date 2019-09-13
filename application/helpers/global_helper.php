@@ -78,7 +78,11 @@ if( ! function_exists('getTemplate'))
                 $template = $user_type.'-template';
                 break;
             case 2:
-                $user_type='user';
+                $user_type='student';
+                $template = 'site-template';
+                break;
+            case 3:
+                $user_type='school';
                 $template = 'site-template';
                 break;
         }
@@ -90,5 +94,137 @@ if( ! function_exists('getTemplate'))
 if( !function_exists('print_array')){
     function print_array($data = []){
         echo "<pre>";print_r($data);exit();
+    }
+}
+
+/**
+ * Check for logged in uyser
+ *
+ * @access    public
+ * @param    string
+ * @return    string
+ */
+if ( ! function_exists('check_access'))
+{
+    function check_access( $type = 'admin')
+    {
+        $CI	=&	get_instance();
+        
+        if (!$CI->ion_auth->logged_in())
+        {
+            redirect(URL_AUTH_LOGIN, 'refresh');
+        }
+        elseif($type == 'admin')
+        {
+            if (!$CI->ion_auth->is_admin())
+            {
+                prepare_flashmessage('No Entry',2);
+                redirect(SITEURL2);
+            }
+        }
+        elseif($type == 'student')
+        {
+            if (!$CI->ion_auth->is_student())
+            {
+                prepare_flashmessage('No Entry',2);
+                redirect(SITEURL2);
+            }
+        }
+        elseif($type == 'school')
+        {
+            if (!$CI->ion_auth->is_school())
+            {
+                prepare_flashmessage('No Entry',2);
+                redirect(SITEURL2);
+            }
+        }
+    }
+}
+
+/**
+ * Prepare message
+ *
+ */
+if ( ! function_exists('prepare_message'))
+{
+    function prepare_message($msg,$type = 2)
+    {
+        $returnmsg='';
+        switch($type){
+            case 0: $returnmsg = " <div class='col-md-12'>
+    										<div class='alert alert-success'>
+    											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+    											<strong>Scuccess..!</strong> ". $msg."
+    										</div>
+    									</div>";
+            break;
+            case 1: $returnmsg = " <div class='col-md-12'>
+    										<div class='alert alert-danger'>
+    											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+    											<strong>Error..!</strong> ". $msg."
+    										</div>
+    									</div>";
+            break;
+            case 2: $returnmsg = " <div class='col-md-12'>
+    										<div class='alert alert-info'>
+    											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+    											<strong>Info..!</strong> ". $msg."
+    										</div>
+    									</div>";
+            break;
+            case 3: $returnmsg = " <div class='col-md-12'>
+    										<div class='alert alert-warning'>
+    											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+    											<strong>Warning..!</strong> ". $msg."
+    										</div>
+    									</div>";
+            break;
+        }
+        
+        return $returnmsg;
+    }
+}
+/**
+ * Prepare flash message
+ *
+ */
+if ( ! function_exists('prepare_flashmessage'))
+{
+    
+    function prepare_flashmessage($msg,$type = 2)
+    {
+        $returnmsg='';
+        switch($type){
+            case 0: $returnmsg = " <!-- <div class='col-md-12'> -->
+										<div class='alert alert-success'>
+											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+											<strong>Success..!</strong> ". $msg."
+										</div>
+									<!-- </div> -->";
+            break;
+            case 1: $returnmsg = " <!-- <div class='col-md-12'> -->
+										<div class='alert alert-danger'>
+											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+											<strong>Error..!</strong> ". $msg."
+										</div>
+									<!-- </div> -->";
+            break;
+            case 2: $returnmsg = " <!-- <div class='col-md-12'> -->
+										<div class='alert alert-info'>
+											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+											<strong>Info..!</strong> ". $msg."
+										</div>
+									<!-- </div> -->";
+            break;
+            case 3: $returnmsg = " <!-- <div class='col-md-12'> -->
+										<div class='alert alert-warning'>
+											<a href='#' class='close' data-dismiss='alert'>&times;</a>
+											<strong>Warning..!</strong> ". $msg."
+										</div>
+									<!-- </div> -->";
+            break;
+        }
+        $CI =& get_instance();        
+        $CI->session->set_flashdata("message",$returnmsg);
     }
 }
