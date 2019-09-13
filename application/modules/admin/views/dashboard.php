@@ -131,9 +131,6 @@
 								<a href="dashboard-invoice.html" class="button gray">View Profile</a>
 							</div>
 						</li>
-						
-						
-
 					</ul>
 				</div>
 			</div>

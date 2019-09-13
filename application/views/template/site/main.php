@@ -16,7 +16,7 @@
 
     <!-- Wrapper -->
     <div id="wrapper">
-    <?php if(!empty($active_menu) && $active_menu == "home") echo $this->session->flashdata('message'); ?>
+   <?php if(!empty($active_menu) && $active_menu == "home") echo $this->session->flashdata('message'); ?>
     <!-- Header Container
     ================================================== --> 
     <?php $this->load->view('template/site/header');?>
