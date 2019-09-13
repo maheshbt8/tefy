@@ -16,13 +16,13 @@
 
     <!-- Wrapper -->
     <div id="wrapper">
-    
+    <?php if(!empty($active_menu) && $active_menu == "home") echo $this->session->flashdata('message'); ?>
     <!-- Header Container
     ================================================== --> 
     <?php $this->load->view('template/site/header');?>
     <!-- Header Container / End -->
     
-    <!-- Footer
+    <!-- Content
     ================================================== -->
     <?php $this->load->view($content);?>
     <!-- Header Container / End -->

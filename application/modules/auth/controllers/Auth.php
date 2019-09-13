@@ -20,13 +20,19 @@ class Auth extends MX_Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			// redirect them to the login page
 			redirect('auth/login', 'refresh');
 		}
-		elseif (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		elseif ($this->ion_auth->is_admin())
 		{
-			// redirect them to the home page because they must be an administrator to view this
-			return show_error('You must be an administrator to view this page.');
+		    redirect('admin/index', 'refresh');
+		}
+		elseif ($this->ion_auth->is_student())
+		{
+		    redirect('student/index', 'refresh');
+		}
+		elseif ($this->ion_auth->is_school())
+		{
+		    redirect('school/index', 'refresh');
 		}
 		else
 		{
@@ -64,7 +70,7 @@ class Auth extends MX_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('auth', 'refresh');
 			}
 			else
 			{
@@ -81,12 +87,14 @@ class Auth extends MX_Controller {
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 			$this->data['identity'] = array('name' => 'identity',
-				'id'    => 'identity',
+				'id'    => 'username',
+			    'class' => 'input-text',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('identity'),
 			);
 			$this->data['password'] = array('name' => 'password',
 				'id'   => 'password',
+			    'class' => 'input-text',
 				'type' => 'password',
 			);
 

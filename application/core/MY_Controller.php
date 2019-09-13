@@ -47,28 +47,28 @@ class MY_Controller extends MX_Controller
 	        case 0: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-success'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('success')."!</strong> ". $msg."
+											<strong>Success..!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;
 	        case 1: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-danger'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('error')."!</strong> ". $msg."
+											<strong>Error..!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;
 	        case 2: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-info'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('info')."!</strong> ". $msg."
+											<strong>Info..!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;
 	        case 3: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-warning'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('warning')."!</strong> ". $msg."
+											<strong>Warning..!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;
@@ -84,28 +84,28 @@ class MY_Controller extends MX_Controller
 	        case 0: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-success'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('success')."!</strong> ". $msg."
+											<strong>Success..!!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;
 	        case 1: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-danger'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('error')."!</strong> ". $msg."
+											<strong>Error..!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;
 	        case 2: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-info'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('info')."!</strong> ". $msg."
+											<strong>Info..!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;
 	        case 3: $returnmsg = " <!-- <div class='col-md-12'> -->
 										<div class='alert alert-warning'>
 											<a href='#' class='close' data-dismiss='alert'>&times;</a>
-											<strong>".get_languageword('warning')."!</strong> ". $msg."
+											<strong>Warning..!</strong> ". $msg."
 										</div>
 									<!-- </div> -->";
 	        break;

@@ -25,7 +25,7 @@
 
 			<ul data-submenu-title="Account">
 				<li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
-				<li><a href="index-2.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+				<li><a href="<?php echo SITEURL2.'/auth/logout'?>"><i class="sl sl-icon-power"></i> Logout</a></li>
 			</ul>
 			
 		</div>
