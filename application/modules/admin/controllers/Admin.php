@@ -14,5 +14,11 @@ class Admin extends \MY_Controller
         $this->data['content'] = 'dashboard';
         $this->_render_page($this->template, $this->data);
     }
+    
+    public function content(){
+        $this->data['title'] = 'Content';
+        $this->data['content'] = 'content';
+        $this->_render_page($this->template, $this->data);
+    }
 }
 
