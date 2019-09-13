@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2019 at 09:39 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
+-- Generation Time: Sep 13, 2019 at 04:56 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.2.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,6 +41,45 @@ CREATE TABLE `groups` (
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
 (2, 'members', 'General User');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `listings`
+--
+
+CREATE TABLE `listings` (
+  `id` int(11) NOT NULL,
+  `school_title` varchar(60) NOT NULL,
+  `category` text NOT NULL,
+  `keywords` longtext NOT NULL,
+  `latitude` decimal(10,0) NOT NULL,
+  `longitude` decimal(10,0) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `zipcode` varchar(6) NOT NULL,
+  `address` text NOT NULL,
+  `description` text NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `website` varchar(100) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `facebook` varchar(100) NOT NULL,
+  `twitter` varchar(100) NOT NULL,
+  `google_plus` varchar(100) NOT NULL,
+  `amenities` longtext NOT NULL,
+  `opening_hours` longtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `modified_at` datetime DEFAULT NULL,
+  `row_status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deleted, 1=Active, 2=Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `listings`
+--
+
+INSERT INTO `listings` (`id`, `school_title`, `category`, `keywords`, `latitude`, `longitude`, `city`, `state`, `zipcode`, `address`, `description`, `phone`, `website`, `email`, `facebook`, `twitter`, `google_plus`, `amenities`, `opening_hours`, `created_at`, `modified_at`, `row_status`) VALUES
+(1, '0dsfsdfds', 'Pre School', 'fdfdfd,fdsfsdfd,fdsgdasfds,dfdsfasfd', '0', '0', 'Hyderabad', 'Hyderabad', '500038', 'Hyderabadf', 'dsafdsffadsfdsfdsf\r\ndfdsfdsfhbdsfhbsd\r\ndhfbdsbfdhsfjkdbfds\r\nkdbfjdfjds', '1231231232', 'https://sujithreddygreptho.wixsite.com/blog', 'maheshbt.grepthor@gmail.com', 'sdsdsd', 'sdsds', 'maddji@g.com', '[\"Elevator in building\",\"Friendly Environment\",\"Play Ground\",\"Indoor Space for Games\",\"Free parking on premises\",\"A\\/C Classes\",\"Buses for All Routes\"]', '{\"1\":{\"m_opening\":\"2 AM\",\"m_closing\":\"2 AM\"},\"2\":{\"t_opening\":\"2 AM\",\"t_closing\":\"4 AM\"},\"3\":{\"w_opening\":\"4 AM\",\"w_closing\":\"3 AM\"},\"4\":{\"th_opening\":\"3 AM\",\"th_closing\":\"3 AM\"},\"5\":{\"f_opening\":\"3 AM\",\"f_closing\":\"2 AM\"},\"6\":{\"sa_opening\":\"2 AM\",\"sa_closing\":\"3 AM\"},\"7\":{\"s_opening\":\"3 AM\",\"s_closing\":\"4 AM\"}}', '2019-09-13 20:15:10', NULL, 1),
+(2, 'dfdfd', 'Pre School', 'dsdsd,sdsds,sddsds,sdsd', '0', '0', 'Hyderabad', 'fgdfsfdsf', '215155', 'dsfdsf, ffdsfdsf', 'sadasdasdsadsadsadsadasd\r\nad\r\nasfdasfdsf\r\n\r\nfdsfdsfgdsf\r\ndsfdfds', '1231231232', 'https://sujithreddygreptho.wixsite.com/blog', 'maddji@g.com', 'sdsdsd', 'sdsds', 'maheshbt.grepthor@gmail.com', '[\"Elevator in building\",\"Friendly Environment\",\"Play Ground\",\"Indoor Space for Games\",\"Free parking on premises\",\"A\\/C Classes\",\"Buses for All Routes\"]', '{\"1\":{\"m_opening\":\"2 AM\",\"m_closing\":\"1 AM\"},\"2\":{\"t_opening\":\"2 AM\",\"t_closing\":\"1 AM\"},\"3\":{\"w_opening\":\"2 AM\",\"w_closing\":\"1 AM\"},\"4\":{\"th_opening\":\"2 AM\",\"th_closing\":\"4 AM\"},\"5\":{\"f_opening\":\"2 AM\",\"f_closing\":\"3 AM\"},\"6\":{\"sa_opening\":\"1 AM\",\"sa_closing\":\"1 AM\"},\"7\":{\"s_opening\":\"2 AM\",\"s_closing\":\"3 AM\"}}', '2019-09-13 20:23:37', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -119,6 +158,12 @@ ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `listings`
+--
+ALTER TABLE `listings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
@@ -148,6 +193,12 @@ ALTER TABLE `users_groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `listings`
+--
+ALTER TABLE `listings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `login_attempts`
