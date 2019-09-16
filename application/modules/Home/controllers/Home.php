@@ -6,7 +6,6 @@ class Home extends MY_Controller
     {
         parent::__construct();
         $this->template = 'template/site/main';
-        $this->load->model('common/common_model');
     }
     
     public function index(){
