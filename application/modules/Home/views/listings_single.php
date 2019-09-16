@@ -369,12 +369,12 @@
 
 				
 			<!-- Verified Badge -->
-			<div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
+			<!-- <div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
 				<i class="sl sl-icon-check"></i> Verified Listing
-			</div>
+			</div> -->
 
 			<!-- Message Vendor -->
-			<div id="booking-widget-anchor" class="boxed-widget booking-widget message-vendor margin-top-35">
+		<!-- 	<div id="booking-widget-anchor" class="boxed-widget booking-widget message-vendor margin-top-35">
 				<h3><i class="fa fa-envelope-o"></i> Message to School</h3>
 				<div class="row with-forms  margin-top-0">
 
@@ -383,10 +383,10 @@
 						<input type="text" placeholder="Email" value="mail@example.com">
 						<input type="text" placeholder="Phone" value="+12 345 678 910">
 						<textarea name="" id="" cols="10" rows="2" placeholder="Message"></textarea>
-					</div>
+					</div> -->
 					
 					<!-- Preferred Contact Methos Radios -->
-					<div class="col-lg-12">
+				<!-- 	<div class="col-lg-12">
 						<div class="preferred-contact-method">
 							<h5>Preferred contact method</h5>
 
@@ -405,16 +405,16 @@
 						</div>
 					</div>
 
-				</div>
+				</div> -->
 
 				<!-- Recaptcha Holder -->
-				<div class="captcha-holder">
+				<!-- <div class="captcha-holder"> -->
 					<!-- Recaptcha goes here -->
-				</div>
+				<!-- </div> -->
 				
 				<!-- Book Now -->
-				<a href="#" class="button book-now fullwidth margin-top-5">Request Pricing</a>
-			</div>
+				<!-- <a href="#" class="button book-now fullwidth margin-top-5">Request Pricing</a>
+			</div> -->
 			<!-- Book Now / End -->
 		
 
@@ -423,13 +423,19 @@
 				<div class="listing-badge now-open">Now Open</div>
 				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
 				<ul>
-					<li>Monday <span>9 AM - 5 PM</span></li>
-					<li>Tuesday <span>9 AM - 5 PM</span></li>
-					<li>Wednesday <span>9 AM - 5 PM</span></li>
-					<li>Thursday <span>9 AM - 5 PM</span></li>
-					<li>Friday <span>9 AM - 5 PM</span></li>
-					<li>Saturday <span>9 AM - 3 PM</span></li>
-					<li>Sunday <span>Closed</span></li>
+					<?php
+					$opening_hours=json_decode($school['opening_hours']);
+					foreach ($opening_hours as $opening_hour) {
+					$opening[]=$opening_hour;
+					}
+					?>
+					<li>Monday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Tuesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Wednesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Thursday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Friday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Saturday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Sunday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
 				</ul>
 			</div>
 			<!-- Opening Hours / End -->

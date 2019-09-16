@@ -26,7 +26,7 @@ class Admin extends MY_Controller
     public function add_listing(){
         if($this->input->post()){
             $input=$this->input->post();
-            echo "<pre>";
+            //echo "<pre>";
             //print_r($input);die;
             $input_data['school_title']=$input['school_title'];
             $input_data['category']=$input['category'];
@@ -59,6 +59,7 @@ class Admin extends MY_Controller
             $res=$this->db->insert_id();
             if($res>0){
                 $this->session->set_flashdata('success_message','Uploaded Successfully');
+                //move_uploaded_file($_FILES["qp"]["tmp_name"], "uploads/listings/". $res.'.jpg');
             }else{
                 $this->session->set_flashdata('error_message','Not Uploaded');
             }
