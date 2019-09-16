@@ -20,7 +20,7 @@
 				</li>
 				<li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
-				<li><a href="dashboard-add-listing.html"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+				<li><a href="<?php echo SITEURL2.'/admin/add_listing';?>"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
 			</ul>	
 
 			<ul data-submenu-title="Account">
