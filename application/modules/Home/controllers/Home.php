@@ -13,6 +13,7 @@ class Home extends MY_Controller
         $this->data['title'] = 'Home';
         $this->data['content'] = 'home';
         $this->data['active_menu'] = 'home';
+        $this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),'id')->result_array();
         $this->_render_page($this->template, $this->data);
     }
     

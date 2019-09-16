@@ -74,8 +74,12 @@
 				<div class="simple-slick-carousel dots-nav">
 
                     <!-- Listing Item -->
+                    <?php
+$i=0;
+foreach ($schools as $row) {
+?>
                     <div class="carousel-item">
-                        <a href="listings-single-page-3.html" class="listing-item-container">
+                        <a href="<?=base_url('listings-single/').$row['id'];?>" class="listing-item-container">
                             <div class="listing-item">
                                 <div class="col-md-4 listing-item p--0">
                                     <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
@@ -86,10 +90,10 @@
                                 <div class="col-md-8">
                                     <div class="listing-item-content">
 
-                                        <h3>Oxford International Schools <i class="verified-icon"></i></h3>
+                                        <h3><?=$row['school_title'];?> <i class="verified-icon"></i></h3>
                                         <span>Gachibouli, Hyderabad</span>
-                                        <div class="padding-top-15"><span>Board: Central Board of Secondary Education</span> </div>
-                                        <div class="padding-top-5"><span>Classes: 1-12th Standard</span> </div>
+                                        <div class="padding-top-15"><span>Address: <?=$row['address'];?></span> </div>
+                                        <div class="padding-top-5"><span>Classes: <?=$row['category'];?></span> </div>
                                     </div>
                                     <span class="like-icon"></span>
                                     <div class="star-rating" data-rating="4.5">
@@ -100,9 +104,10 @@
 
                         </a>
                     </div>
+                    <?php $i++;}?>
                     <!-- Listing Item / End -->
                     <!-- Listing Item -->
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
                         <a href="listings-single-page.html" class="listing-item-container">
                             <div class="listing-item">
                                 <div class="col-md-4 listing-item p--0">
@@ -127,10 +132,10 @@
                             </div>
 
                         </a>
-                    </div>
+                    </div> -->
                     <!-- Listing Item / End -->
                     <!-- Listing Item -->
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
                         <a href="listings-single-page.html" class="listing-item-container">
                             <div class="listing-item">
                                 <div class="col-md-4 listing-item p--0">
@@ -155,7 +160,7 @@
                             </div>
 
                         </a>
-                    </div>
+                    </div> -->
                     <!-- Listing Item / End -->
 
                 </div>
