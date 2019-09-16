@@ -26,6 +26,7 @@ class Admin extends MY_Controller
     public function add_listing(){
         if($this->input->post()){
             $input=$this->input->post();
+            //print_r($_FILES);die;
             //echo "<pre>";
             //print_r($input);die;
             $input_data['school_title']=$input['school_title'];

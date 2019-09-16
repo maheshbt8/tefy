@@ -1,5 +1,5 @@
 
-<form method="post" action="<?=base_url('admin/add_listing');?>"enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
+<form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
 <div class="row">
 			<div class="col-lg-12">
 
@@ -107,8 +107,8 @@
 
 						<!-- Dropzone -->
 						<div class="submit-section">
-							<form action="" class="dropzone" ></form>
-							<form action="http://www.vasterad.com/file-upload" class="dropzone" >
+							<form action="" class="dropzone" enctype="multipart/form-data"></form>
+							<form action="http://www.vasterad.com/file-upload" enctype="multipart/form-data" class="dropzone" >
 								
 							</form>
 						</div>
