@@ -9,7 +9,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.html"><img src="<?php echo base_url('assets')?>/images/logo2.png" data-sticky-logo="<?php echo base_url('assets')?>/images/logo.png" alt=""></a>
+					<a href="<?=base_url();?>"><img src="<?php echo base_url('assets')?>/images/logo2.png" data-sticky-logo="<?php echo base_url('assets')?>/images/logo.png" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->
@@ -25,7 +25,7 @@
 				<nav id="navigation" class="style-1">
 					<ul id="responsive">
 
-						<li><a  href="#">Home</a>
+						<li><a  href="<?=base_url();?>">Home</a>
 							<!--<ul>
 								<li><a href="index-2.html">Home 1</a></li>
 								<li><a href="index-2-airbnb.html">Home 2 (Airbnb)</a></li>

@@ -186,7 +186,7 @@
 				
 			</div>
             <div class="col-md-12 centered-content">
-				<a href=" listings-list-with-sidebar.html" class="button border margin-top-10">View All</a>
+				<a href="<?=base_url('listings-list');?>" class="button border margin-top-10">View All</a>
 			</div>
 
 		</div>
