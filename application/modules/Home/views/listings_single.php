@@ -1,4 +1,4 @@
-<div class="main-search-container centered" data-background-image="<?=base_url('assets/');?>images/main-search-background-01.jpg" style="height: 300px">
+<div class="main-search-container centered" data-background-image="<?=base_url('assets/');?>images/main-search-background-01.jpg" style="height: 300px;margin-top: 85px;">
     </div>
 <!-- Content
 ================================================== -->
@@ -52,10 +52,10 @@
 					<div class="clearfix"></div>
 
 					<ul class="listing-links">
-						<li><a href="<?=$school['facebook'];?>" target="_blank" class="listing-links-fb"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-						<!-- <li><a href="<?=$school['youtube'];?>" target="_blank" class="listing-links-yt"><i class="fa fa-youtube-play"></i> YouTube</a></li> -->
+						<!--<li><a href="<?=$school['facebook'];?>" target="_blank" class="listing-links-fb"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+						
 						<li><a href="<?=$school['google_plus'];?>" target="_blank" class="listing-links-ig"><i class="fa fa-google-plus"></i> Google+</a></li>
-						<li><a href="<?=$school['twitter'];?>" target="_blank" class="listing-links-tt"><i class="fa fa-twitter"></i> Twitter</a></li>
+						<li><a href="<?=$school['twitter'];?>" target="_blank" class="listing-links-tt"><i class="fa fa-twitter"></i> Twitter</a></li>-->
 					</ul>
 					<div class="clearfix"></div>
 
