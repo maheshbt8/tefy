@@ -1,5 +1,12 @@
+<style>
+    .d--inline{
+        display: inline!important;
+    }
 
-<form method="post" action="<?=base_url('admin/add_listing');?>"enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
+</style>
+
+
+<form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
 <div class="row">
 			<div class="col-lg-12">
 
@@ -28,6 +35,7 @@
 							<div class="col-md-6">
 								<h5>Category</h5>
 								<select class="chosen-select-no-single"  name="category" required="">
+                                  
 									<option label="blank">Select Category</option>	
 									<option>Pre School</option>
 									<option>Play school</option>
@@ -44,6 +52,52 @@
 							</div>
 						</div>
 						<!-- Row / End -->
+                        
+                        <!-- Row -->
+						<div class="row with-forms">
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Curriculum</h5>
+                            <div class="col-md-2">
+								<input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="ssc" required="">SSC
+                            </div>
+                            <div class="col-md-2">
+                                <input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="icss" required="">ICSS
+                             </div>
+                            <div class="col-md-2">
+                                <input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="icss" required="">CBSE
+                             </div>
+                            <div class="col-md-2">
+                                <input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="icss" required="">Others
+                             </div>
+                          
+							</div>
+						</div>
+						<!-- Row / End -->
+                        
+                        <!-- Row -->
+						<div class="row with-forms">
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Classes</h5>
+                                <select class="chosen-select-no-single"  name="class" required="">
+                                  
+									<option label="blank">Select Class</option>	
+									<option>class1</option>
+									<option>class2</option>
+									<option>class3</option>
+									<option>class4</option>
+									
+								</select>
+                             
+                          
+							</div>
+						</div>
+						<!-- Row / End -->
+                        
+                        
 
 					</div>
 					<!-- Section / End -->
@@ -59,10 +113,34 @@
 						<div class="submit-section">
 
 							<!-- Row -->
-							<div class="row with-forms">
+							<div class="row with-forms">.
+                                
+                                <!-- Address -->
+								<div class="col-md-6">
+									<h5>Address</h5>
+									<input type="text" placeholder="e.g. 964 School Street" name="address" required="">
+								</div>
+
 
 								<!-- City -->
 								<div class="col-md-6">
+									<h5>Enter a Location</h5>
+									<select class="chosen-select-no-single"  name="location" required="">
+										<option label="blank">Select City</option>	
+										<option>Hyderabad</option>
+										<option>Karim Nagar</option>
+									</select>
+								</div>
+
+								
+								<!-- Area -->
+								<div class="col-md-4">
+									<h5>Area</h5>
+									<input type="text" name="area" required="">
+								</div>
+                                
+                                <!-- City -->
+								<div class="col-md-4">
 									<h5>City</h5>
 									<select class="chosen-select-no-single"  name="city" required="">
 										<option label="blank">Select City</option>	
@@ -71,20 +149,8 @@
 									</select>
 								</div>
 
-								<!-- Address -->
-								<div class="col-md-6">
-									<h5>Address</h5>
-									<input type="text" placeholder="e.g. 964 School Street" name="address" required="">
-								</div>
-
-								<!-- City -->
-								<div class="col-md-6">
-									<h5>State</h5>
-									<input type="text" name="state" required="">
-								</div>
-
 								<!-- Zip-Code -->
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<h5>Zip-Code</h5>
 									<input type="text"  name="zipcode" required="">
 								</div>
@@ -104,14 +170,40 @@
 						<div class="add-listing-headline">
 							<h3><i class="sl sl-icon-picture"></i> Gallery</h3>
 						</div>
+                        <div class="row with-forms">
 
+							<div class="col-md-4 ">
+                                <h5>Thumb Image </h5><p>(select image for list view)</p>
+                                <input type="file" class="form-control-file">
+                                
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Banner Image </h5><p>(select banner image for school page)</p>
+                                <input type="file" class="form-control-file">
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Gallery Images </h5><p>(select multiple Images)</p>
+                                <input type="file" class="form-control-file" multiple>
+                            </div>    
+                        </div>
+                        
+                        <div class="row with-forms">
+
+							<div class="col-md-12 ">
+                                <h5>Embed video Link </h5>
+                                <input type="url" class="form-control-file" placeholder="School Video embed link">
+                                
+                            </div>
+                            
+                        </div>
+                            
 						<!-- Dropzone -->
-						<div class="submit-section">
-							<form action="" class="dropzone" ></form>
-							<form action="http://www.vasterad.com/file-upload" class="dropzone" >
+						<!--<div class="submit-section">
+							<form action="" class="dropzone" enctype="multipart/form-data"></form>
+							<form action="http://www.vasterad.com/file-upload" enctype="multipart/form-data" class="dropzone" >
 								
 							</form>
-						</div>
+						</div> -->
 
 					</div>
 					<!-- Section / End -->
@@ -119,11 +211,27 @@
 
 					<!-- Section -->
 					<div class="add-listing-section margin-top-45">
+                        
+                        
 
 						<!-- Headline -->
 						<div class="add-listing-headline">
 							<h3><i class="sl sl-icon-docs"></i> Details</h3>
 						</div>
+                        
+                        <!-- Row -->
+						<div class="row with-forms">
+
+							
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Vision</h5>
+								<textarea class="WYSIWYG" name="vision" cols="20" rows="2"  spellcheck="true" required="" placeholder="Enter the school vision in short note in 100 words"></textarea>
+							</div>
+						</div>
+						<!-- Row / End -->
+                        
 
 						<!-- Description -->
 						<div class="form">
@@ -401,14 +509,14 @@
 
 					</div>
 					<!-- Section / End -->
-
-
-					<!-- Section -->
+                    
+                    
+                    <!-- Section -->
 					<div class="add-listing-section margin-top-45">
 						
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-book-open"></i> Pricing</h3>
+							<h3><i class="sl sl-icon-book-open"></i>School Achievements</h3>
 							<!-- Switcher -->
 							<label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
 						</div>
@@ -422,15 +530,15 @@
 										<tr class="pricing-list-item pattern">
 											<td>
 												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-												<div class="fm-input pricing-name"><input type="text" placeholder="Title" /></div>
-												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Description" /></div>
-												<div class="fm-input pricing-price"><input type="text" placeholder="Price" data-unit="INR" /></div>
+												<div class="fm-input ">
+                                                    <input type="text" placeholder="Achievement Title" /></div>
+												
 												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
 											</td>
 										</tr>
 									</table>
 									<a href="#" class="button add-pricing-list-item">Add Item</a>
-									<a href="#" class="button add-pricing-submenu">Add Category</a>
+									
 								</div>
 							</div>
 
@@ -439,6 +547,9 @@
 
 					</div>
 					<!-- Section / End -->
+
+
+					
 
 
 					<!-- <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a> -->
@@ -452,6 +563,8 @@
 </form>
 
 
+
+
 <!-- Scripts
 ================================================== -->
 
@@ -462,3 +575,286 @@
 <script type="text/javascript" src="<?php echo base_url('assets')?>/scripts/dropzone.js"></script>
 
 
+
+
+
+
+
+
+
+<!--class management-->
+<form  class="form-horizontal" id="calss-form">
+<div class="row">
+			<div class="col-lg-12">
+
+				<div id="add-listing">
+
+					<!-- Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> Class Management</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-10">
+								<h5>Add Class<i class="tip" data-tip-content="Add a new class here"></i></h5>
+								<input class="search-field" type="text" value="" name="class" required=""/>
+							</div>
+                            <div class="col-md-2">
+								
+								<button type="submit" class="button preview">Submit</button>
+							</div>
+						</div>
+                        
+                        
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> List of All Classes</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-12">
+                                <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">class name</th>
+                                  <th scope="col">Actions</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td>Mark</td>
+                                    <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                 
+                                </tr>
+                                <tr>
+                                  <th scope="row">2</th>
+                                  <td>Jacob</td>
+                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                  
+                                </tr>
+                                <tr>
+                                  <th scope="row">3</th>
+                                  <td>Larry</td>
+                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                
+                                </tr>
+                              </tbody>
+                            </table>
+                                
+								
+							</div>
+                           
+						</div>
+                        
+                        
+
+					</div>
+					
+					
+
+				</div>
+			</div>
+
+		</div>
+
+</form>
+
+
+
+
+
+
+<!--Category management-->
+
+<form  class="form-horizontal" id="category-form">
+<div class="row">
+			<div class="col-lg-12">
+
+				<div id="add-listing">
+
+					<!-- Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> Category Management</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-10">
+								<h5>Add Category<i class="tip" data-tip-content="Add a new class here"></i></h5>
+								<input class="search-field" type="text" value="" name="category-add" required=""/>
+							</div>
+                            <div class="col-md-2">
+								
+								<button type="submit" class="button preview">Submit</button>
+							</div>
+						</div>
+                        
+                        
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> List of All Categories</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-12">
+                                <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">class name</th>
+                                  <th scope="col">Actions</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td>Mark</td>
+                                    <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                 
+                                </tr>
+                                <tr>
+                                  <th scope="row">2</th>
+                                  <td>Jacob</td>
+                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                  
+                                </tr>
+                                <tr>
+                                  <th scope="row">3</th>
+                                  <td>Larry</td>
+                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                
+                                </tr>
+                              </tbody>
+                            </table>
+                                
+								
+							</div>
+                           
+						</div>
+                        
+                        
+
+					</div>
+					
+					
+
+				</div>
+			</div>
+
+		</div>
+
+</form>
+
+
+
+
+
+
+
+
+<!--facility management-->
+
+<form  class="form-horizontal" id="facility-form">
+<div class="row">
+			<div class="col-lg-12">
+
+				<div id="add-listing">
+
+					<!-- Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> Facility Management</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-6">
+								<h5>Add Facility<i class="tip" data-tip-content="Add a new Facility here"></i></h5>
+								<input class="search-field" type="text" value="" name="facility-add" required=""/>
+							</div>
+                            <div class="col-md-4">
+								<h5>Add Icon</h5>
+								 <input type="file" class="form-control-file">
+							</div>
+                            <div class="col-md-2">
+								
+								<button type="submit" class="button preview">Submit</button>
+							</div>
+						</div>
+                        
+                        
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> List of All Facilities</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-12">
+                                <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Facility name</th>
+                                  <th scope="col">icon</th>
+                                  <th scope="col">Actions</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td>Mark</td>
+                                  <td><img src="" height="50px"></td>
+                                    <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                 
+                                </tr>
+                                <tr>
+                                  <th scope="row">2</th>
+                                  <td>Jacob</td>
+                                    <td><img src="" height="50px"></td>
+                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                  
+                                </tr>
+                                <tr>
+                                  <th scope="row">3</th>
+                                  <td>Larry</td>
+                                    <td><img src="" height="50px"></td>
+                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
+                                
+                                </tr>
+                              </tbody>
+                            </table>
+                                
+								
+							</div>
+                           
+						</div>
+                        
+                        
+
+					</div>
+					
+					
+
+				</div>
+			</div>
+
+		</div>
+
+</form>
