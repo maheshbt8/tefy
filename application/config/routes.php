@@ -53,5 +53,11 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+$route['set_row_status/(.+)'] = 'common/set_row_status/$1';
+
+
 $route['listings-list']='home/listings_list';
 $route['listings-single/(:any)']='home/listings_single/$1';
+
+

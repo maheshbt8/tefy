@@ -79,7 +79,7 @@ foreach ($schools as $row) {
 								<div class="listing-badge now-open">Now Open</div>
 
 								<div class="listing-item-inner">
-									<h3><?=$row['school_title'];?> <i class="verified-icon"></i></h3>
+									<h3><?=$row['school_title'];?> <!-- <i class="verified-icon"></i> --></h3>
 									<span><?=$row['address'];?></span>
 									<div class="star-rating" data-rating="3.5">
 										<div class="rating-counter">(12 reviews)</div>

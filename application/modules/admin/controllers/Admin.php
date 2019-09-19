@@ -26,9 +26,10 @@ class Admin extends MY_Controller
     public function add_listing(){
         if($this->input->post()){
             $input=$this->input->post();
-            //print_r($_FILES);die;
-            //echo "<pre>";
-            //print_r($input);die;
+            echo "<pre>";
+            print_r($_FILES);
+            echo "<pre>";
+            print_r($input);die;
             $input_data['school_title']=$input['school_title'];
             $input_data['category']=$input['category'];
             $input_data['keywords']=$input['keywords'];
@@ -55,9 +56,7 @@ class Admin extends MY_Controller
         '7'=>array('s_opening'=>$input['s_opening'],'s_closing'=>$input['s_closing']),
                 )
             );
-            /*$input_data['category']=$input['category'];*/
-            $this->db->insert('listings',$input_data);
-            $res=$this->db->insert_id();
+            $res=$this->common_model->insert_results_info('listings',$input_data);
             if($res>0){
                 $this->session->set_flashdata('success_message','Uploaded Successfully');
                 //move_uploaded_file($_FILES["qp"]["tmp_name"], "uploads/listings/". $res.'.jpg');
@@ -68,6 +67,85 @@ class Admin extends MY_Controller
         }
         $this->data['title'] = 'Add Listing';
         $this->data['content'] = 'add_listing';
+        $this->_render_page($this->template, $this->data);
+    }
+    public function classes(){
+        if($this->input->post()){
+            $input=$this->input->post();
+            $input_data['name']=$input['class'];
+            $res=$this->common_model->insert_results_info('classes',$input_data);
+            if($res>0){
+            $this->session->set_flashdata('success_message', 'Class Inserted Successfully');
+            }else{
+            $this->session->set_flashdata('error_message', 'Class Not Inserted');
+            }
+            redirect($this->session->userdata('last_page'));
+        }
+        $this->data['title'] = 'Classes';
+        $this->data['content'] = 'classes';
+        $this->data['active_menu'] = 'classes';
+        $this->_render_page($this->template, $this->data);
+    }
+    public function categories(){
+        if($this->input->post()){
+            $input=$this->input->post();
+            $input_data['name']=$input['category'];
+            $res=$this->common_model->insert_results_info('category',$input_data);
+            if($res>0){
+            $this->session->set_flashdata('success_message', 'Categories Inserted Successfully');
+            }else{
+            $this->session->set_flashdata('error_message', 'Categories Not Inserted');
+            }
+            redirect($this->session->userdata('last_page'));
+        }
+        $this->data['title'] = 'Categories';
+        $this->data['content'] = 'categories';
+        $this->data['active_menu'] = 'categories';
+        $this->_render_page($this->template, $this->data);
+    }
+    public function curriculum(){
+        if($this->input->post()){
+            $input=$this->input->post();
+            $input_data['name']=$input['curriculum'];
+            $res=$this->common_model->insert_results_info('curriculum',$input_data);
+            if($res>0){
+            $this->session->set_flashdata('success_message', 'Curriculum Inserted Successfully');
+            }else{
+            $this->session->set_flashdata('error_message', 'Curriculum Not Inserted');
+            }
+            redirect($this->session->userdata('last_page'));
+        }
+        $this->data['title'] = 'Curriculum';
+        $this->data['content'] = 'curriculum';
+        $this->data['active_menu'] = 'curriculum';
+        $this->_render_page($this->template, $this->data);
+    }
+    public function facilities(){
+        if($this->input->post()){
+            $input=$this->input->post();
+            if(isset($_FILES['facilities']['name']) && $_FILES['facilities']['name']!=""){
+            if($mime = (get_mime_by_extension($_FILES['facilities']['name'])=='image/jpg' || get_mime_by_extension($_FILES['facilities']['name'])=='image/jpeg' || get_mime_by_extension($_FILES['facilities']['name'])=='image/png' || get_mime_by_extension($_FILES['facilities']['name'])=='image/svg')){
+            $ext=explode('/',get_mime_by_extension($_FILES['facilities']['name']));
+            $input_data['name']=$input['facilities_name'];
+            $input_data['file_ext']=$ext[1];
+            $res=$this->common_model->insert_results_info('facilities',$input_data);
+            if($res>0){
+            $this->session->set_flashdata('success_message', 'Facilities Inserted Successfully');
+            move_uploaded_file($_FILES["facilities"]["tmp_name"], "uploads/facilities/". $res.'.'.$input_data['file_ext']);
+            }else{
+            $this->session->set_flashdata('error_message', 'Facilities Not Inserted');
+            }
+            redirect($this->session->userdata('last_page'));
+            }else{
+            $this->session->set_flashdata('facilities_error', 'Please select only JPG file.');
+            }
+}else{
+            $this->session->set_flashdata('facilities_error', 'Please select JPG file.');
+            }
+        }
+        $this->data['title'] = 'Facilities';
+        $this->data['content'] = 'facilities';
+        $this->data['active_menu'] = 'facilities';
         $this->_render_page($this->template, $this->data);
     }
 }

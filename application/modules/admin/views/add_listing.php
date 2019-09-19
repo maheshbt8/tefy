@@ -24,7 +24,7 @@
 						<div class="row with-forms">
 							<div class="col-md-12">
 								<h5>School Name <i class="tip" data-tip-content="Name of your School"></i></h5>
-								<input class="search-field" type="text" value="" name="school_title" required=""/>
+								<input class="search-field" type="text" value="" name="school_title" required="" autocomplete="off" />
 							</div>
 						</div>
 
@@ -34,15 +34,23 @@
 							<!-- Status -->
 							<div class="col-md-6">
 								<h5>Category</h5>
-								<select class="chosen-select-no-single"  name="category" required="">
-                                  
-									<option label="blank">Select Category</option>	
-									<option>Pre School</option>
-									<option>Play school</option>
-									<option>High School</option>
-									<option>Pre School & High School</option>
-									
+								<select class="form-control selectric chosen-select-no-single"  name="category" required=""  multiple="">
+									<option value="" disabled="">Select Category</option>	
+                                  <?php $res=$this->common_model->select_results_info('category',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
+									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
+								<?php }?>
 								</select>
+								<!-- <select class="form-control selectric" multiple="">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                    <option>Option 5</option>
+                                    <option>Option 6</option>
+                                  </select> -->
+
 							</div>
 
 							<!-- Type -->
@@ -59,19 +67,13 @@
 							<!-- Vision -->
 							<div class="col-md-12">
                                 <h5>Curriculum</h5>
+                            <?php $res=$this->common_model->select_results_info('curriculum',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
                             <div class="col-md-2">
-								<input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="ssc" required="">SSC
+								<input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="<?=$row['id'];?>" required=""><?=$row['name'];?>
                             </div>
-                            <div class="col-md-2">
-                                <input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="icss" required="">ICSS
-                             </div>
-                            <div class="col-md-2">
-                                <input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="icss" required="">CBSE
-                             </div>
-                            <div class="col-md-2">
-                                <input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="icss" required="">Others
-                             </div>
-                          
+                        <?php }?>                          
 							</div>
 						</div>
 						<!-- Row / End -->
@@ -83,12 +85,12 @@
 							<div class="col-md-12">
                                 <h5>Classes</h5>
                                 <select class="chosen-select-no-single"  name="class" required="">
-                                  
 									<option label="blank">Select Class</option>	
-									<option>class1</option>
-									<option>class2</option>
-									<option>class3</option>
-									<option>class4</option>
+									 <?php $res=$this->common_model->select_results_info('classes',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
+									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
+								<?php }?>
 									
 								</select>
                              
@@ -114,47 +116,18 @@
 
 							<!-- Row -->
 							<div class="row with-forms">.
-                                
+                                <div class="col-md-12">
+									<h5>Area Landmark</h5>
+									<input type="text"  id="pac-input" placeholder="e.g. My School Street" name="landmark" required="" autocomplete="off">
+									<input type="hidden" id="lat" value="" name="latitude">
+                                         <input type="hidden" id="lng" value="" name="longitude">
+                                         <input type="hidden" id="address" value="" name="address">
+								</div>
                                 <!-- Address -->
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<h5>Address</h5>
-									<input type="text" placeholder="e.g. 964 School Street" name="address" required="">
+									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""></textarea>
 								</div>
-
-
-								<!-- City -->
-								<div class="col-md-6">
-									<h5>Enter a Location</h5>
-									<select class="chosen-select-no-single"  name="location" required="">
-										<option label="blank">Select City</option>	
-										<option>Hyderabad</option>
-										<option>Karim Nagar</option>
-									</select>
-								</div>
-
-								
-								<!-- Area -->
-								<div class="col-md-4">
-									<h5>Area</h5>
-									<input type="text" name="area" required="">
-								</div>
-                                
-                                <!-- City -->
-								<div class="col-md-4">
-									<h5>City</h5>
-									<select class="chosen-select-no-single"  name="city" required="">
-										<option label="blank">Select City</option>	
-										<option>Hyderabad</option>
-										<option>Karim Nagar</option>
-									</select>
-								</div>
-
-								<!-- Zip-Code -->
-								<div class="col-md-4">
-									<h5>Zip-Code</h5>
-									<input type="text"  name="zipcode" required="">
-								</div>
-
 							</div>
 							<!-- Row / End -->
 
@@ -174,16 +147,16 @@
 
 							<div class="col-md-4 ">
                                 <h5>Thumb Image </h5><p>(select image for list view)</p>
-                                <input type="file" class="form-control-file">
+                                <input type="file" class="form-control-file" name="thumb">
                                 
                             </div>
                             <div class="col-md-4">
                                 <h5>Banner Image </h5><p>(select banner image for school page)</p>
-                                <input type="file" class="form-control-file">
+                                <input type="file" class="form-control-file" name="banner">
                             </div>
                             <div class="col-md-4">
                                 <h5>Gallery Images </h5><p>(select multiple Images)</p>
-                                <input type="file" class="form-control-file" multiple>
+                                <input type="file" class="form-control-file"  name="gallery" multiple>
                             </div>    
                         </div>
                         
@@ -191,8 +164,7 @@
 
 							<div class="col-md-12 ">
                                 <h5>Embed video Link </h5>
-                                <input type="url" class="form-control-file" placeholder="School Video embed link">
-                                
+                                <input type="url" class="form-control-file" placeholder="Eg:https://www.tefy.com/embed/yfettefy" name="video">
                             </div>
                             
                         </div>
@@ -292,30 +264,13 @@
 						<!-- Checkboxes -->
 						<h5 class="margin-top-30 margin-bottom-10">Amenities <span>(optional)</span></h5>
 						<div class="checkboxes in-row margin-bottom-20">
-					
-							<input id="check-a" type="checkbox" name="amenities[]" value="Elevator in building">
-							<label for="check-a">Elevator in building</label>
-
-							<input id="check-b" type="checkbox" name="amenities[]" value="Friendly Environment">
-							<label for="check-b">Friendly Environment</label>
-
-							<input id="check-c" type="checkbox" name="amenities[]" value="Play Ground">
-							<label for="check-c">Play Ground</label>
-
-							<input id="check-d" type="checkbox" name="amenities[]" value="Indoor Space for Games">
-							<label for="check-d">Indoor Space for Games</label>
-
-							<input id="check-e" type="checkbox" name="amenities[]" value="Free parking on premises" >
-							<label for="check-e">Free parking on premises</label>
-
-							<input id="check-f" type="checkbox" name="amenities[]" value="A/C Classes">
-							<label for="check-f">A/C Classes</label>
-
-							<input id="check-g" type="checkbox" name="amenities[]" value="Buses for All Routes">
-							<label for="check-g">Buses for All Routes</label>	
-
-							<input id="check-h" type="checkbox" name="amenities[]" value="Events">
-							<label for="check-h">Events</label>
+					<?php $res=$this->common_model->select_results_info('facilities',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
+							<input id="check-a" type="checkbox" name="amenities[]" value="<?=$row['id'];?>">
+							<label for="check-a"><?=$row['name'];?></label>
+<?php }?>
+							
 					
 						</div>
 						<!-- Checkboxes / End -->
@@ -582,181 +537,54 @@
 
 
 
-<!--class management-->
-<form  class="form-horizontal" id="calss-form">
-<div class="row">
-			<div class="col-lg-12">
 
-				<div id="add-listing">
+<script>
+      function initMap() {
+       
+       
+        var input = document.getElementById('pac-input');
 
-					<!-- Section -->
-					<div class="add-listing-section">
+        var autocomplete = new google.maps.places.Autocomplete(input);
 
-						<!-- Headline -->
-						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> Class Management</h3>
-						</div>
+        // Set the data fields to return when the user selects a place.
+        autocomplete.setFields(
+            ['address_components', 'geometry', 'icon', 'name']);
 
-						<!-- Title -->
-						<div class="row with-forms">
-							<div class="col-md-10">
-								<h5>Add Class<i class="tip" data-tip-content="Add a new class here"></i></h5>
-								<input class="search-field" type="text" value="" name="class" required=""/>
-							</div>
-                            <div class="col-md-2">
-								
-								<button type="submit" class="button preview">Submit</button>
-							</div>
-						</div>
-                        
-                        
-						<!-- Headline -->
-						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> List of All Classes</h3>
-						</div>
+       
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          console.log(place.geometry.location.lat()+', '+place.geometry.location.lng());
+          alert(place.geometry);
+          $("#lat").val(place.geometry.location.lat());
+           $("#lng").val(place.geometry.location.lng());
+            $("#address").val(place.name);
+          console.log(place.name);  
+          if (!place.geometry) {
+            // User entered the name of a Place that was not suggested and
+            // pressed the Enter key, or the Place Details request failed.
+            window.alert("No details available for input: '" + place.name + "'");
+            return;
+          }
 
-						<!-- Title -->
-						<div class="row with-forms">
-							<div class="col-md-12">
-                                <table class="table">
-                                <thead class="thead-dark">
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">class name</th>
-                                  <th scope="col">Actions</th>
-                                  
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                    <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                 
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                  
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Larry</td>
-                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                
-                                </tr>
-                              </tbody>
-                            </table>
-                                
-								
-							</div>
-                           
-						</div>
-                        
-                        
+          
 
-					</div>
-					
-					
+          var address = '';
+          if (place.address_components) {
+            address = [
+              (place.address_components[0] && place.address_components[0].short_name || ''),
+              (place.address_components[1] && place.address_components[1].short_name || ''),
+              (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
 
-				</div>
-			</div>
+        });
 
-		</div>
-
-</form>
-
-
-
-
-
-
-<!--Category management-->
-
-<form  class="form-horizontal" id="category-form">
-<div class="row">
-			<div class="col-lg-12">
-
-				<div id="add-listing">
-
-					<!-- Section -->
-					<div class="add-listing-section">
-
-						<!-- Headline -->
-						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> Category Management</h3>
-						</div>
-
-						<!-- Title -->
-						<div class="row with-forms">
-							<div class="col-md-10">
-								<h5>Add Category<i class="tip" data-tip-content="Add a new class here"></i></h5>
-								<input class="search-field" type="text" value="" name="category-add" required=""/>
-							</div>
-                            <div class="col-md-2">
-								
-								<button type="submit" class="button preview">Submit</button>
-							</div>
-						</div>
-                        
-                        
-						<!-- Headline -->
-						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> List of All Categories</h3>
-						</div>
-
-						<!-- Title -->
-						<div class="row with-forms">
-							<div class="col-md-12">
-                                <table class="table">
-                                <thead class="thead-dark">
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">class name</th>
-                                  <th scope="col">Actions</th>
-                                  
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                    <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                 
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                  
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Larry</td>
-                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                
-                                </tr>
-                              </tbody>
-                            </table>
-                                
-								
-							</div>
-                           
-						</div>
-                        
-                        
-
-					</div>
-					
-					
-
-				</div>
-			</div>
-
-		</div>
-
-</form>
+        
+      }
+      
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ-5bkYW9Wb5k2JLBoaas0HSx7ZBkMwAM&libraries=places&callback=initMap"
+        async defer></script>
 
 
 
@@ -765,96 +593,10 @@
 
 
 
-<!--facility management-->
 
-<form  class="form-horizontal" id="facility-form">
-<div class="row">
-			<div class="col-lg-12">
 
-				<div id="add-listing">
 
-					<!-- Section -->
-					<div class="add-listing-section">
 
-						<!-- Headline -->
-						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> Facility Management</h3>
-						</div>
 
-						<!-- Title -->
-						<div class="row with-forms">
-							<div class="col-md-6">
-								<h5>Add Facility<i class="tip" data-tip-content="Add a new Facility here"></i></h5>
-								<input class="search-field" type="text" value="" name="facility-add" required=""/>
-							</div>
-                            <div class="col-md-4">
-								<h5>Add Icon</h5>
-								 <input type="file" class="form-control-file">
-							</div>
-                            <div class="col-md-2">
-								
-								<button type="submit" class="button preview">Submit</button>
-							</div>
-						</div>
-                        
-                        
-						<!-- Headline -->
-						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> List of All Facilities</h3>
-						</div>
 
-						<!-- Title -->
-						<div class="row with-forms">
-							<div class="col-md-12">
-                                <table class="table">
-                                <thead class="thead-dark">
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Facility name</th>
-                                  <th scope="col">icon</th>
-                                  <th scope="col">Actions</th>
-                                  
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                  <td><img src="" height="50px"></td>
-                                    <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                 
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                    <td><img src="" height="50px"></td>
-                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                  
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Larry</td>
-                                    <td><img src="" height="50px"></td>
-                                  <td><a href="#"><i class="sl sl-icon-trash"></i></a></td>
-                                
-                                </tr>
-                              </tbody>
-                            </table>
-                                
-								
-							</div>
-                           
-						</div>
-                        
-                        
 
-					</div>
-					
-					
-
-				</div>
-			</div>
-
-		</div>
-
-</form>

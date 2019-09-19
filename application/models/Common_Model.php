@@ -86,6 +86,42 @@ class Common_Model extends CI_Model{
         }
         return $this->db->delete($table);
     }
+
+    /**
+     *@author Mahesh
+     *@param table string
+     *@param where Array
+     *@param field string
+     *@desc To any field data from respective table with given condition
+     */
+    function get_type_name_by_where($table, $where = '', $field = 'name')
+    {
+        if ($where != '') {
+            $this->db->where($where);
+            }
+            $l = $this->db->get($type);
+            $n = $l->num_rows();
+            if ($n > 0) {
+                return $l->row()->$field;
+            }else{
+                return FALSE;
+            }
+    }
+    
+    /**
+     *@author Mahesh
+     *@param table string
+     *@param where Array
+     *@desc To get count of all records from respective table with given condition
+     */
+    function count_records( $table, $where = '' ){
+        if($where != ''){
+            $this->db->where($where);
+        }
+        $this->db->from($table);
+        $reocrds = $this->db->count_all_results();
+        return $reocrds;
+    }
     
     
     
