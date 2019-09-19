@@ -18,6 +18,14 @@
 						<li><a href="dashboard-my-listings.html">Expired <span class="nav-tag red">2</span></a></li>
 					</ul>	
 				</li>
+				<li><a><i class="sl sl-icon-layers"></i> Listings-Categories</a>
+					<ul>
+						<li><a href="<?=base_url('admin/categories');?>">Categories</a></li>
+						<li><a href="<?=base_url('admin/curriculum');?>">Curriculum</a></li>
+						<li><a href="<?=base_url('admin/classes');?>">Classes</a></li>
+						<li><a href="<?=base_url('admin/facilities');?>">Fecilities</a></li>
+					</ul>	
+				</li>
 				<li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
 				<li><a href="<?php echo SITEURL2.'/admin/add_listing';?>"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
