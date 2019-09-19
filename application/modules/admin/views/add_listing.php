@@ -16,7 +16,7 @@
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-								<h5>School Title <i class="tip" data-tip-content="Name of your School"></i></h5>
+								<h5>School Name <i class="tip" data-tip-content="Name of your School"></i></h5>
 								<input class="search-field" type="text" value="" name="school_title" required=""/>
 							</div>
 						</div>

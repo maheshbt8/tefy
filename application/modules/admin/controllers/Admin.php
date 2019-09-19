@@ -26,8 +26,6 @@ class Admin extends MY_Controller
     public function add_listing(){
         if($this->input->post()){
             $input=$this->input->post();
-            //echo "<pre>";
-            //print_r($input);die;
             $input_data['school_title']=$input['school_title'];
             $input_data['category']=$input['category'];
             $input_data['keywords']=$input['keywords'];
@@ -54,9 +52,7 @@ class Admin extends MY_Controller
         '7'=>array('s_opening'=>$input['s_opening'],'s_closing'=>$input['s_closing']),
                 )
             );
-            /*$input_data['category']=$input['category'];*/
-            $this->db->insert('listings',$input_data);
-            $res=$this->db->insert_id();
+            $res=$this->common_model->insert_results_info('listings',$input_data);
             if($res>0){
                 $this->session->set_flashdata('success_message','Uploaded Successfully');
                 //move_uploaded_file($_FILES["qp"]["tmp_name"], "uploads/listings/". $res.'.jpg');

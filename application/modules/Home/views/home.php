@@ -85,12 +85,9 @@ foreach ($schools as $row) {
                                     <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
                                     <div class="listing-badge now-open">Now Open</div>
                                 </div>
-
-
                                 <div class="col-md-8">
                                     <div class="listing-item-content">
-
-                                        <h3><?=$row['school_title'];?> <i class="verified-icon"></i></h3>
+                                        <h3><?=$row['school_title'];?> <!-- <i class="verified-icon"></i> --></h3>
                                         <span>Gachibouli, Hyderabad</span>
                                         <div class="padding-top-15"><span>Address: <?=$row['address'];?></span> </div>
                                         <div class="padding-top-5"><span>Classes: <?=$row['category'];?></span> </div>
