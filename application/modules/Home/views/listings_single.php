@@ -88,7 +88,236 @@
 				</div>
 			</div>
 				
-			<!-- Reviews -->
+			
+
+		</div>
+
+
+		<!-- Sidebar
+		================================================== -->
+		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
+            <!-- Share / Like -->
+			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
+				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
+				<span>159 people bookmarked this place</span>
+
+			</div>
+
+				
+		
+		
+
+			<!-- Opening Hours -->
+			<div class="boxed-widget opening-hours margin-top-35">
+				<div class="listing-badge now-open">Now Open</div>
+				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
+				<ul>
+					<?php
+					$opening_hours=json_decode($school['opening_hours']);
+					foreach ($opening_hours as $opening_hour) {
+					$opening[]=$opening_hour;
+					}
+					?>
+					<li>Monday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Tuesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Wednesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Thursday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Friday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Saturday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li>Sunday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+				</ul>
+			</div>
+			<!-- Opening Hours / End -->
+
+
+			<!-- Contact -->
+			 <div class="boxed-widget margin-top-35">
+				<div class="hosted-by-title">
+					<h4><span> </span> <a href="pages-user-profile.html">Get in touch</a></h4>
+					
+				</div>
+				<!--<ul class="listing-details-sidebar">
+					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
+					 <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> 
+					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
+				</ul>
+
+				<ul class="listing-details-sidebar social-profiles">
+					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+					 <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> 
+				</ul>-->
+                 <form>
+                    <input type="text" placeholder="Mail ID"  name="mail" required="">
+                    <input type="text" placeholder="Mobile No."  name="mobile" required="">
+                     <textarea type="text" placeholder="Your Query"  name="query" required=""></textarea>
+                 
+                 <button class="button">Send Message</button>
+                 </form>
+
+				
+			</div>
+			<!-- Contact / End-->
+
+
+			
+
+		</div>
+		<!-- Sidebar / End -->
+
+	</div>
+    
+    <!--Achievements start-->
+    <div class="container">
+		<div class="row">
+
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-45">
+					<strong class="headline-with-separator">Achievements</strong>
+					<!--<span>Discover Top-Rated Local Businesses</span>-->
+				</h3>
+			</div>
+
+			<div class="col-md-12">
+				<div class="simple-slick-carousel dots-nav">
+
+                    <!-- Listing Item -->
+         
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div>
+                    <!-- Listing Item -->
+         
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div>
+                    <!-- Listing Item -->
+         
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div>
+                    <!-- Listing Item -->
+         
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div>
+                    <!-- Listing Item -->
+         
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div>
+                    <!-- Listing Item -->
+         
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                   
+                    
+
+                </div>
+                
+				
+			</div>
+           
+		</div>
+	</div>
+    
+    <!--gallery start-->
+    <div class="container">
+		<div class="row">
+
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-45">
+					<strong class="headline-with-separator">Gallery</strong>
+					<!--<span>Discover Top-Rated Local Businesses</span>-->
+				</h3>
+			</div>
+
+			<div class="col-md-12">
+				<div class="simple-slick-carousel dots-nav">
+
+                    <!-- Listing Item -->
+         
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--0 ">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                             
+                            </div>
+
+                        </a>
+                    </div>
+                   
+                   
+                    
+
+                </div>
+                
+				
+			</div>
+           
+		</div>
+	</div>
+    <div class= "container">
+        <!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(12)</span></h3>
 
@@ -359,139 +588,5 @@
 			</div>
 			<!-- Add Review Box / End -->
 
-
-		</div>
-
-
-		<!-- Sidebar
-		================================================== -->
-		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-
-				
-			<!-- Verified Badge -->
-			<!-- <div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
-				<i class="sl sl-icon-check"></i> Verified Listing
-			</div> -->
-
-			<!-- Message Vendor -->
-		<!-- 	<div id="booking-widget-anchor" class="boxed-widget booking-widget message-vendor margin-top-35">
-				<h3><i class="fa fa-envelope-o"></i> Message to School</h3>
-				<div class="row with-forms  margin-top-0">
-
-					<div class="col-lg-12">
-						<input type="text" placeholder="First and Last Name" value="Tom Smith">
-						<input type="text" placeholder="Email" value="mail@example.com">
-						<input type="text" placeholder="Phone" value="+12 345 678 910">
-						<textarea name="" id="" cols="10" rows="2" placeholder="Message"></textarea>
-					</div> -->
-					
-					<!-- Preferred Contact Methos Radios -->
-				<!-- 	<div class="col-lg-12">
-						<div class="preferred-contact-method">
-							<h5>Preferred contact method</h5>
-
-							<div class="preferred-contact-radios">
-								<div class="radio">
-									<input id="radio-1" name="radio" type="radio" checked>
-									<label for="radio-1"><span class="radio-label"></span> Email</label>
-								</div>
-
-								<div class="radio">
-									<input id="radio-2" name="radio" type="radio">
-									<label for="radio-2"><span class="radio-label"></span> Phone</label>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-				</div> -->
-
-				<!-- Recaptcha Holder -->
-				<!-- <div class="captcha-holder"> -->
-					<!-- Recaptcha goes here -->
-				<!-- </div> -->
-				
-				<!-- Book Now -->
-				<!-- <a href="#" class="button book-now fullwidth margin-top-5">Request Pricing</a>
-			</div> -->
-			<!-- Book Now / End -->
-		
-
-			<!-- Opening Hours -->
-			<div class="boxed-widget opening-hours margin-top-35">
-				<div class="listing-badge now-open">Now Open</div>
-				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
-				<ul>
-					<?php
-					$opening_hours=json_decode($school['opening_hours']);
-					foreach ($opening_hours as $opening_hour) {
-					$opening[]=$opening_hour;
-					}
-					?>
-					<li>Monday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Tuesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Wednesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Thursday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Friday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Saturday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Sunday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-				</ul>
-			</div>
-			<!-- Opening Hours / End -->
-
-
-			<!-- Contact -->
-			<div class="boxed-widget margin-top-35">
-				<div class="hosted-by-title">
-					<h4><span>Hosted by</span> <a href="pages-user-profile.html">Tom Perrin</a></h4>
-					<a href="pages-user-profile.html" class="hosted-by-avatar"><img src="images/dashboard-avatar.jpg" alt=""></a>
-				</div>
-				<ul class="listing-details-sidebar">
-					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
-					<!-- <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> -->
-					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
-				</ul>
-
-				<ul class="listing-details-sidebar social-profiles">
-					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
-					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
-				</ul>
-
-				<!-- Reply to review popup -->
-				<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-					<div class="small-dialog-header">
-						<h3>Send Message</h3>
-					</div>
-					<div class="message-reply margin-top-0">
-						<textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
-						<button class="button">Send Message</button>
-					</div>
-				</div>
-
-				<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
-			</div>
-			<!-- Contact / End-->
-
-
-			<!-- Share / Like -->
-			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
-				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
-				<span>159 people bookmarked this place</span>
-
-					<!-- Share Buttons -->
-					<ul class="share-buttons margin-top-40 margin-bottom-0">
-						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
-						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
-						<!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
-					</ul>
-					<div class="clearfix"></div>
-			</div>
-
-		</div>
-		<!-- Sidebar / End -->
-
-	</div>
+   </div>
 </div>

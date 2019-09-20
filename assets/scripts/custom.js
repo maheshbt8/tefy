@@ -396,21 +396,21 @@
         });
         $('.simple-slick-carousel').slick({
             infinite: true,
-            slidesToShow: 1,
+            slidesToShow: 4,
             slidesToScroll: 1,
             dots: true,
             arrows: true,
             responsive: [{
                 breakpoint: 992,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToShow: 4,
+                    slidesToScroll: 4
                 }
             }, {
                 breakpoint: 769,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToShow: 3,
+                    slidesToScroll: 3
                 }
             }]
         });
