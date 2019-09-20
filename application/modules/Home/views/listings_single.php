@@ -1,4 +1,6 @@
+
 <div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'.jpg';?>" style="height: 300px">
+
     </div>
 <!-- Content
 ================================================== -->
@@ -52,10 +54,10 @@
 					<div class="clearfix"></div>
 
 					<ul class="listing-links">
-						<li><a href="<?=$school['facebook'];?>" target="_blank" class="listing-links-fb"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-						<!-- <li><a href="<?=$school['youtube'];?>" target="_blank" class="listing-links-yt"><i class="fa fa-youtube-play"></i> YouTube</a></li> -->
+						<!--<li><a href="<?=$school['facebook'];?>" target="_blank" class="listing-links-fb"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+						
 						<li><a href="<?=$school['google_plus'];?>" target="_blank" class="listing-links-ig"><i class="fa fa-google-plus"></i> Google+</a></li>
-						<li><a href="<?=$school['twitter'];?>" target="_blank" class="listing-links-tt"><i class="fa fa-twitter"></i> Twitter</a></li>
+						<li><a href="<?=$school['twitter'];?>" target="_blank" class="listing-links-tt"><i class="fa fa-twitter"></i> Twitter</a></li>-->
 					</ul>
 					<div class="clearfix"></div>
 
@@ -88,7 +90,250 @@
 				</div>
 			</div>
 				
-			<!-- Reviews -->
+			
+
+		</div>
+
+
+		<!-- Sidebar
+		================================================== -->
+		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
+            <!-- Share / Like -->
+			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
+				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
+				<span>159 people bookmarked this place</span>
+
+			</div>
+
+				
+		
+		
+
+			<!-- Opening Hours -->
+			<div class="boxed-widget opening-hours margin-top-35">
+				<div class="listing-badge now-open">Now Open</div>
+				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
+				<ul>
+					<?php
+					$opening_hours=json_decode($school['opening_hours']);
+					$reslut=$this->common_model->get_days();
+
+  $days=$reslut['days'];
+  $loop=$reslut['timings'];
+for ($i=0; $i < count($days); $i++) {
+	if($opening_hours->opening_time[$i]=='Closed'){
+	$opening=$opening_hours->opening_time[$i];
+	}else{
+	$opening=$opening_hours->opening_time[$i].' - '.$opening_hours->closing_time[$i];
+	}
+					?>
+					<li><?=$days[$i];?> <span><?=$opening;?></span></li>
+				<?php }?>
+				</ul>
+			</div>
+			<!-- Opening Hours / End -->
+
+
+			<!-- Contact -->
+			 <div class="boxed-widget margin-top-35">
+				<div class="hosted-by-title">
+					<h4><span> </span> <a href="pages-user-profile.html">Get in touch</a></h4>
+					
+				</div>
+				<!--<ul class="listing-details-sidebar">
+					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
+					 <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> 
+					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
+				</ul>
+
+				<ul class="listing-details-sidebar social-profiles">
+					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+					 <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> 
+				</ul>-->
+                 <form>
+                    <input type="text" placeholder="Mail ID"  name="mail" required="">
+                    <input type="text" placeholder="Mobile No."  name="mobile" required="">
+                     <textarea type="text" placeholder="Your Query"  name="query" required=""></textarea>
+                 
+                 <button class="button">Send Message</button>
+                 </form>
+
+				
+			</div>
+			<!-- Contact / End-->
+
+
+			
+
+		</div>
+		<!-- Sidebar / End -->
+
+	</div>
+    
+    <!--Achievements start-->
+    <?php
+$achievements=json_decode($school['achievements']);
+if($achievements!=''){
+	?>
+    <div class="container">
+		<div class="row">
+
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-45">
+					<strong class="headline-with-separator">Achievements</strong>
+					<!--<span>Discover Top-Rated Local Businesses</span>-->
+				</h3>
+			</div>
+
+			<div class="col-md-12">
+				<div class="simple-slick-carousel dots-nav">
+
+                    <!-- Listing Item -->
+         <?php
+					
+					
+					for ($i=0; $i < count($achievements); $i++) {
+					?>
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b><?=$achievements[$i];?></b></p>
+                            </div>
+
+                        </a>
+                    </div>
+                <?php }?>
+                    <!-- Listing Item -->
+         
+                   <!--  <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div> -->
+                    <!-- Listing Item -->
+         
+                    <!-- <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div> -->
+                    <!-- Listing Item -->
+         
+                   <!--  <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div> -->
+                    <!-- Listing Item -->
+         
+                    <!-- <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div> -->
+                    <!-- Listing Item -->
+         
+                    <!-- <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--30">
+                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                   
+                                </div>
+                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
+                            </div>
+
+                        </a>
+                    </div> -->
+                    
+                   
+                    
+
+                </div>
+                
+				
+			</div>
+           
+		</div>
+	</div>
+    <?php }?>
+    <!--gallery start-->
+    <div class="container">
+		<div class="row">
+
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-45">
+					<strong class="headline-with-separator">Gallery</strong>
+					<!--<span>Discover Top-Rated Local Businesses</span>-->
+				</h3>
+			</div>
+
+			<div class="col-md-12">
+				<div class="simple-slick-carousel dots-nav">
+
+                    <!-- Listing Item -->
+         <?php
+					
+					$gallery=$this->common_model->select_results_info('listing_gallery',array('listing_id'=>$school['id']))->result_array();
+					foreach ($gallery as $gal){
+					?>
+                    <div class="carousel-item">
+                        <a href="" class="listing-item-container">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item p--0 ">
+                                    <img src="<?=base_url('uploads/listings/gallery/').$school['id'].'/'.$gal['id'].'.jpg';?>" alt="">
+                                   
+                                </div>
+                             
+                            </div>
+                        </a>
+                    </div>
+                   
+                   <?php }?>
+                    
+
+                </div>
+                
+				
+			</div>
+           
+		</div>
+	</div>
+    <div class= "container">
+        <!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(12)</span></h3>
 
@@ -359,6 +604,7 @@
 			</div>
 			<!-- Add Review Box / End -->
 
+<<<<<<< HEAD
 
 		</div>
 
@@ -496,4 +742,7 @@ for ($i=0; $i < count($days); $i++) {
 		<!-- Sidebar / End -->
 
 	</div>
+=======
+   </div>
+>>>>>>> cce3b196e8341000ed44c69b618888d9795db89d
 </div>

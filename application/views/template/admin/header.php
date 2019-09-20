@@ -9,8 +9,8 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index-2.html"><img src="<?php echo base_url('assets')?>/images/logo.png" alt=""></a>
-					<a href="index-2.html" class="dashboard-logo"><img src="<?php echo base_url('assets')?>/images/logo2.png" alt=""></a>
+					<a href="index-2.html"><img src="<?php echo base_url('assets')?>/images/logo3.png" alt=""></a>
+					<a href="index-2.html" class="dashboard-logo"><img src="<?php echo base_url('assets')?>/images/logo3.png" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->

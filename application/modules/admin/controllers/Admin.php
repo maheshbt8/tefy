@@ -49,6 +49,7 @@ class Admin extends MY_Controller
             $input_data['opening_hours']=json_encode(
                 array('opening_time'=>$input['opening_time'],'closing_time'=>$input['closing_time'])
             );
+            $input_data['achievements']=json_encode($input['achievements']);
             /*echo count($_FILES['gallery']['name']);
             echo "<pre>";
             print_r($_FILES);
