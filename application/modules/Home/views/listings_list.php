@@ -1,4 +1,6 @@
-
+<?php
+$this->session->set_userdata('last_page',current_url());
+?>
 <!-- Titlebar
 ================================================== -->
 <div id="titlebar" class="gradient">
@@ -42,7 +44,7 @@
 
 				<div class="col-md-6 col-xs-6">
 					<!-- Sort by -->
-					<div class="sort-by">
+					<!-- <div class="sort-by">
 						<div class="sort-by-select">
 							<select data-placeholder="Default order" class="chosen-select-no-single">
 								<option>Default Order</option>	
@@ -52,7 +54,7 @@
 								<option>Oldest Listings</option>
 							</select>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- Sorting / Layout Switcher / End -->
@@ -84,6 +86,7 @@ foreach ($schools as $row) {
 									<div class="star-rating" data-rating="3.5">
 										<div class="rating-counter">(12 reviews)</div>
 									</div>
+									<div class="padding-top-5"><span><b>Vision</b>: <?=$row['vision'];?></span> </div>
 								</div>
 
 								<span class="like-icon"></span>
@@ -163,11 +166,17 @@ foreach ($schools as $row) {
 
 						<!-- Checkboxes -->
 						<div class="checkboxes one-in-row margin-bottom-15">
-					
-							<input id="check-a" type="checkbox" name="check">
-							<label for="check-a">Elevator in building</label>
+					<?php
 
-							<input id="check-b" type="checkbox" name="check">
+$category=json_decode($row['category']);
+if($category!=''){
+					for ($c=0; $c < count($category); $c++) {
+					
+	?>
+							<input id="check<?=$c;?>" type="checkbox" name="category[]" value="<?=$category[$c];?>">
+							<label for="check<?=$c;?>"><?=$this->common_model->get_type_name_by_where('category',array('id'=>$category[$c]))?></label>
+<?php }}?>
+							<!-- <input id="check-b" type="checkbox" name="check">
 							<label for="check-b">Friendly workspace</label>
 
 							<input id="check-c" type="checkbox" name="check">
@@ -186,7 +195,7 @@ foreach ($schools as $row) {
 							<label for="check-g">Smoking allowed</label>	
 
 							<input id="check-h" type="checkbox" name="check">
-							<label for="check-h">Events</label>
+							<label for="check-h">Events</label> -->
 					
 						</div>
 						<!-- Checkboxes / End -->
@@ -203,8 +212,16 @@ foreach ($schools as $row) {
 
 						<!-- Checkboxes -->
 						<div class="checkboxes one-in-row margin-bottom-15">
+										<?php
+$facilities=json_decode($row['amenities']);
+if($facilities!=''){
+					for ($c=0; $c < count($facilities); $c++) {
 					
-							<input id="check-a" type="checkbox" name="check">
+	?>
+							<input id="check-<?=$c;?>" type="checkbox" name="facilities[]" value="<?=$facilities[$c];?>">
+							<label for="check-<?=$c;?>"><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$facilities[$c]))?></label>
+<?php }}?>
+							<!-- <input id="check-a" type="checkbox" name="check">
 							<label for="check-a">Elevator in building</label>
 
 							<input id="check-b" type="checkbox" name="check">
@@ -226,7 +243,7 @@ foreach ($schools as $row) {
 							<label for="check-g">Smoking allowed</label>	
 
 							<input id="check-h" type="checkbox" name="check">
-							<label for="check-h">Events</label>
+							<label for="check-h">Events</label> -->
 					
 						</div>
 						<!-- Checkboxes / End -->

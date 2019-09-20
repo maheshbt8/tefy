@@ -20726,3 +20726,36 @@ height: 51px;
 .txt-algn-cntr{
     text-align: center
 }
+.text-size{
+    white-space: nowrap; 
+  width: 500px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.amenity-img {
+   width: 50px;
+   height: 50px;
+   display: inline;
+   text-align: center;
+   margin: auto;
+   display: flex;
+   margin-top:   20px;
+   margin-bottom: 10px
+}
+.aminity-size{
+   width: 165px;
+   text-align: center;
+   display: inline-block;
+       margin-left: 10px;
+}
+.amenity-list{
+   width: 100%;
+   /* display: block; */
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   columns: auto;
+   font-size: 16px;
+   -webkit-columns: auto;
+}

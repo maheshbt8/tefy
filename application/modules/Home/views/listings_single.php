@@ -1,5 +1,5 @@
 
-<div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'.jpg';?>" style="height: 300px">
+<div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'.jpg';?>" style="height: 300px;margin-top: 85px;">
 
     </div>
 <!-- Content
@@ -75,6 +75,18 @@
 					<li><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$ame[$i]));?></li>
 				<?php }?>
 				</ul>
+				<ul class="amenity-list  margin-top-0">
+                    <?php
+					$ame=json_decode($school['amenities']);
+					for ($i=0; $i < count($ame); $i++) {
+					?>
+                    <li class="aminity-size">
+                       <img src="<?=base_url('uploads/facilities/').$this->common_model->get_type_name_by_where('facilities',array('id'=>$ame[$i]),'id').'.jpg';?>" class="amenity-img">
+                       <p><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$ame[$i]));?></p>
+                   </li>
+                <?php }?>
+                
+                </ul>
 			</div>
 
 
@@ -332,62 +344,17 @@ if($achievements!=''){
            
 		</div>
 	</div>
-    <div class= "container">
+    <div class= "container" style="display: none;">
         <!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(12)</span></h3>
 
 				<!-- Rating Overview -->
 				<div class="rating-overview">
-					<div class="rating-overview-box">
-						<span class="rating-overview-box-total">4.2</span>
-						<span class="rating-overview-box-percent">out of 5.0</span>
-						<div class="star-rating" data-rating="5"></div>
-					</div>
-
-					<div class="rating-bars">
-							<div class="rating-bars-item">
-								<span class="rating-bars-name">Service 1<i class="tip" data-tip-content="Quality of customer service and attitude to work with you"></i></span>
-								<span class="rating-bars-inner">
-									<span class="rating-bars-rating" data-rating="4.2">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong>4.2</strong>
-								</span>
-							</div>
-							<div class="rating-bars-item">
-								<span class="rating-bars-name">Service 2 <i class="tip" data-tip-content="Overall experience received for the amount spent"></i></span>
-								<span class="rating-bars-inner">
-									<span class="rating-bars-rating" data-rating="2.8">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong>2.8</strong>
-								</span>
-							</div>
-							<div class="rating-bars-item">
-								<span class="rating-bars-name">Service 3 <i class="tip" data-tip-content="Visibility, commute or nearby parking spots"></i></span>
-								<span class="rating-bars-inner">
-									<span class="rating-bars-rating" data-rating="3.7">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong>3.7</strong>
-								</span>
-							</div>
-							<div class="rating-bars-item">
-								<span class="rating-bars-name">Service 4 <i class="tip" data-tip-content="The physical condition of the business"></i></span>
-								<span class="rating-bars-inner">
-									<span class="rating-bars-rating" data-rating="4.0">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong>4.5</strong>
-								</span>
-							</div>
-					</div>
-				</div>
-				<!-- Rating Overview / End -->
-
-
-				<div class="clearfix"></div>
+					
+						<div class="row">
+							<div class="col-md-8">
+								<div class="clearfix"></div>
 
 				<!-- Reviews -->
 				<section class="comments listing-reviews">
@@ -465,11 +432,9 @@ if($achievements!=''){
 					</div>
 				</div>
 				<div class="clearfix"></div>
-				<!-- Pagination / End -->
-			</div>
-
-
-			<!-- Add Review Box -->
+							</div>
+							<div class="col-md-4">
+								<!-- Add Review Box -->
 			<div id="add-review" class="add-review-box">
 
 				<!-- Add Review -->
@@ -478,70 +443,6 @@ if($achievements!=''){
 
 				<!-- Subratings Container -->
 				<div class="sub-ratings-container">
-
-					<!-- Subrating #1 -->
-					<div class="add-sub-rating">
-						<div class="sub-rating-title">Service <i class="tip" data-tip-content="Quality of customer service and attitude to work with you"></i></div>
-						<div class="sub-rating-stars">
-							<!-- Leave Rating -->
-							<div class="clearfix"></div>
-							<form class="leave-rating">
-								<input type="radio" name="rating" id="rating-1" value="1"/>
-								<label for="rating-1" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-2" value="2"/>
-								<label for="rating-2" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-3" value="3"/>
-								<label for="rating-3" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-4" value="4"/>
-								<label for="rating-4" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-5" value="5"/>
-								<label for="rating-5" class="fa fa-star"></label>
-							</form>
-						</div>
-					</div>
-
-					<!-- Subrating #2 -->
-					<div class="add-sub-rating">
-						<div class="sub-rating-title">Value for Money <i class="tip" data-tip-content="Overall experience received for the amount spent"></i></div>
-						<div class="sub-rating-stars">
-							<!-- Leave Rating -->
-							<div class="clearfix"></div>
-							<form class="leave-rating">
-								<input type="radio" name="rating" id="rating-11" value="1"/>
-								<label for="rating-11" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-12" value="2"/>
-								<label for="rating-12" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-13" value="3"/>
-								<label for="rating-13" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-14" value="4"/>
-								<label for="rating-14" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-15" value="5"/>
-								<label for="rating-15" class="fa fa-star"></label>
-							</form>
-						</div>
-					</div>
-
-					<!-- Subrating #3 -->
-					<div class="add-sub-rating">
-						<div class="sub-rating-title">Location <i class="tip" data-tip-content="Visibility, commute or nearby parking spots"></i></div>
-						<div class="sub-rating-stars">
-							<!-- Leave Rating -->
-							<div class="clearfix"></div>
-							<form class="leave-rating">
-								<input type="radio" name="rating" id="rating-21" value="1"/>
-								<label for="rating-21" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-22" value="2"/>
-								<label for="rating-22" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-23" value="3"/>
-								<label for="rating-23" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-24" value="4"/>
-								<label for="rating-24" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-25" value="5"/>
-								<label for="rating-25" class="fa fa-star"></label>
-							</form>
-						</div>
-					</div>
-					
 					<!-- Subrating #4 -->
 					<div class="add-sub-rating">
 						<div class="sub-rating-title">Cleanliness <i class="tip" data-tip-content="The physical condition of the business"></i></div>
@@ -564,11 +465,11 @@ if($achievements!=''){
 					</div>	
 
 					<!-- Uplaod Photos -->
-	                <div class="uploadButton margin-top-15">
+	                <!-- <div class="uploadButton margin-top-15">
 	                    <input class="uploadButton-input" type="file"  name="attachments[]" accept="image/*, application/pdf" id="upload" multiple/>
 	                    <label class="uploadButton-button ripple-effect" for="upload">Add Photos</label>
 	                    <span class="uploadButton-file-name"></span>
-	                </div>
+	                </div> -->
 	                <!-- Uplaod Photos / End -->
 
 				</div>
@@ -579,12 +480,12 @@ if($achievements!=''){
 					<fieldset>
 
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<label>Name:</label>
 								<input type="text" value=""/>
 							</div>
 								
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<label>Email:</label>
 								<input type="text" value=""/>
 							</div>
@@ -603,146 +504,21 @@ if($achievements!=''){
 
 			</div>
 			<!-- Add Review Box / End -->
-
-<<<<<<< HEAD
-
-		</div>
-
-
-		<!-- Sidebar
-		================================================== -->
-		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-
-				
-			<!-- Verified Badge -->
-			<!-- <div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
-				<i class="sl sl-icon-check"></i> Verified Listing
-			</div> -->
-
-			<!-- Message Vendor -->
-		<!-- 	<div id="booking-widget-anchor" class="boxed-widget booking-widget message-vendor margin-top-35">
-				<h3><i class="fa fa-envelope-o"></i> Message to School</h3>
-				<div class="row with-forms  margin-top-0">
-
-					<div class="col-lg-12">
-						<input type="text" placeholder="First and Last Name" value="Tom Smith">
-						<input type="text" placeholder="Email" value="mail@example.com">
-						<input type="text" placeholder="Phone" value="+12 345 678 910">
-						<textarea name="" id="" cols="10" rows="2" placeholder="Message"></textarea>
-					</div> -->
-					
-					<!-- Preferred Contact Methos Radios -->
-				<!-- 	<div class="col-lg-12">
-						<div class="preferred-contact-method">
-							<h5>Preferred contact method</h5>
-
-							<div class="preferred-contact-radios">
-								<div class="radio">
-									<input id="radio-1" name="radio" type="radio" checked>
-									<label for="radio-1"><span class="radio-label"></span> Email</label>
-								</div>
-
-								<div class="radio">
-									<input id="radio-2" name="radio" type="radio">
-									<label for="radio-2"><span class="radio-label"></span> Phone</label>
-								</div>
 							</div>
-
 						</div>
-					</div>
-
-				</div> -->
-
-				<!-- Recaptcha Holder -->
-				<!-- <div class="captcha-holder"> -->
-					<!-- Recaptcha goes here -->
-				<!-- </div> -->
-				
-				<!-- Book Now -->
-				<!-- <a href="#" class="button book-now fullwidth margin-top-5">Request Pricing</a>
-			</div> -->
-			<!-- Book Now / End -->
-		
-
-			<!-- Opening Hours -->
-			<div class="boxed-widget opening-hours margin-top-35">
-				<div class="listing-badge now-open">Now Open</div>
-				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
-				<ul>
-					<?php
-					$opening_hours=json_decode($school['opening_hours']);
-					$reslut=$this->common_model->get_days();
-
-  $days=$reslut['days'];
-  $loop=$reslut['timings'];
-for ($i=0; $i < count($days); $i++) {
-	if($opening_hours->opening_time[$i]=='Closed'){
-	$opening=$opening_hours->opening_time[$i];
-	}else{
-	$opening=$opening_hours->opening_time[$i].' - '.$opening_hours->closing_time[$i];
-	}
-					?>
-					<li><?=$days[$i];?> <span><?=$opening;?></span></li>
-				<?php }?>
-				</ul>
-			</div>
-			<!-- Opening Hours / End -->
-
-
-			<!-- Contact -->
-			<!-- <div class="boxed-widget margin-top-35">
-				<div class="hosted-by-title">
-					<h4><span>Hosted by</span> <a href="pages-user-profile.html">Tom Perrin</a></h4>
-					<a href="pages-user-profile.html" class="hosted-by-avatar"><img src="images/dashboard-avatar.jpg" alt=""></a>
 				</div>
-				<ul class="listing-details-sidebar">
-					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li> -->
-					<!-- <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> -->
-				<!-- 	<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
-				</ul> -->
+				<!-- Rating Overview / End -->
 
-				<!-- <ul class="listing-details-sidebar social-profiles">
-					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li> -->
-					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
-				<!-- </ul> -->
-
-				<!-- Reply to review popup -->
-				<!-- <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-					<div class="small-dialog-header">
-						<h3>Send Message</h3>
-					</div>
-					<div class="message-reply margin-top-0">
-						<textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
-						<button class="button">Send Message</button>
-					</div>
-				</div>
-
-				<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
-			</div> -->
-			<!-- Contact / End-->
-
-
-			<!-- Share / Like -->
-			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
-				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
-				<span>159 people bookmarked this place</span>
-
-					<!-- Share Buttons -->
-					<ul class="share-buttons margin-top-40 margin-bottom-0">
-						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
-						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
-						<!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
-					</ul>
-					<div class="clearfix"></div>
 			</div>
+
+
+			
+
+
 
 		</div>
+
+
 		<!-- Sidebar / End -->
 
 	</div>
-=======
-   </div>
->>>>>>> cce3b196e8341000ed44c69b618888d9795db89d
-</div>

@@ -11,13 +11,14 @@
 			</ul>
 			
 			<ul data-submenu-title="Listings">
-				<li><a><i class="sl sl-icon-layers"></i> My Listings</a>
+				<!-- <li><a><i class="sl sl-icon-layers"></i> My Listings</a>
 					<ul>
 						<li><a href="dashboard-my-listings.html">Active <span class="nav-tag green">6</span></a></li>
 						<li><a href="dashboard-my-listings.html">Pending <span class="nav-tag yellow">1</span></a></li>
 						<li><a href="dashboard-my-listings.html">Expired <span class="nav-tag red">2</span></a></li>
 					</ul>	
-				</li>
+				</li> -->
+				<li><a href="<?=base_url('admin/listings');?>"><i class="sl sl-icon-wallet"></i> My Listings</a></li>
 				<li><a><i class="sl sl-icon-layers"></i> Listings-Categories</a>
 					<ul>
 						<li><a href="<?=base_url('admin/categories');?>">Categories</a></li>

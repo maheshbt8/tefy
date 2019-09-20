@@ -12,7 +12,7 @@ class Home extends MY_Controller
         $this->data['title'] = 'Home';
         $this->data['content'] = 'home';
         $this->data['active_menu'] = 'home';
-        $this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),"id DESC",3)->result_array();
+        $this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),"id DESC",6)->result_array();
         $this->_render_page($this->template, $this->data);
     }
     
@@ -28,9 +28,26 @@ class Home extends MY_Controller
             $where=$where." AND keywords LIKE '%".$_GET['keyword']."%' OR  address LIKE '%".$_GET['keyword']."%' OR  school_name LIKE '%".$_GET['keyword']."%' OR  landmark LIKE '%".$_GET['keyword']."%'";
         }
         if(isset($_GET['location']) && $_GET['location']!=''){
-            $where=$where." AND keywords LIKE '%".$_GET['location']."%' OR  address LIKE '%".$_GET['location']."%' OR  school_name LIKE '%".$_GET['location']."%' OR  landmark LIKE '%".$_GET['location']."%'";
+            $where=$where." AND address LIKE '%".$_GET['location']."%' OR landmark LIKE '%".$_GET['location']."%'";
+        }
+        if(isset($_GET['category']) && $_GET['category']!=''){
+            $ca=array();
+            for ($i=0; $i < count($_GET['category']); $i++) { 
+                $ca[]="category LIKE '%".$_GET['category'][$i]."%'";
+            }
+
+            $where=$where." AND ".implode(' OR ',$ca);
+        }
+        if(isset($_GET['facilities']) && $_GET['facilities']!=''){
+             $ca=array();
+            for ($i=0; $i < count($_GET['facilities']); $i++) { 
+                $ca[]="amenities LIKE '%".$_GET['facilities'][$i]."%'";
+            }
+
+            $where=$where." AND ".implode(' OR ',$ca);
         }
         $config['base_url'] = base_url('listings-list'); //site url
+        /*$config['base_url'] = $this->session->userdata('last_page'); //site url*/
         $config['total_rows'] = $this->common_model->count_records('listings',$where); //total row
        // print_r($config);die;
         $config['per_page'] = 4;  //show record per halaman
@@ -60,7 +77,8 @@ class Home extends MY_Controller
 
         $this->pagination->initialize($config);
         $this->data['page'] = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-        $this->data['schools'] =  $this->common_model->select_results_info('listings',$where ,'id DESC',$config['per_page'],$choice)->result_array();
+        $this->data['schools'] =  $this->common_model->select_results_info('listings',$where ,'id DESC',$config['per_page'],$this->data['page'])->result_array();
+
         $this->data['pagination'] = $this->pagination->create_links();
 
         $this->data['title'] = 'listings-list';

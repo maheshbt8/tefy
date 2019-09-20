@@ -72,7 +72,7 @@
 			</div>
 
 			<div class="col-md-12">
-				<div class="simple-slick-carousel dots-nav">
+				<div class="">
 
                     <!-- Listing Item -->
                     <?php
@@ -94,9 +94,10 @@ foreach ($schools as $row) {
                                 <div class="col-md-8">
                                     <div class="listing-item-content">
                                         <h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
-                                        <span>Gachibouli, Hyderabad</span>
-                                        <div class="padding-top-15"><span>Address: <?=$row['address'];?></span> </div>
-                                        <div class="padding-top-5"><span>Classes: <?=implode(', ',$class);?></span> </div>
+                                        <span><?=$this->common_model->get_type_name_by_where('curriculum',array('id'=>$row['curriculum']));?></span>
+                                        <div class="padding-top-15"><span><b>Address</b>: <?=$row['address'];?></span> </div>
+                                        <div class="padding-top-5"><span><b>Classes</b>: <?=implode(', ',$class);?></span> </div>
+                                        <div class="padding-top-5 text-size"><span><b>Vision</b>: <?=$row['vision'];?></span> </div>
                                     </div>
                                     <span class="like-icon"></span>
                                     <div class="star-rating" data-rating="4.5">

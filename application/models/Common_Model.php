@@ -43,6 +43,7 @@ class Common_Model extends CI_Model{
             $this->db->limit($limit,$data_start);
         }
     	return $this->db->get($table);
+        /*echo $this->db->last_query();die;*/
     }
     
     /**

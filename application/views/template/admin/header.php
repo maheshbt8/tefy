@@ -156,7 +156,7 @@
 						</ul>
 					</div>
 
-					<a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
+					<a href="<?=base_url('admin/add_listing');?>" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
 				</div>
 				<!-- Header Widget / End -->
 			</div>

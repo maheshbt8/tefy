@@ -144,7 +144,7 @@
 			<div class="right-side">
 				<div class="header-widget">
 					<!-- User Menu -->
-					<div class="user-menu">
+					<!-- <div class="user-menu">
 						<div class="user-name"><span><img src="<?php echo base_url('assets')?>/images/dashboard-avatar.jpg" alt=""></span>Hi,Sravan!</div>
 						<ul>
 							<li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
@@ -152,10 +152,10 @@
 							<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
 							<li><a href="index-2.html"><i class="sl sl-icon-power"></i> Logout</a></li>
 						</ul>
-					</div>
+					</div> -->
 
 
-					<a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
+					<!-- <a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a> -->
 				</div>
 			</div>
 			<!-- Right Side Content / End -->
