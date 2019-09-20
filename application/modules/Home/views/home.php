@@ -10,16 +10,16 @@
 						<span class="typed-words"></span>
 					</h2>
 					<h4>Expolore top-rated attractions, activities and more</h4>
-
+	<form action="<?=base_url('listings-list');?>" methor="get">
 					<div class="main-search-input">
 
 						<div class="main-search-input-item">
-							<input type="text" placeholder="What are you looking for?" value=""/>
+							<input type="text" placeholder="What are you looking for?" value="" name="keyword" />
 						</div>
 
 						<div class="main-search-input-item location">
 							<div id="autocomplete-container">
-								<input id="autocomplete-input" type="text" placeholder="Location">
+								<input id="autocomplete-input" type="text" placeholder="Location" name="location" >
 							</div>
 							<a href="#"><i class="fa fa-map-marker"></i></a>
 						</div>
@@ -38,6 +38,7 @@
 						<button class="button" onclick="window.location.href='listings-half-screen-map-list.html'">Search</button>
 
 					</div>
+					</form>
 				</div>
 			</div>
 			
@@ -77,20 +78,25 @@
                     <?php
 $i=0;
 foreach ($schools as $row) {
+	$class=array();
+	$classes=json_decode($row['class']);
+	for($c=0; $c < count($classes); $c++) { 
+		$class[]=$this->common_model->get_type_name_by_where('classes',array('id'=>$classes[$c]));
+	}
 ?>
                     <div class="carousel-item">
                         <a href="<?=base_url('listings-single/').$row['id'];?>" class="listing-item-container">
                             <div class="listing-item">
                                 <div class="col-md-4 listing-item p--0">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
+                                    <img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt="">
                                     <div class="listing-badge now-open">Now Open</div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="listing-item-content">
-                                        <h3><?=$row['school_title'];?> <!-- <i class="verified-icon"></i> --></h3>
+                                        <h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
                                         <span>Gachibouli, Hyderabad</span>
                                         <div class="padding-top-15"><span>Address: <?=$row['address'];?></span> </div>
-                                        <div class="padding-top-5"><span>Classes: <?=$row['category'];?></span> </div>
+                                        <div class="padding-top-5"><span>Classes: <?=implode(', ',$class);?></span> </div>
                                     </div>
                                     <span class="like-icon"></span>
                                     <div class="star-rating" data-rating="4.5">

@@ -26,17 +26,18 @@ class Admin extends MY_Controller
     public function add_listing(){
         if($this->input->post()){
             $input=$this->input->post();
-            echo "<pre>";
-            print_r($_FILES);
-            echo "<pre>";
-            print_r($input);die;
-            $input_data['school_title']=$input['school_title'];
-            $input_data['category']=$input['category'];
+            
+            $input_data['school_name']=$input['school_name'];
+            $input_data['category']=json_encode($input['category']);
             $input_data['keywords']=$input['keywords'];
-            $input_data['city']=$input['city'];
+            $input_data['curriculum']=$input['curriculum'];
+            $input_data['class']=json_encode($input['class']);
+            $input_data['landmark']=$input['landmark'];
+            $input_data['latitude']=$input['latitude'];
+            $input_data['longitude']=$input['longitude'];
             $input_data['address']=$input['address'];
-            $input_data['state']=$input['state'];
-            $input_data['zipcode']=$input['zipcode'];
+            $input_data['video']=$input['video'];
+            $input_data['vision']=$input['vision'];
             $input_data['description']=$input['description'];
             $input_data['phone']=$input['phone'];
             $input_data['website']=$input['website'];
@@ -46,20 +47,36 @@ class Admin extends MY_Controller
             $input_data['google_plus']=$input['google_plus'];
             $input_data['amenities']=json_encode($input['amenities']);
             $input_data['opening_hours']=json_encode(
-                array(
-        '1'=>array('m_opening'=>$input['m_opening'],'m_closing'=>$input['m_closing']),
-        '2'=>array('t_opening'=>$input['t_opening'],'t_closing'=>$input['t_closing']),
-        '3'=>array('w_opening'=>$input['w_opening'],'w_closing'=>$input['w_closing']),
-        '4'=>array('th_opening'=>$input['th_opening'],'th_closing'=>$input['th_closing']),
-        '5'=>array('f_opening'=>$input['f_opening'],'f_closing'=>$input['f_closing']),
-        '6'=>array('sa_opening'=>$input['sa_opening'],'sa_closing'=>$input['sa_closing']),
-        '7'=>array('s_opening'=>$input['s_opening'],'s_closing'=>$input['s_closing']),
-                )
+                array('opening_time'=>$input['opening_time'],'closing_time'=>$input['closing_time'])
             );
+            /*echo count($_FILES['gallery']['name']);
+            echo "<pre>";
+            print_r($_FILES);
+            echo "<pre>";
+            print_r($input);
+            echo "<pre>";
+            print_r($input_data);
+            die;*/
             $res=$this->common_model->insert_results_info('listings',$input_data);
             if($res>0){
                 $this->session->set_flashdata('success_message','Uploaded Successfully');
-                //move_uploaded_file($_FILES["qp"]["tmp_name"], "uploads/listings/". $res.'.jpg');
+
+    move_uploaded_file($_FILES["banner"]["tmp_name"], "uploads/listings/banners/". $res.'.jpg');
+    move_uploaded_file($_FILES["thumb"]["tmp_name"], "uploads/listings/thumb/". $res.'.jpg');
+
+    $directory = FCPATH . 'uploads/listings/gallery/';
+    $mypath=FCPATH.'uploads/listings/gallery/'.$res;
+    $file = file_get_contents(base_url('uploads/index.html'));
+    if(!is_dir($mypath)){
+        mkdir($directory . '/' . $res, 0777);
+        write_file(FCPATH.'uploads/listings/gallery/'. $res.'/index.html', $file);
+    }
+    for($j=0;$j<count($_FILES['gallery']['name']);$j++){
+    $gallery_data['listing_id']=$res;
+    $gallery_data['image']=$_FILES['gallery']['name'][$j];
+    $g_id=$this->common_model->insert_results_info('listing_gallery',$gallery_data);
+    move_uploaded_file($_FILES["gallery"]["tmp_name"][$j], "uploads/listings/gallery/". $res.'/'.$g_id.'.jpg');
+    }
             }else{
                 $this->session->set_flashdata('error_message','Not Uploaded');
             }

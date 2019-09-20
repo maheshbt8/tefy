@@ -70,7 +70,7 @@ foreach ($schools as $row) {
 							
 							<!-- Image -->
 							<div class="listing-item-image">
-								<img src="images/listing-item-01.jpg" alt="">
+								<img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt="">
 								<!--<span class="tag">Eat & Drink</span>-->
 							</div>
 							
@@ -79,7 +79,7 @@ foreach ($schools as $row) {
 								<div class="listing-badge now-open">Now Open</div>
 
 								<div class="listing-item-inner">
-									<h3><?=$row['school_title'];?> <!-- <i class="verified-icon"></i> --></h3>
+									<h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
 									<span><?=$row['address'];?></span>
 									<div class="star-rating" data-rating="3.5">
 										<div class="rating-counter">(12 reviews)</div>
@@ -100,16 +100,17 @@ foreach ($schools as $row) {
 			<div class="row">
 				<div class="col-md-12">
 					<!-- Pagination -->
-					<!-- <div class="pagination-container margin-top-20 margin-bottom-40">
+					<div class="pagination-container margin-top-20 margin-bottom-40">
 						<nav class="pagination">
-							<ul>
+							<!-- <ul>
 								<li><a href="#" class="current-page">1</a></li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
 								<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
-							</ul>
+							</ul> -->
+							<?php echo $pagination; ?>
 						</nav>
-					</div> -->
+					</div>
 				</div>
 			</div>
 			<!-- Pagination / End -->
@@ -125,12 +126,12 @@ foreach ($schools as $row) {
 				<!-- Widget -->
 				<div class="widget margin-bottom-40">
 					<h3 class="margin-top-0 margin-bottom-30">Filters</h3>
-
+<form action="<?=base_url('listings-list');?>" methor="get">
 					<!-- Row -->
 					<div class="row with-forms">
 						<!-- Cities -->
 						<div class="col-md-12">
-							<input type="text" placeholder="What are you looking for?" value=""/>
+							<input type="text" placeholder="What are you looking for?" value="" name="keyword" />
 						</div>
 					</div>
 					<!-- Row / End -->
@@ -160,7 +161,7 @@ foreach ($schools as $row) {
 
 							<div class="input-with-icon location">
 								<div id="autocomplete-container">
-									<input id="autocomplete-input" type="text" placeholder="Location">
+									<input id="autocomplete-input" type="text" placeholder="Location" name="location">
 								</div>
 								<a href="#"><i class="fa fa-map-marker"></i></a>
 							</div>
@@ -215,7 +216,7 @@ foreach ($schools as $row) {
 					<!-- More Search Options / End -->
 
 					<button class="button fullwidth margin-top-25">Update</button>
-
+</form>
 				</div>
 				<!-- Widget / End -->
 

@@ -39,5 +39,6 @@ class Common extends MY_Controller
         $this->data['active_menu'] = 'facilities';
         $this->_render_page($this->template, $this->data);
     }
+    
 }
 

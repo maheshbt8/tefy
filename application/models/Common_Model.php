@@ -31,7 +31,7 @@ class Common_Model extends CI_Model{
      *@param order_by Array
      *@desc To fetch data from respective table with given condition and order
      */
-    public function select_results_info($table, $where='', $order_by='')
+    public function select_results_info($table, $where='', $order_by='',$limit='',$data_start='')
     {
     	if($where != ''){
     		$this->db->where($where);
@@ -39,6 +39,9 @@ class Common_Model extends CI_Model{
     	if($order_by!=''){
     		$this->db->order_by($order_by);
     	}
+        if($limit!=''){
+            $this->db->limit($limit,$data_start);
+        }
     	return $this->db->get($table);
     }
     
@@ -99,7 +102,7 @@ class Common_Model extends CI_Model{
         if ($where != '') {
             $this->db->where($where);
             }
-            $l = $this->db->get($type);
+            $l = $this->db->get($table);
             $n = $l->num_rows();
             if ($n > 0) {
                 return $l->row()->$field;
@@ -124,7 +127,30 @@ class Common_Model extends CI_Model{
     }
     
     
+    public function get_days($value='')
+    {
+        $timestamp = strtotime('next Monday');
+        $days = array();
+        for ($i = 0; $i < 7; $i++) {
+        $days[] = strftime('%A', $timestamp);
+        $timestamp = strtotime('+1 day', $timestamp);
+        }
+
+        $start = "01:00"; //you can write here 00:00:00 but not need to it
+    $end = "24:00";
+
+    $tStart = strtotime($start);
+    $tEnd = strtotime($end);
+    $tNow = $tStart;
     
+    while($tNow <= $tEnd){
+        $loop[]=date("h A",$tNow);
+        $tNow = strtotime('+60 minutes',$tNow);
+    }
+    $result['days']=$days;
+    $result['timings']=$loop;
+        return $result;
+    }
     
     
     

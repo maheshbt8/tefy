@@ -1,4 +1,4 @@
-<div class="main-search-container centered" data-background-image="<?=base_url('assets/');?>images/main-search-background-01.jpg" style="height: 300px">
+<div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'.jpg';?>" style="height: 300px">
     </div>
 <!-- Content
 ================================================== -->
@@ -9,7 +9,7 @@
 			<!-- Titlebar -->
 			<div id="titlebar" class="listing-titlebar">
 				<div class="listing-titlebar-title">
-					<h2><?=$school['school_title'];?></h2>
+					<h2><?=$school['school_name'];?></h2>
 					<span>
 						<a href="#listing-location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
@@ -68,9 +68,9 @@
 				<ul class="listing-features checkboxes margin-top-0">
 					<?php
 					$ame=json_decode($school['amenities']);
-					for ($i=0; $i < count($ame); $i++) { 
+					for ($i=0; $i < count($ame); $i++) {
 					?>
-					<li><?=$ame[$i];?></li>
+					<li><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$ame[$i]));?></li>
 				<?php }?>
 				</ul>
 			</div>
@@ -83,7 +83,7 @@
 				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
 				<div id="singleListingMap-container">
-					<div id="singleListingMap" data-latitude="40.70437865245596" data-longitude="-73.98674011230469" data-map-icon="im im-icon-Hamburger"></div>
+					<div id="singleListingMap" data-latitude="<?=$school['latitude'];?>" data-longitude="<?=$school['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
 					<a href="#" id="streetView">Street View</a>
 				</div>
 			</div>
@@ -425,42 +425,44 @@
 				<ul>
 					<?php
 					$opening_hours=json_decode($school['opening_hours']);
-					foreach ($opening_hours as $opening_hour) {
-					$opening[]=$opening_hour;
-					}
+					$reslut=$this->common_model->get_days();
+
+  $days=$reslut['days'];
+  $loop=$reslut['timings'];
+for ($i=0; $i < count($days); $i++) {
+	if($opening_hours->opening_time[$i]=='Closed'){
+	$opening=$opening_hours->opening_time[$i];
+	}else{
+	$opening=$opening_hours->opening_time[$i].' - '.$opening_hours->closing_time[$i];
+	}
 					?>
-					<li>Monday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Tuesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Wednesday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Thursday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Friday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Saturday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
-					<li>Sunday <span><?=$opening[0]->m_opening.' - '.$opening[0]->m_closing;?></span></li>
+					<li><?=$days[$i];?> <span><?=$opening;?></span></li>
+				<?php }?>
 				</ul>
 			</div>
 			<!-- Opening Hours / End -->
 
 
 			<!-- Contact -->
-			<div class="boxed-widget margin-top-35">
+			<!-- <div class="boxed-widget margin-top-35">
 				<div class="hosted-by-title">
 					<h4><span>Hosted by</span> <a href="pages-user-profile.html">Tom Perrin</a></h4>
 					<a href="pages-user-profile.html" class="hosted-by-avatar"><img src="images/dashboard-avatar.jpg" alt=""></a>
 				</div>
 				<ul class="listing-details-sidebar">
-					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
+					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li> -->
 					<!-- <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> -->
-					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
-				</ul>
+				<!-- 	<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
+				</ul> -->
 
-				<ul class="listing-details-sidebar social-profiles">
+				<!-- <ul class="listing-details-sidebar social-profiles">
 					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li> -->
 					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
-				</ul>
+				<!-- </ul> -->
 
 				<!-- Reply to review popup -->
-				<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+				<!-- <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
 					<div class="small-dialog-header">
 						<h3>Send Message</h3>
 					</div>
@@ -471,7 +473,7 @@
 				</div>
 
 				<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="sl sl-icon-envelope-open"></i> Send Message</a>
-			</div>
+			</div> -->
 			<!-- Contact / End-->
 
 

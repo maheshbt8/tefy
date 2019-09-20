@@ -6,7 +6,7 @@
 </style>
 
 
-<form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
+<form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" class="form-horizontal" id="form">
 <div class="row">
 			<div class="col-lg-12">
 
@@ -24,7 +24,7 @@
 						<div class="row with-forms">
 							<div class="col-md-12">
 								<h5>School Name <i class="tip" data-tip-content="Name of your School"></i></h5>
-								<input class="search-field" type="text" value="" name="school_title" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="school_name" required="" autocomplete="off" />
 							</div>
 						</div>
 
@@ -34,7 +34,7 @@
 							<!-- Status -->
 							<div class="col-md-6">
 								<h5>Category</h5>
-								<select class="form-control selectric chosen-select-no-single"  name="category" required=""  multiple="">
+								<select class="form-control selectric chosen-select-no-single"  name="category[]" required=""  multiple="">
 									<option value="" disabled="">Select Category</option>	
                                   <?php $res=$this->common_model->select_results_info('category',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
@@ -42,15 +42,6 @@
 									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
 								<?php }?>
 								</select>
-								<!-- <select class="form-control selectric" multiple="">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
-                                    <option>Option 6</option>
-                                  </select> -->
-
 							</div>
 
 							<!-- Type -->
@@ -71,7 +62,7 @@
                                   foreach ($res as $row) {
                                   ?>
                             <div class="col-md-2">
-								<input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="<?=$row['id'];?>" required=""><?=$row['name'];?>
+								<label><input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="<?=$row['id'];?>" required=""><?=$row['name'];?></label>
                             </div>
                         <?php }?>                          
 							</div>
@@ -84,8 +75,8 @@
 							<!-- Vision -->
 							<div class="col-md-12">
                                 <h5>Classes</h5>
-                                <select class="chosen-select-no-single"  name="class" required="">
-									<option label="blank">Select Class</option>	
+                                <select class="chosen-select-no-single form-control selectric"  name="class[]" required="" multiple="">
+									<option label="blank" disabled="">Select Class</option>	
 									 <?php $res=$this->common_model->select_results_info('classes',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
                                   ?>
@@ -147,23 +138,23 @@
 
 							<div class="col-md-4 ">
                                 <h5>Thumb Image </h5><p>(select image for list view)</p>
-                                <input type="file" class="form-control-file" name="thumb">
+                                <input type="file" class="form-control-file" name="thumb" required="" >
                                 
                             </div>
                             <div class="col-md-4">
                                 <h5>Banner Image </h5><p>(select banner image for school page)</p>
-                                <input type="file" class="form-control-file" name="banner">
+                                <input type="file" class="form-control-file" name="banner" required="">
                             </div>
                             <div class="col-md-4">
                                 <h5>Gallery Images </h5><p>(select multiple Images)</p>
-                                <input type="file" class="form-control-file"  name="gallery" multiple>
+                                <input type="file" class="form-control-file"  name="gallery[]" required="" multiple>
                             </div>    
                         </div>
                         
                         <div class="row with-forms">
 
 							<div class="col-md-12 ">
-                                <h5>Embed video Link </h5>
+                                <h5>Embed video Link(optional)</h5>
                                 <input type="url" class="form-control-file" placeholder="Eg:https://www.tefy.com/embed/yfettefy" name="video">
                             </div>
                             
@@ -296,168 +287,39 @@
 						
 						<!-- Switcher ON-OFF Content -->
 						<div class="switcher-content">
+<?php
+$reslut=$this->common_model->get_days();
 
-							<!-- Day -->
-							<div class="row opening-day">
-								<div class="col-md-2"><h5>Monday</h5></div>
+  $days=$reslut['days'];
+  $loop=$reslut['timings'];
+for ($i=0; $i < count($days); $i++) {
+?>
+<div class="row opening-day">
+								<div class="col-md-2"><h5><?=$days[$i];?></h5></div>
 								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Opening Time" name="m_opening">
+									<select class="chosen-select" name="opening_time[]" data-placeholder="Opening Time" required="">
 										<option label="Opening Time"></option>
-										<option>Closed</option>
-										<option>1 AM</option>
-										<option>2 AM</option>
-										<option>3 AM</option>
-										<option>4 AM</option>
-										<option>5 AM</option>
-										<option>6 AM</option>
-										<option>7 AM</option>
-										<option>8 AM</option>
-										<option>9 AM</option>
-										<option>10 AM</option>
-										<option>11 AM</option>
-										<option>12 AM</option>	
-										<option>1 PM</option>
-										<option>2 PM</option>
-										<option>3 PM</option>
-										<option>4 PM</option>
-										<option>5 PM</option>
-										<option>6 PM</option>
-										<option>7 PM</option>
-										<option>8 PM</option>
-										<option>9 PM</option>
-										<option>10 PM</option>
-										<option>11 PM</option>
-										<option>12 PM</option>
+										<option value="Closed">Closed</option>
+									<?php 
+									for ($j=0;$j<count($loop);$j++) {?>
+										<option><?=$loop[$j];?></option>
+									<?php }
+									?>
 									</select>
 								</div>
 								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Closing Time" name="m_closing">
+									<select class="chosen-select" name="closing_time[]" data-placeholder="Closing Time" required="">
 										<option label="Closing Time"></option>
-										<option>Closed</option>
-										<option>1 AM</option>
-										<option>2 AM</option>
-										<option>3 AM</option>
-										<option>4 AM</option>
-										<option>5 AM</option>
-										<option>6 AM</option>
-										<option>7 AM</option>
-										<option>8 AM</option>
-										<option>9 AM</option>
-										<option>10 AM</option>
-										<option>11 AM</option>
-										<option>12 AM</option>	
-										<option>1 PM</option>
-										<option>2 PM</option>
-										<option>3 PM</option>
-										<option>4 PM</option>
-										<option>5 PM</option>
-										<option>6 PM</option>
-										<option>7 PM</option>
-										<option>8 PM</option>
-										<option>9 PM</option>
-										<option>10 PM</option>
-										<option>11 PM</option>
-										<option>12 PM</option>
+										<option value="Closed">Closed</option>
+		<?php 
+									for ($j=0;$j<count($loop);$j++) {?>
+										<option><?=$loop[$j];?></option>
+									<?php }
+									?>
 									</select>
 								</div>
 							</div>
-							<!-- Day / End -->
-
-							<!-- Day -->
-							<div class="row opening-day js-demo-hours">
-								<div class="col-md-2"><h5>Tuesday</h5></div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Opening Time" name="t_opening">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Closing Time" name="t_closing">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-							</div>
-							<!-- Day / End -->
-
-							<!-- Day -->
-							<div class="row opening-day js-demo-hours">
-								<div class="col-md-2"><h5>Wednesday</h5></div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Opening Time" name="w_opening">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Closing Time" name="w_closing">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-							</div>
-							<!-- Day / End -->
-
-							<!-- Day -->
-							<div class="row opening-day js-demo-hours">
-								<div class="col-md-2"><h5>Thursday</h5></div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Opening Time" name="th_opening">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Closing Time" name="th_closing">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-							</div>
-							<!-- Day / End -->
-
-							<!-- Day -->
-							<div class="row opening-day js-demo-hours">
-								<div class="col-md-2"><h5>Friday</h5></div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Opening Time" name="f_opening">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Closing Time" name="f_closing">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-							</div>
-							<!-- Day / End -->
-
-							<!-- Day -->
-							<div class="row opening-day js-demo-hours">
-								<div class="col-md-2"><h5>Saturday</h5></div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Opening Time" name="sa_opening">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Closing Time" name="sa_closing">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-							</div>
-							<!-- Day / End -->
-
-							<!-- Day -->
-							<div class="row opening-day js-demo-hours">
-								<div class="col-md-2"><h5>Sunday</h5></div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Opening Time" name="s_opening">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-								<div class="col-md-5">
-									<select class="chosen-select" data-placeholder="Closing Time" name="s_closing">
-										<!-- Hours added via JS (this is only for demo purpose) -->
-									</select>
-								</div>
-							</div>
-							<!-- Day / End -->
+<?php }?>
 
 						</div>
 						<!-- Switcher ON-OFF Content / End -->
@@ -486,7 +348,7 @@
 											<td>
 												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
 												<div class="fm-input ">
-                                                    <input type="text" placeholder="Achievement Title" /></div>
+                                                    <input type="text" placeholder="Achievement Title" name="achievements[]" /></div>
 												
 												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
 											</td>
@@ -502,10 +364,6 @@
 
 					</div>
 					<!-- Section / End -->
-
-
-					
-
 
 					<!-- <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a> -->
 					<button type="submit" class="button preview">Submit</button>
