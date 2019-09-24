@@ -12,7 +12,8 @@ class Home extends MY_Controller
         $this->data['title'] = 'Home';
         $this->data['content'] = 'home';
         $this->data['active_menu'] = 'home';
-        $this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),"id DESC",6)->result_array();
+        $this->common_model->type_of = 'array';
+        $this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),"id DESC",6);
         $this->_render_page($this->template, $this->data);
     }
     
@@ -88,6 +89,7 @@ class Home extends MY_Controller
         $this->_render_page($this->template, $this->data);
     }
     public function listings_single($id){
+        $id=base64_decode(base64_decode($id));
         $this->data['title'] = 'listings-single';
         $this->data['content'] = 'listings_single';
         $this->data['active_menu'] = 'listings_single';
@@ -204,6 +206,24 @@ class Home extends MY_Controller
             $this->_render_page('auth/create_user', $this->data);
         }
     }
-
+    public function get_in_touch(){
+        $input=$this->input->post();
+        $input_data['name']=$input['name'];
+        $input_data['email']=$input['email'];
+        $input_data['mobile']=$input['mobile'];
+        $input_data['message']=$input['query'];
+        $res=$this->common_model->insert_results_info('get_in_touch',$input_data);
+        if($res>0){
+            $this->session->set_flashdata('touch_message', 'We Will Contact you Soon..!');
+            }else{
+            $this->session->set_flashdata('touch_message', 'Not Inserted');
+            }
+            redirect($this->session->userdata('last_page'));
+/*        $this->data['title'] = 'listings-single';
+        $this->data['content'] = 'listings_single';
+        $this->data['active_menu'] = 'listings_single';
+        $this->data['school'] = $this->common_model->select_results_info('listings',array('id'=>$id))->row_array();
+        $this->_render_page($this->template, $this->data);*/
+    }
 }
 

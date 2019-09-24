@@ -1,11 +1,13 @@
 <?php
-class Common_Model extends CI_Model{
+class Common_model extends CI_Model{
     protected $table;
     protected $order_by;
+    public $type_of;
     public function __construct()
     {
         parent::__construct();
         date_default_timezone_set('Asia/Kolkata');
+        $this->type_of = '';
     }
     
     /**
@@ -33,17 +35,22 @@ class Common_Model extends CI_Model{
      */
     public function select_results_info($table, $where='', $order_by='',$limit='',$data_start='')
     {
-    	if($where != ''){
-    		$this->db->where($where);
-    	}
-    	if($order_by!=''){
-    		$this->db->order_by($order_by);
-    	}
+        if($where != ''){
+            $this->db->where($where);
+        }
+        if($order_by!=''){
+            $this->db->order_by($order_by);
+        }
         if($limit!=''){
             $this->db->limit($limit,$data_start);
         }
-    	return $this->db->get($table);
-        /*echo $this->db->last_query();die;*/
+        $query = $this->db->get($table);
+        if($this->type_of != '' && $this->type_of == 'array')
+            return $query->result_array();
+        elseif($this->type_of != '' && $this->type_of == 'object')
+             return $query->result_object();
+        else
+            return $query;
     }
     
     /**
@@ -153,7 +160,21 @@ class Common_Model extends CI_Model{
         return $result;
     }
     
-    
+    /*******rating of a product*******/
+    function rating_of_product( $table, $where = '', $type_col = ''){
+$rating=0;
+        if($table!=''){
+        if($where != ''){
+            $this->db->where($where);
+        }
+$rating = $this->db->select("sum(".$table.".".$type_col.") as ".$type_col)->get($table)->row()->$type_col;
+if($rating!=0){
+$count=$this->common_model->count_records('ratings',$where);
+$rating=$rating/$count;
+}
+}
+return $rating;
+    }
     
     
     
