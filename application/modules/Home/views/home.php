@@ -87,11 +87,11 @@ foreach ($schools as $row) {
                     <div class="carousel-item">
                         <a href="<?=base_url('listings-single/').$row['id'];?>" class="listing-item-container">
                             <div class="listing-item">
-                                <div class="col-md-4 listing-item p--0">
+                                <div class="col-md-4  listing-item p--0 list-img-size">
                                     <img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt="">
                                     <div class="listing-badge now-open">Now Open</div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-8 ">
                                     <div class="listing-item-content">
                                         <h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
                                         <span><?=$this->common_model->get_type_name_by_where('curriculum',array('id'=>$row['curriculum']));?></span>
