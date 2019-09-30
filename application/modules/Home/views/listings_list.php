@@ -64,11 +64,32 @@ $this->session->set_userdata('last_page',current_url());
 <?php
 $i=0;
 foreach ($schools as $row) {
+	$opening_hours=json_decode($row['opening_hours']);
+	$reslut=$this->common_model->get_days();
+
+  $days=$reslut['days'];
+  $loop=$reslut['timings'];
+for ($i=0; $i < count($days); $i++) {
+	if($days[$i] == date('l')){
+	if($opening_hours->opening_time[$i]=='Closed'){
+	$opening='Closed Now';
+	}else{
+	if((strtotime(date('h A')) >= strtotime($opening_hours->opening_time[$i])) && (strtotime(date('h A')) <= strtotime($opening_hours->closing_time[$i]))){
+		$opening='Now Open';
+	}else{
+		$opening='Closed Now';
+	}
+	}
+	}
+	}
+	$where['row_status']=1;
+$where['listing_id']=$row['id'];
+$rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 ?>
 				<!-- Listing Item -->
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
-						<a href="<?=base_url('listings-single/').$row['id'];?>" class="listing-item">
+						<a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item">
 							
 							<!-- Image -->
 							<div class="listing-item-image">
@@ -78,12 +99,12 @@ foreach ($schools as $row) {
 							
 							<!-- Content -->
 							<div class="listing-item-content">
-								<div class="listing-badge now-open">Now Open</div>
+								<div class="listing-badge now-open"><?=$opening;?></div>
 
 								<div class="listing-item-inner">
 									<h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
 									<span><?=$row['address'];?></span>
-									<div class="star-rating" data-rating="3.5">
+									<div class="star-rating" data-rating="<?=$rating;?>">
 										<div class="rating-counter">(12 reviews)</div>
 									</div>
 									<div class="padding-top-5"><span><b>Vision</b>: <?=$row['vision'];?></span> </div>
@@ -149,7 +170,7 @@ foreach ($schools as $row) {
 
 							<div class="input-with-icon location">
 								<div id="autocomplete-container">
-									<input id="autocomplete-input" type="text" placeholder="Location" name="location">
+									<input id="pac-input" type="text" placeholder="Location" name="location">
 								</div>
 								<a href="#"><i class="fa fa-map-marker"></i></a>
 							</div>

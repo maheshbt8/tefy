@@ -1,3 +1,4 @@
+
 <div class="main-search-container centered" data-background-image="<?php echo base_url('assets')?>/images/main-search-background-01.jpg">
 	<div class="main-search-inner">
 
@@ -19,7 +20,8 @@
 
 						<div class="main-search-input-item location">
 							<div id="autocomplete-container">
-								<input id="autocomplete-input" type="text" placeholder="Location" name="location" >
+								<input id="pac-input" type="text" placeholder="Location" name="location">
+								<!-- <input id="autocomplete-input" type="text" placeholder="Location" name="location"> -->
 							</div>
 							<a href="#"><i class="fa fa-map-marker"></i></a>
 						</div>
@@ -56,8 +58,6 @@
 <!-- Category Boxes / End -->
 
 
-
-
 <!-- Fullwidth Section -->
 <section class="fullwidth margin-top-0 padding-top-75 padding-bottom-70" data-background-color="#f8f8f8">
 
@@ -83,13 +83,35 @@ foreach ($schools as $row) {
 	for($c=0; $c < count($classes); $c++) { 
 		$class[]=$this->common_model->get_type_name_by_where('classes',array('id'=>$classes[$c]));
 	}
+				
+	$opening_hours=json_decode($row['opening_hours']);
+	$reslut=$this->common_model->get_days();
+
+  $days=$reslut['days'];
+  $loop=$reslut['timings'];
+for ($i=0; $i < count($days); $i++) {
+	if($days[$i] == date('l')){
+	if($opening_hours->opening_time[$i]=='Closed'){
+	$opening='Closed Now';
+	}else{
+	if((strtotime(date('h A')) >= strtotime($opening_hours->opening_time[$i])) && (strtotime(date('h A')) <= strtotime($opening_hours->closing_time[$i]))){
+		$opening='Now Open';
+	}else{
+		$opening='Closed Now';
+	}
+	}
+	}
+	}
+	$where['row_status']=1;
+$where['listing_id']=$row['id'];
+$rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 ?>
                     <div class="carousel-item">
-                        <a href="<?=base_url('listings-single/').$row['id'];?>" class="listing-item-container">
+                        <a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item-container">
                             <div class="listing-item">
                                 <div class="col-md-4  listing-item p--0 list-img-size">
                                     <img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt="">
-                                    <div class="listing-badge now-open">Now Open</div>
+                                    <div class="listing-badge now-open"><?=$opening;?></div>
                                 </div>
                                 <div class="col-md-8 ">
                                     <div class="listing-item-content">
@@ -100,7 +122,7 @@ foreach ($schools as $row) {
                                         <div class="padding-top-5 text-size"><span><b>Vision</b>: <?=$row['vision'];?></span> </div>
                                     </div>
                                     <span class="like-icon"></span>
-                                    <div class="star-rating" data-rating="4.5">
+                                    <div class="star-rating" data-rating="<?=$rating;?>">
                                     <div class="rating-counter">(12 reviews)</div>
                             </div>
                                 </div>

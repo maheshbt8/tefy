@@ -18,7 +18,7 @@
 						<li><a href="dashboard-my-listings.html">Expired <span class="nav-tag red">2</span></a></li>
 					</ul>	
 				</li> -->
-				<li><a href="<?=base_url('admin/listings');?>"><i class="sl sl-icon-wallet"></i> My Listings</a></li>
+				<li><a href="<?=base_url('admin/listings');?>"><i class="sl sl-icon-layers"></i> My Listings</a></li>
 				<li><a><i class="sl sl-icon-layers"></i> Listings-Categories</a>
 					<ul>
 						<li><a href="<?=base_url('admin/categories');?>">Categories</a></li>

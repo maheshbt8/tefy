@@ -1,4 +1,6 @@
-
+<?php
+$this->session->set_userdata('last_page',current_url());
+?>
 <div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'.jpg';?>" style="height: 300px;margin-top: 85px;">
 
     </div>
@@ -119,19 +121,34 @@
 
 				
 		
-		
-
-			<!-- Opening Hours -->
-			<div class="boxed-widget opening-hours margin-top-35">
-				<div class="listing-badge now-open">Now Open</div>
-				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
-				<ul>
-					<?php
-					$opening_hours=json_decode($school['opening_hours']);
-					$reslut=$this->common_model->get_days();
+		<?php
+			$opening_hours=json_decode($school['opening_hours']);
+	$reslut=$this->common_model->get_days();
 
   $days=$reslut['days'];
   $loop=$reslut['timings'];
+for ($i=0; $i < count($days); $i++) {
+	if($days[$i] == date('l')){
+	if($opening_hours->opening_time[$i]=='Closed'){
+	$opening_con='Closed Now';
+	}else{
+	if((strtotime(date('h A')) >= strtotime($opening_hours->opening_time[$i])) && (strtotime(date('h A')) <= strtotime($opening_hours->closing_time[$i]))){
+		$opening_con='Now Open';
+	}else{
+		$opening_con='Closed Now';
+	}
+	}
+	}
+	}
+		?>
+
+			<!-- Opening Hours -->
+			<div class="boxed-widget opening-hours margin-top-35">
+				<div class="listing-badge now-open"><?=$opening_con;?></div>
+				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
+				<ul>
+					<?php
+					
 for ($i=0; $i < count($days); $i++) {
 	if($opening_hours->opening_time[$i]=='Closed'){
 	$opening=$opening_hours->opening_time[$i];
@@ -163,8 +180,16 @@ for ($i=0; $i < count($days); $i++) {
 					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
 					 <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> 
 				</ul>-->
-                 <form>
-                    <input type="text" placeholder="Mail ID"  name="mail" required="">
+                 <form action="<?=base_url('home/get_in_touch')?>" method="post">
+                 	<?php
+                 	if($this->session->flashdata('touch_message')!=''){
+                 	?>
+                 	<div class="alert">
+  <strong><?=$this->session->flashdata('touch_message');?></strong>
+</div>
+<?php }?>
+                 	<input type="text" placeholder="Your Name"  name="name" required="">
+                    <input type="email" placeholder="Mail ID"  name="email" required="">
                     <input type="text" placeholder="Mobile No."  name="mobile" required="">
                      <textarea type="text" placeholder="Your Query"  name="query" required=""></textarea>
                  

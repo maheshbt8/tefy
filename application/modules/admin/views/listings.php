@@ -11,7 +11,7 @@ $this->session->set_userdata('last_page',current_url());
 $i=0;
 foreach ($schools as $row) {
 ?>
-						<li><a href="<?=base_url('listings-single/').$row['id'];?>" target="_blank">
+						<li><a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" target="_blank">
 							<div class="list-box-listing">
 								<div class="list-box-listing-img"><img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt=""></div>
 								<div class="list-box-listing-content">
@@ -25,7 +25,7 @@ foreach ($schools as $row) {
 								</div>
 							</div></a>
 							<div class="buttons-to-right">
-								<a href="#" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
+								<a href="<?=base_url('admin/edit_listing/').base64_encode(base64_encode($row['id']));?>" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
 								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
 							</div>
 						
