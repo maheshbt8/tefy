@@ -6906,14 +6906,14 @@ a.send-message-to-owner.button {
 }
 
 .listing-links li {
-    display: inline-block;
+    /*display: inline-block;*/
     list-style: none;
     padding: 0;
     margin: 0;
-    float: left
+    /*float: left*/
 }
 
-.listing-links li:first-child a {
+/*.listing-links li:first-child a {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px
 }
@@ -6921,7 +6921,7 @@ a.send-message-to-owner.button {
 .listing-links li:last-child a {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px
-}
+}*/
 
 .listing-links li a {
     background: #f2f2f2;
@@ -20744,6 +20744,7 @@ height: 51px;
    margin-bottom: 10px
 }
 .aminity-size{
+   
    width: 165px;
    text-align: center;
    display: inline-block;
@@ -20761,4 +20762,50 @@ height: 51px;
 }
 .list-img-size {
         max-height: 20em;
+}
+
+.vision-txt {
+/* letter-spacing: 2px;
+    word-spacing: 2px;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 200px;*/
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    font-style: italic;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+
+.rating-bg {
+    color:#FFC600; font-size:19px;     
+    background-color: #373435;
+    padding: 2px 7px 7px 9px;
+    border-radius: 5px;
+}
+
+
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+.direction-icon {
+    color: green;
+    padding: 2px 5px;
+    border-radius: 4px;
+    
+}
+.direction-icon:hover {
+    background-color: green;
+    color:white;
 }

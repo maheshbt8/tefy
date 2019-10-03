@@ -14,6 +14,7 @@ $this->session->set_userdata('last_page',current_url());
 			<div id="titlebar" class="listing-titlebar">
 				<div class="listing-titlebar-title">
 					<h2><?=$school['school_name'];?></h2>
+                    <div class="vision-txt"><b>"</b>Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision VisionVision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision  <b>"</b></div>
 					<span>
 						<a href="#listing-location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
@@ -21,7 +22,7 @@ $this->session->set_userdata('last_page',current_url());
 						</a>
 					</span>
 					<div class="star-rating" data-rating="4.5">
-						<div class="rating-counter"><a href="#listing-reviews">(12 reviews)</a></div>
+						<div class="rating-counter"><a href="#listing-reviews"><B class="rating-bg" style="" >4.5</B>/5</a></div>
 					</div>
 				</div>
 			</div>
@@ -42,16 +43,21 @@ $this->session->set_userdata('last_page',current_url());
 
 				<!-- Description -->
 <?=$school['description'];?>
+                <h3 class="listing-desc-headline">About-Us</h3>
+                <span class="more">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </span>
 				
-				
+				<h3 class="listing-desc-headline">Contact Info</h3>
 				<!-- Listing Contacts -->
 				<div class="listing-links-container">
 
 					<ul class="listing-links contact-links">
-						<li><a href="tel:12-345-678" class="listing-links"><i class="fa fa-phone"></i> <?=$school['phone'];?></a></li>
-						<li><a href="http://www.vasterad.com/cdn-cgi/l/email-protection#81ece0e8edc1e4f9e0ecf1ede4afe2eeec" class="listing-links"><i class="fa fa-envelope-o"></i> <span class="__cf_email__" data-cfemail="3f525e56537f5a475e524f535a115c5052"><?=$school['email'];?></span></a>
+						<li><a href="tel:12-345-678" class="listing-links"><i class="fa fa-phone"></i>Phone No.:  </a><?=$school['phone'];?></li>
+						<li><a href="" class="listing-links"><i class="fa fa-envelope-o"></i> <span class="__cf_email__" data-cfemail="">Email: </span></a><?=$school['email'];?>
 						</li>
-						<li><a href="#" target="_blank"  class="listing-links"><i class="fa fa-link"></i> <?=$school['website'];?></a></li>
+						<li><a href="#" target="_blank"  class="listing-links"><i class="fas fa-globe"></i>Web site:  </a><?=$school['website'];?></li>
+                        <li><a href="#" target="_blank"  class="listing-links"><i class="fa fa-link"></i> Full address: </a> 401, 4th Floor, New Mark House, opposite Medicover Hospital, HITEC City, Hyderabad, Telangana 500081&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
 					</ul>
 					<div class="clearfix"></div>
 
@@ -65,18 +71,69 @@ $this->session->set_userdata('last_page',current_url());
 
 				</div>
 				<div class="clearfix"></div>
+                
+                
+                
+                
+                
+           <!--Listings Key informations -->     
+                <h3 class="listing-desc-headline">Key Information</h3>
+				
+				<div class="listing-links-container">
+                    
+                    <table>
+                        <tr>
+                            <td>Board :</td>
+                            <td>SSC</td>
+                        </tr>
+                        <tr>
+                            <td>Grade :</td>
+                            <td>I-X</td>
+                        </tr>
+                        <tr>
+                            <td>Medium :</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>School Type :</td>
+                            <td>Co-Education</td>
+                        </tr>
+                         <tr>
+                            <td>Category :</td>
+                            <td>Play School, High School, DayScholor</td>
+                        </tr>
+                         <tr>
+                            <td>Hostel :</td>
+                            <td>Yes, Boys, Girls, Boys & Girls</td>
+                        </tr>
+                         <tr>
+                            <td>Admission Procedure :&nbsp;</td>
+                            <td>SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br></td>
+                        </tr>
+                        
+                    </table>
+					
+					
+					
+					<div class="clearfix"></div>
+
+				</div>
 
 
 				<!-- Amenities -->
 				<h3 class="listing-desc-headline">Amenities</h3>
-				<ul class="listing-features checkboxes margin-top-0">
+				<!--<ul class="listing-features checkboxes margin-top-0">
 					<?php
-					$ame=json_decode($school['amenities']);
-					for ($i=0; $i < count($ame); $i++) {
+					//$ame=json_decode($school['amenities']);
+					//for ($i=0; $i < count($ame); $i++) {
 					?>
 					<li><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$ame[$i]));?></li>
-				<?php }?>
-				</ul>
+				<?php// }?>
+				</ul>-->
 				<ul class="amenity-list  margin-top-0">
                     <?php
 					$ame=json_decode($school['amenities']);
@@ -89,7 +146,45 @@ $this->session->set_userdata('last_page',current_url());
                 <?php }?>
                 
                 </ul>
+                
+                <style>svg {
+  width: 70px;
+  height: 70px;
+}
+svg:hover {
+  fill: red;
+}
+
+</style>
+                
+                <ul class="amenity-list  margin-top-0">
+                    
+                    <li class="aminity-size">
+                        <svg>
+    <use xlink:href="#bike" />
+  </svg>
+                        
+                       
+                       <!--<img src="<?php //echo base_url('assets')?>/images/tefy1.svg" class="amenity-img">-->
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 
+                
+                </ul>
 			</div>
+            <svg display="none">
+  <symbol width="50" height="50" viewBox="0 0 24 24" id="bike">
+    <path d="M141.73 109.96c35.64,0.14 160.63,-0.42 210.09,0.45 -14.79,7.38 -22.78,9.3 -38.55,19.75 -13.21,8.76 -37.43,34.29 -45.53,49.14 -20.94,1.32 -114.06,-0.37 -142.27,-0.66 -24.9,-0.25 -45.72,2.16 -56.83,-14.28 -11.68,-17.29 -7.27,-39.71 6.61,-49.47 3.93,-2.76 10.08,-5.13 17.33,-5.08 16.69,0.11 36.76,0.09 49.14,0.14zm107.42 280.34c0.16,-64.44 2.95,-140.57 31.57,-196.32 29.03,-56.56 75.78,-77.47 143.69,-83.25 10.95,-0.93 67,-2.58 73.43,1.1 11.89,6.79 13.77,38.58 2.7,56.75 -10.76,17.65 -31.98,8.11 -66.08,10.48 -23.29,1.62 -42.26,5.46 -58.61,16.23 -49.76,32.77 -57.05,110.94 -57.03,171.26 0.01,21.22 4.2,53.96 -4,70.51 -9.86,19.92 -38.34,22.68 -55.3,18.31 -12.98,-3.34 -10.29,-13.04 -10.31,-27.51 -0.02,-12.51 -0.09,-25.03 -0.06,-37.53zm129.91 -123.29c9.29,-1.5 34.95,-0.93 45.48,-0.37 14.64,0.77 24.64,5.14 30.18,14.62 9.7,16.6 9.02,49.91 -26.56,53.93 -23.63,2.67 -68.6,2.3 -77.05,-14.17 -4.85,-9.46 -5.36,-26.62 0.25,-36.4 4.99,-8.7 14.03,-15.39 27.71,-17.6zm-204.81 -0.46c23.26,0.12 46.62,0.13 69.88,0.09 -4.63,23.63 -7.89,41.06 -7.34,68.63 -6.81,0.45 -66.39,0.41 -68.64,-0.16 -18.93,-2.29 -34.42,-14.87 -32.17,-36.84 2.27,-22.21 17.18,-31.83 38.28,-31.71zm301.76 -266.55l-387.04 0c-48.94,0 -88.97,40.03 -88.97,88.97l0 387.03c0,48.94 40.03,88.97 88.97,88.97l387.04 0c48.94,0 88.97,-40.03 88.97,-88.97l0 -387.03c0,-48.94 -40.04,-88.97 -88.97,-88.97zm-266.36 409.45c40.99,-2.5 42.53,47.12 1.85,47.25 -14.95,0.05 -32.51,-6.23 -32.98,-22.92 -0.45,-16.06 15.43,-23.37 31.13,-24.33z"></path>
+  </symbol>
+
+  <symbol width="24" height="24" viewBox="0 0 24 24" id="bell">
+    <path d="M11.5,22C11.64,22 11.77,22 11.9,21.96C12.55,21.82 13.09,21.38 13.34,20.78C13.44,20.54 13.5,20.27 13.5,20H9.5A2,2 0 0,0 11.5,22M18,10.5C18,7.43 15.86,4.86 13,4.18V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V4.18C7.13,4.86 5,7.43 5,10.5V16L3,18V19H20V18L18,16M19.97,10H21.97C21.82,6.79 20.24,3.97 17.85,2.15L16.42,3.58C18.46,5 19.82,7.35 19.97,10M6.58,3.58L5.15,2.15C2.76,3.97 1.18,6.79 1,10H3C3.18,7.35 4.54,5 6.58,3.58Z"></path>
+  </symbol>
+
+  <symbol width="24" height="24" viewBox="0 0 24 24" id="arrow">
+    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+  </symbol>
+</svg>
 
 
 			
