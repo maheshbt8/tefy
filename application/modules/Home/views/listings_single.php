@@ -14,6 +14,7 @@ $this->session->set_userdata('last_page',current_url());
 			<div id="titlebar" class="listing-titlebar">
 				<div class="listing-titlebar-title">
 					<h2><?=$school['school_name'];?></h2>
+                    <div class="vision-txt"><b>"</b>Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision VisionVision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision  <b>"</b></div>
 					<span>
 						<a href="#listing-location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
@@ -21,7 +22,7 @@ $this->session->set_userdata('last_page',current_url());
 						</a>
 					</span>
 					<div class="star-rating" data-rating="4.5">
-						<div class="rating-counter"><a href="#listing-reviews">(12 reviews)</a></div>
+						<div class="rating-counter"><a href="#listing-reviews"><B class="rating-bg" style="" >4.5</B>/5</a></div>
 					</div>
 				</div>
 			</div>
@@ -42,16 +43,34 @@ $this->session->set_userdata('last_page',current_url());
 
 				<!-- Description -->
 <?=$school['description'];?>
+                <h3 class="listing-desc-headline">About-Us</h3>
+                <span class="more">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </span>
 				
-				
+				<h3 class="listing-desc-headline">Contact Info</h3>
 				<!-- Listing Contacts -->
 				<div class="listing-links-container">
+                <!--    <ul class="listing-details-sidebar">
+					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
+					 <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> 
+					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
+				</ul>-->
 
-					<ul class="listing-links contact-links">
-						<li><a href="tel:12-345-678" class="listing-links"><i class="fa fa-phone"></i> <?=$school['phone'];?></a></li>
-						<li><a href="http://www.vasterad.com/cdn-cgi/l/email-protection#81ece0e8edc1e4f9e0ecf1ede4afe2eeec" class="listing-links"><i class="fa fa-envelope-o"></i> <span class="__cf_email__" data-cfemail="3f525e56537f5a475e524f535a115c5052"><?=$school['email'];?></span></a>
+				<!--	<ul class="listing-links contact-links">
+						<li><a href="tel:12-345-678" class="listing-links"><i class="fa fa-phone"></i>Phone No.:  </a><?=$school['phone'];?></li>
+						<li><a href="" class="listing-links"><i class="fa fa-envelope-o"></i> <span class="__cf_email__" data-cfemail="">Email: </span></a><?=$school['email'];?>
 						</li>
-						<li><a href="#" target="_blank"  class="listing-links"><i class="fa fa-link"></i> <?=$school['website'];?></a></li>
+						<li><a href="#" target="_blank"  class="listing-links"><i class="fas fa-globe"></i>Web site:  </a><?=$school['website'];?></li>
+                        <li><a href="#" target="_blank"  class="listing-links"><i class="fa fa-link"></i> Full address: </a> 401, 4th Floor, New Mark House, opposite Medicover Hospital, HITEC City, Hyderabad, Telangana 500081&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
+					</ul>
+					<div class="clearfix"></div>-->
+                    <ul class="listing-links contact-links">
+						<li><i class="sl sl-icon-phone"></i>&nbsp; &nbsp;&nbsp; &nbsp; <?=$school['phone'];?></li>
+						<li><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['email'];?>
+						</li>
+						<li><i class="sl sl-icon-globe"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['website'];?></li>
+                        <li><i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp; &nbsp;#401, 4th Floor, New Mark House, opposite Medicover Hospital, HITEC City, Hyderabad, Telangana 500081&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
 					</ul>
 					<div class="clearfix"></div>
 
@@ -65,18 +84,128 @@ $this->session->set_userdata('last_page',current_url());
 
 				</div>
 				<div class="clearfix"></div>
+                
+                
+                
+                
+                
+           <!--Listings Key informations -->     
+                <h3 class="listing-desc-headline">Key Information</h3>
+				
+				<div class="listing-links-container">
+                    
+                    <table>
+                        <tr>
+                            <td>Board :</td>
+                            <td>SSC</td>
+                        </tr>
+                        <tr>
+                            <td>Grade :</td>
+                            <td>I-X</td>
+                        </tr>
+                        <tr>
+                            <td>Medium :</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>School Type :</td>
+                            <td>Co-Education</td>
+                        </tr>
+                         <tr>
+                            <td>Category :</td>
+                            <td>Play School, High School, DayScholor</td>
+                        </tr>
+                         <tr>
+                            <td>Hostel :</td>
+                            <td>Yes, Boys, Girls, Boys & Girls</td>
+                        </tr>
+                         <tr class="vert-algn-none">
+                            <td>Admission Procedure :&nbsp;</td>
+                            <td>SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br>
+                             SADFGSDFZBFsdfgsdfgcXMZ<br></td>
+                        </tr>
+                        <tr>
+                            <td>Social Media :</td>
+                            <td>
+                                <ul class="social-icons margin-top-20">
+                                    <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                                    <li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
+                                </ul>
+
+                            </td>
+                        </tr>
+                        
+                    </table>
+					
+					
+					
+					<div class="clearfix"></div>
+
+				</div>
+                
+                
+                 <!--Transport facility -->     
+                <h3 class="listing-desc-headline">Transport Facility</h3>
+				
+				<div class="listing-links-container">
+                    
+                    <style>
+                        #limheight {
+                                height: auto; /*your fixed height*/
+                                -webkit-column-count: 4;
+                                   -moz-column-count: 4;
+                                        column-count: 4; /*3 in those rules is just placeholder -- can be anything*/
+                            }
+
+                            #limheight li {
+                                display: inline-block; /*necessary*/
+                            }
+                    </style>
+					<ul id = "limheight">
+                        <li><a href="">Route-Route- 1</a></li>
+                        <li><a href="">Route-Route- 2</a></li>
+                        <li><a href="">Route-Route- 3</a></li>
+                        <li><a href="">Route-Route- 4</a></li>    
+                        <li><a href="">Route-Route- 5</a></li>
+                        <li><a href="">Route-Route- 6</a></li>
+                        <li><a href="">Route-Route- 7</a></li>
+                        <li><a href="">Route-Route- 8</a></li>
+                        <li><a href="">Route-Route- 9</a></li>
+                        <li><a href="">Route-Route- 10</a></li>
+                        <li><a href="">Route-Route- 11</a></li>
+                        <li><a href="">Route-Route- 12</a></li>    
+                        <li><a href="">Route-Route- 13</a></li>
+                        <li><a href="">Route-Route- 14</a></li>
+                        <li><a href="">Route-Route- 15</a></li>
+                        <li><a href="">Route-Route- 16</a></li>
+                        <li><a href="">Route-Route- 17</a></li>    
+                        <li><a href="">Route-Route- 18</a></li>
+                        <li><a href="">Route-Route- 19</a></li>
+                        <li><a href="">Route-Route- 20</a></li>
+                    </ul>
+					
+					
+					<div class="clearfix"></div>
+
+				</div>
+                
+                
 
 
 				<!-- Amenities -->
 				<h3 class="listing-desc-headline">Amenities</h3>
-				<ul class="listing-features checkboxes margin-top-0">
+				<!--<ul class="listing-features checkboxes margin-top-0">
 					<?php
-					$ame=json_decode($school['amenities']);
-					for ($i=0; $i < count($ame); $i++) {
+					//$ame=json_decode($school['amenities']);
+					//for ($i=0; $i < count($ame); $i++) {
 					?>
 					<li><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$ame[$i]));?></li>
-				<?php }?>
-				</ul>
+				<?php// }?>
+				</ul>-->
 				<ul class="amenity-list  margin-top-0">
                     <?php
 					$ame=json_decode($school['amenities']);
@@ -89,35 +218,111 @@ $this->session->set_userdata('last_page',current_url());
                 <?php }?>
                 
                 </ul>
+                   
+                <ul class="amenity-list  margin-top-0">
+                    
+                    <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 
+                
+                </ul>
 			</div>
+            
 
 
 			
 		
 			<!-- Location -->
-			<div id="listing-location" class="listing-section">
+			<!--<div id="listing-location" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
 				<div id="singleListingMap-container">
-					<div id="singleListingMap" data-latitude="<?=$school['latitude'];?>" data-longitude="<?=$school['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
+					<div id="singleListingMap" data-latitude="<?=$school//['latitude'];?>" data-longitude="<?=$school//['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
 					<a href="#" id="streetView">Street View</a>
 				</div>
-			</div>
+			</div>-->
 				
 			
+           
+            
 
 		</div>
 
 
 		<!-- Sidebar
 		================================================== -->
-		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-            <!-- Share / Like -->
-			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
-				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
-				<span>159 people bookmarked this place</span>
-
+		<div class="col-lg-4 col-md-4 margin-top-25 sticky">
+            <!-- Video -->
+			<div class="listing-share  margin-bottom-40 no-border">
+				<!--<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
+				<span>159 people bookmarked this place</span>-->
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/k85mRPqvMbE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
+            
+            <!-- Contact -->
+			 <div class="boxed-widget margin-top-35">
+				<div class="hosted-by-title">
+					<h4><span> </span> <a href="pages-user-profile.html">Fee Structure</a></h4>
+					
+				</div>
+                 <h3>Tution Fee Ranges From <span>10,000</span>/- to <span>1,00,000</span>/-</h3>
+                 <div>*Actual Fee may vary</div>
+                 
+				<!--<ul class="listing-details-sidebar">
+					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
+					 <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> 
+					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
+				</ul>-->
+
+				<!--<ul class="listing-details-sidebar social-profiles">
+					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+					 <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> 
+				</ul>-->
+                 
+				
+			</div>
+            
+            
+            
 
 				
 		
@@ -161,6 +366,16 @@ for ($i=0; $i < count($days); $i++) {
 				</ul>
 			</div>
 			<!-- Opening Hours / End -->
+            
+            <!--maps-->
+            <div id="listing-location" class="listing-section">
+				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
+
+				<div id="singleListingMap-container">
+					<div id="singleListingMap" data-latitude="<?=$school['latitude'];?>" data-longitude="<?=$school['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
+					<a href="#" id="streetView">Street View</a>
+				</div>
+			</div>
 
 
 			<!-- Contact -->
@@ -245,76 +460,7 @@ if($achievements!=''){
                         </a>
                     </div>
                 <?php }?>
-                    <!-- Listing Item -->
-         
-                   <!--  <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                    <!-- <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                   <!--  <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                    <!-- <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                    <!-- <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
+                    
                     
                    
                     
@@ -366,10 +512,156 @@ if($achievements!=''){
                 
 				
 			</div>
+            
+            <div class="col-md-12">
+				<div class="simple-slick-carousel dots-nav">
+
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    
+                   
+                    
+
+                </div>
+                
+				
+			</div>
+            <div class="col-md-12">
+				 <!-- Achievement title -->
+				<h3 class="listing-desc-headline">Records & Achievements</h3>
+				
+                   
+                <!--<ul class="achievement-list  margin-top-0">
+                    
+                    <li class=" aminity">
+                       
+                       <i class="fas fa-award"></i><p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class=" aminity">
+                       
+                       <i class="fas fa-award"></i><p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class=" aminity">
+                       
+                       <i class="fas fa-award"></i><p>Bus Bus Bus Bus</p>
+                   </li>
+                 
+                 
+                
+                </ul>-->
+            
+            <!-- Achievement  Carousel -->
+	<div class="fullwidth-carousel-container margin-top-20 no-dots">
+		<div class="testimonial-carousel testimonials">
+
+			<!-- Item -->
+			<div class="fw-carousel-review">
+				<div class="testimonial-box1">
+                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
+					<div class="testimonial">Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation is on the runway heading towards a streamlined cloud solution user generated content.</div>
+				</div>
+				<!--<div class="testimonial-author">
+					<img src="<?php echo base_url('assets')?>/images/happy-client-01.jpg" alt="">
+					<h4>Jennie Smith <span>User</span></h4>
+				</div>-->
+			</div>
+			
+			<!-- Item -->
+			<div class="fw-carousel-review">
+				<div class="testimonial-box1">
+                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
+					<div class="testimonial">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop.</div>
+				</div>
+				<!--<div class="testimonial-author">
+					<img src="<?php echo base_url('assets')?>/images/happy-client-02.jpg" alt="">
+					<h4>Tom Baker <span>User</span></h4>
+				</div>-->
+			</div>
+
+			<!-- Item -->
+			<div class="fw-carousel-review">
+				<div class="testimonial-box1">
+                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
+					<div class="testimonial">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view.</div>
+				</div>
+				<!--<div class="testimonial-author">
+					<img src="<?php echo base_url('assets')?>/images/happy-client-03.jpg" alt="">
+					<h4>Jack Paden <span>School</span></h4>
+				</div>-->
+			</div>
+
+		</div>
+	</div>
+	<!-- Achievement Carousel / End -->
+                
+				
+			</div>
+            
+            
+            
+            
            
 		</div>
 	</div>
-    <div class= "container" style="display: none;">
+    <div class= "container" style="">
         <!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(12)</span></h3>
@@ -384,59 +676,80 @@ if($achievements!=''){
 				<!-- Reviews -->
 				<section class="comments listing-reviews">
 					<ul>
+						
+
+						
 						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">Kathy Brown <i class="tip" data-tip-content="Person who left this review actually was a customer"></i> <span class="date">June 2019</span>
-									<div class="star-rating" data-rating="5"></div>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
 								</div>
-								<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
+                            </div>
+							<div class="comment-content"><div class="arrow-comment"></div>
 								
-								<div class="review-images mfp-gallery-container">
-									<a href="images/review-image-01.jpg" class="mfp-gallery"><img src="images/review-image-01.jpg" alt=""></a>
-								</div>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>12</span></a>
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
 							</div>
-						</li>
-
-						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> </div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">John Doe<span class="date">May 2019</span>
-									<div class="star-rating" data-rating="4"></div>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
 								</div>
-								<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>2</span></a>
-							</div>
-						</li>
-
-						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
+                            </div>
 							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">Kathy Brown<span class="date">June 2019</span>
-									<div class="star-rating" data-rating="5"></div>
-								</div>
-								<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
 								
-								<div class="review-images mfp-gallery-container">
-									<a href="images/review-image-02.jpg" class="mfp-gallery"><img src="images/review-image-02.jpg" alt=""></a>
-									<a href="images/review-image-03.jpg" class="mfp-gallery"><img src="images/review-image-03.jpg" alt=""></a>
-								</div>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>4</span></a>
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
 							</div>
-						</li>
-
-						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> </div>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
+								</div>
+                            </div>
 							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">John Doe<span class="date">May 2019</span>
-									<div class="star-rating" data-rating="5"></div>
-								</div>
-								<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>
+								
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
 							</div>
-
-						</li>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
+								</div>
+                            </div>
+							<div class="comment-content"><div class="arrow-comment"></div>
+								
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
+							</div>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
+								</div>
+                            </div>
+							<div class="comment-content"><div class="arrow-comment"></div>
+								
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
+							</div>
+                        </li>
+                        
 					 </ul>
 				</section>
 
@@ -470,7 +783,7 @@ if($achievements!=''){
 				<div class="sub-ratings-container">
 					<!-- Subrating #4 -->
 					<div class="add-sub-rating">
-						<div class="sub-rating-title">Cleanliness <i class="tip" data-tip-content="The physical condition of the business"></i></div>
+						<div class="sub-rating-title">Rating <i class="tip" data-tip-content="The physical condition of the business"></i></div>
 						<div class="sub-rating-stars">
 							<!-- Leave Rating -->
 							<div class="clearfix"></div>
