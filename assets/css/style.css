@@ -20809,13 +20809,13 @@ height: 51px;
     letter-spacing: 2px;
     word-spacing: 2px;
     font-style: italic;
-    overflow: hidden;
-   text-overflow: ellipsis;
+    /*overflow: hidden;
+   text-overflow: ellipsis;*/
    display: -webkit-box;
-   line-height: 16px;     /* fallback */
-   max-height: 32px;      /* fallback */
-   -webkit-line-clamp: 2; /* number of lines to show */
-   -webkit-box-orient: vertical;
+   /*line-height: 16px;  */   /* fallback */
+/*   max-height: 32px;  */    /* fallback */
+   /*-webkit-line-clamp: 2;*/ /* number of lines to show */
+/*   -webkit-box-orient: vertical;*/
 }
 
 
