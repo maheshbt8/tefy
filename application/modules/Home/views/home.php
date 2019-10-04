@@ -33,7 +33,7 @@
 								<option>Hotels</option>
 								<option>Restaurants</option>
 								<option>Fitness</option>
-								<option>Events</option>
+								<option>Events</option> 
 							</select>
 						</div>-->
 
@@ -249,6 +249,7 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 			<!-- Item -->
 			<div class="fw-carousel-review">
 				<div class="testimonial-box">
+                    <img src="<?php echo base_url('assets')?>/images/happy-client-01.jpg" alt="">
 					<div class="testimonial">Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation is on the runway heading towards a streamlined cloud solution user generated content.</div>
 				</div>
 				<div class="testimonial-author">

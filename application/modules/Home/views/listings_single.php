@@ -51,13 +51,26 @@ $this->session->set_userdata('last_page',current_url());
 				<h3 class="listing-desc-headline">Contact Info</h3>
 				<!-- Listing Contacts -->
 				<div class="listing-links-container">
+                <!--    <ul class="listing-details-sidebar">
+					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
+					 <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> 
+					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
+				</ul>-->
 
-					<ul class="listing-links contact-links">
+				<!--	<ul class="listing-links contact-links">
 						<li><a href="tel:12-345-678" class="listing-links"><i class="fa fa-phone"></i>Phone No.:  </a><?=$school['phone'];?></li>
 						<li><a href="" class="listing-links"><i class="fa fa-envelope-o"></i> <span class="__cf_email__" data-cfemail="">Email: </span></a><?=$school['email'];?>
 						</li>
 						<li><a href="#" target="_blank"  class="listing-links"><i class="fas fa-globe"></i>Web site:  </a><?=$school['website'];?></li>
                         <li><a href="#" target="_blank"  class="listing-links"><i class="fa fa-link"></i> Full address: </a> 401, 4th Floor, New Mark House, opposite Medicover Hospital, HITEC City, Hyderabad, Telangana 500081&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
+					</ul>
+					<div class="clearfix"></div>-->
+                    <ul class="listing-links contact-links">
+						<li><i class="sl sl-icon-phone"></i>&nbsp; &nbsp;&nbsp; &nbsp; <?=$school['phone'];?></li>
+						<li><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['email'];?>
+						</li>
+						<li><i class="sl sl-icon-globe"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['website'];?></li>
+                        <li><i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp; &nbsp;#401, 4th Floor, New Mark House, opposite Medicover Hospital, HITEC City, Hyderabad, Telangana 500081&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
 					</ul>
 					<div class="clearfix"></div>
 
@@ -106,13 +119,24 @@ $this->session->set_userdata('last_page',current_url());
                             <td>Hostel :</td>
                             <td>Yes, Boys, Girls, Boys & Girls</td>
                         </tr>
-                         <tr>
+                         <tr class="vert-algn-none">
                             <td>Admission Procedure :&nbsp;</td>
                             <td>SADFGSDFZBFsdfgsdfgcXMZ<br>
                              SADFGSDFZBFsdfgsdfgcXMZ<br>
                              SADFGSDFZBFsdfgsdfgcXMZ<br>
                              SADFGSDFZBFsdfgsdfgcXMZ<br>
                              SADFGSDFZBFsdfgsdfgcXMZ<br></td>
+                        </tr>
+                        <tr>
+                            <td>Social Media :</td>
+                            <td>
+                                <ul class="social-icons margin-top-20">
+                                    <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                                    <li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
+                                </ul>
+
+                            </td>
                         </tr>
                         
                     </table>
@@ -122,6 +146,54 @@ $this->session->set_userdata('last_page',current_url());
 					<div class="clearfix"></div>
 
 				</div>
+                
+                
+                 <!--Transport facility -->     
+                <h3 class="listing-desc-headline">Transport Facility</h3>
+				
+				<div class="listing-links-container">
+                    
+                    <style>
+                        #limheight {
+                                height: auto; /*your fixed height*/
+                                -webkit-column-count: 4;
+                                   -moz-column-count: 4;
+                                        column-count: 4; /*3 in those rules is just placeholder -- can be anything*/
+                            }
+
+                            #limheight li {
+                                display: inline-block; /*necessary*/
+                            }
+                    </style>
+					<ul id = "limheight">
+                        <li><a href="">Route-Route- 1</a></li>
+                        <li><a href="">Route-Route- 2</a></li>
+                        <li><a href="">Route-Route- 3</a></li>
+                        <li><a href="">Route-Route- 4</a></li>    
+                        <li><a href="">Route-Route- 5</a></li>
+                        <li><a href="">Route-Route- 6</a></li>
+                        <li><a href="">Route-Route- 7</a></li>
+                        <li><a href="">Route-Route- 8</a></li>
+                        <li><a href="">Route-Route- 9</a></li>
+                        <li><a href="">Route-Route- 10</a></li>
+                        <li><a href="">Route-Route- 11</a></li>
+                        <li><a href="">Route-Route- 12</a></li>    
+                        <li><a href="">Route-Route- 13</a></li>
+                        <li><a href="">Route-Route- 14</a></li>
+                        <li><a href="">Route-Route- 15</a></li>
+                        <li><a href="">Route-Route- 16</a></li>
+                        <li><a href="">Route-Route- 17</a></li>    
+                        <li><a href="">Route-Route- 18</a></li>
+                        <li><a href="">Route-Route- 19</a></li>
+                        <li><a href="">Route-Route- 20</a></li>
+                    </ul>
+					
+					
+					<div class="clearfix"></div>
+
+				</div>
+                
+                
 
 
 				<!-- Amenities -->
@@ -146,73 +218,111 @@ $this->session->set_userdata('last_page',current_url());
                 <?php }?>
                 
                 </ul>
-                
-                <style>svg {
-  width: 70px;
-  height: 70px;
-}
-svg:hover {
-  fill: red;
-}
-
-</style>
-                
+                   
                 <ul class="amenity-list  margin-top-0">
                     
-                    <li class="aminity-size">
-                        <svg>
-    <use xlink:href="#bike" />
-  </svg>
-                        
-                       
-                       <!--<img src="<?php //echo base_url('assets')?>/images/tefy1.svg" class="amenity-img">-->
+                    <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
+                       <p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class="aminity-size aminity">
+                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
                        <p>Bus Bus Bus Bus</p>
                    </li>
                  
                 
                 </ul>
 			</div>
-            <svg display="none">
-  <symbol width="50" height="50" viewBox="0 0 24 24" id="bike">
-    <path d="M141.73 109.96c35.64,0.14 160.63,-0.42 210.09,0.45 -14.79,7.38 -22.78,9.3 -38.55,19.75 -13.21,8.76 -37.43,34.29 -45.53,49.14 -20.94,1.32 -114.06,-0.37 -142.27,-0.66 -24.9,-0.25 -45.72,2.16 -56.83,-14.28 -11.68,-17.29 -7.27,-39.71 6.61,-49.47 3.93,-2.76 10.08,-5.13 17.33,-5.08 16.69,0.11 36.76,0.09 49.14,0.14zm107.42 280.34c0.16,-64.44 2.95,-140.57 31.57,-196.32 29.03,-56.56 75.78,-77.47 143.69,-83.25 10.95,-0.93 67,-2.58 73.43,1.1 11.89,6.79 13.77,38.58 2.7,56.75 -10.76,17.65 -31.98,8.11 -66.08,10.48 -23.29,1.62 -42.26,5.46 -58.61,16.23 -49.76,32.77 -57.05,110.94 -57.03,171.26 0.01,21.22 4.2,53.96 -4,70.51 -9.86,19.92 -38.34,22.68 -55.3,18.31 -12.98,-3.34 -10.29,-13.04 -10.31,-27.51 -0.02,-12.51 -0.09,-25.03 -0.06,-37.53zm129.91 -123.29c9.29,-1.5 34.95,-0.93 45.48,-0.37 14.64,0.77 24.64,5.14 30.18,14.62 9.7,16.6 9.02,49.91 -26.56,53.93 -23.63,2.67 -68.6,2.3 -77.05,-14.17 -4.85,-9.46 -5.36,-26.62 0.25,-36.4 4.99,-8.7 14.03,-15.39 27.71,-17.6zm-204.81 -0.46c23.26,0.12 46.62,0.13 69.88,0.09 -4.63,23.63 -7.89,41.06 -7.34,68.63 -6.81,0.45 -66.39,0.41 -68.64,-0.16 -18.93,-2.29 -34.42,-14.87 -32.17,-36.84 2.27,-22.21 17.18,-31.83 38.28,-31.71zm301.76 -266.55l-387.04 0c-48.94,0 -88.97,40.03 -88.97,88.97l0 387.03c0,48.94 40.03,88.97 88.97,88.97l387.04 0c48.94,0 88.97,-40.03 88.97,-88.97l0 -387.03c0,-48.94 -40.04,-88.97 -88.97,-88.97zm-266.36 409.45c40.99,-2.5 42.53,47.12 1.85,47.25 -14.95,0.05 -32.51,-6.23 -32.98,-22.92 -0.45,-16.06 15.43,-23.37 31.13,-24.33z"></path>
-  </symbol>
-
-  <symbol width="24" height="24" viewBox="0 0 24 24" id="bell">
-    <path d="M11.5,22C11.64,22 11.77,22 11.9,21.96C12.55,21.82 13.09,21.38 13.34,20.78C13.44,20.54 13.5,20.27 13.5,20H9.5A2,2 0 0,0 11.5,22M18,10.5C18,7.43 15.86,4.86 13,4.18V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V4.18C7.13,4.86 5,7.43 5,10.5V16L3,18V19H20V18L18,16M19.97,10H21.97C21.82,6.79 20.24,3.97 17.85,2.15L16.42,3.58C18.46,5 19.82,7.35 19.97,10M6.58,3.58L5.15,2.15C2.76,3.97 1.18,6.79 1,10H3C3.18,7.35 4.54,5 6.58,3.58Z"></path>
-  </symbol>
-
-  <symbol width="24" height="24" viewBox="0 0 24 24" id="arrow">
-    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
-  </symbol>
-</svg>
+            
 
 
 			
 		
 			<!-- Location -->
-			<div id="listing-location" class="listing-section">
+			<!--<div id="listing-location" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
 				<div id="singleListingMap-container">
-					<div id="singleListingMap" data-latitude="<?=$school['latitude'];?>" data-longitude="<?=$school['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
+					<div id="singleListingMap" data-latitude="<?=$school//['latitude'];?>" data-longitude="<?=$school//['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
 					<a href="#" id="streetView">Street View</a>
 				</div>
-			</div>
+			</div>-->
 				
 			
+           
+            
 
 		</div>
 
 
 		<!-- Sidebar
 		================================================== -->
-		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-            <!-- Share / Like -->
-			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
-				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
-				<span>159 people bookmarked this place</span>
-
+		<div class="col-lg-4 col-md-4 margin-top-25 sticky">
+            <!-- Video -->
+			<div class="listing-share  margin-bottom-40 no-border">
+				<!--<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
+				<span>159 people bookmarked this place</span>-->
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/k85mRPqvMbE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
+            
+            <!-- Contact -->
+			 <div class="boxed-widget margin-top-35">
+				<div class="hosted-by-title">
+					<h4><span> </span> <a href="pages-user-profile.html">Fee Structure</a></h4>
+					
+				</div>
+                 <h3>Tution Fee Ranges From <span>10,000</span>/- to <span>1,00,000</span>/-</h3>
+                 <div>*Actual Fee may vary</div>
+                 
+				<!--<ul class="listing-details-sidebar">
+					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
+					 <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> 
+					<li><i class="fa fa-envelope-o"></i> <a href="#"><span class="__cf_email__" data-cfemail="b1c5dedcf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span></a></li>
+				</ul>-->
+
+				<!--<ul class="listing-details-sidebar social-profiles">
+					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+					 <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> 
+				</ul>-->
+                 
+				
+			</div>
+            
+            
+            
 
 				
 		
@@ -256,6 +366,16 @@ for ($i=0; $i < count($days); $i++) {
 				</ul>
 			</div>
 			<!-- Opening Hours / End -->
+            
+            <!--maps-->
+            <div id="listing-location" class="listing-section">
+				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
+
+				<div id="singleListingMap-container">
+					<div id="singleListingMap" data-latitude="<?=$school['latitude'];?>" data-longitude="<?=$school['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
+					<a href="#" id="streetView">Street View</a>
+				</div>
+			</div>
 
 
 			<!-- Contact -->
@@ -340,76 +460,7 @@ if($achievements!=''){
                         </a>
                     </div>
                 <?php }?>
-                    <!-- Listing Item -->
-         
-                   <!--  <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                    <!-- <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                   <!--  <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                    <!-- <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
-                    <!-- Listing Item -->
-         
-                    <!-- <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b>Achievement title</b></p>
-                            </div>
-
-                        </a>
-                    </div> -->
+                    
                     
                    
                     
@@ -461,10 +512,156 @@ if($achievements!=''){
                 
 				
 			</div>
+            
+            <div class="col-md-12">
+				<div class="simple-slick-carousel dots-nav">
+
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <a href="" class="">
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
+                                 </div>
+                            </div>
+
+                        </a>
+                    </div>
+                    
+                    
+                   
+                    
+
+                </div>
+                
+				
+			</div>
+            <div class="col-md-12">
+				 <!-- Achievement title -->
+				<h3 class="listing-desc-headline">Records & Achievements</h3>
+				
+                   
+                <!--<ul class="achievement-list  margin-top-0">
+                    
+                    <li class=" aminity">
+                       
+                       <i class="fas fa-award"></i><p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class=" aminity">
+                       
+                       <i class="fas fa-award"></i><p>Bus Bus Bus Bus</p>
+                   </li>
+                 <li class=" aminity">
+                       
+                       <i class="fas fa-award"></i><p>Bus Bus Bus Bus</p>
+                   </li>
+                 
+                 
+                
+                </ul>-->
+            
+            <!-- Achievement  Carousel -->
+	<div class="fullwidth-carousel-container margin-top-20 no-dots">
+		<div class="testimonial-carousel testimonials">
+
+			<!-- Item -->
+			<div class="fw-carousel-review">
+				<div class="testimonial-box1">
+                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
+					<div class="testimonial">Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation is on the runway heading towards a streamlined cloud solution user generated content.</div>
+				</div>
+				<!--<div class="testimonial-author">
+					<img src="<?php echo base_url('assets')?>/images/happy-client-01.jpg" alt="">
+					<h4>Jennie Smith <span>User</span></h4>
+				</div>-->
+			</div>
+			
+			<!-- Item -->
+			<div class="fw-carousel-review">
+				<div class="testimonial-box1">
+                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
+					<div class="testimonial">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop.</div>
+				</div>
+				<!--<div class="testimonial-author">
+					<img src="<?php echo base_url('assets')?>/images/happy-client-02.jpg" alt="">
+					<h4>Tom Baker <span>User</span></h4>
+				</div>-->
+			</div>
+
+			<!-- Item -->
+			<div class="fw-carousel-review">
+				<div class="testimonial-box1">
+                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
+					<div class="testimonial">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view.</div>
+				</div>
+				<!--<div class="testimonial-author">
+					<img src="<?php echo base_url('assets')?>/images/happy-client-03.jpg" alt="">
+					<h4>Jack Paden <span>School</span></h4>
+				</div>-->
+			</div>
+
+		</div>
+	</div>
+	<!-- Achievement Carousel / End -->
+                
+				
+			</div>
+            
+            
+            
+            
            
 		</div>
 	</div>
-    <div class= "container" style="display: none;">
+    <div class= "container" style="">
         <!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(12)</span></h3>
@@ -479,59 +676,80 @@ if($achievements!=''){
 				<!-- Reviews -->
 				<section class="comments listing-reviews">
 					<ul>
+						
+
+						
 						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">Kathy Brown <i class="tip" data-tip-content="Person who left this review actually was a customer"></i> <span class="date">June 2019</span>
-									<div class="star-rating" data-rating="5"></div>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
 								</div>
-								<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
+                            </div>
+							<div class="comment-content"><div class="arrow-comment"></div>
 								
-								<div class="review-images mfp-gallery-container">
-									<a href="images/review-image-01.jpg" class="mfp-gallery"><img src="images/review-image-01.jpg" alt=""></a>
-								</div>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>12</span></a>
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
 							</div>
-						</li>
-
-						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> </div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">John Doe<span class="date">May 2019</span>
-									<div class="star-rating" data-rating="4"></div>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
 								</div>
-								<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>2</span></a>
-							</div>
-						</li>
-
-						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /></div>
+                            </div>
 							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">Kathy Brown<span class="date">June 2019</span>
-									<div class="star-rating" data-rating="5"></div>
-								</div>
-								<p>Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor imperdiet vitae. Curabitur lacinia neque non metus</p>
 								
-								<div class="review-images mfp-gallery-container">
-									<a href="images/review-image-02.jpg" class="mfp-gallery"><img src="images/review-image-02.jpg" alt=""></a>
-									<a href="images/review-image-03.jpg" class="mfp-gallery"><img src="images/review-image-03.jpg" alt=""></a>
-								</div>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>4</span></a>
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
 							</div>
-						</li>
-
-						<li>
-							<div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> </div>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
+								</div>
+                            </div>
 							<div class="comment-content"><div class="arrow-comment"></div>
-								<div class="comment-by">John Doe<span class="date">May 2019</span>
-									<div class="star-rating" data-rating="5"></div>
-								</div>
-								<p>Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-								<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>
+								
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
 							</div>
-
-						</li>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
+								</div>
+                            </div>
+							<div class="comment-content"><div class="arrow-comment"></div>
+								
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
+							</div>
+                        </li>
+                        <li>
+							<div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+									
+								</div>
+                            </div>
+							<div class="comment-content"><div class="arrow-comment"></div>
+								
+								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="5"></div>
+								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
+							</div>
+                        </li>
+                        
 					 </ul>
 				</section>
 
@@ -565,7 +783,7 @@ if($achievements!=''){
 				<div class="sub-ratings-container">
 					<!-- Subrating #4 -->
 					<div class="add-sub-rating">
-						<div class="sub-rating-title">Cleanliness <i class="tip" data-tip-content="The physical condition of the business"></i></div>
+						<div class="sub-rating-title">Rating <i class="tip" data-tip-content="The physical condition of the business"></i></div>
 						<div class="sub-rating-stars">
 							<!-- Leave Rating -->
 							<div class="clearfix"></div>

@@ -7547,7 +7547,7 @@ body .comment-content p {
     padding: 36px;
     padding-bottom: 40px;
     margin-bottom: 55px;
-    margin-top: 70px;
+    /*margin-top: 70px;*/
     display: inline-block;
     width: 100%;
     position: relative
@@ -9914,6 +9914,18 @@ body .notification strong {
     transition: .4s;
     cursor: grab
 }
+.testimonial-box1 {
+    background: 0 0;
+    border-radius: 6px;
+    padding: 38px;
+    /* padding-left: 110px; */
+    color: #888;
+    /* position: relative; */
+    margin: 18px 0;
+    box-shadow: none;
+    transition: .4s;
+    cursor: grab;
+}
 
 .testimonial-carousel .slick-slide {
     margin: 0 20px 30px;
@@ -9922,7 +9934,7 @@ body .notification strong {
     pointer-events: all
 }
 
-.testimonial-carousel .slick-slide.slick-active .testimonial-box {
+.testimonial-carousel .slick-slide.slick-active .testimonial-box .testimonial-box1{
     background: #66676b;
     color: #fff
 }
@@ -10005,6 +10017,12 @@ body .notification strong {
 }
 
 .testimonial-box .star-rating {
+    height: 30px;
+    display: inline-block;
+    margin-bottom: -10px;
+    margin-top: 15px
+}
+.testimonial-box1 .star-rating {
     height: 30px;
     display: inline-block;
     margin-bottom: -10px;
@@ -12391,7 +12409,8 @@ section.fullwidth .listing-item-container.list-layout,
 
 .star-rating {
     display: block;
-    font-size: 17px
+    font-size: 17px;
+    float: right;
 }
 
 .listing-item-container .star-rating {
@@ -20457,6 +20476,9 @@ h4 span.headline-detail {
     .testimonial-box {
         padding-left: 38px
     }
+    .testimonial-box1 {
+        padding-left: 38px
+    }
     .main-search-container h2 {
         font-size: 28px;
         font-weight: 400;
@@ -20759,6 +20781,18 @@ height: 51px;
    columns: auto;
    font-size: 16px;
    -webkit-columns: auto;
+    text-align: center;
+}
+.achievement-list{
+   width: 100%;
+   /* display: block; */
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   columns: auto;
+   font-size: 16px;
+   -webkit-columns: auto;
+    
 }
 .list-img-size {
         max-height: 20em;
@@ -20809,3 +20843,22 @@ height: 51px;
     background-color: green;
     color:white;
 }
+
+.vert-algn-none {
+    vertical-align: baseline;
+}
+
+
+    .aminity {
+    /* filter: url(filters.svg#grayscale); Firefox 3.5+ */
+      filter: opacity(0.58);
+-webkit-filter: opacity(0.58);
+      /*-webkit-transition: all .8s ease-in-out; */ 
+    }
+
+    .aminity:hover {
+    filter: none;
+      -webkit-filter: grayscale(0);
+      -webkit-transform: scale(1.01);
+    }
+
