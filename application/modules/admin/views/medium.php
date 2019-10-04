@@ -1,7 +1,7 @@
 <?php $this->session->set_userdata('last_page',current_url());?>
-<!--Category management-->
+<!--Medium management-->
 
-<form  class="form-horizontal" id="category-form" action="<?=base_url('admin/categories');?>" method="post" enctype="multipart/form-data">
+<form  class="form-horizontal" id="medium-form" action="<?=base_url('admin/medium');?>" method="post" enctype="multipart/form-data">
 <div class="row">
 			<div class="col-lg-12">
 
@@ -12,14 +12,14 @@
 
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> Category Management</h3>
+							<h3><i class="sl sl-icon-doc"></i> Medium Management</h3>
 						</div>
 
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-10">
-								<h5>Add Category<i class="tip" data-tip-content="Add a new class here"></i></h5>
-								<input class="search-field" type="text" value="" name="category" required=""/>
+								<h5>Add Medium<i class="tip" data-tip-content="Add a new class here"></i></h5>
+								<input class="search-field" type="text" value="" name="medium" required=""/>
 							</div>
                             <div class="col-md-2">
 								
@@ -30,7 +30,7 @@
                         
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> List of All Categories</h3>
+							<h3><i class="sl sl-icon-doc"></i> List of All Mediums</h3>
 						</div>
 
 						<!-- Title -->
@@ -40,20 +40,20 @@
                                 <thead class="thead-dark">
                                 <tr>
                                   <th scope="col">#</th>
-                                  <th scope="col">Category name</th>
+                                  <th scope="col">Medium name</th>
                                   <th scope="col">Actions</th>
                                 </tr>
                               </thead>
                               <tbody>
                               	<?php
-                              	$res=$this->common_model->select_results_info('category',array('row_status !='=>0),"'id','DESC'")->result_array();
+                              	$res=$this->common_model->select_results_info('medium',array('row_status !='=>0),"'id','DESC'")->result_array();
                               	$i=0;
                               	foreach ($res as $row) {
                               	?>
                                 <tr>
                                   <th scope="row"><?=$i+1;?></th>
                                   <td><?=$row['name'];?></td>
-                                    <td><a href="#" class="mr-2  text-danger" onclick="return delete_row('<?=base_url('set_row_status/').'category/id/'.$row['id'].'/0';?>');"><i class="sl sl-icon-trash"></i></a>
+                                    <td><a href="#" class="mr-2  text-danger" onclick="return delete_row('<?=base_url('set_row_status/').'medium/id/'.$row['id'].'/0';?>');"><i class="sl sl-icon-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php $i++;}?>

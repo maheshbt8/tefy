@@ -249,6 +249,23 @@ class Admin extends MY_Controller
         $this->data['active_menu'] = 'categories';
         $this->_render_page($this->template, $this->data);
     }
+    public function medium(){
+        if($this->input->post()){
+            $input=$this->input->post();
+            $input_data['name']=$input['medium'];
+            $res=$this->common_model->insert_results_info('medium',$input_data);
+            if($res>0){
+            $this->session->set_flashdata('success_message', 'Medium Inserted Successfully');
+            }else{
+            $this->session->set_flashdata('error_message', 'Medium Not Inserted');
+            }
+            redirect($this->session->userdata('last_page'));
+        }
+        $this->data['title'] = 'Medium';
+        $this->data['content'] = 'medium';
+        $this->data['active_menu'] = 'medium';
+        $this->_render_page($this->template, $this->data);
+    }
     public function curriculum(){
         if($this->input->post()){
             $input=$this->input->post();

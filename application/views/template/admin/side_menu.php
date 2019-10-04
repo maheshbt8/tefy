@@ -22,6 +22,7 @@
 				<li><a><i class="sl sl-icon-layers"></i> Listings-Categories</a>
 					<ul>
 						<li><a href="<?=base_url('admin/categories');?>">Categories</a></li>
+						<li><a href="<?=base_url('admin/medium');?>">Medium</a></li>
 						<li><a href="<?=base_url('admin/curriculum');?>">Curriculum</a></li>
 						<li><a href="<?=base_url('admin/classes');?>">Classes</a></li>
 						<li><a href="<?=base_url('admin/facilities');?>">Fecilities</a></li>
