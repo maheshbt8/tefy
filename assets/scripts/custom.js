@@ -1123,6 +1123,7 @@ $(document).ready(function() {
     // Configure/customize these variables.
     var showChar = 500;  // How many characters are shown by default
     var showChar1 = 100; 
+    var showChar2 = 30; 
     var ellipsestext = "...";
     var moretext = "Read more";
     var lesstext = "Read less";
@@ -1140,9 +1141,9 @@ $(document).ready(function() {
  
             $(this).html(html);
         }
- 
     });
-     $('.more1 ').each(function() {
+     
+    $('.more1 ').each(function() {
         var content = $(this).html();
  
         if(content.length > showChar1) {
@@ -1154,9 +1155,24 @@ $(document).ready(function() {
  
             $(this).html(html);
         }
- 
     });
+     
+    $('.more2 ').each(function() {
+        var content = $(this).html();
  
+        if(content.length > showChar2) {
+ 
+            var c = content.substr(0, showChar2);
+            var h = content.substr(showChar2, content.length - showChar2);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink" style="color:#FFC600;">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+    });
+     
+    
+
     $(".morelink").click(function(){
         if($(this).hasClass("less")) {
             $(this).removeClass("less");
