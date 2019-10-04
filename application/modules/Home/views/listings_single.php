@@ -1,5 +1,30 @@
 <?php
 $this->session->set_userdata('last_page',current_url());
+$where['listing_id']=$school['id'];
+$rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
+if($rating==''){
+  $rating=0;
+}
+$classes=json_decode($school['class']);
+  for($c=0; $c < count($classes); $c++) { 
+    $class[]=$this->common_model->get_type_name_by_where('classes',array('id'=>$classes[$c]));
+  }
+  $medium='';
+  $medi=json_decode($school['medium']);
+  if($medi!=''){
+  for($c=0; $c < count($medi); $c++) { 
+    $mediu[]=$this->common_model->get_type_name_by_where('medium',array('id'=>$medi[$c]));
+  }
+  $medium=implode(', ',$mediu);
+}
+ $category='';
+  $cate=json_decode($school['category']);
+  if($cate!=''){
+  for($c=0; $c < count($cate); $c++) { 
+    $categ[]=$this->common_model->get_type_name_by_where('category',array('id'=>$cate[$c]));
+  }
+  $category=implode(', ',$categ);
+}
 ?>
 <div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'.jpg';?>" style="height: 300px;margin-top: 85px;">
 
@@ -14,15 +39,20 @@ $this->session->set_userdata('last_page',current_url());
 			<div id="titlebar" class="listing-titlebar">
 				<div class="listing-titlebar-title">
 					<h2><?=$school['school_name'];?></h2>
-                    <div class="vision-txt"><b>"</b>Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision VisionVision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision Vision  <b>"</b></div>
+          <?php
+          
+         /* echo "<pre>";
+          print_r($school);*/
+          ?>
+                    <div class="vision-txt"><b>"</b><?=$school['vision'];?><b>"</b></div>
 					<span>
 						<a href="#listing-location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
 						<?=$school['address'];?>
 						</a>
 					</span>
-					<div class="star-rating" data-rating="4.5">
-						<div class="rating-counter"><a href="#listing-reviews"><B class="rating-bg" style="" >4.5</B>/5</a></div>
+					<div class="star-rating" data-rating="<?=$rating;?>">
+						<div class="rating-counter"><a href="#listing-reviews"><B class="rating-bg" style="" ><?=$rating;?></B>/5</a></div>
 					</div>
 				</div>
 			</div>
@@ -42,10 +72,10 @@ $this->session->set_userdata('last_page',current_url());
 			<div id="listing-overview" class="listing-section">
 
 				<!-- Description -->
-<?=$school['description'];?>
+
                 <h3 class="listing-desc-headline">About-Us</h3>
                 <span class="more">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  <?=$school['description'];?>
                 </span>
 				
 				<h3 class="listing-desc-headline">Contact Info</h3>
@@ -97,43 +127,41 @@ $this->session->set_userdata('last_page',current_url());
                     <table>
                         <tr>
                             <td>Board :</td>
-                            <td>SSC</td>
+                            <td><?=$this->common_model->get_type_name_by_where('curriculum',array('id'=>$school['curriculum']),'name');?></td>
                         </tr>
                         <tr>
                             <td>Grade :</td>
-                            <td>I-X</td>
+                            <td><?=implode(', ',$class);?></td>
                         </tr>
                         <tr>
                             <td>Medium :</td>
-                            <td>English</td>
+                            <td><?=$medium;?></td>
                         </tr>
                         <tr>
                             <td>School Type :</td>
-                            <td>Co-Education</td>
+                            <td><?=$school['school_type'];?></td>
                         </tr>
                          <tr>
                             <td>Category :</td>
-                            <td>Play School, High School, DayScholor</td>
+                            <td><?=$category;?></td>
                         </tr>
                          <tr>
                             <td>Hostel :</td>
-                            <td>Yes, Boys, Girls, Boys & Girls</td>
+                            <td><?=$school['hostels'];?></td>
                         </tr>
                          <tr class="vert-algn-none">
                             <td>Admission Procedure :&nbsp;</td>
-                            <td>SADFGSDFZBFsdfgsdfgcXMZ<br>
-                             SADFGSDFZBFsdfgsdfgcXMZ<br>
-                             SADFGSDFZBFsdfgsdfgcXMZ<br>
-                             SADFGSDFZBFsdfgsdfgcXMZ<br>
-                             SADFGSDFZBFsdfgsdfgcXMZ<br></td>
+                            <td>
+                              <?=$school['admission_procedure'];?>
+                            </td>
                         </tr>
                         <tr>
                             <td>Social Media :</td>
                             <td>
                                 <ul class="social-icons margin-top-20">
-                                    <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
+                                    <li><a class="facebook" href="<?=$school['facebook'];?>"><i class="icon-facebook"></i></a></li>
+                                    <li><a class="twitter" href="<?=$school['twitter'];?>"><i class="icon-twitter"></i></a></li>
+                                    <li><a class="youtube" href="<?=$school['youtube'];?>"><i class="icon-youtube"></i></a></li>
                                 </ul>
 
                             </td>
@@ -166,26 +194,12 @@ $this->session->set_userdata('last_page',current_url());
                             }
                     </style>
 					<ul id = "limheight">
-                        <li><a href="">Route-Route- 1</a></li>
-                        <li><a href="">Route-Route- 2</a></li>
-                        <li><a href="">Route-Route- 3</a></li>
-                        <li><a href="">Route-Route- 4</a></li>    
-                        <li><a href="">Route-Route- 5</a></li>
-                        <li><a href="">Route-Route- 6</a></li>
-                        <li><a href="">Route-Route- 7</a></li>
-                        <li><a href="">Route-Route- 8</a></li>
-                        <li><a href="">Route-Route- 9</a></li>
-                        <li><a href="">Route-Route- 10</a></li>
-                        <li><a href="">Route-Route- 11</a></li>
-                        <li><a href="">Route-Route- 12</a></li>    
-                        <li><a href="">Route-Route- 13</a></li>
-                        <li><a href="">Route-Route- 14</a></li>
-                        <li><a href="">Route-Route- 15</a></li>
-                        <li><a href="">Route-Route- 16</a></li>
-                        <li><a href="">Route-Route- 17</a></li>    
-                        <li><a href="">Route-Route- 18</a></li>
-                        <li><a href="">Route-Route- 19</a></li>
-                        <li><a href="">Route-Route- 20</a></li>
+              <?php
+              $route=explode(',',$school['bus_routes']);
+              for($b=0;$b<count($route);$b++){
+              ?>
+                        <li><?=$route[$b];?></li>
+                      <?php }?>
                     </ul>
 					
 					
@@ -206,7 +220,7 @@ $this->session->set_userdata('last_page',current_url());
 					<li><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$ame[$i]));?></li>
 				<?php// }?>
 				</ul>-->
-				<ul class="amenity-list  margin-top-0">
+				<!-- <ul class="amenity-list  margin-top-0">
                     <?php
 					$ame=json_decode($school['amenities']);
 					for ($i=0; $i < count($ame); $i++) {
@@ -217,11 +231,20 @@ $this->session->set_userdata('last_page',current_url());
                    </li>
                 <?php }?>
                 
-                </ul>
+                </ul> -->
                    
                 <ul class="amenity-list  margin-top-0">
-                    
+                    <?php
+          $ame=json_decode($school['amenities']);
+          for ($i=0; $i < count($ame); $i++) {
+            $ameniti=$this->common_model->select_results_info('facilities',array('id'=>$ame[$i]))->row_array();
+          ?>
                     <li class="aminity-size aminity">
+                       <img src="<?=base_url('uploads/facilities/').$ameniti['id'].'.'.$ameniti['file_ext'];?>" class="amenity-img">
+                       <p><?=$ameniti['name'];?></p>
+                   </li>
+                   <?php }?>
+                 <!-- <li class="aminity-size aminity">
                        <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
                        <p>Bus Bus Bus Bus</p>
                    </li>
@@ -256,11 +279,7 @@ $this->session->set_userdata('last_page',current_url());
                  <li class="aminity-size aminity">
                        <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
                        <p>Bus Bus Bus Bus</p>
-                   </li>
-                 <li class="aminity-size aminity">
-                       <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" class="amenity-img">
-                       <p>Bus Bus Bus Bus</p>
-                   </li>
+                   </li> -->
                  
                 
                 </ul>
@@ -294,7 +313,7 @@ $this->session->set_userdata('last_page',current_url());
 			<div class="listing-share  margin-bottom-40 no-border">
 				<!--<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
 				<span>159 people bookmarked this place</span>-->
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/k85mRPqvMbE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="315" src="<?=$school['video'];?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
             
             <!-- Contact -->
@@ -423,56 +442,6 @@ for ($i=0; $i < count($days); $i++) {
 
 	</div>
     
-    <!--Achievements start-->
-    <?php
-$achievements=json_decode($school['achievements']);
-if($achievements!=''){
-	?>
-    <div class="container">
-		<div class="row">
-
-			<div class="col-md-12">
-				<h3 class="headline centered margin-bottom-45">
-					<strong class="headline-with-separator">Achievements</strong>
-					<!--<span>Discover Top-Rated Local Businesses</span>-->
-				</h3>
-			</div>
-
-			<div class="col-md-12">
-				<div class="simple-slick-carousel dots-nav">
-
-                    <!-- Listing Item -->
-         <?php
-					
-					
-					for ($i=0; $i < count($achievements); $i++) {
-					?>
-                    <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--30">
-                                    <img src="<?php echo base_url('assets')?>/images/listing-item-01.jpg" alt="">
-                                   
-                                </div>
-                                <p class="txt-algn-cntr"><b><?=$achievements[$i];?></b></p>
-                            </div>
-
-                        </a>
-                    </div>
-                <?php }?>
-                    
-                    
-                   
-                    
-
-                </div>
-                
-				
-			</div>
-           
-		</div>
-	</div>
-    <?php }?>
     <!--gallery start-->
     <div class="container">
 		<div class="row">
@@ -483,41 +452,28 @@ if($achievements!=''){
 					<!--<span>Discover Top-Rated Local Businesses</span>-->
 				</h3>
 			</div>
-
-			<div class="col-md-12">
-				<div class="simple-slick-carousel dots-nav">
-
-                    <!-- Listing Item -->
-         <?php
-					
-					$gallery=$this->common_model->select_results_info('listing_gallery',array('listing_id'=>$school['id']))->result_array();
-					foreach ($gallery as $gal){
-					?>
-                    <div class="carousel-item">
-                        <a href="" class="listing-item-container">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item p--0 ">
-                                    <img src="<?=base_url('uploads/listings/gallery/').$school['id'].'/'.$gal['id'].'.jpg';?>" alt="">
-                                   
-                                </div>
-                             
-                            </div>
-                        </a>
-                    </div>
-                   
-                   <?php }?>
-                    
-
-                </div>
-                
-				
-			</div>
             
             <div class="col-md-12">
 				<div class="simple-slick-carousel dots-nav">
-
+<?php
+          
+          $gallery=$this->common_model->select_results_info('listing_gallery',array('listing_id'=>$school['id']))->result_array();
+          foreach ($gallery as $gal){
+          ?>
                     <!-- Listing Item -->
                     <div class="carousel-item">
+                        <!-- <a href="" class=""> -->
+                            <div class="listing-item">
+                                <div class="col-md-12 listing-item ">
+                                    <img src="<?=base_url('uploads/listings/gallery/').$school['id'].'/'.$gal['id'].'.jpg';?>" alt="">
+                                 </div>
+                            </div>
+
+                       <!--  </a> -->
+                    </div>
+                    <?php }?>
+                    <!-- Listing Item -->
+                    <!-- <div class="carousel-item">
                         <a href="" class="">
                             <div class="listing-item">
                                 <div class="col-md-12 listing-item ">
@@ -526,10 +482,10 @@ if($achievements!=''){
                             </div>
 
                         </a>
-                    </div>
+                    </div> -->
                     
                     <!-- Listing Item -->
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
                         <a href="" class="">
                             <div class="listing-item">
                                 <div class="col-md-12 listing-item ">
@@ -538,10 +494,10 @@ if($achievements!=''){
                             </div>
 
                         </a>
-                    </div>
+                    </div> -->
                     
                     <!-- Listing Item -->
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
                         <a href="" class="">
                             <div class="listing-item">
                                 <div class="col-md-12 listing-item ">
@@ -550,10 +506,10 @@ if($achievements!=''){
                             </div>
 
                         </a>
-                    </div>
+                    </div> -->
                     
                     <!-- Listing Item -->
-                    <div class="carousel-item">
+                 <!--    <div class="carousel-item">
                         <a href="" class="">
                             <div class="listing-item">
                                 <div class="col-md-12 listing-item ">
@@ -562,19 +518,7 @@ if($achievements!=''){
                             </div>
 
                         </a>
-                    </div>
-                    
-                    <!-- Listing Item -->
-                    <div class="carousel-item">
-                        <a href="" class="">
-                            <div class="listing-item">
-                                <div class="col-md-12 listing-item ">
-                                    <img src="https://image.shutterstock.com/image-vector/contact-icons-communication-icon-buttons-260nw-1066514957.jpg" alt="">
-                                 </div>
-                            </div>
-
-                        </a>
-                    </div>
+                    </div> -->
                     
                     
                    
@@ -607,51 +551,35 @@ if($achievements!=''){
                  
                 
                 </ul>-->
-            
+       <?php
+$achievements=json_decode($school['achievements']);
+if($achievements!=''){
+  ?>       
             <!-- Achievement  Carousel -->
 	<div class="fullwidth-carousel-container margin-top-20 no-dots">
 		<div class="testimonial-carousel testimonials">
-
+<?php
+          for ($i=0; $i < count($achievements); $i++) {
+          ?>
 			<!-- Item -->
 			<div class="fw-carousel-review">
 				<div class="testimonial-box1">
                     <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
-					<div class="testimonial">Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation is on the runway heading towards a streamlined cloud solution user generated content.</div>
+					<div class="testimonial">
+            <?=$achievements[$i];?>     
+          </div>
 				</div>
 				<!--<div class="testimonial-author">
 					<img src="<?php echo base_url('assets')?>/images/happy-client-01.jpg" alt="">
 					<h4>Jennie Smith <span>User</span></h4>
 				</div>-->
 			</div>
-			
-			<!-- Item -->
-			<div class="fw-carousel-review">
-				<div class="testimonial-box1">
-                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
-					<div class="testimonial">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop.</div>
-				</div>
-				<!--<div class="testimonial-author">
-					<img src="<?php echo base_url('assets')?>/images/happy-client-02.jpg" alt="">
-					<h4>Tom Baker <span>User</span></h4>
-				</div>-->
-			</div>
-
-			<!-- Item -->
-			<div class="fw-carousel-review">
-				<div class="testimonial-box1">
-                    <img src="<?php echo base_url('assets')?>/images/achievement.png" width="60px" alt="">
-					<div class="testimonial">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view.</div>
-				</div>
-				<!--<div class="testimonial-author">
-					<img src="<?php echo base_url('assets')?>/images/happy-client-03.jpg" alt="">
-					<h4>Jack Paden <span>School</span></h4>
-				</div>-->
-			</div>
+			<?php }?>
 
 		</div>
 	</div>
 	<!-- Achievement Carousel / End -->
-                
+         <?php }?>       
 				
 			</div>
             

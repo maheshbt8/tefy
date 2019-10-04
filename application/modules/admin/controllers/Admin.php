@@ -33,7 +33,22 @@ class Admin extends MY_Controller
             $input_data['category']=json_encode($input['category']);
             $input_data['keywords']=$input['keywords'];
             $input_data['curriculum']=$input['curriculum'];
+            $input_data['school_type']=$input['school_type'];
+            $input_data['school_format']=$input['school_format'];
+            $input_data['hostels']=$input['hostels'];
             $input_data['class']=json_encode($input['class']);
+            $input_data['medium']=json_encode($input['medium']);
+            $input_data['founders_name']=$input['founders_name'];
+            $input_data['brand_name']=$input['brand_name'];
+            $input_data['no_of_branches']=$input['no_of_branches'];
+            $input_data['est_year']=$input['est_year'];
+            $input_data['est_branch_year']=$input['est_branch_year'];
+            $input_data['faculty_exp']=$input['faculty_exp'];
+            $input_data['alumni']=$input['alumni'];
+            $input_data['principal_number']=$input['principal_number'];
+            $input_data['telephone_number']=$input['telephone_number'];
+            $input_data['school_email']=$input['school_email'];
+            $input_data['admission_procedure']=$input['admission_procedure'];
             $input_data['landmark']=$input['landmark'];
             $input_data['latitude']=$input['latitude'];
             $input_data['longitude']=$input['longitude'];
@@ -46,12 +61,13 @@ class Admin extends MY_Controller
             $input_data['email']=$input['email'];
             $input_data['facebook']=$input['facebook'];
             $input_data['twitter']=$input['twiter'];
-            $input_data['google_plus']=$input['google_plus'];
+            $input_data['youtube']=$input['youtube'];
             $input_data['amenities']=json_encode($input['amenities']);
             $input_data['opening_hours']=json_encode(
                 array('opening_time'=>$input['opening_time'],'closing_time'=>$input['closing_time'])
             );
             $input_data['achievements']=json_encode($input['achievements']);
+            
             /*echo count($_FILES['gallery']['name']);
             echo "<pre>";
             print_r($_FILES);
@@ -62,9 +78,9 @@ class Admin extends MY_Controller
             die;*/
             $res=$this->common_model->insert_results_info('listings',$input_data);
             if($res>0){
-                $this->session->set_flashdata('success_message','Uploaded Successfully');
+                $this->session->set_flashdata('success_message','Added Successfully');
 
-    move_uploaded_file($_FILES["banner"]["tmp_name"], "uploads/listings/banners/". $res.'.jpg');
+    /*move_uploaded_file($_FILES["banner"]["tmp_name"], "uploads/listings/banners/". $res.'.jpg');*/
     move_uploaded_file($_FILES["thumb"]["tmp_name"], "uploads/listings/thumb/". $res.'.jpg');
 
     $directory = FCPATH . 'uploads/listings/gallery/';
@@ -80,8 +96,24 @@ class Admin extends MY_Controller
     $g_id=$this->common_model->insert_results_info('listing_gallery',$gallery_data);
     move_uploaded_file($_FILES["gallery"]["tmp_name"][$j], "uploads/listings/gallery/". $res.'/'.$g_id.'.jpg');
     }
+
+
+    $directory1 = FCPATH . 'uploads/listings/banners/';
+    $mypath1=FCPATH.'uploads/listings/banners/'.$res;
+    $file1 = file_get_contents(base_url('uploads/index.html'));
+    if(!is_dir($mypath1)){
+        mkdir($directory1 . '/' . $res, 0777);
+        write_file(FCPATH.'uploads/listings/banners/'. $res.'/index.html', $file1);
+    }
+    for($k=0;$k<count($_FILES['banner']['name']);$k++){
+    $gallery_data['listing_id']=$res;
+    $gallery_data['image']=$_FILES['banner']['name'][$k];
+    $g_id=$this->common_model->insert_results_info('listing_banner',$gallery_data);
+    move_uploaded_file($_FILES["banner"]["tmp_name"][$j], "uploads/listings/banners/". $res.'/'.$g_id.'.jpg');
+    }
+
             }else{
-                $this->session->set_flashdata('error_message','Not Uploaded');
+                $this->session->set_flashdata('error_message','Not Added');
             }
             redirect('admin/add_listing');
         }
@@ -112,8 +144,9 @@ class Admin extends MY_Controller
             $input_data['email']=$input['email'];
             $input_data['facebook']=$input['facebook'];
             $input_data['twitter']=$input['twiter'];
-            $input_data['google_plus']=$input['google_plus'];
+            $input_data['youtube']=$input['youtube'];
             $input_data['amenities']=json_encode($input['amenities']);
+            $input_data['bus_routes']=$input['bus_routes'];
             $input_data['opening_hours']=json_encode(
                 array('opening_time'=>$input['opening_time'],'closing_time'=>$input['closing_time'])
             );

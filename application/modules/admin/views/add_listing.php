@@ -101,13 +101,13 @@
 							<div class="col-md-12">
                                 <h5>Format Status</h5>
                                 <div class="col-md-3">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="format-status" value="Boys" required="">Only Day Scholars</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="day_scholars" required="">Only Day Scholars</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="format-status" value="Girls" required="">Only Hostel</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="hostel" required="">Only Hostel</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="format-status" value="Co-Education" required="">Both</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="both" required="">Both</label>
                                 </div>
                                 
 							</div>
@@ -120,13 +120,13 @@
 							<div class="col-md-12">
                                 <h5>Hostel facility</h5>
                                 <div class="col-md-3">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostel-faciility" value="Boys" required="">Only for Boys</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Boys" required="">Only for Boys</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostel-faciility" value="Girls" required="">Only for Girls</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Girls" required="">Only for Girls</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostel-faciility" value="Co-Education" required="">For all</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="For Boys & Girls" required="">For Boys & Girls</label>
                                 </div>
                                 
 							</div>
@@ -153,15 +153,14 @@
                             
 							<!--  -->
 							<div class="col-md-6">
-                                <h5>Classes</h5>
-                                <select class="chosen-select-no-single form-control selectric"  name="class[]" required="" multiple="">
-									
-									<option value="">English</option>
-									<option value="">Hindi</option>
-									<option value="">Telugu</option>
-									<option value="">Urdu/ Arabic</option>
-									
-									
+                                <h5>Medium</h5>
+                                <select class="chosen-select-no-single form-control selectric"  name="medium[]" required="" multiple="">
+                                	<option label="blank" disabled="">Select Medium</option>
+									<?php $res=$this->common_model->select_results_info('medium',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
+									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
+								<?php }?>									
 								</select>
                              
                           
@@ -186,39 +185,39 @@
 						<div class="row with-forms">
 							<div class="col-md-6">
 								<h5>Founders Name </h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Brand Name </h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
 							</div>
 					
 							<div class="col-md-6">
 								<h5>Number of Branches </h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of brand</h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="est_year" placeholder="" required="" autocomplete="off" />
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of the specific branch</h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="est_branch_year" placeholder="" required="" autocomplete="off" />
 							</div>
 						
                    
 							<div class="col-md-6">
 								<h5>Average Expirience of Faculty</h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="faculty_exp" placeholder="" required="" autocomplete="off" />
 							</div>
 						
                         
 							<div class="col-md-6">
 								<h5>Any Notable Alumni</h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="alumni" placeholder="" required="" autocomplete="off" />
 							</div>
 						</div>
                         
@@ -240,16 +239,16 @@
 						<div class="row with-forms">
 							<div class="col-md-4">
 								<h5>Councellor/Principal number </h5>
-								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="" name="principal_number" placeholder="" required="" autocomplete="off" />
 							</div>
                             <div class="col-md-4">
                                     <h5>Telephone Number </h5>
-                                    <input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+                                    <input class="search-field" type="text" value="" name="telephone_number" placeholder="" required="" autocomplete="off" />
                                 </div>
 
 							<div class="col-md-4">
                                     <h5>Email </h5>
-                                    <input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+                                    <input class="search-field" type="text" value="" name="school_email" placeholder="" required="" autocomplete="off" />
                                 </div>
 
 							
@@ -273,7 +272,7 @@
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-							
+							<textarea type="text" class="form-control" name="admission_procedure" value=""></textarea>
 							</div>
 						</div>
                         
@@ -332,7 +331,7 @@
                             </div>
                             <div class="col-md-4">
                                 <h5>Banner Image </h5><p>(select banner image for school page)</p>
-                                <input type="file" class="form-control-file" name="banner" required="" multiple>
+                                <input type="file" class="form-control-file" name="banner[]" required="" multiple>
                             </div>
                             <div class="col-md-4">
                                 <h5>Gallery Images </h5><p>(select multiple Images)</p>
@@ -342,7 +341,7 @@
                         
                         <div class="row with-forms">
 
-							<div class="col-md-12 ">
+							<div class="col-md-12">
                                 <h5>Embed video Link(optional)</h5>
                                 <input type="url" class="form-control-file" placeholder="Eg:https://www.tefy.com/embed/yfettefy" name="video">
                             </div>
@@ -433,8 +432,8 @@
 
 							<!-- Email Address -->
 							<div class="col-md-4">
-								<h5 class="gplus-input"><i class="fa fa-google-plus"></i> Google Plus <span>(optional)</span></h5>
-								<input type="text" placeholder="https://plus.google.com/" name="google_plus">
+								<h5 class="gplus-input"><i class="fa fa-youtube"></i> Youtube <span>(optional)</span></h5>
+								<input type="text" placeholder="https://youtube.com/" name="youtube">
 							</div>
 
 						</div>
@@ -454,7 +453,14 @@
 					
 						</div>
 						<!-- Checkboxes / End -->
+<div class="row with-forms">
 
+							<div class="col-md-12">
+                                <h5>Bus Routes(optional)</h5>
+                                <input type="text" class="form-control-file" placeholder="Route1, Route2, Route3...." name="bus_routes">
+                            </div>
+                            
+                        </div>
 					</div>
 					<!-- Section / End -->
 
@@ -537,8 +543,8 @@ for ($i=0; $i < count($days); $i++) {
 											<td>
 												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
 												<div class="fm-input ">
-                                                    <input type="text" placeholder="Achievement Title" name="achievements[]" /></div>
-												
+                                                    <input type="text" placeholder="Achievement Title" name="achievements[]" />
+                                                </div>
 												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
 											</td>
 										</tr>
@@ -681,7 +687,12 @@ for ($i=0; $i < count($days); $i++) {
 
 
 
+<script type="text/javascript" src="<?php echo base_url('assets')?>/scripts/ckeditor/ckeditor.js"></script> 
 
+
+<script>
+    CKEDITOR.replace( 'admission_procedure' );
+</script>
 
 
 
