@@ -12,7 +12,7 @@
 
 				<div id="add-listing">
 
-					<!-- Section -->
+					<!--Basic Info Section -->
 					<div class="add-listing-section">
 
 						<!-- Headline -->
@@ -30,7 +30,7 @@
 <!-- School Code -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-								<h5>School Code <i class="tip" data-tip-content="Name of your School"></i></h5>
+								<h5>School Registration Code <i class="tip" data-tip-content="Name of your School"></i></h5>
 								<input class="search-field" type="text" value="" name="school_code" required="" autocomplete="off" />
 							</div>
 						</div>
@@ -58,19 +58,7 @@
 						</div>
 						<!-- Row / End -->
                         
-                        <!-- Row -->
-                        <div class="row with-forms">
-
-							<!-- Vision -->
-							<div class="col-md-12">
-                                <h5>Curriculum</h5>
-                            <div class="col-md-2">
-								<label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Boys" required="">Boys</label>
-								<label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Girls" required="">Girls</label>
-								<label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Co-Education" required="">co-education</label>
-                            </div>        
-							</div>
-						</div>
+                        
 						<div class="row with-forms">
 
 							<!-- Vision -->
@@ -88,10 +76,67 @@
 						<!-- Row / End -->
                         
                         <!-- Row -->
-						<div class="row with-forms">
+                        <div class="row with-forms">
 
 							<!-- Vision -->
 							<div class="col-md-12">
+                                <h5>Co-Education Status</h5>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Boys" required="">Boys</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Girls" required="">Girls</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Co-Education" required="">Co-Education</label>
+                                </div>
+                                
+							</div>
+						</div>
+                        
+                        <!-- Row -->
+                        <div class="row with-forms">
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Format Status</h5>
+                                <div class="col-md-3">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="format-status" value="Boys" required="">Only Day Scholars</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="format-status" value="Girls" required="">Only Hostel</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="format-status" value="Co-Education" required="">Both</label>
+                                </div>
+                                
+							</div>
+						</div>
+                        
+                        <!-- Row -->
+                        <div class="row with-forms">
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Hostel facility</h5>
+                                <div class="col-md-3">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostel-faciility" value="Boys" required="">Only for Boys</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostel-faciility" value="Girls" required="">Only for Girls</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostel-faciility" value="Co-Education" required="">For all</label>
+                                </div>
+                                
+							</div>
+						</div>
+                        
+                        <!-- Row -->
+						<div class="row with-forms">
+
+							<!--  -->
+							<div class="col-md-6">
                                 <h5>Classes</h5>
                                 <select class="chosen-select-no-single form-control selectric"  name="class[]" required="" multiple="">
 									<option label="blank" disabled="">Select Class</option>	
@@ -105,14 +150,140 @@
                              
                           
 							</div>
+                            
+							<!--  -->
+							<div class="col-md-6">
+                                <h5>Classes</h5>
+                                <select class="chosen-select-no-single form-control selectric"  name="class[]" required="" multiple="">
+									
+									<option value="">English</option>
+									<option value="">Hindi</option>
+									<option value="">Telugu</option>
+									<option value="">Urdu/ Arabic</option>
+									
+									
+								</select>
+                             
+                          
+							</div>
 						</div>
 						<!-- Row / End -->
                         
                         
 
 					</div>
-					<!-- Section / End -->
+					<!-- Basic Info Section / End -->
 
+                    <!-- Addtional Information Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> Additional Informations</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-6">
+								<h5>Founders Name </h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+							</div>
+						
+							<div class="col-md-6">
+								<h5>Brand Name </h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="Brand name" required="" autocomplete="off" />
+							</div>
+					
+							<div class="col-md-6">
+								<h5>Number of Branches </h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="Brand name" required="" autocomplete="off" />
+							</div>
+						
+							<div class="col-md-6">
+								<h5>Year of Establishment of brand</h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+							</div>
+						
+							<div class="col-md-6">
+								<h5>Year of Establishment of the specific branch</h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+							</div>
+						
+                   
+							<div class="col-md-6">
+								<h5>Average Expirience of Faculty</h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+							</div>
+						
+                        
+							<div class="col-md-6">
+								<h5>Any Notable Alumni</h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+							</div>
+						</div>
+                        
+
+                        
+
+					</div>
+					<!--Addtional Information Section / End -->
+                    
+                       <!-- Addtional Information Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> Contact Details of School(for our use)</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-4">
+								<h5>Councellor/Principal number </h5>
+								<input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+							</div>
+                            <div class="col-md-4">
+                                    <h5>Telephone Number </h5>
+                                    <input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+                                </div>
+
+							<div class="col-md-4">
+                                    <h5>Email </h5>
+                                    <input class="search-field" type="text" value="" name="school_name" placeholder="" required="" autocomplete="off" />
+                                </div>
+
+							
+						</div>
+                        
+
+                        
+
+					</div>
+					<!--Addtional Information Section / End -->
+                    
+                    
+                     <!-- Admission Procedure Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i>  Admission Procedure</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-12">
+							
+							</div>
+						</div>
+                        
+
+                        
+
+					</div>
+					<!-- Admission Procedure Section / End -->
+                    
+                    
 					<!-- Section -->
 					<div class="add-listing-section margin-top-45">
 
@@ -161,7 +332,7 @@
                             </div>
                             <div class="col-md-4">
                                 <h5>Banner Image </h5><p>(select banner image for school page)</p>
-                                <input type="file" class="form-control-file" name="banner" required="">
+                                <input type="file" class="form-control-file" name="banner" required="" multiple>
                             </div>
                             <div class="col-md-4">
                                 <h5>Gallery Images </h5><p>(select multiple Images)</p>
@@ -383,6 +554,44 @@ for ($i=0; $i < count($days); $i++) {
 					</div>
 					<!-- Section / End -->
 
+                     <!-- Section -->
+					<div class="add-listing-section margin-top-45">
+						
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-book-open"></i> Pricing</h3>
+							<!-- Switcher -->
+							<label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+						</div>
+
+						<!-- Switcher ON-OFF Content -->
+						<div class="switcher-content">
+
+							<div class="row">
+								<div class="col-md-12">
+									<table id="pricing-list-container-fee">
+										<tr class="pricing-list-item pattern">
+											<td>
+												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
+												<div class="fm-input pricing-name"><input type="text" placeholder="Title" /></div>
+												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Description" /></div>
+												<div class="fm-input pricing-price"><input type="text" placeholder="Price" data-unit="INR" /></div>
+												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
+											</td>
+										</tr>
+									</table>
+									<a href="#" class="button add-pricing-list-item-fee">Add Item</a>
+									<a href="#" class="button add-pricing-submenu">Add Category</a>
+								</div>
+							</div>
+
+						</div>
+						<!-- Switcher ON-OFF Content / End -->
+
+					</div>
+					<!-- Section / End -->
+                    
+                    
 					<!-- <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a> -->
 					<button type="submit" class="button preview">Submit</button>
 
