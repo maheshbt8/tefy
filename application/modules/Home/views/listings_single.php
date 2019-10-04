@@ -48,7 +48,7 @@ $classes=json_decode($school['class']);
 					<span>
 						<a href="#listing-location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
-						<?=$school['address'];?>
+						<?=$school['landmark'];?>
 						</a>
 					</span>
 					<div class="star-rating" data-rating="<?=$rating;?>">
@@ -100,7 +100,7 @@ $classes=json_decode($school['class']);
 						<li><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['email'];?>
 						</li>
 						<li><i class="sl sl-icon-globe"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['website'];?></li>
-                        <li><i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp; &nbsp;#401, 4th Floor, New Mark House, opposite Medicover Hospital, HITEC City, Hyderabad, Telangana 500081&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
+                        <li><i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['address'];?>&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
 					</ul>
 					<div class="clearfix"></div>
 

@@ -14,7 +14,46 @@
 
 
 
-
+<script type="text/javascript">
+    function newMenuItem() {
+            var newElem = $('tr.pricing-list-item.pattern.school_pr').first().clone();
+            newElem.find('input').val('');
+            newElem.appendTo('table#pricing-list-container1');
+        }
+        if ($("table#pricing-list-container1").is('*')) {
+            $('.add-pricing-list-item1').on('click', function(e) {
+                e.preventDefault();
+                newMenuItem();
+            });
+            $(document).on("click", "#pricing-list-container1 .delete", function(e) {
+                e.preventDefault();
+                $(this).parent().parent().remove();
+            });
+            $('.add-pricing-submenu1').on('click', function(e) {
+                e.preventDefault();
+                var newElem = $('' +
+                    '<tr class="pricing-list-item pricing-submenu">' +
+                    '<td>' +
+                    '<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>' +
+                    '<div class="fm-input"><input type="text" placeholder="Category Title" /></div>' +
+                    '<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>' +
+                    '</td>' +
+                    '</tr>');
+                newElem.appendTo('table#pricing-list-container1');
+            });
+            $('table#pricing-list-container1 tbody').sortable({
+                forcePlaceholderSize: true,
+                forceHelperSize: false,
+                placeholder: 'sortableHelper',
+                zIndex: 999990,
+                opacity: 0.6,
+                tolerance: "pointer",
+                start: function(e, ui) {
+                    ui.placeholder.height(ui.helper.outerHeight());
+                }
+            });
+        }
+</script>
 
 
 
