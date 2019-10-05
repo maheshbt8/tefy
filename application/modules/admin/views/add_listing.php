@@ -307,6 +307,11 @@
 									<h5>Address</h5>
 									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""></textarea>
 								</div>
+
+								<div class="col-md-12">
+                                <h5>Address URL</h5>
+                                <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url">
+                            	</div>
 							</div>
 							<!-- Row / End -->
 
@@ -444,11 +449,11 @@
 						<h5 class="margin-top-30 margin-bottom-10">Amenities <span>(optional)</span></h5>
 						<div class="checkboxes in-row margin-bottom-20">
 					<?php $res=$this->common_model->select_results_info('facilities',array('row_status'=>1),"'name','ASC'")->result_array();
-                                  foreach ($res as $row) {
+                                  $a=0;foreach ($res as $row) {
                                   ?>
-							<input id="check-a" type="checkbox" name="amenities[]" value="<?=$row['id'];?>">
-							<label for="check-a"><?=$row['name'];?></label>
-<?php }?>
+							<input id="check<?=$a;?>" type="checkbox" name="amenities[]" value="<?=$row['id'];?>">
+							<label for="check<?=$a;?>"><?=$row['name'];?></label>
+<?php $a++;}?>
 							
 					
 						</div>
@@ -459,7 +464,10 @@
                                 <h5>Bus Routes(optional)</h5>
                                 <input type="text" class="form-control-file" placeholder="Route1, Route2, Route3...." name="bus_routes">
                             </div>
-                            
+                            <div class="col-md-12">
+                                <h5>Sports & Extra-Curricuar Activities(optional)</h5>
+                                <input type="text" class="form-control-file" placeholder="Cricket, Jam Section...." name="sports">
+                            </div>
                         </div>
 					</div>
 					<!-- Section / End -->
@@ -559,8 +567,7 @@ for ($i=0; $i < count($days); $i++) {
 
 					</div>
 					<!-- Section / End -->
-
-                     <!-- Section -->
+<!-- Section -->
 					<div class="add-listing-section margin-top-45">
 						
 						<!-- Headline -->
@@ -575,19 +582,19 @@ for ($i=0; $i < count($days); $i++) {
 
 							<div class="row">
 								<div class="col-md-12">
-									<table id="pricing-list-container-fee">
-										<tr class="pricing-list-item pattern">
+									<table id="pricing-list-container1">
+										<tr class="pricing-list-item pattern school_pr">
 											<td>
 												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-												<div class="fm-input pricing-name"><input type="text" placeholder="Title" /></div>
-												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Description" /></div>
-												<div class="fm-input pricing-price"><input type="text" placeholder="Price" data-unit="INR" /></div>
+												<div class="fm-input pricing-name"><input type="text" placeholder="Class Name" name="class_name[]" /></div>
+												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Admission Fee" data-unit="INR" name="admission_fee[]" /></div>
+												<div class="fm-input pricing-price"><input type="text" placeholder="Tution Fee" data-unit="INR" name="tution_fee[]" /></div>
 												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
 											</td>
 										</tr>
 									</table>
-									<a href="#" class="button add-pricing-list-item-fee">Add Item</a>
-									<a href="#" class="button add-pricing-submenu">Add Category</a>
+									<a href="#" class="button add-pricing-list-item1">Add Item</a>
+									
 								</div>
 							</div>
 

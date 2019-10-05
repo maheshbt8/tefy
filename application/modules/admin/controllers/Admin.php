@@ -29,7 +29,6 @@ class Admin extends MY_Controller
             
             $input_data['school_name']=$input['school_name'];
             $input_data['school_code']=$input['school_code'];
-            $input_data['school_type']=$input['school_type'];
             $input_data['category']=json_encode($input['category']);
             $input_data['keywords']=$input['keywords'];
             $input_data['curriculum']=$input['curriculum'];
@@ -53,6 +52,7 @@ class Admin extends MY_Controller
             $input_data['latitude']=$input['latitude'];
             $input_data['longitude']=$input['longitude'];
             $input_data['address']=$input['address'];
+            $input_data['address_url']=$input['address_url'];
             $input_data['video']=$input['video'];
             $input_data['vision']=$input['vision'];
             $input_data['description']=$input['description'];
@@ -63,11 +63,15 @@ class Admin extends MY_Controller
             $input_data['twitter']=$input['twiter'];
             $input_data['youtube']=$input['youtube'];
             $input_data['amenities']=json_encode($input['amenities']);
+            $input_data['bus_routes']=$input['bus_routes'];
+            $input_data['sports']=$input['sports'];
             $input_data['opening_hours']=json_encode(
                 array('opening_time'=>$input['opening_time'],'closing_time'=>$input['closing_time'])
             );
             $input_data['achievements']=json_encode($input['achievements']);
-            
+            $input_data['class_name']=json_encode($input['class_name']);
+            $input_data['admission_fee']=json_encode($input['admission_fee']);
+            $input_data['tution_fee']=json_encode($input['tution_fee']);
             /*echo count($_FILES['gallery']['name']);
             echo "<pre>";
             print_r($_FILES);
@@ -109,7 +113,7 @@ class Admin extends MY_Controller
     $gallery_data['listing_id']=$res;
     $gallery_data['image']=$_FILES['banner']['name'][$k];
     $g_id=$this->common_model->insert_results_info('listing_banner',$gallery_data);
-    move_uploaded_file($_FILES["banner"]["tmp_name"][$j], "uploads/listings/banners/". $res.'/'.$g_id.'.jpg');
+    move_uploaded_file($_FILES["banner"]["tmp_name"][$k], "uploads/listings/banners/". $res.'/'.$g_id.'.jpg');
     }
 
             }else{
@@ -147,10 +151,14 @@ class Admin extends MY_Controller
             $input_data['youtube']=$input['youtube'];
             $input_data['amenities']=json_encode($input['amenities']);
             $input_data['bus_routes']=$input['bus_routes'];
+            $input_data['sports']=$input['sports'];
             $input_data['opening_hours']=json_encode(
                 array('opening_time'=>$input['opening_time'],'closing_time'=>$input['closing_time'])
             );
             $input_data['achievements']=json_encode($input['achievements']);
+            $input_data['class_name']=json_encode($input['class_name']);
+            $input_data['admission_fee']=json_encode($input['admission_fee']);
+            $input_data['tution_fee']=json_encode($input['tution_fee']);
             $res=$this->common_model->update_results_info('listings',array('id'=>$listing_id),$input_data);
             if($res>0){
                 $this->session->set_flashdata('success_message','Uploaded Successfully');
