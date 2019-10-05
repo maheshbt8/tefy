@@ -1123,7 +1123,7 @@ $(document).ready(function() {
     // Configure/customize these variables.
     var showChar = 500;  // How many characters are shown by default
     var showChar1 = 100; 
-    var showChar2 = 30; 
+    var showChar2 = 50; 
     var ellipsestext = "...";
     var moretext = "Read more";
     var lesstext = "Read less";
@@ -1165,7 +1165,7 @@ $(document).ready(function() {
             var c = content.substr(0, showChar2);
             var h = content.substr(showChar2, content.length - showChar2);
  
-            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink" style="color:#FFC600;">' + moretext + '</a></span>';
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="" style="color:#FFC600;">' + moretext + '</a></span>';
  
             $(this).html(html);
         }
