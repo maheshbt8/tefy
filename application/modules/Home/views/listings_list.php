@@ -108,7 +108,11 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 									<div class="star-rating" data-rating="<?=$rating;?>">
 										<div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
 									</div>
-									<div class="padding-top-5"><span><b>Vision</b>: <?=$row['vision'];?></span> </div>
+									<div class="padding-top-5">
+                                        <span><b>Vision :</b>
+                                            <span class="more2"><?=$row['vision'];?></span>
+                                        </span> 
+                                    </div>
 								</div>
 
 								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>
@@ -151,7 +155,7 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 				<!-- Widget -->
 				<div class="widget margin-bottom-40">
 					<h3 class="margin-top-0 margin-bottom-30">Filters</h3>
-<form action="<?=base_url('listings-list');?>" methor="get">
+<form action="<?=base_url('listings-list');?>" method="get">
 					<!-- Row -->
 					<div class="row with-forms">
 						<!-- Cities -->
