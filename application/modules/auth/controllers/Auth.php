@@ -20,19 +20,19 @@ class Auth extends MX_Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			redirect(base_url('auth/login'), 'refresh');
 		}
 		elseif ($this->ion_auth->is_admin())
 		{
-		    redirect('admin/index', 'refresh');
+		    redirect(base_url('admin/index'), 'refresh');
 		}
 		elseif ($this->ion_auth->is_student())
 		{
-		    redirect('student/index', 'refresh');
+		    redirect(base_url('student/index'), 'refresh');
 		}
 		elseif ($this->ion_auth->is_school())
 		{
-		    redirect('school/index', 'refresh');
+		    redirect(base_url('school/index'), 'refresh');
 		}
 		else
 		{
@@ -45,7 +45,6 @@ class Auth extends MX_Controller {
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
-
 			$this->_render_page('auth/index', $this->data);
 		}
 	}
@@ -112,7 +111,7 @@ class Auth extends MX_Controller {
 
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		redirect(base_url('auth/login'), 'refresh');
 	}
 
 	// change password
@@ -422,10 +421,10 @@ class Auth extends MX_Controller {
     {
         $this->data['title'] = $this->lang->line('create_user_heading');
 
-        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+        /*if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
         {
             redirect('auth', 'refresh');
-        }
+        }*/
 
         $tables = $this->config->item('tables','ion_auth');
         $identity_column = $this->config->item('identity','ion_auth');

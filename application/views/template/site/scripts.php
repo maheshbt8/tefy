@@ -87,3 +87,75 @@ strings: ["Schools"," Schools"," Schools"],
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ-5bkYW9Wb5k2JLBoaas0HSx7ZBkMwAM&libraries=places&callback=initMap"
         async defer></script>
+
+
+
+
+
+
+    <script type="text/javascript">
+    function add_bookmark(listing_id){ 
+  $.ajax({
+            url: '<?php echo base_url();?>home/add_bookmark/' + listing_id ,
+            success: function(response)
+            {
+              //alert(response);
+                /*jQuery('#plans_list').html(response);*/
+            }
+    });
+    }
+  </script>
+ <!--  <script type="text/javascript">
+     $(document).ready(function(){
+        return get_reviews();
+     });
+  </script> -->
+  <script type="text/javascript">
+ var rowno=0;
+ get_reviews(rowno);
+
+  $('#pagination_data').on('click','a',function(e){
+       e.preventDefault(); 
+       var pageno = $(this).attr('data-ci-pagination-page');
+       get_reviews(pageno);
+     });
+
+   function get_reviews(rowno){
+    var school_id=$('#single_school_id').val();
+       $.ajax({
+            url: '<?php echo base_url();?>home/get_reviews/' + rowno ,
+            data: {listing_id : school_id},
+            type: 'get',
+         dataType: 'json',
+            success: function(response)
+            {
+              //alert(response.pagination);
+              $('#pagination_data').html(response.pagination);
+              $('#review_list').html(response.result);
+            //createTable(response.result,response.row);
+                /*jQuery('#plans_list').html(response);*/
+            }
+    });
+     }
+      // Create table list
+     function createTable(result,sno){
+       sno = Number(sno);
+       $('#review_list').empty();
+       for(index in result){
+          var id = result[index].id;
+          var review = result[index].review;
+          var rating = result[index].rating;
+          sno+=1;
+
+          /*var tr = "<tr>";
+          tr += "<td>"+ sno +"</td>";
+          tr += "<td>"+ title +"</a></td>";
+          tr += "<td>"+ content +"</td>";
+          tr += "</tr>";*/
+          var tr='<li><div class="avatar"><img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /><div class="comment-by">John Doe<span class="date">May 2019</span></div></div><div class="comment-content"><div class="arrow-comment"></div><p class="more1">'+review+'.</p><div class="star-rating" data-rating="5"></div></div></li>';
+          $('#review_list').append(tr);
+ 
+        }
+      }
+  
+</script>

@@ -88,12 +88,27 @@ class Home extends MY_Controller
         /*$this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),'id DESC')->result_array();*/
         $this->_render_page($this->template, $this->data);
     }
-    public function listings_single($id){
-        $id=base64_decode(base64_decode($id));
+    public function listings_single($list_id){
+        $id=base64_decode(base64_decode($list_id));
         $this->data['title'] = 'listings-single';
         $this->data['content'] = 'listings_single';
         $this->data['active_menu'] = 'listings_single';
         $this->data['school'] = $this->common_model->select_results_info('listings',array('id'=>$id))->row_array();
+        $this->data['list_enc_id']=$list_id;
+        if($this->input->post()){
+            $input=$this->input->post();
+            $input_data['rating']=$input['rating'];
+            $input_data['review']=$input['review'];
+            $input_data['listing_id']=$id;
+            $input_data['user_id']=$this->session->userdata('user_id');
+            $res=$this->common_model->insert_results_info('ratings',$input_data);
+            if($res>0){
+                $this->session->set_flashdata('rating_message','Successfully Completed.');
+            }else{
+                $this->session->set_flashdata('rating_message','Not Completed.');
+            }
+            redirect($this->session->userdata('last_page'));
+        }
         $this->_render_page($this->template, $this->data);
     }
     
@@ -225,5 +240,116 @@ class Home extends MY_Controller
         $this->data['school'] = $this->common_model->select_results_info('listings',array('id'=>$id))->row_array();
         $this->_render_page($this->template, $this->data);*/
     }
+    public function add_bookmark($listing_id)
+    {
+        if ($this->ion_auth->logged_in()){
+            $count=$this->common_model->select_results_info('bookmarks',array('listing_id'=>$listing_id,'user_id'=>$this->session->userdata('user_id')));
+            if($count->num_rows()==1){
+                $list=$count->row_array();
+                if($list['row_status']==1){
+                    $input_data['row_status']=2;    
+                }elseif($list['row_status']==2){
+                    $input_data['row_status']=1;
+                }
+                
+                $this->common_model->update_results_info('bookmarks',array('id'=>$list['id']),$input_data);
+            }else{
+                $input_data['user_id']=$this->session->userdata('user_id');
+                $input_data['listing_id']=$listing_id;
+                $this->common_model->insert_results_info('bookmarks',$input_data);
+            }
+            return true;
+            //echo $listing_id;
+        }
+    }
+    public function get_reviews($rowno=0){
+//echo $rowno;echo $list_enc_id;
+    // Row per page
+    $rowperpage = 1;
+    $listing_id=$_GET['listing_id'];
+    // Row position
+    if($rowno != 0){
+      $rowno = ($rowno-1) * $rowperpage;
+    }
+ 
+    // All records count
+    $where=array('listing_id'=>$listing_id,'row_status'=>1);
+    $allcount = $this->common_model->count_records('ratings',$where);
+
+    // Get records
+    $users_record = $this->common_model->select_results_info('ratings',$where ,'id DESC',$rowperpage,$rowno)->result_array();
+ 
+    // Pagination Configuration
+    $config['base_url'] = base_url().'home/get_reviews/';
+    $config['use_page_numbers'] = TRUE;
+    $config['total_rows'] = $allcount;
+    $config['per_page'] = $rowperpage;
+    $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagination-container margin-top-30"><nav class="pagination"><ul>';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+    // Initialize
+    $this->pagination->initialize($config);
+
+    // Initialize $data Array
+    $data['pagination'] = $this->pagination->create_links();
+    $resul='';
+    foreach ($users_record as $res) {
+        $resul .= '<li><div class="avatar"><img src="'.base_url().$this->common_model->get_image_url('users',$res['user_id']).'" alt="" /><div class="comment-by">'.ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$res['user_id']),'username')).'<span class="date">'.date('M Y',strtotime($res['created_at'])).'</span></div></div><div class="comment-content"><div class="arrow-comment"></div><p class="more1">'.$res['review'].'.</p><div class="star-rating" data-rating="'.$res['rating'].'"></div></div></li>';
+    }
+    /*$data['result'] = $users_record;*/
+    $data['result'] = $resul;
+    $data['row'] = $rowno;
+
+    echo json_encode($data);
+ 
+  }
+    public function loadRecord($rowno=0){
+
+    // Row per page
+    $rowperpage = 5;
+
+    // Row position
+    if($rowno != 0){
+      $rowno = ($rowno-1) * $rowperpage;
+    }
+ 
+    // All records count
+    $where=array('row_status'=>1);
+    $allcount = $this->common_model->count_records('ratings',$where);
+
+    // Get records
+    $users_record = $this->common_model->select_results_info('ratings',$where ,'id DESC',$rowperpage,$rowno)->result_array();
+    // Pagination Configuration
+    $config['base_url'] = base_url().'home/loadRecord';
+    $config['use_page_numbers'] = TRUE;
+    $config['total_rows'] = $allcount;
+    $config['per_page'] = $rowperpage;
+
+    // Initialize
+    $this->pagination->initialize($config);
+
+    // Initialize $data Array
+    $data['pagination'] = $this->pagination->create_links();
+    $data['result'] = $users_record;
+    $data['row'] = $rowno;
+
+    echo json_encode($data);
+ 
+  }
 }
 

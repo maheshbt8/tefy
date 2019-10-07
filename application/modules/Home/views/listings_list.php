@@ -84,6 +84,7 @@ for ($i=0; $i < count($days); $i++) {
 	}
 	$where['row_status']=1;
 $where['listing_id']=$row['id'];
+$where['row_status']=1;
 $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 ?>
 				<!-- Listing Item -->
@@ -105,12 +106,12 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 									<h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
 									<span><?=$row['address'];?></span>
 									<div class="star-rating" data-rating="<?=$rating;?>">
-										<div class="rating-counter">(12 reviews)</div>
+										<div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
 									</div>
 									<div class="padding-top-5"><span><b>Vision</b>: <?=$row['vision'];?></span> </div>
 								</div>
 
-								<span class="like-icon"></span>
+								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>
 							</div>
 						</a>
 					</div>

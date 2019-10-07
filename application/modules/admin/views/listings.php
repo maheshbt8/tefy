@@ -10,6 +10,12 @@ $this->session->set_userdata('last_page',current_url());
 <?php
 $i=0;
 foreach ($schools as $row) {
+	$where['listing_id']=$row['id'];
+	$where['row_status']=1;
+$rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
+if($rating==''){
+  $rating=0;
+}
 ?>
 						<li><a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" target="_blank">
 							<div class="list-box-listing">
@@ -18,8 +24,8 @@ foreach ($schools as $row) {
 									<div class="inner">
 										<h3><?=$row['school_name'];?></h3>
 										<span><?=$row['address'];?></span>
-										<div class="star-rating" data-rating="3.5">
-											<div class="rating-counter">(12 reviews)</div>
+										<div class="star-rating" data-rating="<?=$rating;?>">
+											<div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
 										</div>
 									</div>
 								</div>

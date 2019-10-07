@@ -2,12 +2,9 @@
 
 	<div class="dashboard-nav">
 		<div class="dashboard-nav-inner">
-<?php
-						if ($this->ion_auth->is_admin())
-							{
-						?>
+
 			<ul data-submenu-title="Main">
-				<li class="active"><a href="<?=base_url('admin');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+				<li class="active"><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 				<li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>
 				<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
 				<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> Wallet</a></li>
@@ -35,25 +32,9 @@
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
 				<li><a href="<?php echo SITEURL2.'/admin/add_listing';?>"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
 			</ul>	
-<?php }elseif ($this->ion_auth->is_student()){
-	?>
-	<ul data-submenu-title="Main">
-		<li class="active"><a href="<?=base_url('student');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-		<!-- <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>
-		<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
-		<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> Wallet</a></li> -->
-	</ul>
-<?php }?>
+
 			<ul data-submenu-title="Account">
-<?php
-	if ($this->ion_auth->is_admin())
-	{
-		?>
-		<li><a href="<?=base_url('admin/profile');?>"><i class="sl sl-icon-user"></i> My Profile</a></li>
-	<?php }elseif ($this->ion_auth->is_student()){?>
-		<li><a href="<?=base_url('student/profile');?>"><i class="sl sl-icon-user"></i> My Profile</a></li>
-	<?php }
-	?>
+				<li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
 				<li><a href="<?php echo SITEURL2.'/auth/logout'?>"><i class="sl sl-icon-power"></i> Logout</a></li>
 			</ul>
 			

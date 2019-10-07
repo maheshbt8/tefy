@@ -203,6 +203,13 @@ $rating=$rating/$count;
 return $rating;
     }
     
-    
+    function get_image_url($type = '', $id = '') {
+         if (file_exists('uploads/' . $type . '/' . $id . '.jpg')){
+            $image_url ='uploads/' . $type . '/' . $id . '.jpg';
+        }else{
+            $image_url ='uploads/users/user.jpg';
+        }
+        return $image_url;
+    }
     
 }

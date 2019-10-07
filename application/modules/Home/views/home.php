@@ -104,6 +104,7 @@ for ($i=0; $i < count($days); $i++) {
 	}
 	$where['row_status']=1;
 $where['listing_id']=$row['id'];
+$where['row_status']=1;
 $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 ?>
                     <div class="carousel-item">
@@ -121,9 +122,11 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
                                         <div class="padding-top-5"><span><b>Classes</b>: <?=implode(', ',$class);?></span> </div>
                                         <div class="padding-top-5 text-size"><span><b>Vision</b>: <?=$row['vision'];?></span> </div>
                                     </div>
-                                    <span class="like-icon"></span>
+                                    <?php if ($this->ion_auth->logged_in()){?>
+                                    <span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>
+                                    <?php }?>
                                     <div class="star-rating" data-rating="<?=$rating;?>">
-                                    <div class="rating-counter">(12 reviews)</div>
+                                    <div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
                             </div>
                                 </div>
                             </div>

@@ -64,18 +64,7 @@ $this->session->set_userdata('last_page',current_url());
 						<!-- Row / End -->
                         
                         <!-- Row -->
-                        <div class="row with-forms">
-
-							<!-- Vision -->
-							<div class="col-md-12">
-                                <h5>School Type</h5>
-                            <div class="col-md-2">
-								<label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Boys" required=""  <?php if($edit_data['school_type'] == 'Boys'){ echo 'checked';} ?>>Boys</label>
-								<label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Girls" required="" <?php if($edit_data['school_type'] == 'Girls'){ echo 'checked';} ?>>Girls</label>
-								<label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Co-Education" required="" <?php if($edit_data['school_type'] == 'Co-Education'){ echo 'checked';} ?>>co-education</label>
-                            </div>        
-							</div>
-						</div>
+                     
 						<div class="row with-forms">
 
 							<!-- Vision -->
@@ -91,25 +80,90 @@ $this->session->set_userdata('last_page',current_url());
 							</div>
 						</div>
 						<!-- Row / End -->
+                          <!-- Row -->
+                        <div class="row with-forms">
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Co-Education Status</h5>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Boys" required="" <?php if($edit_data['school_type'] == 'Boys'){ echo 'checked';} ?>>Boys</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Girls" required="" <?php if($edit_data['school_type'] == 'Girls'){ echo 'checked';} ?>>Girls</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Co-Education" required="" <?php if($edit_data['school_type'] == 'Co-Education'){ echo 'checked';} ?>>Co-Education</label>
+                                </div>
+                                
+							</div>
+						</div>
+						 <!-- Row -->
+                        <div class="row with-forms">
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Format Status</h5>
+                                <div class="col-md-3">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Day Scholars" required="" <?php if($edit_data['school_format'] == 'Only Day Scholars'){ echo 'checked';} ?>>Only Day Scholars</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Hostel" required="" <?php if($edit_data['school_format'] == 'Only Hostel'){ echo 'checked';} ?>>Only Hostel</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Both" required="" <?php if($edit_data['school_format'] == 'Both'){ echo 'checked';} ?>>Both</label>
+                                </div>
+                                
+							</div>
+						</div>
                         
+                        <!-- Row -->
+                        <div class="row with-forms">
+
+							<!-- Vision -->
+							<div class="col-md-12">
+                                <h5>Hostel facility</h5>
+                                <div class="col-md-3">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Boys" required="" <?php if($edit_data['hostels'] == 'Only for Boys'){ echo 'checked';} ?>>Only for Boys</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Girls" required="" <?php if($edit_data['hostels'] == 'Only for Girls'){ echo 'checked';} ?>>Only for Girls</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="For Boys & Girls" required="" <?php if($edit_data['hostels'] == 'For Boys & Girls'){ echo 'checked';} ?>>For Boys & Girls</label>
+                                </div>
+                                
+							</div>
+						</div>
                         <!-- Row -->
 						<div class="row with-forms">
 
 							<!-- Vision -->
-							<div class="col-md-12">
+							<div class="col-md-6">
                                 <h5>Classes</h5>
                                 <select class="chosen-select-no-single form-control selectric"  name="class[]" required="" multiple="">
 									<option label="blank" disabled="">Select Class</option>	
 									 <?php $res=$this->common_model->select_results_info('classes',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
                                   ?>
-									<option value="<?=$row['id'];?>"  <?php if(strpos($edit_data['class'],$row['id'])){ echo 'selected';} ?>><?=$row['name'];?></option>
+									<option value="<?=$row['id'];?>" <?php if(strpos($edit_data['class'],$row['id'])){ echo 'selected';} ?>><?=$row['name'];?></option>
 								<?php }?>
 									
 								</select>
                              
                           
 							</div>
+							<div class="col-md-6">
+                                <h5>Medium</h5>
+                                <select class="chosen-select-no-single form-control selectric"  name="medium[]" required="" multiple="">
+                                	<option label="blank" disabled="">Select Medium</option>
+									<?php $res=$this->common_model->select_results_info('medium',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
+									<option value="<?=$row['id'];?>" <?php if(strpos($edit_data['medium'],$row['id'])){ echo 'selected';} ?>><?=$row['name'];?></option>
+								<?php }?>									
+								</select>
+                            </div>
 						</div>
 						<!-- Row / End -->
                         
@@ -117,7 +171,114 @@ $this->session->set_userdata('last_page',current_url());
 
 					</div>
 					<!-- Section / End -->
+ <!-- Addtional Information Section -->
+					<div class="add-listing-section">
 
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> Additional Informations</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-6">
+								<h5>Founders Name </h5>
+								<input class="search-field" type="text" value="<?=$edit_data['founders_name'];?>" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+							</div>
+						
+							<div class="col-md-6">
+								<h5>Brand Name </h5>
+								<input class="search-field" type="text" value="<?=$edit_data['brand_name'];?>" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
+							</div>
+					
+							<div class="col-md-6">
+								<h5>Number of Branches </h5>
+								<input class="search-field" type="text" value="<?=$edit_data['no_of_branches'];?>" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
+							</div>
+						
+							<div class="col-md-6">
+								<h5>Year of Establishment of brand</h5>
+								<input class="search-field" type="text" value="<?=$edit_data['est_year'];?>" name="est_year" placeholder="" required="" autocomplete="off" />
+							</div>
+						
+							<div class="col-md-6">
+								<h5>Year of Establishment of the specific branch</h5>
+								<input class="search-field" type="text" value="<?=$edit_data['est_branch_year'];?>" name="est_branch_year" placeholder="" required="" autocomplete="off" />
+							</div>
+						
+                   
+							<div class="col-md-6">
+								<h5>Average Expirience of Faculty</h5>
+								<input class="search-field" type="text" value="<?=$edit_data['faculty_exp'];?>" name="faculty_exp" placeholder="" required="" autocomplete="off" />
+							</div>
+						
+                        
+							<div class="col-md-6">
+								<h5>Any Notable Alumni</h5>
+								<input class="search-field" type="text" value="<?=$edit_data['alumni'];?>" name="alumni" placeholder="" required="" autocomplete="off" />
+							</div>
+						</div>
+                        
+
+                        
+
+					</div>
+					<!--Addtional Information Section / End -->
+                    
+                       <!-- Addtional Information Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i> Contact Details of School(for our use)</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-4">
+								<h5>Councellor/Principal number </h5>
+								<input class="search-field" type="text" value="<?=$edit_data['principal_number'];?>" name="principal_number" placeholder="" required="" autocomplete="off" />
+							</div>
+                            <div class="col-md-4">
+                                    <h5>Telephone Number </h5>
+                                    <input class="search-field" type="text" value="<?=$edit_data['telephone_number'];?>" name="telephone_number" placeholder="" required="" autocomplete="off" />
+                                </div>
+
+							<div class="col-md-4">
+                                    <h5>Email </h5>
+                                    <input class="search-field" type="text" value="<?=$edit_data['school_email'];?>" name="school_email" placeholder="" required="" autocomplete="off" />
+                                </div>
+
+							
+						</div>
+                        
+
+                        
+
+					</div>
+					<!--Addtional Information Section / End -->
+                    
+                    
+                     <!-- Admission Procedure Section -->
+					<div class="add-listing-section">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-doc"></i>  Admission Procedure</h3>
+						</div>
+
+						<!-- Title -->
+						<div class="row with-forms">
+							<div class="col-md-12">
+							<textarea type="text" class="form-control" name="admission_procedure"><?=$edit_data['admission_procedure'];?></textarea>
+							</div>
+						</div>
+                        
+
+                        
+
+					</div>
+					<!-- Admission Procedure Section / End -->
 					<!-- Section -->
 					<div class="add-listing-section margin-top-45">
 
@@ -142,6 +303,10 @@ $this->session->set_userdata('last_page',current_url());
 									<h5>Address</h5>
 									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""><?=$edit_data['address'];?></textarea>
 								</div>
+								<div class="col-md-12">
+                                <h5>Address URL</h5>
+                                <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url" value="<?=$edit_data['address_url'];?>">
+                            	</div>
 							</div>
 							<!-- Row / End -->
 
@@ -280,8 +445,8 @@ $this->session->set_userdata('last_page',current_url());
 
 							<!-- Email Address -->
 							<div class="col-md-4">
-								<h5 class="gplus-input"><i class="fa fa-google-plus"></i> Google Plus <span>(optional)</span></h5>
-								<input type="text" placeholder="https://plus.google.com/" name="google_plus" value="<?=$edit_data['google_plus'];?>">
+								<h5 class="gplus-input"><i class="fa fa-youtube"></i> Youtube <span>(optional)</span></h5>
+								<input type="text" placeholder="https://youtube.com/" name="youtube" value="<?=$edit_data['youtube'];?>">
 							</div>
 
 						</div>
@@ -301,7 +466,17 @@ $this->session->set_userdata('last_page',current_url());
 					
 						</div>
 						<!-- Checkboxes / End -->
+<div class="row with-forms">
 
+							<div class="col-md-12">
+                                <h5>Bus Routes(optional)</h5>
+                                <input type="text" class="form-control-file" placeholder="Route1, Route2, Route3...." name="bus_routes" value="<?=$edit_data['bus_routes'];?>">
+                            </div>
+                            <div class="col-md-12">
+                                <h5>Sports & Extra-Curricuar Activities(optional)</h5>
+                                <input type="text" class="form-control-file" placeholder="Cricket, Jam Section...." name="sports" value="<?=$edit_data['sports'];?>">
+                            </div>
+                        </div>
 					</div>
 					<!-- Section / End -->
 
@@ -407,7 +582,49 @@ for ($i=0; $i < count($days); $i++) {
 
 					</div>
 					<!-- Section / End -->
+<!-- Section -->
+					<div class="add-listing-section margin-top-45">
+						
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-book-open"></i> Pricing</h3>
+							<!-- Switcher -->
+							<label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
+						</div>
 
+						<!-- Switcher ON-OFF Content -->
+						<div class="switcher-content">
+
+							<div class="row">
+								<div class="col-md-12">
+									<table id="pricing-list-container1">
+										<?php 
+							$class_name=json_decode($edit_data['class_name']);
+							$admission_fee=json_decode($edit_data['admission_fee']);
+							$tution_fee=json_decode($edit_data['tution_fee']);
+							for($a=0;$a<count($class_name);$a++){
+										?>
+										<tr class="pricing-list-item pattern school_pr">
+											<td>
+												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
+												<div class="fm-input pricing-name"><input type="text" placeholder="Class Name" name="class_name[]" value="<?=$class_name[$a];?>" /></div>
+												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Admission Fee" data-unit="INR" name="admission_fee[]"  value="<?=$admission_fee[$a];?>" /></div>
+												<div class="fm-input pricing-price"><input type="text" placeholder="Tution Fee" data-unit="INR" name="tution_fee[]"  value="<?=$tution_fee[$a];?>" /></div>
+												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
+											</td>
+										</tr>
+										<?php }?>
+									</table>
+									<a href="#" class="button add-pricing-list-item1">Add Item</a>
+									
+								</div>
+							</div>
+
+						</div>
+						<!-- Switcher ON-OFF Content / End -->
+
+					</div>
+					<!-- Section / End -->
 					<!-- <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a> -->
 					<button type="submit" class="button preview">Submit</button>
 
@@ -501,3 +718,9 @@ for ($i=0; $i < count($days); $i++) {
 
 
 
+<script type="text/javascript" src="<?php echo base_url('assets')?>/scripts/ckeditor/ckeditor.js"></script> 
+
+
+<script>
+    CKEDITOR.replace( 'admission_procedure' );
+</script>

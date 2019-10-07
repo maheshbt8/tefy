@@ -1,6 +1,7 @@
 <?php
 $this->session->set_userdata('last_page',current_url());
 $where['listing_id']=$school['id'];
+$where['row_status']=1;
 $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 if($rating==''){
   $rating=0;
@@ -26,7 +27,7 @@ $classes=json_decode($school['class']);
   $category=implode(', ',$categ);
 }
 ?>
-<div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'.jpg';?>" style="height: 300px;margin-top: 85px;">
+<div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'/4.jpg';?>" style="height: 300px;margin-top: 85px;">
 
     </div>
 <!-- Content
@@ -390,10 +391,14 @@ for ($i=0; $i < count($days); $i++) {
             <div id="listing-location" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
-				<div id="singleListingMap-container">
+        <div class="col-md-12">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2660399578053!2d78.377372814354!3d17.44697620567722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93daa6ed8c8f%3A0x3c0f1542a8b97c78!2sGrepthor%20Software%20Solutions%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1570255671063!5m2!1sen!2sin" width="450" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+				<!-- <div id="singleListingMap-container">
 					<div id="singleListingMap" data-latitude="<?=$school['latitude'];?>" data-longitude="<?=$school['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
 					<a href="#" id="streetView">Street View</a>
-				</div>
+
+				</div> -->
 			</div>
 
 
@@ -592,101 +597,40 @@ if($achievements!=''){
     <div class= "container" style="">
         <!-- Reviews -->
 			<div id="listing-reviews" class="listing-section">
-				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(12)</span></h3>
+				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(<?=$this->common_model->count_records('ratings',$where);?>)</span></h3>
 
 				<!-- Rating Overview -->
-				<div class="rating-overview">
+				<div class="rating-overview" style="display: block !important;">
 					
 						<div class="row">
 							<div class="col-md-8">
-								<div class="clearfix"></div>
 
 				<!-- Reviews -->
+        <div class="col-md-12">
 				<section class="comments listing-reviews">
-					<ul>
-						
+          <ul id="review_list">
+          </ul>
+       <!--     <ul>
+             <li>
+              <div class="avatar">
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
+                                <div class="comment-by">John Doe<span class="date">May 2019</span>
+                  
+                </div>
+                            </div>
+              <div class="comment-content"><div class="arrow-comment"></div>
+                
+                <p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
+                                <div class="star-rating" data-rating="3"></div>
+              </div>
+                        </li>
+           </ul> -->
+        </section>
+      </div>
 
-						
-						<li>
-							<div class="avatar">
-                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
-                                <div class="comment-by">John Doe<span class="date">May 2019</span>
-									
-								</div>
-                            </div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								
-								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-                                <div class="star-rating" data-rating="5"></div>
-								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
-							</div>
-                        </li>
-                        <li>
-							<div class="avatar">
-                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
-                                <div class="comment-by">John Doe<span class="date">May 2019</span>
-									
-								</div>
-                            </div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								
-								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-                                <div class="star-rating" data-rating="5"></div>
-								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
-							</div>
-                        </li>
-                        <li>
-							<div class="avatar">
-                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
-                                <div class="comment-by">John Doe<span class="date">May 2019</span>
-									
-								</div>
-                            </div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								
-								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-                                <div class="star-rating" data-rating="5"></div>
-								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
-							</div>
-                        </li>
-                        <li>
-							<div class="avatar">
-                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
-                                <div class="comment-by">John Doe<span class="date">May 2019</span>
-									
-								</div>
-                            </div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								
-								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-                                <div class="star-rating" data-rating="5"></div>
-								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
-							</div>
-                        </li>
-                        <li>
-							<div class="avatar">
-                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt="" /> 
-                                <div class="comment-by">John Doe<span class="date">May 2019</span>
-									
-								</div>
-                            </div>
-							<div class="comment-content"><div class="arrow-comment"></div>
-								
-								<p class="more1">Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris.</p>
-                                <div class="star-rating" data-rating="5"></div>
-								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review</a>-->
-							</div>
-                        </li>
-                        
-					 </ul>
-				</section>
-
-				<!-- Pagination -->
-				<div class="clearfix"></div>
-				<div class="row">
 					<div class="col-md-12">
 						<!-- Pagination -->
-						<div class="pagination-container margin-top-30">
+						<!-- <div class="pagination-container margin-top-30">
 							<nav class="pagination">
 								<ul>
 									<li><a href="#" class="current-page">1</a></li>
@@ -694,11 +638,25 @@ if($achievements!=''){
 									<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
 								</ul>
 							</nav>
-						</div>
+						</div> -->
+            <!-- Posts List -->
+  
+ 
+   <!-- Paginate -->
+   <div style='margin-top: 10px;' id='pagination_data'></div>
+  <!--  <div class="pagination-container margin-top-30">
+              <nav class="pagination">
+                <ul>
+                  <li><a href="#" class="current-page">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+                </ul>
+              </nav>
+            </div> -->
 					</div>
+				<!--  -->
+				
 				</div>
-				<div class="clearfix"></div>
-							</div>
 							<div class="col-md-4">
 								<!-- Add Review Box -->
 			<div id="add-review" class="add-review-box">
@@ -706,7 +664,14 @@ if($achievements!=''){
 				<!-- Add Review -->
 				<h3 class="listing-desc-headline margin-bottom-10">Add Review</h3>
 				<p class="comment-notes">Your email address will not be published.</p>
-
+<form method="post" action="<?=base_url('listings-single/').$list_enc_id;?>">
+  <?php
+                  if($this->session->flashdata('rating_message')!=''){
+                  ?>
+                  <div class="alert">
+  <strong><?=$this->session->flashdata('rating_message');?></strong>
+</div>
+<?php }?>
 				<!-- Subratings Container -->
 				<div class="sub-ratings-container">
 					<!-- Subrating #4 -->
@@ -715,18 +680,18 @@ if($achievements!=''){
 						<div class="sub-rating-stars">
 							<!-- Leave Rating -->
 							<div class="clearfix"></div>
-							<form class="leave-rating">
-								<input type="radio" name="rating" id="rating-31" value="1"/>
+							<div class="leave-rating">
+								<input type="radio" name="rating" id="rating-31" value="1" required="" />
 								<label for="rating-31" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-32" value="2"/>
+								<input type="radio" name="rating" id="rating-32" value="2" required=""/>
 								<label for="rating-32" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-33" value="3"/>
+								<input type="radio" name="rating" id="rating-33" value="3" required=""/>
 								<label for="rating-33" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-34" value="4"/>
+								<input type="radio" name="rating" id="rating-34" value="4" required=""/>
 								<label for="rating-34" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-35" value="5"/>
+								<input type="radio" name="rating" id="rating-35" value="5" required=""/>
 								<label for="rating-35" class="fa fa-star"></label>
-							</form>
+							</div>
 						</div>
 					</div>	
 
@@ -742,10 +707,10 @@ if($achievements!=''){
 				<!-- Subratings Container / End -->
 
 				<!-- Review Comment -->
-				<form id="add-comment" class="add-comment">
+				<div id="add-comment" class="add-comment">
 					<fieldset>
 
-						<div class="row">
+					<!-- 	<div class="row">
 							<div class="col-md-12">
 								<label>Name:</label>
 								<input type="text" value=""/>
@@ -755,19 +720,20 @@ if($achievements!=''){
 								<label>Email:</label>
 								<input type="text" value=""/>
 							</div>
-						</div>
+						</div> -->
 
 						<div>
 							<label>Review:</label>
-							<textarea cols="40" rows="3"></textarea>
+							<textarea cols="40" rows="3" name="review" required=""></textarea>
+               <input type="hidden" id="single_school_id" value="<?=$school['id'];?>">
 						</div>
 
 					</fieldset>
 
 					<button class="button">Submit Review</button>
 					<div class="clearfix"></div>
-				</form>
-
+				</div>
+</form>
 			</div>
 			<!-- Add Review Box / End -->
 							</div>
@@ -788,3 +754,6 @@ if($achievements!=''){
 		<!-- Sidebar / End -->
 
 	</div>
+
+
+  

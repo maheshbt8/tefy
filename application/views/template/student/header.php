@@ -147,7 +147,7 @@
 					
 					<!-- User Menu -->
 					<div class="user-menu">
-						<div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'username'));?></div>
+						<div class="user-name"><span><img src="<?php echo base_url('assets')?>/images/dashboard-avatar.jpg" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'username'));?></div>
 						<ul>
 							<li><a href="<?=base_url('Auth');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 							<li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
@@ -155,12 +155,8 @@
 							<li><a href="<?=base_url('Auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
 						</ul>
 					</div>
-					<?php
-						if ($this->ion_auth->is_admin())
-							{
-						?>
+
 					<a href="<?=base_url('admin/add_listing');?>" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
-				<?php }?>
 				</div>
 				<!-- Header Widget / End -->
 			</div>

@@ -95,19 +95,19 @@
 						</div>
                         
                         <!-- Row -->
-                        <div class="row with-forms">
+                            <div class="row with-forms">
 
 							<!-- Vision -->
 							<div class="col-md-12">
                                 <h5>Format Status</h5>
                                 <div class="col-md-3">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="day_scholars" required="">Only Day Scholars</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Day Scholars" required="">Only Day Scholars</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="hostel" required="">Only Hostel</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Hostel" required="">Only Hostel</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="both" required="">Both</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Both" required="">Both</label>
                                 </div>
                                 
 							</div>

@@ -144,15 +144,22 @@
 			<div class="right-side">
 				<div class="header-widget">
 					<!-- User Menu -->
-					<!-- <div class="user-menu">
-						<div class="user-name"><span><img src="<?php echo base_url('assets')?>/images/dashboard-avatar.jpg" alt=""></span>Hi,Sravan!</div>
+					<div class="user-menu">
+						<?php
+						if ($this->ion_auth->logged_in())
+							{
+						?>
+						<div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'username'));?></div>
 						<ul>
-							<li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+							<li><a href="<?=base_url('Auth');?>" target="_blank"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 							<li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
 							<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
-							<li><a href="index-2.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+							<li><a href="<?=base_url('Auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
 						</ul>
-					</div> -->
+					<?php }else{?>
+						<div class="user-name"><a href="<?=base_url('auth');?>">Login</a></div>
+					<?php }?>
+					</div>
 
 
 					<!-- <a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a> -->

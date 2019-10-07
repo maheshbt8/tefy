@@ -4,7 +4,7 @@
 			<!-- Item -->
 			<div class="col-lg-6 col-md-6">
 				<div class="dashboard-stat color-1">
-					<div class="dashboard-stat-content"><h4><?=$this->common_model->count_records('listings',array('row_status'=>1));?></h4> <span>Active Listings</span></div>
+					<div class="dashboard-stat-content"><h4>6</h4> <span>Active Listings</span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Map2"></i></div>
 				</div>
 			</div>
@@ -12,7 +12,7 @@
 			<!-- Item -->
 			<div class="col-lg-6 col-md-6">
 				<div class="dashboard-stat color-2">
-					<div class="dashboard-stat-content"><h4><?=$this->common_model->count_records('users_groups',array('group_id'=>2));?></h4> <span>Users</span></div>
+					<div class="dashboard-stat-content"><h4>726</h4> <span>Users</span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-Line-Chart"></i></div>
 				</div>
 			</div>
@@ -87,23 +87,50 @@
 					<h4>Recently Added Schools</h4>
 					<ul>
 						
-						<?php
-						$res=$this->common_model->select_results_info('listings',array('row_status'=>1),'id DESC',5)->result_array();
-					foreach ($res as $row) {
-						?>
 						<li><i class="list-box-icon sl sl-icon-doc"></i>
-							<strong><?=$row['school_name'];?></strong>
+							<strong>School name</strong>
 							<ul>
 								<!--<li class="unpaid">Unpaid</li>-->
-								<li>ID: <?=$row['school_code'];?></li>
-								<li>Date: <?=date('M d,Y',strtotime($row['created_at']));?></li>
+								<li>ID: #00124</li>
+								<li>Date: 08/09/2019</li>
 							</ul>
 							<div class="buttons-to-right">
-								<a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="button gray" target="_blank">View Profile</a>
+								<a href="dashboard-invoice.html" class="button gray">View Profile</a>
 							</div>
 						</li>
-					<?php }?>
-						
+						<li><i class="list-box-icon sl sl-icon-doc"></i>
+							<strong>School name</strong>
+							<ul>
+								<!--<li class="unpaid">Unpaid</li>-->
+								<li>ID: #00124</li>
+								<li>Date: 08/09/2019</li>
+							</ul>
+							<div class="buttons-to-right">
+								<a href="dashboard-invoice.html" class="button gray">View Profile</a>
+							</div>
+						</li>
+						<li><i class="list-box-icon sl sl-icon-doc"></i>
+							<strong>School name</strong>
+							<ul>
+								<!--<li class="unpaid">Unpaid</li>-->
+								<li>ID: #00124</li>
+								<li>Date: 08/09/2019</li>
+							</ul>
+							<div class="buttons-to-right">
+								<a href="dashboard-invoice.html" class="button gray">View Profile</a>
+							</div>
+						</li>
+						<li><i class="list-box-icon sl sl-icon-doc"></i>
+							<strong>School name</strong>
+							<ul>
+								<!--<li class="unpaid">Unpaid</li>-->
+								<li>ID: #00124</li>
+								<li>Date: 08/09/2019</li>
+							</ul>
+							<div class="buttons-to-right">
+								<a href="dashboard-invoice.html" class="button gray">View Profile</a>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>

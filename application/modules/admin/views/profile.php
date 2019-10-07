@@ -8,7 +8,7 @@ $this->session->set_userdata('last_page',current_url());
 				<div class="dashboard-list-box margin-top-0">
 					<h4 class="gray">Profile Details</h4>
 					<div class="dashboard-list-box-static">
-						<form action="<?=base_url('student/profile');?>" method="post"  enctype="multipart/form-data">
+						<form action="<?=base_url('admin/profile');?>" method="post"  enctype="multipart/form-data">
 						<!-- Avatar -->
 						<div class="edit-profile-photo">
 							<img src="<?=base_url('uploads/users/').$user_details['id'].'.jpg';?>" alt="">
@@ -55,7 +55,7 @@ $this->session->set_userdata('last_page',current_url());
 				<div class="dashboard-list-box margin-top-0">
 					<h4 class="gray">Change Password</h4>
 					<div class="dashboard-list-box-static">
-<form id="form" action="<?=base_url('student/change_password')?>" class="form-horizontal" novalidate="novalidate" method="post">
+<form id="form" action="<?=base_url('admin/change_password')?>" class="form-horizontal" novalidate="novalidate" method="post">
 						<!-- Change Password -->
 						<div class="my-profile">
 							<label class="margin-top-0">Current Password</label>
