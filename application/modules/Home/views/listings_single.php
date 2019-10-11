@@ -2,7 +2,7 @@
 $this->session->set_userdata('last_page',current_url());
 $where['listing_id']=$school['id'];
 $where['row_status']=1;
-$rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
+$rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'),1);
 if($rating==''){
   $rating=0;
 }
@@ -664,6 +664,7 @@ if($achievements!=''){
 				<!-- Add Review -->
 				<h3 class="listing-desc-headline margin-bottom-10">Add Review</h3>
 				<p class="comment-notes">Your email address will not be published.</p>
+        <?php if ($this->ion_auth->logged_in()){?>
 <form method="post" action="<?=base_url('listings-single/').$list_enc_id;?>">
   <?php
                   if($this->session->flashdata('rating_message')!=''){
@@ -733,7 +734,9 @@ if($achievements!=''){
 					<button class="button">Submit Review</button>
 					<div class="clearfix"></div>
 				</div>
-</form>
+</form><?php }else{?>
+  <a href="<?=base_url('auth');?>">If you want to give rating please login</a>
+<?php }?>
 			</div>
 			<!-- Add Review Box / End -->
 							</div>

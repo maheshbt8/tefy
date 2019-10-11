@@ -64,6 +64,14 @@ $this->session->set_userdata('last_page',current_url());
 <?php
 $i=0;
 foreach ($schools as $row) {
+	$category='';
+  $cate=json_decode($row['category']);
+  if($cate!=''){
+  for($c=0; $c < count($cate); $c++) { 
+    $categ[]=$this->common_model->get_type_name_by_where('category',array('id'=>$cate[$c]));
+  }
+  $category=implode(', ',$categ);
+}
 	$opening_hours=json_decode($row['opening_hours']);
 	$reslut=$this->common_model->get_days();
 
@@ -85,26 +93,30 @@ for ($i=0; $i < count($days); $i++) {
 	$where['row_status']=1;
 $where['listing_id']=$row['id'];
 $where['row_status']=1;
-$rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
+$rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'),1);
+
+$class=array();
+	$classes=json_decode($row['class']);
+	for($c=0; $c < count($classes); $c++) { 
+		$class[]=$this->common_model->get_type_name_by_where('classes',array('id'=>$classes[$c]));
+	}
+
 ?>
 				
                 <!-- Listing Item from sravan -->
-				<div class="col-lg-12 col-md-12">
+				<!-- <div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item">
 							
-							<!-- Image -->
 							<div class="listing-item-image">
 								<img src="http://localhost/tefy/uploads/listings/thumb/2.jpg";?>" alt="">
-								<!--<span class="tag">Eat & Drink</span>-->
 							</div>
 							
-							<!-- Content -->
 							<div class="listing-item-content">
 								<div class="listing-badge now-open">Opened now</div>
 
 								<div class="listing-item-inner">
-									<h3>DSK Public School <!-- <i class="verified-icon"></i> --></h3>
+									<h3>DSK Public School </h3>
 									
                                     <span class="padding-top-5  more2"><span><b>Vision</b>: ddddddd dddddd ddddddd ddddddd ddddddddddd  ddddddddd dddddd dddddd ddddddd dddddddd dddd dddddd dddddddd dddddd dddddddd dddd ddddddd dddddddd dddddddd dddddd dddddddd ddddddd dddddd dddd ddddd</span> </span>
                                         <div class="padding-top-15"><b>Board: </b>SSC</div>
@@ -120,7 +132,7 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 							</div>
 						</a>
 					</div>
-				</div>
+				</div> -->
 				<!-- Listing Item / End from sravan -->
                 
                 
@@ -141,6 +153,17 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 
 								<div class="listing-item-inner">
 									<h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
+
+									<span class="padding-top-5  more2"><span><b>Vision</b>: <?=$row['vision'];?></span> </span>
+                                        <div class="padding-top-15"><b>Board: </b><?=$this->common_model->get_type_name_by_where('curriculum',array('id'=>$row['curriculum']));?></div>
+                                        <div class="padding-top-5"><b>Grade: </b><span> <?=implode(', ',$class);?> </span> </div>
+                                        <div class="padding-top-5"><b>Category: </b><span> <?=$category;?> </span> </div>
+                                        <div ><span class="more3"><b>Address</b>: <?=$row['address'];?></span> </div>
+                                    <div class="star-rating" data-rating="<?=$rating;?>">
+                                        <div class="rating-counter">(<b><?=$rating;?></b>/5)</div>
+                                    </div>
+
+
 									<span><?=$row['address'];?></span>
 									<div class="star-rating" data-rating="<?=$rating;?>">
 										<div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
@@ -151,8 +174,8 @@ $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
                                         </span> 
                                     </div>
 								</div>
-
-								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>
+								<?php if ($this->ion_auth->logged_in()){?>
+								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span><?php }?>
 							</div>
 						</a>
 					</div>
