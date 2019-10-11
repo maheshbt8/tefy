@@ -87,7 +87,44 @@ $where['listing_id']=$row['id'];
 $where['row_status']=1;
 $rating=$this->common_model->rating_of_product('ratings', $where ,'rating');
 ?>
-				<!-- Listing Item -->
+				
+                <!-- Listing Item from sravan -->
+				<div class="col-lg-12 col-md-12">
+					<div class="listing-item-container list-layout">
+						<a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item">
+							
+							<!-- Image -->
+							<div class="listing-item-image">
+								<img src="http://localhost/tefy/uploads/listings/thumb/2.jpg";?>" alt="">
+								<!--<span class="tag">Eat & Drink</span>-->
+							</div>
+							
+							<!-- Content -->
+							<div class="listing-item-content">
+								<div class="listing-badge now-open">Opened now</div>
+
+								<div class="listing-item-inner">
+									<h3>DSK Public School <!-- <i class="verified-icon"></i> --></h3>
+									
+                                    <span class="padding-top-5  more2"><span><b>Vision</b>: ddddddd dddddd ddddddd ddddddd ddddddddddd  ddddddddd dddddd dddddd ddddddd dddddddd dddd dddddd dddddddd dddddd dddddddd dddd ddddddd dddddddd dddddddd dddddd dddddddd ddddddd dddddd dddd ddddd</span> </span>
+                                        <div class="padding-top-15"><b>Board: </b>SSC</div>
+                                        <div class="padding-top-5"><b>Grade:</b><span>I - X </span> </div>
+                                        <div class="padding-top-5"><b>Category:</b><span>Day Care </span> </div>
+                                        <div ><span class="more3"><b>Address</b>: wewe wewewewe wewewewewewew ewewewe wewewewew ewew ewewewewe wewewewewewew ewewewewew ewewewewe weweew wwwwww wwwwwwwf fffffffff fqwwwwww wwwwwwww</span> </div>
+                                    <div class="star-rating" data-rating="5">
+                                        <div class="rating-counter">(<b>4.5</b>/5)</div>
+                                    </div>
+								</div>
+
+								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- Listing Item / End from sravan -->
+                
+                
+                <!-- Listing Item -->
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
 						<a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item">

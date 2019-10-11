@@ -78,16 +78,14 @@
                     
                         <a href="http://localhost/tefy/listings-single/TWc9PQ==" class="listing-item-container">
                             <div class="listing-item">
-                                <div class="col-md-4  listing-item p--0 list-img-size" style="background-image: url(http://localhost/tefy/uploads/listings/thumb/2.jpg);
-    object-fit: cover;
-}">
+                                <div class="col-md-4 col-sm-4  listing-item p--0 list-img-size" style="background-image: url(http://localhost/tefy/uploads/listings/thumb/2.jpg);object-fit: cover;">
                                     <!--<img src="http://localhost/tefy/uploads/listings/thumb/2.jpg" alt="">-->
                                     <div class="listing-badge now-open">Closed Now</div>
                                 </div>
-                                <div class="col-md-8 ">
+                                <div class="col-md-8 col-sm-8 ">
                                     <div class="listing-item-content">
                                         <h3>vikas high school <!-- <i class="verified-icon"></i> --></h3>
-                                        <span class="padding-top-5 text-size more2"><span><b>Vision</b>: ddddddd dddddd ddddddd ddddddd ddddddddddd  ddddddddd dddddd dddddd ddddddd dddddddd dddd dddddd dddddddd dddddd dddddddd dddd ddddddd dddddddd dddddddd dddddd dddddddd ddddddd dddddd dddd ddddd</span> </span>
+                                        <span class="padding-top-5  more2"><span><b>Vision</b>: ddddddd dddddd ddddddd ddddddd ddddddddddd  ddddddddd dddddd dddddd ddddddd dddddddd dddd dddddd dddddddd dddddd dddddddd dddd ddddddd dddddddd dddddddd dddddd dddddddd ddddddd dddddd dddd ddddd</span> </span>
                                         <div class="padding-top-15"><b>Board: </b>SSC</div>
                                         <div class="padding-top-5"><b>Grade:</b><span>I - X </span> </div>
                                         <div class="padding-top-5"><b>Category:</b><span>Day Care </span> </div>
@@ -96,7 +94,7 @@
                                     </div>
                                     <span class="like-icon"></span>
                                     <div class="star-rating" data-rating="5">
-                                        <div class="rating-counter">(12 reviews)</div>
+                                        <div class="rating-counter">(<b>4.5</b>/5)</div>
                                     </div>
                                 </div>
                             </div>

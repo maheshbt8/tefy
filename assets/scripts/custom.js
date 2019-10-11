@@ -1124,6 +1124,7 @@ $(document).ready(function() {
     var showChar = 500;  // How many characters are shown by default
     var showChar1 = 100; 
     var showChar2 = 50; 
+    var showChar3 = 30; 
     var ellipsestext = "...";
     var moretext = "Read more";
     var lesstext = "Read less";
@@ -1166,6 +1167,19 @@ $(document).ready(function() {
             var h = content.substr(showChar2, content.length - showChar2);
  
             var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="" style="color:#FFC600;">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+    });
+    $('.more3 ').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar2) {
+ 
+            var c = content.substr(0, showChar3);
+            var h = content.substr(showChar3, content.length - showChar3);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp';
  
             $(this).html(html);
         }

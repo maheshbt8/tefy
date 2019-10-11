@@ -15,7 +15,7 @@ select {
     line-height: 51px;
     padding: 0 20px;
     outline: none;
-    font-size: 15px;
+    font-size: 15px; 
     color: gray;
     margin: 0 0 16px;
     max-width: 100%;
@@ -2034,7 +2034,7 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
 }
 
 .main-search-container.dark-overlay:before {
-    background: rgba(46, 47, 50, .55)
+   /* background: rgba(46, 47, 50, .55)*/
 }
 
 .main-search-container.dark-overlay h2 {
@@ -2155,6 +2155,11 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
 .transparent-header .main-search-container {
     height: 455px;
 }
+
+@media (max-width: 767.98px) { 
+  .transparent-header .main-search-container {
+    height: 612px;
+}}
 
 .transparent-header .main-search-container:before {
   /*  background: rgba(0, 0, 0, .5)*/
@@ -12079,7 +12084,8 @@ body .notification strong {
 .listing-item-container.list-layout .listing-item {
     display: flex;
     background-color: transparent;
-    height: 220px
+    /*height: 220px;*/
+    height: 257px;
 }
 
 .listing-item-container.list-layout .listing-item:before {
@@ -12103,8 +12109,8 @@ body .notification strong {
 
 .listing-item-container.list-layout .listing-item-image {
     min-height: 200px;
-    flex: 2;
-    height: 100%;
+    flex: 3;
+    height: 20em;
     overflow: hidden;
     border-radius: 4px 0 0 4px;
     position: relative
@@ -12137,10 +12143,10 @@ body .notification strong {
 
 .listing-item-container.list-layout .listing-item-inner {
     position: absolute;
-    top: 20%;
-    transform: translateY(-50%);
+    /*top: 20%;
+    transform: translateY(-50%);*/
     left: 35px;
-    padding-right: 120px
+    /*padding-right: 120px*/
 }
 
 .listing-item-container.list-layout .listing-item-inner h3 {
@@ -20490,7 +20496,7 @@ h4 span.headline-detail {
         line-height: 32px
     }
     .main-search-container:before {
-        background: rgba(255, 255, 255, .92)
+       background: rgba(55, 52, 53, 0.35);
     }
 }
 
@@ -20795,8 +20801,17 @@ height: 51px;
     
 }
 .list-img-size {
+    
         max-height: 20em;
+   height: 20em;
 }
+
+@media (max-width: 767.98px) { 
+    .list-img-size {
+    
+        max-height: 24em;
+   height:24em;
+}}
 
 .vision-txt {
 /* letter-spacing: 2px;
