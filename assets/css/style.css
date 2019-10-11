@@ -20877,3 +20877,8 @@ height: 51px;
       -webkit-transform: scale(1.01);
     }
 
+
+.list-slider {
+    height: 300px; 
+    margin-top: 85px; 
+}

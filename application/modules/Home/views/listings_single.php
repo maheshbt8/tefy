@@ -1,3 +1,42 @@
+<div class="simple-slick-carousel1 dots-nav">
+    <!-- Listing Item -->
+    <div class="carousel-item">
+        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
+
+        </div>
+    </div>
+    <!-- Listing Item / End -->
+   <!-- Listing Item -->
+    <div class="carousel-item">
+        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
+
+        </div>
+    </div>
+    <!-- Listing Item / End -->
+   <!-- Listing Item -->
+    <div class="carousel-item">
+        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
+
+        </div>
+    </div>
+    <!-- Listing Item / End -->
+   <!-- Listing Item -->
+    <div class="carousel-item">
+        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
+
+        </div>
+    </div>
+    <!-- Listing Item / End -->
+   <!-- Listing Item -->
+    <div class="carousel-item">
+        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
+
+        </div>
+    </div>
+    <!-- Listing Item / End -->
+</div>
+
+
 <?php
 $this->session->set_userdata('last_page',current_url());
 $where['listing_id']=$school['id'];
