@@ -136,7 +136,7 @@ $where['row_status']=1;
 $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'),1);
 ?>
                     <div class="carousel-item">
-                        <a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item-container">
+                        <a href="<?php if ($this->ion_auth->logged_in()){ echo base_url('listings-single/').base64_encode(base64_encode($row['id']));}else{echo '#';}?>" onclick="<?php if ($this->ion_auth->logged_in()==''){ ?>alert('Please login to open this..!');<?php }?>" class="listing-item-container">
                             <div class="listing-item">
                                 <div class="col-md-4  listing-item p--0 list-img-size">
                                     <img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt="">

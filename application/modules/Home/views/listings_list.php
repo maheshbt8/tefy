@@ -139,7 +139,7 @@ $class=array();
                 <!-- Listing Item -->
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
-						<a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item">
+						<a href="<?php if ($this->ion_auth->logged_in()){ echo base_url('listings-single/').base64_encode(base64_encode($row['id']));}else{echo '#';}?>" onclick="<?php if ($this->ion_auth->logged_in()==''){ ?>alert('Please login to open this..!');<?php }?>" class="listing-item">
 							
 							<!-- Image -->
 							<div class="listing-item-image">
