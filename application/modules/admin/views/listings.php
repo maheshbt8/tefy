@@ -5,7 +5,7 @@ $this->session->set_userdata('last_page',current_url());
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
-					<h4>Active Listings</h4>
+					<h4><?=$title;?></h4>
 					<ul>
 <?php
 $i=0;
@@ -32,7 +32,17 @@ if($rating==''){
 							</div></a>
 							<div class="buttons-to-right">
 								<a href="<?=base_url('admin/edit_listing/').base64_encode(base64_encode($row['id']));?>" class="button gray"><i class="sl sl-icon-note"></i> Edit</a>
-								<a href="#" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
+								<?php
+								if($row['row_status']==1){
+									$status=2;
+									$status_type='Inactive';
+								}elseif($row['row_status']==2){
+									$status=1;
+									$status_type='Active';
+								}
+								?>
+								<a href="<?=base_url('set_row_status/listings/id/').$row['id'].'/'.$status?>" class="button gray"><!-- <i class="sl sl-icon-close"></i> --><?=$status_type;?></a>
+								<!-- <label class="switch"><input type="checkbox" onclick=""><span class="slider round"></span></label> -->
 							</div>
 						
 						</li>

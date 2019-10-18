@@ -16,7 +16,7 @@
 
     <!-- Wrapper -->
     <div id="wrapper">
-   <?php if(!empty($active_menu) && $active_menu == "home") echo $this->session->flashdata('message'); ?>
+   <?php if(!empty($active_menu) && $active_menu == "home" && $this->session->flashdata('message')!='') echo '<div class="alert alert-info alert_message alert-dismissible fade in">'.$this->session->flashdata('message').'</div>'; ?>
     <!-- Header Container
     ================================================== --> 
     <?php $this->load->view('template/site/header');?>
@@ -42,7 +42,15 @@
     <!-- Scripts
     ================================================== -->
     <?php $this->load->view('template/site/scripts');?>
-    
+    <script>
+         $(document).ready(function()  {
+<?php if($this->session->flashdata('message')!=''){?>
+   setTimeout(function() {
+       $(".alert_message").fadeOut(1500);
+   },1500);
+ <?php }?>
+       });
+       </script>
     
     <!-- Style Switcher
     ================================================== -->

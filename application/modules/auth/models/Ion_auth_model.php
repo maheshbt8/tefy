@@ -770,6 +770,7 @@ class Ion_auth_model extends CI_Model
 	 **/
 	public function forgotten_password($identity)
 	{
+		
 		if (empty($identity))
 		{
 			$this->trigger_events(array('post_forgotten_password', 'post_forgotten_password_unsuccessful'));
@@ -811,13 +812,14 @@ class Ion_auth_model extends CI_Model
 		$this->db->update($this->tables['users'], $update, array($this->identity_column => $identity));
 
 		$return = $this->db->affected_rows() == 1;
-
+/*$mes['message']=$return;
+echo json_encode($mes);die;
 		if ($return)
 			$this->trigger_events(array('post_forgotten_password', 'post_forgotten_password_successful'));
 		else
-			$this->trigger_events(array('post_forgotten_password', 'post_forgotten_password_unsuccessful'));
+			$this->trigger_events(array('post_forgotten_password', 'post_forgotten_password_unsuccessful'));*/
 
-		return $return;
+		return true;
 	}
 
 	/**
@@ -916,7 +918,8 @@ class Ion_auth_model extends CI_Model
 		    'email'      => $email,
 		    'ip_address' => $ip_address,
 		    'created_on' => time(),
-		    'active'     => ($manual_activation === false ? 1 : 0)
+		    /*'active'     => ($manual_activation === false ? 1 : 0)*/
+		    'active'	=>0
 		);
 
 		if ($this->store_salt)
@@ -1838,7 +1841,7 @@ class Ion_auth_model extends CI_Model
 
 		$session_data = array(
 		    'identity'             => $user->{$this->identity_column},
-		    $this->identity_column             => $user->{$this->identity_column},
+		    $this->identity_column => $user->{$this->identity_column},
 		    'email'                => $user->email,
 		    'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
 		    'old_last_login'       => $user->last_login,

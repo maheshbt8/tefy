@@ -75,13 +75,18 @@ class Common_model extends CI_Model{
      *@param row_status String
      *@desc To Set Row Status data from respective table with given condition
      */
-    public function set_row_status($table, $where='', $row_status=0)
+    /*public function set_row_status($table, $where='', $row_status=0)
     {
         $input_data['row_status']=$row_status;
         if($where != ''){
             $this->db->where($where);
         }
         return $this->db->update($table,$input_data);
+    }*/
+    function set_row_status($table,$type,$where,$row_status=0){
+        $data['row_status']=$row_status;
+        $data['modified_at']=date('Y-m-d H:i:s');
+        return $this->db->where($type,$where)->update($table,$data);
     }
     
     /**
@@ -211,5 +216,59 @@ return $rating;
         }
         return $image_url;
     }
-    
+    function generate_encryption_key($string){
+    $ret=$this->encryption->encrypt($string);
+if ( !empty($string) )
+    {
+        $ret = strtr(
+                $ret,
+                array(
+                    '+' => '.',
+                    '=' => '-',
+                    '/' => '~'
+                )
+            );
+    }
+    return $ret;
+    }
+     function generate_decryption_key($string){
+         $string = strtr(
+            $string,
+            array(
+                '.' => '+',
+                '-' => '=',
+                '~' => '/'
+            )
+    );
+    $ret=$this->encryption->decrypt($string);
+    return $ret;
+    }
+    function email_verification($data="")
+    {
+    $reg_id=$this->common_model->generate_decryption_key($data);
+    $email_verify=$this->db->get_where('users', array('id' => $reg_id))->row();
+    $created_at=$email_verify->created_on;
+/*    $past_time = strtotime($email_verify->modified_at);*/
+    $current_time = time();
+    $difference = $current_time - $created_at;
+    $difference_minute =  $difference/60;
+    if(intval($difference_minute)<30){
+            if($email_verify->active==0){
+            $yes=$this->db->where('id',$reg_id)->update('users',array('active' =>1));
+        if($yes){
+            echo "Your Email Verified Successfully"."<br/>";
+            echo "<a href='".base_url()."'>Visit Tefy Home</a>";
+        }else{
+            echo "Your Email Not Verified"."<br/>";
+            echo "<a href='".base_url()."'>Visit Tefy Home</a>";
+        }
+        }else{
+            echo "You Already Verified Your Email"."<br/>";
+            echo "<a href='".base_url()."'>Visit Tefy Home</a>";
+        }
+        }else{
+            echo "Your Email Verification Link Expired"."<br/>";
+            echo "<a href='".base_url()."'>Visit Tefy Home</a>";
+        }
+    }
 }

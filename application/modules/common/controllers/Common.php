@@ -25,7 +25,7 @@ class Common extends MY_Controller
     }
    public function set_row_status($table, $type, $where, $status=0)
     {
-        $ret = $this->crud_model->set_row_status($table, $type, $where, $status);
+        $ret = $this->common_model->set_row_status($table, $type, $where, $status);
         if ($ret) {
             $this->session->set_flashdata('success_message', 'Action Completed Successfully');
         } else {

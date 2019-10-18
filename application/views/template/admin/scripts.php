@@ -11,8 +11,8 @@
 <script type="text/javascript" src="<?php echo base_url('assets')?>/scripts/tooltips.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url('assets')?>/scripts/custom.js"></script>
 
-
-
+<script src="<?php echo base_url();?>assets/scripts/validations/jquery.validate.js"></script>
+<script src="<?php echo base_url();?>assets/scripts/validations/examples.validation.js"></script>
 
 <script type="text/javascript">
     function newMenuItem() {

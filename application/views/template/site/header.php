@@ -1,5 +1,9 @@
 <header id="header-container">
-
+<style type="text/css">
+	div#register_response {
+    color: red;
+}
+</style>
 	<!-- Header -->
 	<div id="header">
 		<div class="container">
@@ -9,7 +13,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="<?=base_url();?>"><img src="<?php echo base_url('assets')?>/images/logo2.png" data-sticky-logo="<?php echo base_url('assets')?>/images/logo.png" alt=""></a>
+					<a href="<?=base_url();?>"><img src="<?php echo base_url('assets')?>/images/logo2.png" data-sticky-logo="<?php echo base_url('assets')?>/images/logo3.png" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->
@@ -149,19 +153,26 @@
 						if ($this->ion_auth->logged_in())
 							{
 						?>
-						<div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'username'));?></div>
+						<div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'));?></div>
 						<ul>
 							<li><a href="<?=base_url('Auth');?>" target="_blank"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-							<li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
-							<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
+							<!-- <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li> -->
+							<?php if ($this->ion_auth->is_student()){?>
+							<li><a href="<?=base_url('student/bookmarks')?>"><i class="fa fa-calendar-check-o"></i> Bookmarks</a></li>
+							<?php }?>
 							<li><a href="<?=base_url('Auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
 						</ul>
 					<?php }else{?>
-						<div class="user-name"><a href="<?=base_url('auth');?>">Login</a></div>
+						<div class="user-name">
+						<!-- <a href="<?=base_url('auth');?>">Login</a> -->
+						<a href="#sign-in-dialog" class="popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
+						<!-- <a href="#small-dialog" class="popup-with-zoom-anim"><i class="sl sl-icon-login"></i> In</a> -->
+						</div>
+
 					<?php }?>
 					</div>
 
-<a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
+
 					<!-- <a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a> -->
 				</div>
 			</div>
@@ -186,12 +197,14 @@
 
 						<!-- Login -->
 						<div class="tab-content" id="tab1" style="display: none;">
-							<form method="post" class="login">
-
+							<!-- <form class="login"> -->
+								<div id="login_response">
+									
+								</div>
 								<p class="form-row form-row-wide">
 									<label for="username">Username:
 										<i class="im im-icon-Male"></i>
-										<input type="text" class="input-text" name="username" id="username" value="" />
+										<input type="text" class="input-text" name="identity" id="identity" value="" />
 									</label>
 								</p>
 
@@ -201,31 +214,34 @@
 										<input class="input-text" type="password" name="password" id="password"/>
 									</label>
 									<span class="lost_password">
-										<a href="#" >Lost Your Password?</a>
+										<a href="#small-dialog" class="popup-with-zoom-anim" >Lost Your Password?</a>
 									</span>
 								</p>
 
 								<div class="form-row">
-									<input type="submit" class="button border margin-top-5" name="login" value="Login" />
+									<input type="submit" class="button border margin-top-5" name="login" value="Login"  onclick="return submit_login();"/>
 									<div class="checkboxes margin-top-10">
 										<input id="remember-me" type="checkbox" name="check">
 										<label for="remember-me">Remember Me</label>
 									</div>
 								</div>
 								
-							</form>
+							<!-- </form> -->
 						</div>
 
 						<!-- Register -->
 						<div class="tab-content" id="tab2" style="display: none;">
 
-							<form method="post" class="register">
-								
+							<!-- <form method="post" class="register"> -->
+								<div id="register_response">
+									
+								</div>
 							<p class="form-row form-row-wide">
-								<label for="username2">Username:
+								<label for="username2">Name:
 									<i class="im im-icon-Male"></i>
-									<input type="text" class="input-text" name="username" id="username2" value="" />
+									<input type="text" class="input-text" name="name" id="name" value="" />
 								</label>
+								<span id='name_id'></span>
 							</p>
 								
 							<p class="form-row form-row-wide">
@@ -233,35 +249,126 @@
 									<i class="im im-icon-Mail"></i>
 									<input type="text" class="input-text" name="email" id="email2" value="" />
 								</label>
+								<span id='email_id'></span>
 							</p>
-
+							<p class="form-row form-row-wide">
+								<label for="email2">Mobile:
+									<i class="im im-icon-Mail"></i>
+									<input type="text" class="input-text" name="phone" id="phone" value="" />
+								</label>
+								<span id='phone_id'></span>
+							</p>
 							<p class="form-row form-row-wide">
 								<label for="password1">Password:
 									<i class="im im-icon-Lock-2"></i>
 									<input class="input-text" type="password" name="password1" id="password1"/>
 								</label>
+								<span id='pass1_id'></span>
 							</p>
 
 							<p class="form-row form-row-wide">
 								<label for="password2">Repeat Password:
 									<i class="im im-icon-Lock-2"></i>
-									<input class="input-text" type="password" name="password2" id="password2"/>
+									<input class="input-text" type="password" name="password_confirm" id="password2"/>
 								</label>
+								<span id='pass2_id'></span>
 							</p>
 
-							<input type="submit" class="button border fw margin-top-10" name="register" value="Register" />
+							<input type="submit" class="button border fw margin-top-10" name="register" value="Register" onclick="return submit_registration();" />
 	
-							</form>
+							<!-- </form> -->
 						</div>
 
 					</div>
 				</div>
 			</div>
 			<!-- Sign In Popup / End -->
+<!-- forgot password Popup -->
+			<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
 
+				<div class="small-dialog-header">
+					<h3>Forgot Password</h3>
+				</div>
+
+				<!--Tabs -->
+				<!-- <div class="sign-in-form style-1"> -->
+								<span id="forgot_response">
+									
+								</span>
+								<p class="form-row form-row-wide">
+									<label for="username">Email:
+										<i class="im im-icon-Male"></i>
+										<input type="email" class="input-text" name="forgot_email" id="forgot_email" value="" />
+									</label>
+								</p>
+								<div class="form-row">
+									<input type="submit" class="button border margin-top-5" name="submit" value="Submit"  onclick="return submit_forgot_pass();"/>
+								</div>
+				<!-- </div> -->
+			</div>
+			<!-- forgot password Popup / End -->
 		</div>
 	</div>
 	<!-- Header / End -->
 
 </header>
 <div class="clearfix"></div>
+<script type="text/javascript">
+    function submit_login() {
+    	var identity = $('#identity').val();
+        var password = $('#password').val();
+        var data_list={ identity: identity, password: password};
+ $.ajax({
+                    url:'<?=base_url();?>auth/login_ajax/',
+                    type:'POST',
+                    data: data_list,
+                    dataType: 'json',
+                    success:function(result){
+         			/*alert(result.message);*/
+         			$('#login_response').html(result.message);
+	         			if(result.status == 1){
+	         				setInterval('location.reload()', 3000);
+	         			}
+                    }
+	});
+}
+    function submit_registration() {
+    	var name = $('#name').val();
+    	var email = $('#email2').val();
+    	var phone = $('#phone').val();
+        var password1 = $('#password1').val();
+        var password2 = $('#password2').val();
+        var data_list={ name: name, email: email, phone: phone, password1: password1, password_confirm: password2};
+ $.ajax({
+                    url:'<?=base_url();?>auth/create_user_ajax/',
+                    type:'POST',
+                    data: data_list,
+                    dataType: 'json',
+                    success:function(result){
+                    /*alert(result);
+         			alert(result.message);*/
+         			$('#register_response').html(result.message);
+	         			if(result.status == 1){
+	         				setInterval('location.reload()', 3000);
+	         			}
+                    }
+	});
+}
+    function submit_forgot_pass() {
+        var identity = $('#forgot_email').val();
+        var data_list={ identity: identity};
+ $.ajax({
+                    url:'<?=base_url();?>auth/ajax_forgot_password/',
+                    type:'POST',
+                    data: data_list,
+                    dataType: 'json',
+                    success:function(result){
+         			alert(result.message);
+         			$('#forgot_response').html(result.message);
+	         			/*if(result.status == 1){
+	         				setInterval('location.reload()', 3000);
+	         			}*/
+                    }
+	});
+}
+</script>

@@ -121,11 +121,14 @@ for ($i=0; $i < count($days); $i++) {
 	if($days[$i] == date('l')){
 	if($opening_hours->opening_time[$i]=='Closed'){
 	$opening='Closed Now';
+	$opening_col='now-closed';
 	}else{
 	if((strtotime(date('h A')) >= strtotime($opening_hours->opening_time[$i])) && (strtotime(date('h A')) <= strtotime($opening_hours->closing_time[$i]))){
 		$opening='Now Open';
+		$opening_col='now-open';
 	}else{
 		$opening='Closed Now';
+		$opening_col='now-closed';
 	}
 	}
 	}
@@ -136,11 +139,11 @@ $where['row_status']=1;
 $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'),1);
 ?>
                     <div class="carousel-item">
-                        <a href="<?php if ($this->ion_auth->logged_in()){ echo base_url('listings-single/').base64_encode(base64_encode($row['id']));}else{echo '#';}?>" onclick="<?php if ($this->ion_auth->logged_in()==''){ ?>alert('Please login to open this..!');<?php }?>" class="listing-item-container">
+                        <a href="<?php if ($this->ion_auth->logged_in()){ echo base_url('listings-single/').base64_encode(base64_encode($row['id']));}else{echo '#sign-in-dialog';}?>" class="listing-item-container <?php if ($this->ion_auth->logged_in()==''){ echo 'popup-with-zoom-anim';}?>">
                             <div class="listing-item">
                                 <div class="col-md-4  listing-item p--0 list-img-size">
                                     <img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt="">
-                                    <div class="listing-badge now-open"><?=$opening;?></div>
+                                    <div class="listing-badge <?=$opening_col;?>"><?=$opening;?></div>
                                 </div>
                                 <div class="col-md-8 ">
                                     <div class="listing-item-content">
@@ -160,7 +163,7 @@ $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'
                                     <span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>
                                     <?php }?>
                                     <div class="star-rating" data-rating="<?=$rating;?>">
-                                    <div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
+                                    <div class="rating-counter">(<?=$rating;?>/5)</div>
                             </div>
                                 </div>
                             </div>

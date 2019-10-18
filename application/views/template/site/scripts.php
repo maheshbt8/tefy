@@ -25,6 +25,9 @@
 <script src="<?php echo base_url('assets')?>/scripts/leaflet-control-geocoder.js"></script>
 
 
+<script src="<?php echo base_url();?>assets/scripts/validations/jquery.validate.js"></script>
+<script src="<?php echo base_url();?>assets/scripts/validations/examples.validation.js"></script>
+
 <!-- Typed Script -->
 <script type="text/javascript" src="<?php echo base_url('assets')?>/scripts/typed.js"></script>
 <script>
@@ -129,7 +132,6 @@ strings: ["Schools"," Schools"," Schools"],
          dataType: 'json',
             success: function(response)
             {
-              //alert(response.pagination);
               $('#pagination_data').html(response.pagination);
               $('#review_list').html(response.result);
             //createTable(response.result,response.row);

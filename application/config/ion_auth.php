@@ -83,7 +83,7 @@ $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' 
  | appropriately. If this variable set to 0, there is no maximum.
  */
 $config['site_title']                 = "Tefy";       // Site Title, example.com
-$config['admin_email']                = "admin@admin.com"; // Admin Email, admin@example.com
+$config['admin_email']                = "info@tefy.in"; // Admin Email, admin@example.com
 $config['default_group']              = 'student';           // Default group, use name
 $config['admin_group']                = 'admin';             // Default administrators group, use name
 $config['school_group']               = 'school';           //school group
@@ -127,6 +127,15 @@ $config['identity_cookie_name'] = 'identity';
 $config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, if false it will return the code and the identity
 $config['email_config'] = array(
 	'mailtype' => 'html',
+	'protocol' => 'smtp',
+    'smtp_host' => 'smtp.hostinger.in',
+    'smtp_port' => 587,
+    'smtp_user' => 'info@tefy.in',
+    'smtp_pass' => 'Tefy@123',
+    'mailtype' => 'html',
+    'charset' => 'UTF-8',
+    'wordwrap' => 'TRUE',
+    'newline' => "\r\n",
 );
 
 /*

@@ -4,9 +4,7 @@
     }
 
 </style>
-
-
-<form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" class="form-horizontal" id="form">
+<form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
 <div class="row">
 			<div class="col-lg-12">
 
@@ -25,6 +23,7 @@
 							<div class="col-md-12">
 								<h5>School Name <i class="tip" data-tip-content="Name of your School"></i></h5>
 								<input class="search-field" type="text" value="" name="school_name" required="" autocomplete="off" />
+								<?php echo form_error('school_name', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 <!-- School Code -->
@@ -32,6 +31,7 @@
 							<div class="col-md-12">
 								<h5>School Registration Code <i class="tip" data-tip-content="Name of your School"></i></h5>
 								<input class="search-field" type="text" value="" name="school_code" required="" autocomplete="off" />
+								<?php echo form_error('school_code', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 						<!-- Row -->
@@ -40,7 +40,7 @@
 							<!-- Status -->
 							<div class="col-md-6">
 								<h5>Category</h5>
-								<select class="form-control selectric chosen-select-no-single"  name="category[]" required=""  multiple="">
+								<select class="form-control selectric chosen-select-no-single" id="category"  name="category[]" required=""  multiple="">
 									<option value="" disabled="">Select Category</option>	
                                   <?php $res=$this->common_model->select_results_info('category',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
@@ -48,12 +48,16 @@
 									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
 								<?php }?>
 								</select>
+								<?php echo form_error('category[]', '<div class="error">', '</div>'); ?>
+								<label class="error" for="category[]"></label>
 							</div>
+
 
 							<!-- Type -->
 							<div class="col-md-6">
 								<h5>Keywords <i class="tip" data-tip-content="Maximum of 15 keywords related with your business"></i></h5>
 								<input type="text" placeholder="Keywords should be separated by commas"  name="keywords" required="">
+								<?php echo form_error('keywords', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 						<!-- Row / End -->
@@ -70,8 +74,12 @@
                             <div class="col-md-2">
 								<label><input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="<?=$row['id'];?>" required=""><?=$row['name'];?></label>
                             </div>
-                        <?php }?>                          
+                        <?php }?>
+
+                                               
 							</div>
+							<?php echo form_error('curriculum', '<div class="error">', '</div>'); ?> 
+							<label class="error" for="curriculum"></label>  
 						</div>
 						<!-- Row / End -->
                         
@@ -90,8 +98,10 @@
                                 <div class="col-md-2">
                                     <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Co-Education" required="">Co-Education</label>
                                 </div>
-                                
+
 							</div>
+							<?php echo form_error('school_type', '<div class="error">', '</div>'); ?>
+                                <label class="error" for="school_type"></label>
 						</div>
                         
                         <!-- Row -->
@@ -109,8 +119,9 @@
                                 <div class="col-md-2">
                                     <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Both" required="">Both</label>
                                 </div>
-                                
 							</div>
+							<?php echo form_error('school_format', '<div class="error">', '</div>'); ?>
+                                <label class="error" for="school_format"></label>
 						</div>
                         
                         <!-- Row -->
@@ -120,6 +131,9 @@
 							<div class="col-md-12">
                                 <h5>Hostel facility</h5>
                                 <div class="col-md-3">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="No" required="" checked="">No</label>
+                                </div>
+                                <div class="col-md-3">
                                     <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Boys" required="">Only for Boys</label>
                                 </div>
                                 <div class="col-md-2">
@@ -128,8 +142,9 @@
                                 <div class="col-md-2">
                                     <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="For Boys & Girls" required="">For Boys & Girls</label>
                                 </div>
-                                
 							</div>
+							<?php echo form_error('hostels', '<div class="error">', '</div>'); ?>
+                                <label class="error" for="hostels"></label>
 						</div>
                         
                         <!-- Row -->
@@ -147,8 +162,8 @@
 								<?php }?>
 									
 								</select>
-                             
-                          
+                             	<?php echo form_error('class[]', '<div class="error">', '</div>'); ?>
+                          	
 							</div>
                             
 							<!--  -->
@@ -162,7 +177,7 @@
 									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
 								<?php }?>									
 								</select>
-                             
+                             	<?php echo form_error('medium[]', '<div class="error">', '</div>'); ?>
                           
 							</div>
 						</div>
@@ -186,38 +201,45 @@
 							<div class="col-md-6">
 								<h5>Founders Name </h5>
 								<input class="search-field" type="text" value="" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+								<?php echo form_error('founders_name', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Brand Name </h5>
 								<input class="search-field" type="text" value="" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
+								<?php echo form_error('brand_name', '<div class="error">', '</div>'); ?>
 							</div>
 					
 							<div class="col-md-6">
 								<h5>Number of Branches </h5>
 								<input class="search-field" type="text" value="" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
+								<?php echo form_error('no_of_branches', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of brand</h5>
 								<input class="search-field" type="text" value="" name="est_year" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('est_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of the specific branch</h5>
 								<input class="search-field" type="text" value="" name="est_branch_year" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('est_branch_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
                    
 							<div class="col-md-6">
 								<h5>Average Expirience of Faculty</h5>
 								<input class="search-field" type="text" value="" name="faculty_exp" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('faculty_exp', '<div class="error">', '</div>'); ?>
 							</div>
 						
                         
 							<div class="col-md-6">
 								<h5>Any Notable Alumni</h5>
 								<input class="search-field" type="text" value="" name="alumni" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('alumni', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
                         
@@ -240,15 +262,18 @@
 							<div class="col-md-4">
 								<h5>Councellor/Principal number </h5>
 								<input class="search-field" type="text" value="" name="principal_number" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('principal_number', '<div class="error">', '</div>'); ?>
 							</div>
                             <div class="col-md-4">
                                     <h5>Telephone Number </h5>
                                     <input class="search-field" type="text" value="" name="telephone_number" placeholder="" required="" autocomplete="off" />
+                                    <?php echo form_error('telephone_number', '<div class="error">', '</div>'); ?>
                                 </div>
 
 							<div class="col-md-4">
                                     <h5>Email </h5>
                                     <input class="search-field" type="text" value="" name="school_email" placeholder="" required="" autocomplete="off" />
+                                    <?php echo form_error('school_email', '<div class="error">', '</div>'); ?>
                                 </div>
 
 							
@@ -272,7 +297,8 @@
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-							<textarea type="text" class="form-control" name="admission_procedure" value=""></textarea>
+							<textarea type="text" class="form-control" name="admission_procedure" value="" required=""></textarea>
+							<?php echo form_error('admission_procedure', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
                         
@@ -301,16 +327,19 @@
 									<input type="hidden" id="lat" value="" name="latitude">
                                          <input type="hidden" id="lng" value="" name="longitude">
                                          <input type="hidden" id="address" value="" name="address">
+                                         <?php echo form_error('landmark', '<div class="error">', '</div>'); ?>
 								</div>
                                 <!-- Address -->
 								<div class="col-md-12">
 									<h5>Address</h5>
 									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""></textarea>
+									<?php echo form_error('address', '<div class="error">', '</div>'); ?>
 								</div>
 
 								<div class="col-md-12">
                                 <h5>Address URL</h5>
-                                <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url">
+                                <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url" required="">
+                                <?php echo form_error('address_url', '<div class="error">', '</div>'); ?>
                             	</div>
 							</div>
 							<!-- Row / End -->
@@ -384,6 +413,7 @@
 							<div class="col-md-12">
                                 <h5>Vision</h5>
 								<textarea class="WYSIWYG" name="vision" cols="20" rows="2"  spellcheck="true" required="" placeholder="Enter the school vision in short note in 100 words"></textarea>
+								<?php echo form_error('vision', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 						<!-- Row / End -->
@@ -393,6 +423,7 @@
 						<div class="form">
 							<h5>Description</h5>
 							<textarea class="WYSIWYG" name="description" cols="40" rows="3" id="summary" spellcheck="true" required=""></textarea>
+							<?php echo form_error('description', '<div class="error">', '</div>'); ?>
 						</div>
 
 						<!-- Row -->
@@ -455,7 +486,7 @@
 							<label for="check<?=$a;?>"><?=$row['name'];?></label>
 <?php $a++;}?>
 							
-					
+					<?php echo form_error('amenities[]', '<div class="error">', '</div>'); ?>
 						</div>
 						<!-- Checkboxes / End -->
 <div class="row with-forms">

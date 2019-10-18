@@ -262,7 +262,7 @@ header.fullwidth .container {
 }
 
 #header.cloned {
-    background-color: #fff
+    background-color: #373435;
 }
 
 #header.cloned #logo img {
@@ -661,7 +661,7 @@ body #navigation ul ul {
 }
 
 #navigation.style-1 ul li a {
-    color: #444;
+    color: #fff;
     cursor: pointer
 }
 
@@ -711,7 +711,8 @@ body .user-menu ul li a:hover,
 
 #navigation.style-1>ul>li>a.current,
 #navigation.style-1>ul>li:hover>a {
-    background: rgba(102, 103, 107, .06);
+    /*background: rgba(102, 103, 107, .06);*/
+    background: #fff;
     color: #66676b
 }
 
@@ -928,7 +929,8 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
 }
 
 .user-menu .user-name {
-    transition: .2s
+    /*color: #373435;*/
+    transition: .2s;
 }
 
 .user-menu .user-name:after {
@@ -938,7 +940,7 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
     transform: rotate(0deg);
     display: inline-block;
     margin-left: 6px;
-    color: #aaa
+    color: #fff;
 }
 
 .user-menu.active .user-name:after,
@@ -1031,7 +1033,8 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
 }
 
 .user-name span img {
-    border: 3px solid #fff;
+    padding: 2px;
+    border: 3px solid #cecaca;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
     box-sizing: content-box
 }
@@ -2206,7 +2209,8 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
 }
 
 .transparent-header #header:not(.cloned) .user-menu .user-name:after {
-    color: rgba(255, 255, 255, .7)!important
+    /*color: rgba(255, 255, 255, .7)!important*/
+    color: #373435 !important;
 }
 
 .transparent-header #header:not(.cloned) .user-menu.active .user-name,
@@ -6997,7 +7001,7 @@ a.send-message-to-owner.button {
 
 .listing-nav-container.cloned {
     position: fixed;
-    top: 0;
+    top: 78px;
     margin: 0 auto;
     z-index: 1010;
     width: 100%;
@@ -20882,3 +20886,20 @@ height: 51px;
     height: 300px; 
     margin-top: 85px; 
 }
+.error {
+    color: #C10000;
+    font-size: 0.9em;
+    margin-top: -5px;
+    padding: 0;
+}
+
+
+
+
+/*#navigation.style-1 ul li a:hover {
+    background: #fff;
+}
+*/
+/*Start CSS By Mahesh*/
+.alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:4px}.alert h4{margin-top:0;color:inherit}.alert .alert-link{font-weight:700}.alert>p,.alert>ul{margin-bottom:0}.alert>p+p{margin-top:5px}.alert-dismissable,.alert-dismissible{padding-right:35px}.alert-dismissable .close,.alert-dismissible .close{position:relative;top:-2px;right:-21px;color:inherit}.alert-success{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6}.alert-success hr{border-top-color:#c9e2b3}.alert-success .alert-link{color:#2b542c}.alert-info{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.alert-info hr{border-top-color:#a6e1ec}.alert-info .alert-link{color:#245269}.alert-warning{color:#8a6d3b;background-color:#fcf8e3;border-color:#faebcc}.alert-warning hr{border-top-color:#f7e1b5}.alert-warning .alert-link{color:#66512c}.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1}.alert-danger hr{border-top-color:#e4b9c0}.alert-danger .alert-link{color:#843534}
+/*End CSS By Mahesh*/

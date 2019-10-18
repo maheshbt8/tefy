@@ -20,7 +20,7 @@ class Auth extends MX_Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect(base_url('auth/login'), 'refresh');
+			redirect(base_url('home'), 'refresh');
 		}
 		elseif ($this->ion_auth->is_admin())
 		{
@@ -48,7 +48,38 @@ class Auth extends MX_Controller {
 			$this->_render_page('auth/index', $this->data);
 		}
 	}
+	public function login_ajax()
+	{
+		//validate form input
+		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
+		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
 
+		if ($this->form_validation->run() == true)
+		{
+			// check to see if the user is logging in
+			// check for "remember me"
+			$remember = (bool) $this->input->post('remember');
+
+			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
+			{
+				$mes['message']='<div class="alert alert-success"><strong>successfully Login</strong></div>';
+				$mes['status']=1;
+				echo json_encode($mes);
+			}
+			else
+			{
+				$mes['message']='<div class="alert alert-danger"><strong>In Valid Username or Password</strong></div>';
+				$mes['status']=0;
+				echo json_encode($mes);
+			}
+		}
+		else
+		{
+			$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Both fields are required</strong></div>';
+			$mes['status']=0;
+				echo json_encode($mes);
+		}
+	}
 	// log the user in
 	public function login()
 	{
@@ -81,6 +112,7 @@ class Auth extends MX_Controller {
 		}
 		else
 		{
+			/*echo validation_errors();*/
 			// the user is not logging in so display the login page
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -111,7 +143,7 @@ class Auth extends MX_Controller {
 
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect(base_url('auth/login'), 'refresh');
+		redirect(base_url('home'), 'refresh');
 	}
 
 	// change password
@@ -246,7 +278,7 @@ class Auth extends MX_Controller {
 				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
 			}
 			else
-			{
+			{/*echo "string";die;*/
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
 				redirect("auth/forgot_password", 'refresh');
 			}
@@ -415,7 +447,134 @@ class Auth extends MX_Controller {
 			redirect('auth', 'refresh');
 		}
 	}
+	public function mail_test($res)
+	{
+		$this->mail_model->account_activation($res,'maheshbt.grepthor@gmail.com');
+	}
+	//Create new user using ajax
+	public function create_user_ajax()
+	{
+		//validate form input
+		$tables = $this->config->item('tables','ion_auth');
+        $identity_column = $this->config->item('identity','ion_auth');
+        $this->data['identity_column'] = $identity_column;
 
+        $this->form_validation->set_rules('name', 'Name', 'trim|required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[' . $tables['users'] . '.email]');
+        $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim|required');
+        $this->form_validation->set_rules('password1', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+        $this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
+
+
+		if ($this->form_validation->run() == true)
+		{
+			$email    = strtolower($this->input->post('email'));
+            $identity = ($identity_column==='email') ? $email : $this->input->post('email');
+            $password = $this->input->post('password1');
+
+            $additional_data = array(
+                'first_name' => $this->input->post('name'),
+                'phone'      => $this->input->post('phone')
+            );
+            $res=$this->ion_auth->register($identity, $password, $email, $additional_data);
+       /*     $mes['message']=$res;
+            $mes['status']=1;
+				echo json_encode($mes);*/
+			if ($res>0)
+			{
+				$this->mail_model->account_activation($res,$email);
+				$mes['message']='<div class="alert alert-warning"><strong>successfully Registered
+				Check your email to activate your account
+				</strong></div>';
+				$mes['status']=1;
+				echo json_encode($mes);
+			}
+			else
+			{
+				$mes['message']='<div class="alert alert-warning"><strong>Not Registered</strong></div>';
+				$mes['status']=0;
+				echo json_encode($mes);
+			}
+		}
+		else
+		{
+			$mes['message']=validation_errors();
+			$mes['status']=0;
+			echo json_encode($mes);
+		}
+	}
+	public function ajax_forgot_password()
+	{
+		// setting validation rules by checking whether identity is username or email
+		if($this->config->item('identity', 'ion_auth') != 'email' )
+		{
+		   $this->form_validation->set_rules('identity', $this->lang->line('forgot_password_identity_label'), 'required');
+		}
+		else
+		{
+		   $this->form_validation->set_rules('identity', $this->lang->line('forgot_password_validation_email_label'), 'required|valid_email');
+		}
+
+
+		if ($this->form_validation->run() == true)
+		{
+			$identity_column = $this->config->item('identity','ion_auth');
+			$identity = $this->ion_auth->where($identity_column, $this->input->post('identity'))->users()->row();
+/*			$mes['message']=$identity->email;
+			echo json_encode($mes);*/
+if (!empty($identity))
+			{
+				/*$mes['message']='<div class="alert alert-success alert-dismissible fade in"><strong>Reset Password link Sent to your Email</strong></div>';
+				$mes['status']=1;
+				echo json_encode($mes);*/
+				$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
+/*$mes['message']=true;
+echo json_encode($mes);*/
+			/*if ($forgotten)
+			{*/
+				$mes['message']='<div class="alert alert-success alert-dismissible fade in"><strong>Reset Password link Sent to your Email</strong></div>';
+				$mes['status']=1;
+				echo json_encode($mes);
+			/*}
+			else
+			{
+				$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Email Not Found In Our Records</strong></div>';
+			$mes['status']=0;
+				echo json_encode($mes);
+			}*/
+			}
+			else
+			{
+				$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Email Not Found In Our Records</strong></div>';
+			$mes['status']=0;
+				echo json_encode($mes);
+			}
+			// run the forgotten password method to email an activation code to the user
+			/*$forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
+
+			if ($forgotten)
+			{
+				$mes['message']='<div class="alert alert-success alert-dismissible fade in"><strong>Reset Password link Sent to your Email</strong></div>';
+				$mes['status']=1;
+				echo json_encode($mes);
+			}
+			else
+			{
+				$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Email Not Found In Our Records</strong></div>';
+			$mes['status']=0;
+				echo json_encode($mes);
+			}*/
+		}else{
+			$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Email is required</strong></div>';
+			$mes['status']=0;
+				echo json_encode($mes);
+		}
+	}
+	public function email_verification($id=NULL)
+	{
+		$task=$_GET['id'];
+        $this->common_model->email_verification($task);
+	}
 	// create a new user
 	public function create_user()
     {
@@ -431,8 +590,8 @@ class Auth extends MX_Controller {
         $this->data['identity_column'] = $identity_column;
 
         // validate form input
-        $this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required');
-        $this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required');
+        /*$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required');
+        $this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required');*/
         if($identity_column!=='email')
         {
             $this->form_validation->set_rules('identity',$this->lang->line('create_user_validation_identity_label'),'required|is_unique['.$tables['users'].'.'.$identity_column.']');
@@ -450,9 +609,8 @@ class Auth extends MX_Controller {
         if ($this->form_validation->run() == true)
         {
             $email    = strtolower($this->input->post('email'));
-            $identity = ($identity_column==='email') ? $email : $this->input->post('identity');
+            $identity = ($identity_column==='username') ? $email : $this->input->post('identity');
             $password = $this->input->post('password');
-
             $additional_data = array(
                 'first_name' => $this->input->post('first_name'),
                 'last_name'  => $this->input->post('last_name'),

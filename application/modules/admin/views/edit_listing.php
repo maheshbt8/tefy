@@ -11,7 +11,7 @@ $this->session->set_userdata('last_page',current_url());
 
 
 
-<form method="post" action="<?=base_url('admin/edit_listing/').$edit_id;?>" enctype="multipart/form-data" class="form-horizontal" id="form">
+<form method="post" action="<?=base_url('admin/edit_listing/').$edit_id;?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
 <div class="row">
 			<div class="col-lg-12">
 
@@ -29,7 +29,8 @@ $this->session->set_userdata('last_page',current_url());
 						<div class="row with-forms">
 							<div class="col-md-12">
 								<h5>School Name <i class="tip" data-tip-content="Name of your School"></i></h5>
-								<input class="search-field" type="text" value="<?=$edit_data['school_name'];?>" name="school_name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['school_name'];?>" name="school_name"  autocomplete="off" />
+								<?php echo form_error('school_name', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 <!-- School Code -->
@@ -37,6 +38,7 @@ $this->session->set_userdata('last_page',current_url());
 							<div class="col-md-12">
 								<h5>School Code <i class="tip" data-tip-content="Name of your School"></i></h5>
 								<input class="search-field" type="text" value="<?=$edit_data['school_code'];?>" name="school_code" required="" autocomplete="off" />
+								<?php echo form_error('school_code', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 						<!-- Row -->
@@ -45,7 +47,7 @@ $this->session->set_userdata('last_page',current_url());
 							<!-- Status -->
 							<div class="col-md-6">
 								<h5>Category</h5>
-								<select class="form-control selectric chosen-select-no-single"  name="category[]" required=""  multiple="">
+								<select class="form-control selectric chosen-select-no-single" id="category" name="category[]" required=""  multiple="">
 									<option value="" disabled="">Select Category</option>	
                                   <?php $res=$this->common_model->select_results_info('category',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
@@ -53,12 +55,15 @@ $this->session->set_userdata('last_page',current_url());
 									<option value="<?=$row['id'];?>" <?php if(strpos($edit_data['category'],$row['id'])){ echo 'selected';} ?>><?=$row['name'];?></option>
 								<?php }?>
 								</select>
+								<?php echo form_error('category[]', '<div class="error">', '</div>'); ?>
+								<label class="error" for="category[]"></label>
 							</div>
 
 							<!-- Type -->
 							<div class="col-md-6">
 								<h5>Keywords <i class="tip" data-tip-content="Maximum of 15 keywords related with your business"></i></h5>
 								<input type="text" placeholder="Keywords should be separated by commas"  name="keywords" required="" value="<?=$edit_data['keywords'];?>">
+								<?php echo form_error('keywords', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 						<!-- Row / End -->
@@ -78,6 +83,8 @@ $this->session->set_userdata('last_page',current_url());
                             </div>
                         <?php }?>                          
 							</div>
+							<?php echo form_error('curriculum', '<div class="error">', '</div>'); ?> 
+							<label class="error" for="curriculum"></label> 
 						</div>
 						<!-- Row / End -->
                           <!-- Row -->
@@ -97,6 +104,8 @@ $this->session->set_userdata('last_page',current_url());
                                 </div>
                                 
 							</div>
+							<?php echo form_error('school_type', '<div class="error">', '</div>'); ?>
+                                <label class="error" for="school_type"></label>
 						</div>
 						 <!-- Row -->
                         <div class="row with-forms">
@@ -115,6 +124,8 @@ $this->session->set_userdata('last_page',current_url());
                                 </div>
                                 
 							</div>
+							<?php echo form_error('school_format', '<div class="error">', '</div>'); ?>
+                                <label class="error" for="school_format"></label>
 						</div>
                         
                         <!-- Row -->
@@ -123,6 +134,9 @@ $this->session->set_userdata('last_page',current_url());
 							<!-- Vision -->
 							<div class="col-md-12">
                                 <h5>Hostel facility</h5>
+                                <div class="col-md-3">
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="No" required="" <?php if($edit_data['hostels'] == 'No'){ echo 'checked';} ?>>No</label>
+                                </div>
                                 <div class="col-md-3">
                                     <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Boys" required="" <?php if($edit_data['hostels'] == 'Only for Boys'){ echo 'checked';} ?>>Only for Boys</label>
                                 </div>
@@ -134,6 +148,8 @@ $this->session->set_userdata('last_page',current_url());
                                 </div>
                                 
 							</div>
+							<?php echo form_error('hostels', '<div class="error">', '</div>'); ?>
+                                <label class="error" for="hostels"></label>
 						</div>
                         <!-- Row -->
 						<div class="row with-forms">
@@ -150,8 +166,7 @@ $this->session->set_userdata('last_page',current_url());
 								<?php }?>
 									
 								</select>
-                             
-                          
+                             <?php echo form_error('class[]', '<div class="error">', '</div>'); ?>
 							</div>
 							<div class="col-md-6">
                                 <h5>Medium</h5>
@@ -163,6 +178,7 @@ $this->session->set_userdata('last_page',current_url());
 									<option value="<?=$row['id'];?>" <?php if(strpos($edit_data['medium'],$row['id'])){ echo 'selected';} ?>><?=$row['name'];?></option>
 								<?php }?>									
 								</select>
+								<?php echo form_error('medium[]', '<div class="error">', '</div>'); ?>
                             </div>
 						</div>
 						<!-- Row / End -->
@@ -184,38 +200,45 @@ $this->session->set_userdata('last_page',current_url());
 							<div class="col-md-6">
 								<h5>Founders Name </h5>
 								<input class="search-field" type="text" value="<?=$edit_data['founders_name'];?>" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+								<?php echo form_error('founders_name', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Brand Name </h5>
 								<input class="search-field" type="text" value="<?=$edit_data['brand_name'];?>" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
+								<?php echo form_error('brand_name', '<div class="error">', '</div>'); ?>
 							</div>
 					
 							<div class="col-md-6">
 								<h5>Number of Branches </h5>
 								<input class="search-field" type="text" value="<?=$edit_data['no_of_branches'];?>" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
+								<?php echo form_error('no_of_branches', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of brand</h5>
 								<input class="search-field" type="text" value="<?=$edit_data['est_year'];?>" name="est_year" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('est_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of the specific branch</h5>
 								<input class="search-field" type="text" value="<?=$edit_data['est_branch_year'];?>" name="est_branch_year" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('est_branch_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
                    
 							<div class="col-md-6">
 								<h5>Average Expirience of Faculty</h5>
 								<input class="search-field" type="text" value="<?=$edit_data['faculty_exp'];?>" name="faculty_exp" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('faculty_exp', '<div class="error">', '</div>'); ?>
 							</div>
 						
                         
 							<div class="col-md-6">
 								<h5>Any Notable Alumni</h5>
 								<input class="search-field" type="text" value="<?=$edit_data['alumni'];?>" name="alumni" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('alumni', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
                         
@@ -238,15 +261,18 @@ $this->session->set_userdata('last_page',current_url());
 							<div class="col-md-4">
 								<h5>Councellor/Principal number </h5>
 								<input class="search-field" type="text" value="<?=$edit_data['principal_number'];?>" name="principal_number" placeholder="" required="" autocomplete="off" />
+								<?php echo form_error('principal_number', '<div class="error">', '</div>'); ?>
 							</div>
                             <div class="col-md-4">
                                     <h5>Telephone Number </h5>
                                     <input class="search-field" type="text" value="<?=$edit_data['telephone_number'];?>" name="telephone_number" placeholder="" required="" autocomplete="off" />
+                                    <?php echo form_error('telephone_number', '<div class="error">', '</div>'); ?>
                                 </div>
 
 							<div class="col-md-4">
                                     <h5>Email </h5>
                                     <input class="search-field" type="text" value="<?=$edit_data['school_email'];?>" name="school_email" placeholder="" required="" autocomplete="off" />
+                                    <?php echo form_error('school_email', '<div class="error">', '</div>'); ?>
                                 </div>
 
 							
@@ -270,7 +296,8 @@ $this->session->set_userdata('last_page',current_url());
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-							<textarea type="text" class="form-control" name="admission_procedure"><?=$edit_data['admission_procedure'];?></textarea>
+							<textarea type="text" class="form-control" name="admission_procedure" required=""><?=$edit_data['admission_procedure'];?></textarea>
+							<?php echo form_error('admission_procedure', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
                         
@@ -297,15 +324,18 @@ $this->session->set_userdata('last_page',current_url());
 									<input type="hidden" id="lat" value="<?=$edit_data['latitude'];?>" name="latitude">
                                          <input type="hidden" id="lng" value="<?=$edit_data['longitude'];?>" name="longitude">
                                          <input type="hidden" id="address" value="" name="address">
+                                         <?php echo form_error('landmark', '<div class="error">', '</div>'); ?>
 								</div>
                                 <!-- Address -->
 								<div class="col-md-12">
 									<h5>Address</h5>
 									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""><?=$edit_data['address'];?></textarea>
+									<?php echo form_error('address', '<div class="error">', '</div>'); ?>
 								</div>
 								<div class="col-md-12">
                                 <h5>Address URL</h5>
                                 <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url" value="<?=$edit_data['address_url'];?>">
+                                <?php echo form_error('address_url', '<div class="error">', '</div>'); ?>
                             	</div>
 							</div>
 							<!-- Row / End -->
@@ -392,6 +422,7 @@ $this->session->set_userdata('last_page',current_url());
 							<div class="col-md-12">
                                 <h5>Vision</h5>
 								<textarea class="WYSIWYG" name="vision" cols="20" rows="2"  spellcheck="true" required="" placeholder="Enter the school vision in short note in 100 words"><?=$edit_data['vision'];?></textarea>
+								<?php echo form_error('vision', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
 						<!-- Row / End -->
@@ -401,6 +432,7 @@ $this->session->set_userdata('last_page',current_url());
 						<div class="form">
 							<h5>Description</h5>
 							<textarea class="WYSIWYG" name="description" cols="40" rows="3" id="summary" spellcheck="true" required=""><?=$edit_data['description'];?></textarea>
+							<?php echo form_error('description', '<div class="error">', '</div>'); ?>
 						</div>
 
 						<!-- Row -->
@@ -463,7 +495,7 @@ $this->session->set_userdata('last_page',current_url());
 							<label for="check-a"><?=$row['name'];?></label>
 						<?php }?>
 							
-					
+					<?php echo form_error('amenities[]', '<div class="error">', '</div>'); ?>
 						</div>
 						<!-- Checkboxes / End -->
 <div class="row with-forms">

@@ -1,39 +1,17 @@
 <div class="simple-slick-carousel1 dots-nav">
-    <!-- Listing Item -->
+  <?php
+          
+          $gallery=$this->common_model->select_results_info('listing_banner',array('listing_id'=>$school['id']))->result_array();
+          foreach ($gallery as $gal){
+          ?>
+      <!-- Listing Item -->
     <div class="carousel-item">
-        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
+        <div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'/'.$gal['id'].'.jpg';?>" style="height:300px; margin-top: 85px;">
 
         </div>
     </div>
-    <!-- Listing Item / End -->
-   <!-- Listing Item -->
-    <div class="carousel-item">
-        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
-
-        </div>
-    </div>
-    <!-- Listing Item / End -->
-   <!-- Listing Item -->
-    <div class="carousel-item">
-        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
-
-        </div>
-    </div>
-    <!-- Listing Item / End -->
-   <!-- Listing Item -->
-    <div class="carousel-item">
-        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
-
-        </div>
-    </div>
-    <!-- Listing Item / End -->
-   <!-- Listing Item -->
-    <div class="carousel-item">
-        <div class="main-search-container centered" data-background-image="http://localhost/tefy/uploads/listings/banners/2/4.jpg" style="height:300px; margin-top: 85px;">
-
-        </div>
-    </div>
-    <!-- Listing Item / End -->
+    <!-- Listing Item / End -->          
+        <?php }?>
 </div>
 
 
@@ -65,8 +43,20 @@ $classes=json_decode($school['class']);
   }
   $category=implode(', ',$categ);
 }
+$class_name=array();
+  if($class_n=json_decode($school['class_name'])){
+    $class_name=$class_n;
+  }
+  $admission_fee=array();
+  if($admission_f=json_decode($school['admission_fee'])){
+    $admission_fee==$admission_f;
+  }
+  $tution_fee=array();
+  if($tution_f=json_decode($school['tution_fee'])){
+    $tution_fee=$tution_f;
+  }
 ?>
-<div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'/4.jpg';?>" style="height: 300px;margin-top: 85px;">
+<!-- <div class="main-search-container centered" data-background-image="<?=base_url('uploads/listings/banners/').$school['id'].'/4.jpg';?>" style="height: 300px;margin-top: 85px;"> -->
 
     </div>
 <!-- Content
@@ -140,7 +130,7 @@ $classes=json_decode($school['class']);
 						<li><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['email'];?>
 						</li>
 						<li><i class="sl sl-icon-globe"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['website'];?></li>
-                        <li><i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['address'];?>&nbsp;&nbsp;<span class="direction-icon">(<i class="fa fa-envelope-o"></i>&nbsp;   Directions)</span></li>
+                        <li><i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['address'];?>&nbsp;&nbsp;<span class="direction-icon"><!-- (<i class="fa fa-envelope-o"></i>&nbsp;   Directions) --></span></li>
 					</ul>
 					<div class="clearfix"></div>
 
@@ -199,9 +189,9 @@ $classes=json_decode($school['class']);
                             <td>Social Media :</td>
                             <td>
                                 <ul class="social-icons margin-top-20">
-                                    <li><a class="facebook" href="<?=$school['facebook'];?>"><i class="icon-facebook"></i></a></li>
-                                    <li><a class="twitter" href="<?=$school['twitter'];?>"><i class="icon-twitter"></i></a></li>
-                                    <li><a class="youtube" href="<?=$school['youtube'];?>"><i class="icon-youtube"></i></a></li>
+                                    <li><a class="facebook" href="<?=$school['facebook'];?>" target="_blank"><i class="icon-facebook"></i></a></li>
+                                    <li><a class="twitter" href="<?=$school['twitter'];?>" target="_blank"><i class="icon-twitter"></i></a></li>
+                                    <li><a class="youtube" href="<?=$school['youtube'];?>" target="_blank"><i class="icon-youtube"></i></a></li>
                                 </ul>
 
                             </td>
@@ -362,8 +352,8 @@ $classes=json_decode($school['class']);
 					<h4><span> </span> <a href="pages-user-profile.html">Fee Structure</a></h4>
 					
 				</div>
-                 <h3>Tution Fee Ranges From <span>10,000</span>/- to <span>1,00,000</span>/-</h3>
-                 <div>*Actual Fee may vary</div>
+                 <h3>Tution Fee Ranges From <span><?=current($tution_fee);?>/-</span><?php if(current($tution_fee)!=end($tution_fee)){?> to <span><?=end($tution_fee);?></span>/-<?php }?></h3>
+                 <div><!-- *Actual Fee may vary -->*<?=current($class_name).' - '.end($class_name);?></div>
                  
 				<!--<ul class="listing-details-sidebar">
 					<li><i class="sl sl-icon-phone"></i> (123) 123-456</li>
@@ -395,11 +385,14 @@ for ($i=0; $i < count($days); $i++) {
 	if($days[$i] == date('l')){
 	if($opening_hours->opening_time[$i]=='Closed'){
 	$opening_con='Closed Now';
+  $opening_col='now-closed';
 	}else{
 	if((strtotime(date('h A')) >= strtotime($opening_hours->opening_time[$i])) && (strtotime(date('h A')) <= strtotime($opening_hours->closing_time[$i]))){
 		$opening_con='Now Open';
+    $opening_col='now-open';
 	}else{
 		$opening_con='Closed Now';
+    $opening_col='now-closed';
 	}
 	}
 	}
@@ -408,7 +401,7 @@ for ($i=0; $i < count($days); $i++) {
 
 			<!-- Opening Hours -->
 			<div class="boxed-widget opening-hours margin-top-35">
-				<div class="listing-badge now-open"><?=$opening_con;?></div>
+				<div class="listing-badge <?=$opening_col;?>"><?=$opening_con;?></div>
 				<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
 				<ul>
 					<?php
@@ -431,7 +424,7 @@ for ($i=0; $i < count($days); $i++) {
 				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
 
         <div class="col-md-12">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2660399578053!2d78.377372814354!3d17.44697620567722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93daa6ed8c8f%3A0x3c0f1542a8b97c78!2sGrepthor%20Software%20Solutions%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1570255671063!5m2!1sen!2sin" width="450" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+          <iframe src="<?=$school['address_url'];?>" width="450" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
         </div>
 				<!-- <div id="singleListingMap-container">
 					<div id="singleListingMap" data-latitude="<?=$school['latitude'];?>" data-longitude="<?=$school['longitude'];?>" data-map-icon="im im-icon-Hamburger"></div>
@@ -647,8 +640,107 @@ if($achievements!=''){
 				<!-- Reviews -->
         <div class="col-md-12">
 				<section class="comments listing-reviews">
-          <ul id="review_list">
-          </ul>
+          <!-- <article class="h-mb2" id="review_3035260">
+  <header class="e-box -background-light -stacked -radius-top h-p1">
+
+    <div class="review-header">
+      <div class="review-header__rating">
+        <div class="h-mr1">
+          <div class="rating-basic">
+    <div class="rating-basic__star-rating">
+        <i class="e-icon -icon-star "></i>
+        <i class="e-icon -icon-star -color-grey-medium"></i>
+        <i class="e-icon -icon-star -color-grey-medium"></i>
+        <i class="e-icon -icon-star -color-grey-medium"></i>
+        <i class="e-icon -icon-star -color-grey-medium"></i>
+    </div>
+
+</div>
+
+        </div>
+          <p class="t-body h-m0">
+            for <strong>Documentation Quality</strong>
+          </p>
+      </div>
+
+      <div class="review-header__reviewer">
+        <p class="t-body -size-m h-m0">
+            by <a class="t-link -decoration-reversed" href="/user/gato06">gato06</a>
+            <span class="review-header__date">
+              <a class="t-link -decoration-reversed -color-inherit" href="/ratings/3035260">2 months ago</a>
+            </span>
+        </p>
+
+
+      </div>
+    </div>
+</header>    <div class="e-box h-p2 -stacked -radius-none">
+
+      <p class="t-body h-my1">Hello, I always liked to buy here, you can see the history that I have of purchases on your website, but this time I had a bad experience, buy this code and after reviewing the manual it is very ambiguous and makes one have to guess some settings, and tried to ask the seller for support in his forum and hear Skype, but his answer is that it is a hosting error, I asked him that if he needs any configuration the hosting and only deletes my messages, then he went to Skype to tell me it was a mistake of hosting that he could not go to repair, but I never asked him to repair my hosting, only to tell me if I needed anything special, the treatment of this seller has been very bad and I felt like an ignorant, the experience with This seller has been pessimistic and could not configure the application, without basic quality support you can not configure this application, Evanto as a responsible company and with good quality, must demand a standard basic support with good quality and not someone who just kicks your butt after you buy the code.</p>
+</div>
+    <div class="e-box -background-light -radius-bottom h-p2">
+      <div class="media fixed-layout">
+        <div class="media__item">
+              <img width="50" height="50" alt="qboxus" src="https://s3.envato.com/files/262672290/qboxus.jpg">
+
+        </div>
+        <div class="media__body">
+          <p class="t-body h-mb1"><strong>Author response</strong></p>
+          <p class="t-body h-my1">hello gato06, we are not sure where you have contacted and who you talked to. we are really sorry for the bad experience you have. please add us on skype and let us help you. and if you are not satisfied with the product, we are happy to refund you
+<br>skype: hello@qboxus.com
+<br>Thank you</p>
+        </div>
+    </div>
+
+</div></article> -->
+          <!-- <ul id="review_list">
+          </ul> -->
+          <div id="review_list" class="message-content">
+
+              <!-- <div class="message-bubble">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""><br/>Mahesh Reddy</div>
+                <div class="message-text"><p>Hello, I want to talk about your great listing! Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere tristique sem, eu ultricies tortor lacinia neque imperdiet vitae.</p></div>
+              </div>
+
+              <div class="message-bubble me">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""></div>
+                <div class="message-text"><p><b>Mahesh Reddy</b></p><p>Nam ut hendrerit orci, ac gravida orci. Cras tristique rutrum libero at consequat. Vestibulum vehicula neque maximus sapien iaculis, nec vehicula sapien fringilla.</p></div>
+              </div>
+
+              <div class="message-bubble me">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""></div>
+                <div class="message-text"><p>Accumsan et porta ac, volutpat id ligula. Donec neque neque, blandit eu pharetra in, tristique id enim.</p></div>
+              </div>
+
+              <div class="message-bubble">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""></div>
+                <div class="message-text"><p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p></div>
+              </div>
+
+              <div class="message-bubble me">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""></div>
+                <div class="message-text"><p>Nunc pulvinar, velit sit amet tristique tristique, nisi odio luctus odio, vel vulputate purus enim vestibulum est. Pellentesque non mollis ipsum, vitae tristique sapien.</p></div>
+              </div>
+
+              <div class="message-bubble">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""></div>
+                <div class="message-text"><p>Donec eget consequat magna. Integer luctus neque vel nulla malesuada imperdiet. </p></div>
+              </div>
+
+              <div class="message-bubble me">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""></div>
+                <div class="message-text"><p>Accumsan et porta ac, volutpat id ligula. Donec neque neque, blandit eu pharetra in, tristique id enim nulla magna interdum leo, sed tincidunt purus elit vitae magna. Donec eget consequat magna. Integer luctus neque vel nulla malesuada imperdiet. .</p></div>
+              </div>
+
+              <div class="message-bubble">
+                <div class="message-avatar"><img src="http://localhost/tefy/uploads/users/user.jpg" alt=""></div>
+                <div class="message-text"><p>Nulla eget erat consequat quam feugiat dapibus eget sed mauris.</p></div>
+              </div> -->
+              
+              <!-- Reply Area -->
+              <!-- <div class="clearfix"></div> -->
+              
+            </div>
        <!--     <ul>
              <li>
               <div class="avatar">
@@ -704,7 +796,7 @@ if($achievements!=''){
 				<h3 class="listing-desc-headline margin-bottom-10">Add Review</h3>
 				<p class="comment-notes">Your email address will not be published.</p>
         <?php if ($this->ion_auth->logged_in()){?>
-<form method="post" action="<?=base_url('listings-single/').$list_enc_id;?>">
+<form method="post" novalidate="novalidate" action="<?=base_url('listings-single/').$list_enc_id;?>" class="form-horizontal" id="form">
   <?php
                   if($this->session->flashdata('rating_message')!=''){
                   ?>
@@ -721,15 +813,15 @@ if($achievements!=''){
 							<!-- Leave Rating -->
 							<div class="clearfix"></div>
 							<div class="leave-rating">
-								<input type="radio" name="rating" id="rating-31" value="1" required="" />
+								<input type="radio" name="rating" id="rating-31" value="5" required=""  />
 								<label for="rating-31" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-32" value="2" required=""/>
+								<input type="radio" name="rating" id="rating-32" value="4" required=""/>
 								<label for="rating-32" class="fa fa-star"></label>
 								<input type="radio" name="rating" id="rating-33" value="3" required=""/>
 								<label for="rating-33" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-34" value="4" required=""/>
+								<input type="radio" name="rating" id="rating-34" value="2" required=""/>
 								<label for="rating-34" class="fa fa-star"></label>
-								<input type="radio" name="rating" id="rating-35" value="5" required=""/>
+								<input type="radio" name="rating" id="rating-35" value="1" required="" checked="" />
 								<label for="rating-35" class="fa fa-star"></label>
 							</div>
 						</div>
@@ -764,7 +856,7 @@ if($achievements!=''){
 
 						<div>
 							<label>Review:</label>
-							<textarea cols="40" rows="3" name="review" required=""></textarea>
+							<textarea cols="40" rows="3" name="review" required="" id="my_review"></textarea>
                <input type="hidden" id="single_school_id" value="<?=$school['id'];?>">
 						</div>
 
@@ -799,3 +891,19 @@ if($achievements!=''){
 
 
   
+  <script type="text/javascript">
+        function submit_review() {
+        var rating = $("input[name=rating]").val();
+        var review=('#my_review').val();
+        var single_school_id=('#single_school_id').val();
+        var data_list={ rating: rating, review: review, single_school_id:single_school_id};
+ $.ajax({
+                    url:'<?=base_url('home/ajax_add_review/').$list_enc_id;?>',
+                    type:'POST',
+                    data: data_list,
+                    success:function(result){
+              $('#forgot_response').html(result);
+                    }
+  });
+}
+  </script>

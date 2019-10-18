@@ -30,7 +30,7 @@ $this->session->set_userdata('last_page',current_url());
 							<input value="<?=$user_details['phone'];?>" type="text" name="phone" required="" >
 
 							<label>Email</label>
-							<input value="<?=$user_details['email'];?>" type="email" name="email" required="">
+							<input value="<?=$user_details['email'];?>" type="email" name="email" required="" readonly='' >
 							<!--<label>Notes</label>
 							<textarea name="notes" id="notes" cols="30" rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
 

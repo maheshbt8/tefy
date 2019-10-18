@@ -81,11 +81,14 @@ for ($i=0; $i < count($days); $i++) {
 	if($days[$i] == date('l')){
 	if($opening_hours->opening_time[$i]=='Closed'){
 	$opening='Closed Now';
+	$opening_col='now-closed';
 	}else{
 	if((strtotime(date('h A')) >= strtotime($opening_hours->opening_time[$i])) && (strtotime(date('h A')) <= strtotime($opening_hours->closing_time[$i]))){
 		$opening='Now Open';
+		$opening_col='now-open';
 	}else{
 		$opening='Closed Now';
+		$opening_col='now-closed';
 	}
 	}
 	}
@@ -102,44 +105,10 @@ $class=array();
 	}
 
 ?>
-				
-                <!-- Listing Item from sravan -->
-				<!-- <div class="col-lg-12 col-md-12">
-					<div class="listing-item-container list-layout">
-						<a href="<?=base_url('listings-single/').base64_encode(base64_encode($row['id']));?>" class="listing-item">
-							
-							<div class="listing-item-image">
-								<img src="http://localhost/tefy/uploads/listings/thumb/2.jpg";?>" alt="">
-							</div>
-							
-							<div class="listing-item-content">
-								<div class="listing-badge now-open">Opened now</div>
-
-								<div class="listing-item-inner">
-									<h3>DSK Public School </h3>
-									
-                                    <span class="padding-top-5  more2"><span><b>Vision</b>: ddddddd dddddd ddddddd ddddddd ddddddddddd  ddddddddd dddddd dddddd ddddddd dddddddd dddd dddddd dddddddd dddddd dddddddd dddd ddddddd dddddddd dddddddd dddddd dddddddd ddddddd dddddd dddd ddddd</span> </span>
-                                        <div class="padding-top-15"><b>Board: </b>SSC</div>
-                                        <div class="padding-top-5"><b>Grade:</b><span>I - X </span> </div>
-                                        <div class="padding-top-5"><b>Category:</b><span>Day Care </span> </div>
-                                        <div ><span class="more3"><b>Address</b>: wewe wewewewe wewewewewewew ewewewe wewewewew ewew ewewewewe wewewewewewew ewewewewew ewewewewe weweew wwwwww wwwwwwwf fffffffff fqwwwwww wwwwwwww</span> </div>
-                                    <div class="star-rating" data-rating="5">
-                                        <div class="rating-counter">(<b>4.5</b>/5)</div>
-                                    </div>
-								</div>
-
-								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>
-							</div>
-						</a>
-					</div>
-				</div> -->
-				<!-- Listing Item / End from sravan -->
-                
-                
-                <!-- Listing Item -->
+		 <!-- Listing Item -->
 				<div class="col-lg-12 col-md-12">
 					<div class="listing-item-container list-layout">
-						<a href="<?php if ($this->ion_auth->logged_in()){ echo base_url('listings-single/').base64_encode(base64_encode($row['id']));}else{echo '#';}?>" onclick="<?php if ($this->ion_auth->logged_in()==''){ ?>alert('Please login to open this..!');<?php }?>" class="listing-item">
+						<a href="<?php if ($this->ion_auth->logged_in()){ echo base_url('listings-single/').base64_encode(base64_encode($row['id']));}else{echo '#sign-in-dialog';}?>" class="listing-item <?php if ($this->ion_auth->logged_in()==''){ echo 'popup-with-zoom-anim';}?>">
 							
 							<!-- Image -->
 							<div class="listing-item-image">
@@ -149,7 +118,7 @@ $class=array();
 							
 							<!-- Content -->
 							<div class="listing-item-content">
-								<div class="listing-badge now-open"><?=$opening;?></div>
+								<div class="listing-badge <?=$opening_col;?>"><?=$opening;?></div>
 
 								<div class="listing-item-inner">
 									<h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
@@ -164,15 +133,15 @@ $class=array();
                                     </div>
 
 
-									<span><?=$row['address'];?></span>
-									<div class="star-rating" data-rating="<?=$rating;?>">
+									<!-- <span><?=$row['address'];?></span> -->
+									<!-- <div class="star-rating" data-rating="<?=$rating;?>">
 										<div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
-									</div>
-									<div class="padding-top-5">
+									</div> -->
+									<!-- <div class="padding-top-5">
                                         <span><b>Vision :</b>
                                             <span class="more2"><?=$row['vision'];?></span>
                                         </span> 
-                                    </div>
+                                    </div> -->
 								</div>
 								<?php if ($this->ion_auth->logged_in()){?>
 								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span><?php }?>
@@ -244,44 +213,66 @@ $class=array();
 					</div>
 					<!-- Row / End -->
 				
-                    
                     <!-- More Search Options -->
-					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Category" data-close-title="Category" id="inpt-stl"></a>
+					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Boards" data-close-title="Boards" id="inpt-stl"></a>
 
-					<div class="more-search-options relative ovrflw-x" style= "display:block;" >
+					<div class="more-search-options relative ovrflw-x" >
 
 						<!-- Checkboxes -->
 						<div class="checkboxes one-in-row margin-bottom-15">
 					<?php
 
-$category=json_decode($row['category']);
+$category=$this->common_model->select_results_info('curriculum',array('row_status'=>1))->result_array();
 if($category!=''){
-					for ($c=0; $c < count($category); $c++) {
-					
+					$c=0;foreach ($category as $cat) {
 	?>
-							<input id="check<?=$c;?>" type="checkbox" name="category[]" value="<?=$category[$c];?>">
-							<label for="check<?=$c;?>"><?=$this->common_model->get_type_name_by_where('category',array('id'=>$category[$c]))?></label>
-<?php }}?>
-							<!-- <input id="check-b" type="checkbox" name="check">
-							<label for="check-b">Friendly workspace</label>
+							<input id="boards<?=$c;?>" type="checkbox" name="board[]" value="<?=$cat['id'];?>">
+							<label for="boards<?=$c;?>"><?=$cat['name'];?></label>
+<?php $c++;}}?>
+					
+						</div>
+						<!-- Checkboxes / End -->
 
-							<input id="check-c" type="checkbox" name="check">
-							<label for="check-c">Instant Book</label>
+					</div>
+					<!-- More Search Options / End -->
+<!-- More Search Options -->
+					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Medium" data-close-title="Medium" id="inpt-stl"></a>
 
-							<input id="check-d" type="checkbox" name="check">
-							<label for="check-d">Wireless Internet</label>
+					<div class="more-search-options relative ovrflw-x" >
 
-							<input id="check-e" type="checkbox" name="check" >
-							<label for="check-e">Free parking on premises</label>
+						<!-- Checkboxes -->
+						<div class="checkboxes one-in-row margin-bottom-15">
+					<?php
 
-							<input id="check-f" type="checkbox" name="check" >
-							<label for="check-f">Free parking on street</label>
+$category=$this->common_model->select_results_info('medium',array('row_status'=>1))->result_array();
+if($category!=''){
+					$c=0;foreach ($category as $cat) {
+	?>
+							<input id="medium<?=$c;?>" type="checkbox" name="medium[]" value="<?=$cat['id'];?>">
+							<label for="medium<?=$c;?>"><?=$cat['name'];?></label>
+<?php $c++;}}?>
+					
+						</div>
+						<!-- Checkboxes / End -->
 
-							<input id="check-g" type="checkbox" name="check">
-							<label for="check-g">Smoking allowed</label>	
+					</div>
+					<!-- More Search Options / End -->
+                    <!-- More Search Options -->
+					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Category" data-close-title="Category" id="inpt-stl"></a>
 
-							<input id="check-h" type="checkbox" name="check">
-							<label for="check-h">Events</label> -->
+					<div class="more-search-options relative ovrflw-x" >
+
+						<!-- Checkboxes -->
+						<div class="checkboxes one-in-row margin-bottom-15">
+					<?php
+
+$category=$this->common_model->select_results_info('category',array('row_status'=>1))->result_array();
+if($category!=''){
+					$c=0;foreach ($category as $cat) {
+	?>
+							<input id="cate<?=$c;?>" type="checkbox" name="category[]" value="<?=$cat['id'];?>">
+							<label for="cate<?=$c;?>"><?=$cat['name'];?></label>
+<?php $c++;}}?>
 					
 						</div>
 						<!-- Checkboxes / End -->
@@ -294,47 +285,23 @@ if($category!=''){
 					<!-- More Search Options -->
 					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Facilities" data-close-title="Facilities" id="inpt-stl"></a>
 
-					<div class="more-search-options relative ovrflw-x" style= "display:block;" >
+					<div class="more-search-options relative ovrflw-x"  >
 
 						<!-- Checkboxes -->
 						<div class="checkboxes one-in-row margin-bottom-15">
 										<?php
-$facilities=json_decode($row['amenities']);
+$facilities=$this->common_model->select_results_info('facilities',array('row_status'=>1))->result_array();
 if($facilities!=''){
-					for ($c=0; $c < count($facilities); $c++) {
+					$c=0;foreach ($facilities as $fac) {
 					
 	?>
-							<input id="check-<?=$c;?>" type="checkbox" name="facilities[]" value="<?=$facilities[$c];?>">
-							<label for="check-<?=$c;?>"><?=$this->common_model->get_type_name_by_where('facilities',array('id'=>$facilities[$c]))?></label>
-<?php }}?>
-							<!-- <input id="check-a" type="checkbox" name="check">
-							<label for="check-a">Elevator in building</label>
-
-							<input id="check-b" type="checkbox" name="check">
-							<label for="check-b">Friendly workspace</label>
-
-							<input id="check-c" type="checkbox" name="check">
-							<label for="check-c">Instant Book</label>
-
-							<input id="check-d" type="checkbox" name="check">
-							<label for="check-d">Wireless Internet</label>
-
-							<input id="check-e" type="checkbox" name="check" >
-							<label for="check-e">Free parking on premises</label>
-
-							<input id="check-f" type="checkbox" name="check" >
-							<label for="check-f">Free parking on street</label>
-
-							<input id="check-g" type="checkbox" name="check">
-							<label for="check-g">Smoking allowed</label>	
-
-							<input id="check-h" type="checkbox" name="check">
-							<label for="check-h">Events</label> -->
-					
+							<input id="face-<?=$c;?>" type="checkbox" name="facilities[]" value="<?=$fac['id'];?>">
+							<label for="face-<?=$c;?>"><?=$fac['name'];?></label>
+<?php $c++;}}?>
 						</div>
 						<!-- Checkboxes / End -->
-
 					</div>
+
 					<!-- More Search Options / End -->
 
 

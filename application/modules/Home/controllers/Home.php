@@ -24,12 +24,28 @@ class Home extends MY_Controller
         $this->_render_page($this->template, $this->data);
     }
     public function listings_list(){
-        $where="row_status = 1";
+        $where="(row_status = 1)";
         if(isset($_GET['keyword']) && $_GET['keyword']!=''){
-            $where=$where." AND keywords LIKE '%".$_GET['keyword']."%' OR  address LIKE '%".$_GET['keyword']."%' OR  school_name LIKE '%".$_GET['keyword']."%' OR  landmark LIKE '%".$_GET['keyword']."%'";
+            $where=$where." AND ( keywords LIKE '%".$_GET['keyword']."%' OR  address LIKE '%".$_GET['keyword']."%' OR  school_name LIKE '%".$_GET['keyword']."%' OR  landmark LIKE '%".$_GET['keyword']."%')";
         }
         if(isset($_GET['location']) && $_GET['location']!=''){
-            $where=$where." AND address LIKE '%".$_GET['location']."%' OR landmark LIKE '%".$_GET['location']."%'";
+            $where=$where." AND (address LIKE '%".$_GET['location']."%' OR landmark LIKE '%".$_GET['location']."%')";
+        }
+        if(isset($_GET['board']) && $_GET['board']!=''){
+            $ca=array();
+            for ($i=0; $i < count($_GET['board']); $i++) { 
+                $ca[]="curriculum LIKE '%".$_GET['board'][$i]."%'";
+            }
+
+            $where=$where." AND (".implode(' OR ',$ca).")";
+        }
+        if(isset($_GET['medium']) && $_GET['medium']!=''){
+            $ca=array();
+            for ($i=0; $i < count($_GET['medium']); $i++) { 
+                $ca[]="medium LIKE '%".$_GET['medium'][$i]."%'";
+            }
+
+            $where=$where." AND (".implode(' OR ',$ca).")";
         }
         if(isset($_GET['category']) && $_GET['category']!=''){
             $ca=array();
@@ -37,7 +53,7 @@ class Home extends MY_Controller
                 $ca[]="category LIKE '%".$_GET['category'][$i]."%'";
             }
 
-            $where=$where." AND ".implode(' OR ',$ca);
+            $where=$where." AND (".implode(' OR ',$ca).")";
         }
         if(isset($_GET['facilities']) && $_GET['facilities']!=''){
              $ca=array();
@@ -45,7 +61,7 @@ class Home extends MY_Controller
                 $ca[]="amenities LIKE '%".$_GET['facilities'][$i]."%'";
             }
 
-            $where=$where." AND ".implode(' OR ',$ca);
+            $where=$where." AND (".implode(' OR ',$ca).")";
         }
         $config['base_url'] = base_url('listings-list'); //site url
         /*$config['base_url'] = $this->session->userdata('last_page'); //site url*/
@@ -79,7 +95,6 @@ class Home extends MY_Controller
         $this->pagination->initialize($config);
         $this->data['page'] = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
         $this->data['schools'] =  $this->common_model->select_results_info('listings',$where ,'id DESC',$config['per_page'],$this->data['page'])->result_array();
-
         $this->data['pagination'] = $this->pagination->create_links();
 
         $this->data['title'] = 'listings-list';
@@ -111,7 +126,24 @@ class Home extends MY_Controller
         }
         $this->_render_page($this->template, $this->data);
     }
-    
+    public function ajax_add_review($list_id){
+        $id=base64_decode(base64_decode($list_id));
+        if($this->input->post()){
+            $input=$this->input->post();
+            $input_data['rating']=$input['rating'];
+            $input_data['review']=$input['review'];
+            $input_data['listing_id']=$id;
+            $input_data['user_id']=$this->session->userdata('user_id');
+            $res=$this->common_model->insert_results_info('ratings',$input_data);
+            if($res>0){
+                echo '<div class="alert alert-success"><strong>Review & rating submited successfully</strong></div>';
+                /*$this->session->set_flashdata('rating_message','Successfully Completed.');*/
+            }else{
+                echo '<div class="alert alert-danger"><strong>Review & rating not submited</strong></div>';
+                /*$this->session->set_flashdata('rating_message','Not Completed.');*/
+            }
+        }
+    }
     // create a new user
     public function create_user()
     {
@@ -265,7 +297,7 @@ class Home extends MY_Controller
     public function get_reviews($rowno=0){
 //echo $rowno;echo $list_enc_id;
     // Row per page
-    $rowperpage = 1;
+    $rowperpage = 4;
     $listing_id=$_GET['listing_id'];
     // Row position
     if($rowno != 0){
@@ -308,9 +340,31 @@ class Home extends MY_Controller
     // Initialize $data Array
     $data['pagination'] = $this->pagination->create_links();
     $resul='';
-    foreach ($users_record as $res) {
+  /*  foreach ($users_record as $res) {
         $resul .= '<li><div class="avatar"><img src="'.base_url().$this->common_model->get_image_url('users',$res['user_id']).'" alt="" /><div class="comment-by">'.ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$res['user_id']),'username')).'<span class="date">'.date('M Y',strtotime($res['created_at'])).'</span></div></div><div class="comment-content"><div class="arrow-comment"></div><p class="more1">'.$res['review'].'.</p><div class="star-rating" data-rating="'.$res['rating'].'"></div></div></li>';
-    }
+    }*/
+
+    $me=0;foreach ($users_record as $res) {
+    $resul .= '<div class="message-bubble">
+    <div class="message-avatar"><img src="'.base_url().$this->common_model->get_image_url('users',$res['user_id']).'" alt=""><br/><span class="date">'.date('M Y',strtotime($res['created_at'])).'</span></div>
+                <div class="message-text"><p><b>'.ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$res['user_id']),'username')).'</b>';
+
+              $resul .= '<span class="star-rating" data-rating="'.$res['rating'].'">';
+              $ra='';
+              for($r=0;$r<5;$r++){
+                if($res['rating'] < ($r+1)){
+                    $ra .='<span class="star empty"></span>';
+                }else{
+                    $ra .='<span class="star"></span>';
+                } 
+              }
+              
+                            
+            $resul .= $ra.'</span>
+                    </p><p>'.$res['review'].'.</p></div>
+              </div>';
+    $me++;}
+    
     /*$data['result'] = $users_record;*/
     $data['result'] = $resul;
     $data['row'] = $rowno;

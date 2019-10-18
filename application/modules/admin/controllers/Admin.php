@@ -25,6 +25,42 @@ class Admin extends MY_Controller
     }
     public function add_listing(){
         if($this->input->post()){
+            $this->form_validation->set_rules('school_name', 'School Name', 'trim|required');
+            $this->form_validation->set_rules('school_code', 'School Code', 'trim|required|is_unique[listings.school_code]');
+            $this->form_validation->set_rules('category[]', 'Category', 'required');
+            $this->form_validation->set_rules('keywords', 'Keywords', 'trim|required');
+            $this->form_validation->set_rules('curriculum', 'Curriculum', 'required');
+            $this->form_validation->set_rules('school_type', 'Co-Education Status', 'required');
+            $this->form_validation->set_rules('school_format', 'Format Status', 'required');
+            $this->form_validation->set_rules('hostels', 'Hostel facility', 'required');
+            $this->form_validation->set_rules('class', 'Classes', 'required');
+            $this->form_validation->set_rules('medium', 'Medium', 'required');
+            $this->form_validation->set_rules('founders_name', 'Founders Name', 'trim|required');
+            $this->form_validation->set_rules('brand_name', 'Brand Name', 'trim|required');
+            $this->form_validation->set_rules('no_of_branches', 'Number of Branches', 'trim|required');
+            $this->form_validation->set_rules('est_year', 'Year of Establishment of brand', 'trim|required');
+            $this->form_validation->set_rules('est_branch_year', 'Year of Establishment of the specific branch', 'trim|required');
+            $this->form_validation->set_rules('faculty_exp', 'Average Expirience of Faculty', 'trim|required');
+            $this->form_validation->set_rules('alumni', 'Alumni', 'trim|required');
+            $this->form_validation->set_rules('principal_number', 'Councellor/Principal number', 'trim|required');
+            $this->form_validation->set_rules('telephone_number', 'Telephone Number', 'trim|required');
+            $this->form_validation->set_rules('school_email', 'Email', 'trim|required');
+            $this->form_validation->set_rules('admission_procedure', 'Admission Procedure', 'trim|required');
+            $this->form_validation->set_rules('landmark', 'Area Landmark', 'trim|required');
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('address_url', 'Address URL
+', 'trim|required');
+            $this->form_validation->set_rules('vision', 'Vision', 'trim|required');
+            $this->form_validation->set_rules('description', 'Description
+', 'trim|required');
+            /*$this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');*/
+        if ($this->form_validation->run() == true)
+            {
             $input=$this->input->post();
             
             $input_data['school_name']=$input['school_name'];
@@ -121,13 +157,62 @@ class Admin extends MY_Controller
             }
             redirect('admin/add_listing');
         }
+        }
         $this->data['title'] = 'Add Listing';
         $this->data['content'] = 'add_listing';
+        $this->data['active_menu'] = 'add_listing';
         $this->_render_page($this->template, $this->data);
+    }
+    public function check_school_code($value='')
+    {
+/*        print_r($_POST);
+        echo $value;die;*/
+        $validation=$this->common_model->select_results_info('listings',array('id !='=>$_POST['listing_id'],'school_code'=>$value))->num_rows();
+            if($validation != 0){
+                $this->form_validation->set_message('check_school_code','School Code Existed');
+                return false;
+            }
+            return true;
     }
     public function edit_listing($id){
         $listing_id=base64_decode(base64_decode($id));
         if($this->input->post()){
+            $_POST['listing_id']=$listing_id;
+             $this->form_validation->set_rules('school_name', 'School Name', 'trim|required');
+            $this->form_validation->set_rules('school_code', 'School Code', 'trim|required|callback_check_school_code');
+            $this->form_validation->set_rules('category[]', 'Category', 'required');
+            $this->form_validation->set_rules('keywords', 'Keywords', 'trim|required');
+            $this->form_validation->set_rules('curriculum', 'Curriculum', 'required');
+            $this->form_validation->set_rules('school_type', 'Co-Education Status', 'required');
+            $this->form_validation->set_rules('school_format', 'Format Status', 'required');
+            $this->form_validation->set_rules('hostels', 'Hostel facility', 'required');
+            $this->form_validation->set_rules('class[]', 'Classes', 'required');
+            $this->form_validation->set_rules('medium[]', 'Medium', 'required');
+            $this->form_validation->set_rules('founders_name', 'Founders Name', 'trim|required');
+            $this->form_validation->set_rules('brand_name', 'Brand Name', 'trim|required');
+            $this->form_validation->set_rules('no_of_branches', 'Number of Branches', 'trim|required');
+            $this->form_validation->set_rules('est_year', 'Year of Establishment of brand', 'trim|required');
+            $this->form_validation->set_rules('est_branch_year', 'Year of Establishment of the specific branch', 'trim|required');
+            $this->form_validation->set_rules('faculty_exp', 'Average Expirience of Faculty', 'trim|required');
+            $this->form_validation->set_rules('alumni', 'Alumni', 'trim|required');
+            $this->form_validation->set_rules('principal_number', 'Councellor/Principal number', 'trim|required');
+            $this->form_validation->set_rules('telephone_number', 'Telephone Number', 'trim|required');
+            $this->form_validation->set_rules('school_email', 'Email', 'trim|required');
+            $this->form_validation->set_rules('admission_procedure', 'Admission Procedure', 'trim|required');
+            $this->form_validation->set_rules('landmark', 'Area Landmark', 'trim|required');
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('address_url', 'Address URL
+', 'trim|required');
+            $this->form_validation->set_rules('vision', 'Vision', 'trim|required');
+            $this->form_validation->set_rules('description', 'Description
+', 'trim|required');
+            /*$validation=$this->common_model->select_results_info('listings',array('id !='=>$listing_id,'school_code'=>$this->input->post('school_code')))->num_rows();
+            if($validation!=0){
+    $this->form_validation->set_message('school_code', 'Description');
+            }*/
+             /*&& $this->is_unique_school_code($this->input->post('school_code'),$listing_id)*/
+        if ($this->form_validation->run() == true) 
+            {
             $input=$this->input->post();
             $input_data['school_name']=$input['school_name'];
             $input_data['school_code']=$input['school_code'];
@@ -178,27 +263,13 @@ class Admin extends MY_Controller
             $res=$this->common_model->update_results_info('listings',array('id'=>$listing_id),$input_data);
             if($res>0){
                 $this->session->set_flashdata('success_message','Uploaded Successfully');
-
-    /*move_uploaded_file($_FILES["banner"]["tmp_name"], "uploads/listings/banners/". $res.'.jpg');
-    move_uploaded_file($_FILES["thumb"]["tmp_name"], "uploads/listings/thumb/". $res.'.jpg');
-
-    $directory = FCPATH . 'uploads/listings/gallery/';
-    $mypath=FCPATH.'uploads/listings/gallery/'.$res;
-    $file = file_get_contents(base_url('uploads/index.html'));
-    if(!is_dir($mypath)){
-        mkdir($directory . '/' . $res, 0777);
-        write_file(FCPATH.'uploads/listings/gallery/'. $res.'/index.html', $file);
-    }
-    for($j=0;$j<count($_FILES['gallery']['name']);$j++){
-    $gallery_data['listing_id']=$res;
-    $gallery_data['image']=$_FILES['gallery']['name'][$j];
-    $g_id=$this->common_model->insert_results_info('listing_gallery',$gallery_data);
-    move_uploaded_file($_FILES["gallery"]["tmp_name"][$j], "uploads/listings/gallery/". $res.'/'.$g_id.'.jpg');
-    }*/
             }else{
                 $this->session->set_flashdata('error_message','Not Uploaded');
             }
             redirect($this->session->userdata('last_page'));
+        }/*else{
+            echo validation_errors();die;
+        }*/
         }
         $this->data['edit_id'] =$id;
         $this->data['edit_data'] = $this->common_model->select_results_info('listings',array('id'=>$listing_id))->row_array();
@@ -206,30 +277,35 @@ class Admin extends MY_Controller
         $this->data['content'] = 'edit_listing';
         $this->_render_page($this->template, $this->data);
     }
+    public  function is_unique_school_code($value,$listing_id){
+        $validation=$this->common_model->select_results_info('listings',array('id !='=>$listing_id,'school_code'=>$this->input->post('school_code')))->num_rows();
+            if($validation != 0){
+                $this->form_validation->set_message('school_code','School Code Existed');
+                return false;
+            }
+            return true;
+    /*$result = $this->db->where('id !=', $id)->where('school_code',$value)->get('listings')->row_array();
+print_r($result);die;
+    if ($result) {
+        $this->form_validation->set_message('school_code', 'School Code');
+        return false;
+    }
+
+    return true;*/
+}
     public function listings(){
-        $where="row_status = 1";
-        /*if(isset($_GET['keyword']) && $_GET['keyword']!=''){
-            $where=$where." AND keywords LIKE '%".$_GET['keyword']."%' OR  address LIKE '%".$_GET['keyword']."%' OR  school_name LIKE '%".$_GET['keyword']."%' OR  landmark LIKE '%".$_GET['keyword']."%'";
+        $where="row_status != 0";
+        $status='';
+        if(isset($_GET['status'])){
+        $status=$_GET['status'];
         }
-        if(isset($_GET['location']) && $_GET['location']!=''){
-            $where=$where." AND address LIKE '%".$_GET['location']."%' OR landmark LIKE '%".$_GET['location']."%'";
+        if($status=='active'){
+            $where="row_status = 1";
+        }elseif($status=='expired'){
+            $where="row_status = 2";
+        }else{
+            $where="row_status != 0";
         }
-        if(isset($_GET['category']) && $_GET['category']!=''){
-            $ca=array();
-            for ($i=0; $i < count($_GET['category']); $i++) { 
-                $ca[]="category LIKE '%".$_GET['category'][$i]."%'";
-            }
-
-            $where=$where." AND ".implode(' OR ',$ca);
-        }
-        if(isset($_GET['facilities']) && $_GET['facilities']!=''){
-             $ca=array();
-            for ($i=0; $i < count($_GET['facilities']); $i++) { 
-                $ca[]="amenities LIKE '%".$_GET['facilities'][$i]."%'";
-            }
-
-            $where=$where." AND ".implode(' OR ',$ca);
-        }*/
         $config['base_url'] = base_url('admin/listings/'); //site url
         /*$config['base_url'] = $this->session->userdata('last_page'); //site url*/
         $config['total_rows'] = $this->common_model->count_records('listings',$where); //total row
@@ -265,13 +341,21 @@ class Admin extends MY_Controller
 
         $this->data['pagination'] = $this->pagination->create_links();
 
-        $this->data['title'] = 'My listings';
+        if($status==1){
+            $page_title='Active Listings';
+        }elseif($status==2){
+            $page_title='Expired Listings';
+        }else{
+            $page_title='All Listings';
+        }
+        $this->data['title'] = $page_title;
         $this->data['content'] = 'listings';
         $this->data['active_menu'] = 'listings';
         /*$this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),'id DESC')->result_array();*/
         $this->_render_page($this->template, $this->data);
 
     }
+    
     public function classes(){
         if($this->input->post()){
             $input=$this->input->post();
