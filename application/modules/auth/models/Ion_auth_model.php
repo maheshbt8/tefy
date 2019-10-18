@@ -918,8 +918,7 @@ echo json_encode($mes);die;
 		    'email'      => $email,
 		    'ip_address' => $ip_address,
 		    'created_on' => time(),
-		    /*'active'     => ($manual_activation === false ? 1 : 0)*/
-		    'active'	=>0
+		    'active'     => ($manual_activation === false ? 1 : 0)
 		);
 
 		if ($this->store_salt)

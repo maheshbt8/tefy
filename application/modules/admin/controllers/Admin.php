@@ -284,14 +284,6 @@ class Admin extends MY_Controller
                 return false;
             }
             return true;
-    /*$result = $this->db->where('id !=', $id)->where('school_code',$value)->get('listings')->row_array();
-print_r($result);die;
-    if ($result) {
-        $this->form_validation->set_message('school_code', 'School Code');
-        return false;
-    }
-
-    return true;*/
 }
     public function listings(){
         $where="row_status != 0";
@@ -477,6 +469,61 @@ print_r($result);die;
         }
         $this->_render_page($this->template, $this->data);
     }
+    function reviews($rowno=0)
+    {
+    
+    // Row per page
+    $rowperpage = 5;
+    /*$listing_id=$_GET['listing_id'];*/
+    // Row position
+    if($rowno != 0){
+      $rowno = ($rowno-1) * $rowperpage;
+    }
+    if(isset($_GET['listing_id']) && !empty($_GET['listing_id'])){
+        $where=array('listing_id'=>$_GET['listing_id']);
+    }
+    // All records count
+    $where=array('row_status'=>1);
+    $allcount = $this->common_model->count_records('ratings',$where);
+
+    // Get records
+    $this->data['users_record'] = $this->common_model->select_results_info('ratings',$where ,'id DESC',$rowperpage,$rowno)->result_array();
+ 
+    // Pagination Configuration
+    $config['base_url'] = base_url().'admin/reviews/';
+    $config['use_page_numbers'] = TRUE;
+    $config['total_rows'] = $allcount;
+    $config['per_page'] = $rowperpage;
+    $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagination-container margin-top-30"><nav class="pagination"><ul>';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+    // Initialize
+    $this->pagination->initialize($config);
+
+    // Initialize $data Array
+    $this->data['pagination'] = $this->pagination->create_links();
+
+        $this->data['title'] = "Reviews";
+        $this->data['content'] = 'reviews';
+        $this->data['active_menu'] = 'reviews';
+        $this->_render_page($this->template, $this->data);
+    }
+
     function change_password()
     {
         $this->data['title'] = "Profile";

@@ -477,21 +477,18 @@ class Auth extends MX_Controller {
                 'phone'      => $this->input->post('phone')
             );
             $res=$this->ion_auth->register($identity, $password, $email, $additional_data);
-       /*     $mes['message']=$res;
-            $mes['status']=1;
-				echo json_encode($mes);*/
 			if ($res>0)
 			{
-				$this->mail_model->account_activation($res,$email);
-				$mes['message']='<div class="alert alert-warning"><strong>successfully Registered
+				/*$this->mail_model->account_activation($res,$email);*/
+				$mes['message']='<div class="alert alert-success"><strong>successfully Registered
 				Check your email to activate your account
 				</strong></div>';
-				$mes['status']=1;
+				$mes['status']=0;
 				echo json_encode($mes);
 			}
 			else
 			{
-				$mes['message']='<div class="alert alert-warning"><strong>Not Registered</strong></div>';
+				$mes['message']='<div class="alert alert-danger"><strong>Not Registered</strong></div>';
 				$mes['status']=0;
 				echo json_encode($mes);
 			}

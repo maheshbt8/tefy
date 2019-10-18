@@ -23,13 +23,13 @@
 				</div>
 
 				<!-- Main Navigation -->
-				<nav id="navigation" class="style-1">
+				<!-- <nav id="navigation" class="style-1">
 					<ul id="responsive">
 
 						<li><a href="<?=base_url();?>" target="_blank">Home</a></li>
 						
 					</ul>
-				</nav>
+				</nav> -->
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->
 				

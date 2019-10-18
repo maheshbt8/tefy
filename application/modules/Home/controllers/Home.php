@@ -297,7 +297,7 @@ class Home extends MY_Controller
     public function get_reviews($rowno=0){
 //echo $rowno;echo $list_enc_id;
     // Row per page
-    $rowperpage = 4;
+    $rowperpage = 5;
     $listing_id=$_GET['listing_id'];
     // Row position
     if($rowno != 0){
@@ -347,7 +347,7 @@ class Home extends MY_Controller
     $me=0;foreach ($users_record as $res) {
     $resul .= '<div class="message-bubble">
     <div class="message-avatar"><img src="'.base_url().$this->common_model->get_image_url('users',$res['user_id']).'" alt=""><br/><span class="date">'.date('M Y',strtotime($res['created_at'])).'</span></div>
-                <div class="message-text"><p><b>'.ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$res['user_id']),'username')).'</b>';
+                <div class="message-text"><p><b>'.ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$res['user_id']),'first_name')).'</b>';
 
               $resul .= '<span class="star-rating" data-rating="'.$res['rating'].'">';
               $ra='';

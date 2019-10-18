@@ -37,12 +37,35 @@
         	<!-- Content
         	================================================== -->
         	<div class="dashboard-content">
+                    <!-- Titlebar -->
+        <div id="titlebar">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><?=$title;?></h2>
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li><a href="<?=base_url();?>">Home</a></li>
+                            <li><?=$title;?></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
                 <!-- start: page -->
                     <?php if($this->session->flashdata('error_message')!=''){
                                         echo '<div class="alert alert-danger alert_message">'.$this->session->flashdata('error_message').'</div>';
                                     }elseif($this->session->flashdata('success_message')!=''){
                                         echo '<div class="alert alert-success alert_message">'.$this->session->flashdata('success_message').'</div>';
                                     }?>
+                                    <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="notification error closeable margin-bottom-30">
+                    <p>Your listing <strong>Hotel Govendor</strong> has been approved!</p>
+                    <a class="close"></a>
+                </div>
+            </div>
+        </div> -->
         		<?php $this->load->view($content);?>
         			<!-- Copyrights -->
         			<div class="col-md-12">
