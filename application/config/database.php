@@ -102,7 +102,7 @@ $db['production'] = array(
     'password' => 'tefy@123',
     'database' => 'u241772466_tefy',
     'dbdriver' => 'mysqli',
-    'dbprefix' => 'pre_',
+    'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,

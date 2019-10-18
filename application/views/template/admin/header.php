@@ -45,8 +45,12 @@
 					<div class="user-menu">
 						<div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'));?></div>
 						<ul>
-							<li><a href="<?=base_url('Auth');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-							<li><a href="<?=base_url('Auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
+							<li><a href="<?=base_url('auth');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+							<?php if ($this->ion_auth->is_student()){?>
+							<li><a href="<?=base_url('student/bookmarks')?>"><i class="fa fa-calendar-check-o"></i> Bookmarks</a></li>
+							<li><a href="<?=base_url('student/profile')?>"><i class="fa fa-user"></i> My Profile</a></li>
+							<?php }?>
+							<li><a href="<?=base_url('auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
 						</ul>
 					</div>
 					<?php

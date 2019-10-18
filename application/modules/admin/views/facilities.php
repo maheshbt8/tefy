@@ -60,7 +60,7 @@
                                   <th scope="row"><?=$i+1;?></th>
                                   <td><?=$row['name'];?></td>
                                   <td><img src="<?=base_url('uploads/facilities/').$row['id'].'.'.$row['file_ext'];?>" height="40"/></td>
-                                    <td><a href="#" class="mr-2  text-danger" onclick="return delete_row('<?=base_url('set_row_status/').'category/id/'.$row['id'].'/0';?>');"><i class="sl sl-icon-trash"></i></a>
+                                    <td><a href="<?=base_url('set_row_status/').'facilities/id/'.$row['id'].'/0';?>" class="mr-2  text-danger" onclick="return delete_row('<?=base_url('set_row_status/').'facilities/id/'.$row['id'].'/0';?>');"><i class="sl sl-icon-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php $i++;}?>

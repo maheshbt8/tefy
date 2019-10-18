@@ -479,13 +479,13 @@ class Admin extends MY_Controller
     if($rowno != 0){
       $rowno = ($rowno-1) * $rowperpage;
     }
-    if(isset($_GET['listing_id']) && !empty($_GET['listing_id'])){
-        $where=array('listing_id'=>$_GET['listing_id']);
+    if(isset($_GET['listing_id']) && !empty($_GET['listing_id']) && $_GET['listing_id']!='all'){
+        $listing_id=base64_decode(base64_decode($_GET['listing_id']));
+        $where['listing_id']=$listing_id;
     }
     // All records count
-    $where=array('row_status'=>1);
+    $where['row_status']=1;
     $allcount = $this->common_model->count_records('ratings',$where);
-
     // Get records
     $this->data['users_record'] = $this->common_model->select_results_info('ratings',$where ,'id DESC',$rowperpage,$rowno)->result_array();
  
@@ -517,7 +517,7 @@ class Admin extends MY_Controller
 
     // Initialize $data Array
     $this->data['pagination'] = $this->pagination->create_links();
-
+    $this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1) ,'school_name ASC')->result_array();
         $this->data['title'] = "Reviews";
         $this->data['content'] = 'reviews';
         $this->data['active_menu'] = 'reviews';

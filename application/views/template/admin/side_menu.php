@@ -28,11 +28,12 @@
 						<li class="<?=($active_menu=='medium')? 'active' : '';?>"><a href="<?=base_url('admin/medium');?>">Medium</a></li>
 						<li class="<?=($active_menu=='curriculum')? 'active' : '';?>"><a href="<?=base_url('admin/curriculum');?>">Curriculum</a></li>
 						<li class="<?=($active_menu=='classes')? 'active' : '';?>"><a href="<?=base_url('admin/classes');?>">Classes</a></li>
-						<li class="<?=($active_menu=='facilities')? 'active' : '';?>"><a href="<?=base_url('admin/facilities');?>">Fecilities</a></li>
+						<li class="<?=($active_menu=='facilities')? 'active' : '';?>"><a href="<?=base_url('admin/facilities');?>">Facilities</a></li>
 					</ul>	
 				</li>
 				<!-- <li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li> -->
+				<li class="<?=($active_menu=='reviews')? 'active' : '';?>"><a href="<?=base_url('admin/reviews')?>"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li class="<?=($active_menu=='add_listing')? 'active' : '';?>"><a href="<?php echo SITEURL2.'/admin/add_listing';?>"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
 			</ul>	
 

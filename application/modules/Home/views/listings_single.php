@@ -1,3 +1,9 @@
+<?php
+            if ($this->ion_auth->logged_in()=='')
+              {
+                redirect('home');
+              }
+            ?>
 <div class="simple-slick-carousel1 dots-nav">
   <?php
           

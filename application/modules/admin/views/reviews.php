@@ -12,14 +12,15 @@ $this->session->set_userdata('last_page',current_url());
 					<!-- Sort by -->
 					<div class="sort-by">
 						<div class="sort-by-select">
-							<select data-placeholder="Default order" class="chosen-select-no-single">
-								<option>All Listings</option>	
-								<option>Tom's Restaurant</option>
-								<option>Sticky Band</option>
-								<option>Hotel Govendor</option>
-								<option>Burger House</option>
-								<option>Airport</option>
-								<option>Think Coffee</option>
+							<select data-placeholder="Default order" class="chosen-select-no-single" onchange ="return get_data(this.value)">
+								<option value="all">All Listings</option>	
+								<?php
+								foreach ($schools as $school) {
+									?>
+									<option value="<?=base64_encode(base64_encode($school['id']));?>" <?=(base64_encode(base64_encode($school['id'])) == $_GET['listing_id'])? 'selected' : '';?>><?=$school['school_name']?></option>
+									<?php
+								}
+								?>
 							</select>
 						</div>
 					</div>
@@ -137,3 +138,9 @@ foreach ($users_record as $res) {
 				<div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
 			</div> -->
 		</div>
+
+		<script type="text/javascript">
+			function get_data(listing_id) {
+				window.location.href = '<?=$this->session->userdata('last_page');?>?listing_id='+listing_id;
+			}
+		</script>
