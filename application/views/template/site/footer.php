@@ -12,7 +12,7 @@
 			<div class="col-md-4 col-sm-6 ">
 				<h4>Helpful Links</h4>
 				<ul class="footer-links">
-					<li><a href="#">About-Us</a></li>
+					<li><a href="#">About Us</a></li>
 					
 					<li><a href="#">Blog</a></li>
 					<li><a href="#">Contact Us</a></li>

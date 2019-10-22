@@ -23,18 +23,28 @@ class Admin extends MY_Controller
         $this->data['active_menu'] = 'dashboard';
         $this->_render_page($this->template, $this->data);
     }
+    
+    public function check_school_code_unique($value='')
+    {
+        $validation=$this->common_model->select_results_info('listings',array('school_code'=>$value))->num_rows();
+            if($validation != 0){
+                $this->form_validation->set_message('check_school_code_unique','School Code Existed');
+                return false;
+            }
+            return true;
+    }
     public function add_listing(){
         if($this->input->post()){
             $this->form_validation->set_rules('school_name', 'School Name', 'trim|required');
-            $this->form_validation->set_rules('school_code', 'School Code', 'trim|required|is_unique[listings.school_code]');
+            $this->form_validation->set_rules('school_code', 'School Code', 'trim|required|callback_check_school_code_unique');
             $this->form_validation->set_rules('category[]', 'Category', 'required');
             $this->form_validation->set_rules('keywords', 'Keywords', 'trim|required');
             $this->form_validation->set_rules('curriculum', 'Curriculum', 'required');
             $this->form_validation->set_rules('school_type', 'Co-Education Status', 'required');
             $this->form_validation->set_rules('school_format', 'Format Status', 'required');
             $this->form_validation->set_rules('hostels', 'Hostel facility', 'required');
-            $this->form_validation->set_rules('class', 'Classes', 'required');
-            $this->form_validation->set_rules('medium', 'Medium', 'required');
+            $this->form_validation->set_rules('class[]', 'Classes', 'required');
+            $this->form_validation->set_rules('medium[]', 'Medium', 'required');
             $this->form_validation->set_rules('founders_name', 'Founders Name', 'trim|required');
             $this->form_validation->set_rules('brand_name', 'Brand Name', 'trim|required');
             $this->form_validation->set_rules('no_of_branches', 'Number of Branches', 'trim|required');
@@ -53,7 +63,7 @@ class Admin extends MY_Controller
             $this->form_validation->set_rules('vision', 'Vision', 'trim|required');
             $this->form_validation->set_rules('description', 'Description
 ', 'trim|required');
-            /*$this->form_validation->set_rules('address', 'Address', 'trim|required');
+        /*  $this->form_validation->set_rules('address', 'Address', 'trim|required');
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
@@ -165,8 +175,6 @@ class Admin extends MY_Controller
     }
     public function check_school_code($value='')
     {
-/*        print_r($_POST);
-        echo $value;die;*/
         $validation=$this->common_model->select_results_info('listings',array('id !='=>$_POST['listing_id'],'school_code'=>$value))->num_rows();
             if($validation != 0){
                 $this->form_validation->set_message('check_school_code','School Code Existed');

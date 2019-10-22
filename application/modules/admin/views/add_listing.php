@@ -4,6 +4,7 @@
     }
 
 </style>
+
 <form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
 <div class="row">
 			<div class="col-lg-12">
@@ -22,7 +23,7 @@
 						<div class="row with-forms">
 							<div class="col-md-12">
 								<h5>School Name <i class="tip" data-tip-content="Name of your School"></i></h5>
-								<input class="search-field" type="text" value="" name="school_name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('school_name');?>" name="school_name" required="" autocomplete="off" />
 								<?php echo form_error('school_name', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -30,7 +31,7 @@
 						<div class="row with-forms">
 							<div class="col-md-12">
 								<h5>School Registration Code <i class="tip" data-tip-content="Name of your School"></i></h5>
-								<input class="search-field" type="text" value="" name="school_code" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('school_code');?>" name="school_code" required="" autocomplete="off" />
 								<?php echo form_error('school_code', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -56,7 +57,7 @@
 							<!-- Type -->
 							<div class="col-md-6">
 								<h5>Keywords <i class="tip" data-tip-content="Maximum of 15 keywords related with your business"></i></h5>
-								<input type="text" placeholder="Keywords should be separated by commas"  name="keywords" required="">
+								<input type="text" placeholder="Keywords should be separated by commas"  name="keywords" required="" value="<?=set_value('keywords');?>">
 								<?php echo form_error('keywords', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -72,7 +73,7 @@
                                   foreach ($res as $row) {
                                   ?>
                             <div class="col-md-2">
-								<label><input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="<?=$row['id'];?>" required=""><?=$row['name'];?></label>
+								<label><input class="d--inline" type="radio" placeholder="SSC"  name="curriculum" value="<?=$row['id'];?>" required="" <?=(set_value('curriculum') == $row['id'])? 'checked' : '' ?>><?=$row['name'];?></label>
                             </div>
                         <?php }?>
 
@@ -90,13 +91,13 @@
 							<div class="col-md-12">
                                 <h5>Co-Education Status</h5>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Boys" required="">Boys</label>
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Boys" required=""  <?=(set_value('school_type') == 'Boys')? 'checked' : '' ?>>Boys</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Girls" required="">Girls</label>
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Girls" required=""  <?=(set_value('school_type') == 'Girls')? 'checked' : '' ?>>Girls</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Co-Education" required="">Co-Education</label>
+                                    <label><input class="d--inline" type="radio" placeholder="SSC"  name="school_type" value="Co-Education" required=""  <?=(set_value('school_type') == 'Co-Education')? 'checked' : '' ?>>Co-Education</label>
                                 </div>
 
 							</div>
@@ -111,13 +112,13 @@
 							<div class="col-md-12">
                                 <h5>Format Status</h5>
                                 <div class="col-md-3">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Day Scholars" required="">Only Day Scholars</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Day Scholars" required="" <?=(set_value('school_format') == 'Only Day Scholars')? 'checked' : '' ?>>Only Day Scholars</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Hostel" required="">Only Hostel</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Only Hostel" required="" <?=(set_value('school_format') == 'Only Hostel')? 'checked' : '' ?>>Only Hostel</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Both" required="">Both</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="school_format" value="Both" required="" <?=(set_value('school_format') == 'Both')? 'checked' : '' ?>>Both</label>
                                 </div>
 							</div>
 							<?php echo form_error('school_format', '<div class="error">', '</div>'); ?>
@@ -131,16 +132,16 @@
 							<div class="col-md-12">
                                 <h5>Hostel facility</h5>
                                 <div class="col-md-3">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="No" required="" checked="">No</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="No" required="" checked="" <?=(set_value('hostels') == 'No')? 'checked' : '' ?>>No</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Boys" required="">Only for Boys</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Boys" required="" <?=(set_value('hostels') == 'Only for Boys')? 'checked' : '' ?>>Only for Boys</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Girls" required="">Only for Girls</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="Only for Girls" required="" <?=(set_value('hostels') == 'Only for Girls')? 'checked' : '' ?>>Only for Girls</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="For Boys & Girls" required="">For Boys & Girls</label>
+                                    <label><input class="d--inline" type="radio" placeholder=""  name="hostels" value="For Boys & Girls" required="" <?=(set_value('hostels') == 'For Boys & Girls')? 'checked' : '' ?>>For Boys & Girls</label>
                                 </div>
 							</div>
 							<?php echo form_error('hostels', '<div class="error">', '</div>'); ?>
@@ -200,45 +201,45 @@
 						<div class="row with-forms">
 							<div class="col-md-6">
 								<h5>Founders Name </h5>
-								<input class="search-field" type="text" value="" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('founders_name');?>" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
 								<?php echo form_error('founders_name', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Brand Name </h5>
-								<input class="search-field" type="text" value="" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('brand_name');?>" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
 								<?php echo form_error('brand_name', '<div class="error">', '</div>'); ?>
 							</div>
 					
 							<div class="col-md-6">
 								<h5>Number of Branches </h5>
-								<input class="search-field" type="text" value="" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('no_of_branches');?>" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
 								<?php echo form_error('no_of_branches', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of brand</h5>
-								<input class="search-field" type="text" value="" name="est_year" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('est_year');?>" name="est_year" placeholder="" required="" autocomplete="off" />
 								<?php echo form_error('est_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of the specific branch</h5>
-								<input class="search-field" type="text" value="" name="est_branch_year" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('est_branch_year');?>" name="est_branch_year" placeholder="" required="" autocomplete="off" />
 								<?php echo form_error('est_branch_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
                    
 							<div class="col-md-6">
 								<h5>Average Expirience of Faculty</h5>
-								<input class="search-field" type="text" value="" name="faculty_exp" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('faculty_exp');?>" name="faculty_exp" placeholder="" required="" autocomplete="off" />
 								<?php echo form_error('faculty_exp', '<div class="error">', '</div>'); ?>
 							</div>
 						
                         
 							<div class="col-md-6">
 								<h5>Any Notable Alumni</h5>
-								<input class="search-field" type="text" value="" name="alumni" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('alumni');?>" name="alumni" placeholder="" required="" autocomplete="off" />
 								<?php echo form_error('alumni', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -261,18 +262,18 @@
 						<div class="row with-forms">
 							<div class="col-md-4">
 								<h5>Councellor/Principal number </h5>
-								<input class="search-field" type="text" value="" name="principal_number" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('principal_number');?>" name="principal_number" placeholder="" required="" autocomplete="off" />
 								<?php echo form_error('principal_number', '<div class="error">', '</div>'); ?>
 							</div>
                             <div class="col-md-4">
                                     <h5>Telephone Number </h5>
-                                    <input class="search-field" type="text" value="" name="telephone_number" placeholder="" required="" autocomplete="off" />
+                                    <input class="search-field" type="text" value="<?=set_value('telephone_number');?>" name="telephone_number" placeholder="" required="" autocomplete="off" />
                                     <?php echo form_error('telephone_number', '<div class="error">', '</div>'); ?>
                                 </div>
 
 							<div class="col-md-4">
                                     <h5>Email </h5>
-                                    <input class="search-field" type="text" value="" name="school_email" placeholder="" required="" autocomplete="off" />
+                                    <input class="search-field" type="text" value="<?=set_value('school_email');?>" name="school_email" placeholder="" required="" autocomplete="off" />
                                     <?php echo form_error('school_email', '<div class="error">', '</div>'); ?>
                                 </div>
 
@@ -297,7 +298,7 @@
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-							<textarea type="text" class="form-control" name="admission_procedure" value="" required=""></textarea>
+							<textarea type="text" class="form-control" name="admission_procedure" value="<?=set_value('admission_procedure');?>" required=""></textarea>
 							<?php echo form_error('admission_procedure', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -323,22 +324,22 @@
 							<div class="row with-forms">.
                                 <div class="col-md-12">
 									<h5>Area Landmark</h5>
-									<input type="text"  id="pac-input" placeholder="e.g. My School Street" name="landmark" required="" autocomplete="off">
-									<input type="hidden" id="lat" value="" name="latitude">
-                                         <input type="hidden" id="lng" value="" name="longitude">
-                                         <input type="hidden" id="address" value="" name="address">
+									<input type="text"  id="pac-input" placeholder="e.g. My School Street" name="landmark" required="" autocomplete="off" value="<?=set_value('landmark');?>">
+									<input type="hidden" id="lat" name="latitude" value="<?=set_value('lat');?>">
+                                         <input type="hidden" id="lng" value="<?=set_value('lng');?>" name="longitude">
+                                         <input type="hidden" id="address" value="<?=set_value('address');?>" name="address">
                                          <?php echo form_error('landmark', '<div class="error">', '</div>'); ?>
 								</div>
                                 <!-- Address -->
 								<div class="col-md-12">
 									<h5>Address</h5>
-									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""></textarea>
+									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""><?=set_value('address');?></textarea>
 									<?php echo form_error('address', '<div class="error">', '</div>'); ?>
 								</div>
 
 								<div class="col-md-12">
                                 <h5>Address URL</h5>
-                                <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url" required="">
+                                <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url" required="" value="<?=set_value('address_url');?>">
                                 <?php echo form_error('address_url', '<div class="error">', '</div>'); ?>
                             	</div>
 							</div>
@@ -377,7 +378,7 @@
 
 							<div class="col-md-12">
                                 <h5>Embed video Link(optional)</h5>
-                                <input type="url" class="form-control-file" placeholder="Eg:https://www.tefy.com/embed/yfettefy" name="video">
+                                <input type="url" class="form-control-file" placeholder="Eg:https://www.tefy.com/embed/yfettefy" name="video" value="<?=set_value('video');?>">
                             </div>
                             
                         </div>
@@ -412,7 +413,7 @@
 							<!-- Vision -->
 							<div class="col-md-12">
                                 <h5>Vision</h5>
-								<textarea class="WYSIWYG" name="vision" cols="20" rows="2"  spellcheck="true" required="" placeholder="Enter the school vision in short note in 100 words"></textarea>
+								<textarea class="WYSIWYG" name="vision" cols="20" rows="2"  spellcheck="true" required="" placeholder="Enter the school vision in short note in 100 words"><?=set_value('vision');?></textarea>
 								<?php echo form_error('vision', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -422,7 +423,7 @@
 						<!-- Description -->
 						<div class="form">
 							<h5>Description</h5>
-							<textarea class="WYSIWYG" name="description" cols="40" rows="3" id="summary" spellcheck="true" required=""></textarea>
+							<textarea class="WYSIWYG" name="description" cols="40" rows="3" id="summary" spellcheck="true" required=""><?=set_value('description');?></textarea>
 							<?php echo form_error('description', '<div class="error">', '</div>'); ?>
 						</div>
 
@@ -432,19 +433,19 @@
 							<!-- Phone -->
 							<div class="col-md-4">
 								<h5>Phone <span>(optional)</span></h5>
-								<input type="text" name="phone">
+								<input type="text" name="phone" value="<?=set_value('phone');?>">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-4">
 								<h5>Website <span>(optional)</span></h5>
-								<input type="text" name="website">
+								<input type="text" name="website"value="<?=set_value('website');?>">
 							</div>
 
 							<!-- Email Address -->
 							<div class="col-md-4">
 								<h5>E-mail <span>(optional)</span></h5>
-								<input type="text" name="email">
+								<input type="text" name="email" value="<?=set_value('email');?>">
 							</div>
 
 						</div>
@@ -457,19 +458,19 @@
 							<!-- Phone -->
 							<div class="col-md-4">
 								<h5 class="fb-input"><i class="fa fa-facebook-square"></i> Facebook <span>(optional)</span></h5>
-								<input type="text" placeholder="https://www.facebook.com/" name="facebook">
+								<input type="text" placeholder="https://www.facebook.com/" name="facebook" value="<?=set_value('facebook');?>">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-4">
 								<h5 class="twitter-input"><i class="fa fa-twitter"></i> Twitter <span>(optional)</span></h5>
-								<input type="text" placeholder="https://www.twitter.com/" name="twiter">
+								<input type="text" placeholder="https://www.twitter.com/" name="twiter" value="<?=set_value('twiter');?>">
 							</div>
 
 							<!-- Email Address -->
 							<div class="col-md-4">
 								<h5 class="gplus-input"><i class="fa fa-youtube"></i> Youtube <span>(optional)</span></h5>
-								<input type="text" placeholder="https://youtube.com/" name="youtube">
+								<input type="text" placeholder="https://youtube.com/" name="youtube" value="<?=set_value('youtube');?>">
 							</div>
 
 						</div>
@@ -493,11 +494,11 @@
 
 							<div class="col-md-12">
                                 <h5>Bus Routes(optional)</h5>
-                                <input type="text" class="form-control-file" placeholder="Route1, Route2, Route3...." name="bus_routes">
+                                <input type="text" class="form-control-file" placeholder="Route1, Route2, Route3...." name="bus_routes" value="<?=set_value('bus_routes');?>">
                             </div>
                             <div class="col-md-12">
                                 <h5>Sports & Extra-Curricuar Activities(optional)</h5>
-                                <input type="text" class="form-control-file" placeholder="Cricket, Jam Section...." name="sports">
+                                <input type="text" class="form-control-file" placeholder="Cricket, Jam Section...." name="sports" value="<?=set_value('sports');?>">
                             </div>
                         </div>
 					</div>
