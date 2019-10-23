@@ -16,11 +16,17 @@ class Home extends MY_Controller
         $this->data['schools'] = $this->common_model->select_results_info('listings',array('row_status'=>1),"id DESC",6);
         $this->_render_page($this->template, $this->data);
     }
-    
-    public function content(){
-        $this->data['title'] = 'Content';
-        $this->data['content'] = 'content';
-        $this->data['active_menu'] = 'about';
+   
+    public function contact_us(){
+        $this->data['title'] = 'Contact Us';
+        $this->data['content'] = 'contact_us';
+        $this->data['active_menu'] = 'contact_us';
+        $this->_render_page($this->template, $this->data);
+    }
+    public function about_us(){
+        $this->data['title'] = 'About Us';
+        $this->data['content'] = 'about_us';
+        $this->data['active_menu'] = 'about_us';
         $this->_render_page($this->template, $this->data);
     }
     public function listings_list(){

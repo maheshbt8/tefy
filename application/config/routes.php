@@ -60,5 +60,8 @@ $route['set_row_status/(.+)'] = 'common/set_row_status/$1';
 $route['listings-list']='home/listings_list';
 $route['listings-list/(.+)']='home/listings_list/$1';
 $route['listings-single/(:any)']='home/listings_single/$1';
+$route['about_us'] = 'home/about_us';
+$route['contact_us'] = 'home/contact_us';
+
 
 

@@ -40,7 +40,7 @@
 							</ul>-->
 						</li>
 
-						<li><a href="#">About Us</a>
+						<li><a href="<?=base_url('about_us');?>">About Us</a>
 							<!--<ul>
 								<li><a href="#">List Layout</a>
 									<ul>
@@ -84,7 +84,7 @@
 							</ul>-->
 						</li>
 
-						<li><a href="#">Contact Us</a>
+						<li><a href="<?=base_url('contact_us');?>">Contact Us</a>
 							<!--<ul>
 								<li><a href="dashboard.html">Dashboard</a></li>
 								<li><a href="dashboard-messages.html">Messages</a></li>
@@ -98,6 +98,8 @@
 								<li><a href="dashboard-invoice.html">Invoice</a></li>
 							</ul>-->
 						</li>
+                        
+                      
 
 						<!--<li><a href="#">Pages</a>
 							<div class="mega-menu mobile-styles three-columns">
