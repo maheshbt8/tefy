@@ -734,4 +734,6 @@ for ($i=0; $i < count($days); $i++) {
 </script>
 
 
-
+<script>
+    CKEDITOR.replace( 'description' );
+</script>
