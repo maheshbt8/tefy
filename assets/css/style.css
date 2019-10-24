@@ -295,7 +295,7 @@ header.fullwidth .container {
 }
 
 #footer {
-    padding: 70px 0 0;
+    padding: 40px 0 0;
     background-color: #f6f6f7;
     border-top: 1px solid rgba(0, 0, 0, .09);
     font-size: 16px
@@ -1979,7 +1979,7 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out {
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50%;
+    background-position: 100%;
     height: 620px;
     z-index: 9
 }
@@ -12113,12 +12113,14 @@ body .notification strong {
 }
 
 .listing-item-container.list-layout .listing-item-image {
-    min-height: 200px;
+/*  min-height: 200px;*/
     flex: 3;
-    height: 20em;
+    height:225px;
+/*    height: 20em;*/
     overflow: hidden;
     border-radius: 4px 0 0 4px;
     position: relative
+        
 }
 
 .listing-item-container.list-layout .listing-item-image:before {
@@ -12260,7 +12262,8 @@ section.fullwidth .listing-item-container.list-layout,
 
 .listing-item-content h3 {
     color: #373435;
-    padding-top: 30px;
+/*    padding-top: 30px;*/
+    padding-top:10px;
     font-size: 20px;
     bottom: -1px;
     position: relative;
