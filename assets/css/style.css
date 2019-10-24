@@ -296,13 +296,13 @@ header.fullwidth .container {
 
 #footer {
     padding: 70px 0 0;
-    background-color: #fff;
+    background-color: #f6f6f7;
     border-top: 1px solid rgba(0, 0, 0, .09);
     font-size: 16px
 }
 
 #footer.sticky-footer {
-    box-shadow: none
+    box-shadow: none;
 }
 
 #footer.dark {
@@ -384,9 +384,9 @@ header.fullwidth .container {
 .copyrights {
     color: #707070;
     border-top: 1px solid rgba(0, 0, 0, .09);
-    margin-top: 60px;
+    margin-top: 20px;
     text-align: center;
-    padding: 40px 0;
+    padding: 10px 0;
     display: inline-block;
     width: 100%
 }
@@ -976,7 +976,7 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
     float: left;
     text-align: left;
     position: absolute;
-    top: 45px;
+    top: 54px;
     right: 0;
     list-style: none;
     background-color: #fff;
@@ -7009,7 +7009,8 @@ a.send-message-to-owner.button {
     visibility: hidden;
     transition: .4s;
     transform: translateY(-100%);
-    border-bottom: 1px solid #e0e0e0
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 99;
 }
 
 .listing-nav-container.cloned.stick {
@@ -20903,3 +20904,9 @@ height: 51px;
 /*Start CSS By Mahesh*/
 .alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:4px}.alert h4{margin-top:0;color:inherit}.alert .alert-link{font-weight:700}.alert>p,.alert>ul{margin-bottom:0}.alert>p+p{margin-top:5px}.alert-dismissable,.alert-dismissible{padding-right:35px}.alert-dismissable .close,.alert-dismissible .close{position:relative;top:-2px;right:-21px;color:inherit}.alert-success{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6}.alert-success hr{border-top-color:#c9e2b3}.alert-success .alert-link{color:#2b542c}.alert-info{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.alert-info hr{border-top-color:#a6e1ec}.alert-info .alert-link{color:#245269}.alert-warning{color:#8a6d3b;background-color:#fcf8e3;border-color:#faebcc}.alert-warning hr{border-top-color:#f7e1b5}.alert-warning .alert-link{color:#66512c}.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1}.alert-danger hr{border-top-color:#e4b9c0}.alert-danger .alert-link{color:#843534}
 /*End CSS By Mahesh*/
+/*start CSS By veerababu*/
+#header.cloned.sticky .popup-with-zoom-anim{color:#fff}
+#header.cloned.sticky .popup-with-zoom-anim:hover{color:#dad6d7}
+#header.cloned.sticky .user-menu .user-name:before {color:#fff}
+#header.cloned.sticky .user-menu .user-name:after {color:#dad6d7}
+/*End CSS By veerababu*/

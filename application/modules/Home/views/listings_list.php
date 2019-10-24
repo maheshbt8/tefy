@@ -1,3 +1,30 @@
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+
 <?php
 $this->session->set_userdata('last_page',current_url());
 ?>
@@ -193,10 +220,6 @@ $class=array();
 						</div>
 					</div>
 					<!-- Row / End -->
-
-
-					
-
 					<!-- Row -->
 					<div class="row with-forms">
 						<!-- Cities -->
@@ -212,99 +235,73 @@ $class=array();
 						</div>
 					</div>
 					<!-- Row / End -->
-				
-                    <!-- More Search Options -->
-					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Boards" data-close-title="Boards" id="inpt-stl"></a>
+    
+        <!-- Customized accordian tabs start-->
+        <button type="button" class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" 
+         id="inpt-stl">Boards</button>
+        <div class="panel">
+        <!-- Checkboxes 1 -->
+            <div class="checkboxes one-in-row margin-bottom-15">
+        <?php
+        $category=$this->common_model->select_results_info('curriculum',array('row_status'=>1))->result_array();
+        if($category!=''){
+        $c=0;foreach ($category as $cat) {
+        ?>
+                <input id="boards<?=$c;?>" type="checkbox" name="board[]" value="<?=$cat['id'];?>">
+                <label for="boards<?=$c;?>"><?=$cat['name'];?></label>
+        <?php $c++;}}?>
+            </div>
+            <!-- Checkboxes 1 / End -->
+        </div>
+        <button class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" id="inpt-stl" type="button">Medium</button>
+        <div class="panel">
 
-					<div class="more-search-options relative ovrflw-x" >
+        <!-- Checkboxes 2 -->
+            <div class="checkboxes one-in-row margin-bottom-15">
+        <?php
+        $category=$this->common_model->select_results_info('medium',array('row_status'=>1))->result_array();
+        if($category!=''){
+        $c=0;foreach ($category as $cat) {
+        ?>
+                <input id="medium<?=$c;?>" type="checkbox" name="medium[]" value="<?=$cat['id'];?>">
+                <label for="medium<?=$c;?>"><?=$cat['name'];?></label>
+        <?php $c++;}}?>
+            </div>
+            <!-- Checkboxes 2 / End -->
+        </div>
+        <button class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" id="inpt-stl" type="button">Category</button>
+        <div class="panel">
+        <!-- Checkboxes 3 -->
+            <div class="checkboxes one-in-row margin-bottom-15">
+        <?php
+        $category=$this->common_model->select_results_info('category',array('row_status'=>1))->result_array();
+        if($category!=''){
+        $c=0;foreach ($category as $cat) {
+        ?>
+                <input id="cate<?=$c;?>" type="checkbox" name="category[]" value="<?=$cat['id'];?>">
+                <label for="cate<?=$c;?>"><?=$cat['name'];?></label>
+        <?php $c++;}}?>
+            </div>
+            <!-- Checkboxes 3 / End --> 
+        </div>
+        <button class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" id="inpt-stl" type="button">Facilities</button>
+        <div class="panel">
 
-						<!-- Checkboxes -->
-						<div class="checkboxes one-in-row margin-bottom-15">
-					<?php
-
-$category=$this->common_model->select_results_info('curriculum',array('row_status'=>1))->result_array();
-if($category!=''){
-					$c=0;foreach ($category as $cat) {
-	?>
-							<input id="boards<?=$c;?>" type="checkbox" name="board[]" value="<?=$cat['id'];?>">
-							<label for="boards<?=$c;?>"><?=$cat['name'];?></label>
-<?php $c++;}}?>
-					
-						</div>
-						<!-- Checkboxes / End -->
-
-					</div>
-					<!-- More Search Options / End -->
-<!-- More Search Options -->
-					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Medium" data-close-title="Medium" id="inpt-stl"></a>
-
-					<div class="more-search-options relative ovrflw-x" >
-
-						<!-- Checkboxes -->
-						<div class="checkboxes one-in-row margin-bottom-15">
-					<?php
-
-$category=$this->common_model->select_results_info('medium',array('row_status'=>1))->result_array();
-if($category!=''){
-					$c=0;foreach ($category as $cat) {
-	?>
-							<input id="medium<?=$c;?>" type="checkbox" name="medium[]" value="<?=$cat['id'];?>">
-							<label for="medium<?=$c;?>"><?=$cat['name'];?></label>
-<?php $c++;}}?>
-					
-						</div>
-						<!-- Checkboxes / End -->
-
-					</div>
-					<!-- More Search Options / End -->
-                    <!-- More Search Options -->
-					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Category" data-close-title="Category" id="inpt-stl"></a>
-
-					<div class="more-search-options relative ovrflw-x" >
-
-						<!-- Checkboxes -->
-						<div class="checkboxes one-in-row margin-bottom-15">
-					<?php
-
-$category=$this->common_model->select_results_info('category',array('row_status'=>1))->result_array();
-if($category!=''){
-					$c=0;foreach ($category as $cat) {
-	?>
-							<input id="cate<?=$c;?>" type="checkbox" name="category[]" value="<?=$cat['id'];?>">
-							<label for="cate<?=$c;?>"><?=$cat['name'];?></label>
-<?php $c++;}}?>
-					
-						</div>
-						<!-- Checkboxes / End -->
-
-					</div>
-					<!-- More Search Options / End -->
-
-					
-
-					<!-- More Search Options -->
-					<a href="#" class="more-search-options-trigger margin-bottom-5 margin-top-20" data-open-title="Facilities" data-close-title="Facilities" id="inpt-stl"></a>
-
-					<div class="more-search-options relative ovrflw-x"  >
-
-						<!-- Checkboxes -->
-						<div class="checkboxes one-in-row margin-bottom-15">
-										<?php
-$facilities=$this->common_model->select_results_info('facilities',array('row_status'=>1))->result_array();
-if($facilities!=''){
-					$c=0;foreach ($facilities as $fac) {
-					
-	?>
-							<input id="face-<?=$c;?>" type="checkbox" name="facilities[]" value="<?=$fac['id'];?>">
-							<label for="face-<?=$c;?>"><?=$fac['name'];?></label>
-<?php $c++;}}?>
-						</div>
-						<!-- Checkboxes / End -->
-					</div>
-
-					<!-- More Search Options / End -->
-
-
+        <!-- Checkboxes 4 -->
+        <div class="checkboxes one-in-row margin-bottom-15">
+        <?php
+        $facilities=$this->common_model->select_results_info('facilities',array('row_status'=>1))->result_array();
+        if($facilities!=''){
+        $c=0;foreach ($facilities as $fac) {
+        ?>
+        <input id="face-<?=$c;?>" type="checkbox" name="facilities[]" value="<?=$fac['id'];?>">
+        <label for="face-<?=$c;?>"><?=$fac['name'];?></label>
+        <?php $c++;}}?>
+        </div>
+            <!-- Checkboxes 4 / End -->
+        </div>
+        <!-- Customized accordian tabs end-->
+    
 					<button class="button fullwidth margin-top-25">Update</button>
 </form>
 

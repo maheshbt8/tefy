@@ -323,7 +323,7 @@ body .user-menu ul li a:hover {
 #navigation.style-1>ul>li:hover>a,
 #navigation.style-1>ul>li>a.current {
     background: rgba(55, 52, 53,  0.12);
-    color: #373435
+    color: #dad6d7;
 }
 
 .category-box:hover .category-box-content span,

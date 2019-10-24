@@ -265,10 +265,10 @@ $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'
 
 </section>
 <!-- Fullwidth Section / End -->
-
-<section class="fullwidth padding-top-75 padding-bottom-30" data-background-color="#fff">
-	<!-- Info Section -->
-	<div class="container">
+<!-- Info Section -->
+<!--<section class="fullwidth padding-top-75 padding-bottom-30" data-background-color="#fff">-->
+	
+	<!--<div class="container">
 
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
@@ -279,14 +279,14 @@ $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'
 			</div>
 		</div>
 
-	</div>
+	</div>-->
 	<!-- Info Section / End -->
 
 	<!-- Categories Carousel -->
-	<div class="fullwidth-carousel-container margin-top-20 no-dots">
+	<!--<div class="fullwidth-carousel-container margin-top-20 no-dots">
 		<div class="testimonial-carousel testimonials">
 
-			<!-- Item -->
+			
 			<div class="fw-carousel-review">
 				<div class="testimonial-box">
                     <img src="<?php echo base_url('assets')?>/images/happy-client-01.jpg" alt="">
@@ -298,7 +298,7 @@ $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'
 				</div>
 			</div>
 			
-			<!-- Item -->
+			
 			<div class="fw-carousel-review">
 				<div class="testimonial-box">
 					<div class="testimonial">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop.</div>
@@ -309,7 +309,7 @@ $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'
 				</div>
 			</div>
 
-			<!-- Item -->
+			
 			<div class="fw-carousel-review">
 				<div class="testimonial-box">
 					<div class="testimonial">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view.</div>
@@ -321,11 +321,10 @@ $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'
 			</div>
 
 		</div>
-	</div>
-	<!-- Categories Carousel / End -->
+	</div>-->
 
-</section>
-
+<!--</section>-->
+<!-- Categories Carousel / End -->
 
 <!-- Recent Blog Posts -->
 <section class="fullwidth margin-top-0 padding-top-75 padding-bottom-75" data-background-color="#fff">
