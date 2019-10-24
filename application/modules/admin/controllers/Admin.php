@@ -8,6 +8,8 @@ class Admin extends MY_Controller
         parent::__construct();
         $this->template = "template/admin/main";
         check_access('admin');
+
+        $this->load->model('admin_model');
     }
     
     public function index(){
@@ -576,5 +578,47 @@ class Admin extends MY_Controller
         }
         $this->_render_page($this->template, $this->data);
     }
+     public function conditions($type){
+        if($type=='terms'){
+            $title='Terms & Conditions';
+        }elseif($type=='privacy'){
+            $title='Privacy Policy';
+        }
+        if($this->input->post()){
+        $data['description'] = $this->input->post('message');
+        $this->db->where('setting_type', $type);
+        $res=$this->db->update('settings', $data);
+        if($res){
+                $this->session->set_flashdata('success_message',$title." Updated Successfully");
+            }else{
+                $this->session->set_flashdata('error_message',$title." Not Updated");
+            }
+            redirect($this->session->userdata('last_page'));
+        }
+        
+        $this->data['title'] = $title;
+        $this->data['content'] = 'terms';
+        $this->data['active_menu'] = 'terms';
+        $this->data['condition'] = $this->db->get_where('settings', array('setting_type' => $type))->row()->description;
+        $this->data['type'] = $type;
+        $this->_render_page($this->template, $this->data);
+    }
+    function system_settings($param1 = '') {
+    if($this->input->post()){
+            $res=$this->admin_model->update_system_settings();
+            if($res){
+                $this->session->set_flashdata('success_message', 'Settings Updated');
+            }else{
+                $this->session->set_flashdata('error_message', 'Settings Not Updated');
+            }
+            redirect(base_url() . 'admin/system_settings', 'refresh');
+        }
+
+        $this->data['title'] = 'System Settings';
+        $this->data['content'] = 'settings';
+        $this->data['active_menu'] = 'settings';
+        $this->data['settings'] = $this->db->get('settings')->result_array();
+        $this->_render_page($this->template, $this->data);
+        }
 }
 

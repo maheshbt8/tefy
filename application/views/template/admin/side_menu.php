@@ -45,7 +45,9 @@
 		<!-- <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>
 		
 		<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> Wallet</a></li> -->
+
 	</ul>
+
 <?php }?>
 			<ul data-submenu-title="Account">
 <?php
@@ -53,6 +55,13 @@
 	{
 		?>
 		<li class="<?=($active_menu=='profile')? 'active' : '';?>"><a href="<?=base_url('admin/profile');?>"><i class="sl sl-icon-user"></i> My Profile</a></li>
+		<li class="<?=($active_menu=='categories' || $active_menu=='medium' || $active_menu=='curriculum' || $active_menu=='classes' || $active_menu=='facilities')? 'active' : '';?>"><a><i class="sl sl-icon-settings"></i> Settings</a>
+					<ul>
+						<li><a href="<?=base_url('admin/system_settings');?>">System Settings</a></li>
+						<li><a href="<?=base_url('terms');?>">Terms & Conditions</a></li>
+						<li><a href="<?=base_url('privacy');?>">Privacy Policy</a></li>
+					</ul>	
+				</li>
 	<?php }elseif ($this->ion_auth->is_student()){?>
 		<li class="<?=($active_menu=='profile')? 'active' : '';?>"><a href="<?=base_url('student/profile');?>"><i class="sl sl-icon-user"></i> My Profile</a></li>
 	<?php }
