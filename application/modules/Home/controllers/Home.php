@@ -411,5 +411,23 @@ class Home extends MY_Controller
     echo json_encode($data);
  
   }
+  public function conditions($type){
+        if($type=='terms'){
+            $title='Terms & Conditions';
+        }elseif($type=='privacy'){
+            $title='Privacy Policy';
+        }
+/*        $page_data['page_title'] = $title;
+        $page_data['page_name'] = 'conditions';
+        $page_data['condition'] = $this->db->get_where('settings', array('setting_type' => $type))->row()->description;
+        $page_data['type'] = $type;*/
+
+        $this->data['title'] = $title;
+        $this->data['content'] = 'terms';
+        $this->data['active_menu'] = 'terms';
+        $this->data['type'] = $type;
+        $this->data['condition'] = $this->db->get_where('settings', array('setting_type' => $type))->row()->description;
+        $this->_render_page($this->template, $this->data);
+    }
 }
 
