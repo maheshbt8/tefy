@@ -81,7 +81,7 @@ class Auth extends MX_Controller {
 		}
 	}
 	// log the user in
-	public function login()
+	/*public function login()
 	{
 		$this->data['title'] = $this->lang->line('login_heading');
 
@@ -112,7 +112,7 @@ class Auth extends MX_Controller {
 		}
 		else
 		{
-			/*echo validation_errors();*/
+			
 			// the user is not logging in so display the login page
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -131,7 +131,7 @@ class Auth extends MX_Controller {
 
 			$this->_render_page('auth/login', $this->data);
 		}
-	}
+	}*/
 
 	// log the user out
 	public function logout()
@@ -214,7 +214,7 @@ class Auth extends MX_Controller {
 		}
 	}
 
-	// forgot password
+	/*// forgot password
 	public function forgot_password()
 	{
 		// setting validation rules by checking whether identity is username or email
@@ -278,12 +278,12 @@ class Auth extends MX_Controller {
 				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
 			}
 			else
-			{/*echo "string";die;*/
+			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
 				redirect("auth/forgot_password", 'refresh');
 			}
 		}
-	}
+	}*/
 
 	// reset password - final step for forgotten password
 	public function reset_password($code = NULL)
@@ -357,7 +357,7 @@ class Auth extends MX_Controller {
 					{
 						// if the password was successfully changed
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
-						redirect("auth/login", 'refresh');
+						redirect("home", 'refresh');
 					}
 					else
 					{
@@ -371,7 +371,7 @@ class Auth extends MX_Controller {
 		{
 			// if the code is invalid then send them back to the forgot password page
 			$this->session->set_flashdata('message', $this->ion_auth->errors());
-			redirect("auth/forgot_password", 'refresh');
+			redirect("home", 'refresh');
 		}
 	}
 
@@ -495,7 +495,7 @@ class Auth extends MX_Controller {
 		}
 		else
 		{
-			$mes['message']=validation_errors();
+			$mes['message']='<div class="alert alert-success"><strong>'.validation_errors().'</strong></div>';
 			$mes['status']=0;
 			echo json_encode($mes);
 		}
@@ -572,23 +572,23 @@ echo json_encode($mes);*/
 		$task=$_GET['id'];
         $this->common_model->email_verification($task);
 	}
-	// create a new user
+	/*// create a new user
 	public function create_user()
     {
         $this->data['title'] = $this->lang->line('create_user_heading');
 
-        /*if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
         {
             redirect('auth', 'refresh');
-        }*/
+        }
 
         $tables = $this->config->item('tables','ion_auth');
         $identity_column = $this->config->item('identity','ion_auth');
         $this->data['identity_column'] = $identity_column;
 
         // validate form input
-        /*$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required');
-        $this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required');*/
+        $this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required');
+        $this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required');
         if($identity_column!=='email')
         {
             $this->form_validation->set_rules('identity',$this->lang->line('create_user_validation_identity_label'),'required|is_unique['.$tables['users'].'.'.$identity_column.']');
@@ -679,7 +679,7 @@ echo json_encode($mes);*/
 
             $this->_render_page('auth/create_user', $this->data);
         }
-    }
+    }*/
 
 	// edit a user
 	public function edit_user($id)
@@ -832,7 +832,7 @@ echo json_encode($mes);*/
 		$this->_render_page('auth/edit_user', $this->data);
 	}
 
-	// create a new group
+	/*// create a new group
 	public function create_group()
 	{
 		$this->data['title'] = $this->lang->line('create_group_title');
@@ -942,7 +942,7 @@ echo json_encode($mes);*/
 
 		$this->_render_page('auth/edit_group', $this->data);
 	}
-
+*/
 
 	public function _get_csrf_nonce()
 	{
