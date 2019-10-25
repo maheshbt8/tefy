@@ -177,3 +177,26 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
+<script type="text/javascript">
+  $('#password').keypress(function(e) {
+    var key = e.which;
+    if (key == 13)
+    {
+      return submit_login();
+    }
+  });
+  $('#password2').keypress(function(e) {
+    var key = e.which;
+    if (key == 13)
+    {
+      return submit_registration();
+    }
+  });
+  $('#forgot_email').keypress(function(e) {
+    var key = e.which;
+    if (key == 13)
+    {
+      return submit_forgot_pass();
+    }
+  });
+</script>

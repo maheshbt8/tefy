@@ -69,3 +69,4 @@ $route['contact_us'] = 'home/contact_us';
 
 $route['terms'] = 'admin/conditions/terms';
 $route['privacy'] = 'admin/conditions/privacy';
+$route['tefy-about_us'] = 'admin/conditions/about_us';

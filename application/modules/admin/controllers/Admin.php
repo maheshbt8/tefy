@@ -583,6 +583,8 @@ class Admin extends MY_Controller
             $title='Terms & Conditions';
         }elseif($type=='privacy'){
             $title='Privacy Policy';
+        }elseif($type=='about_us'){
+            $title='About Us';
         }
         if($this->input->post()){
         $data['description'] = $this->input->post('message');

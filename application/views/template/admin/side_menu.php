@@ -58,6 +58,7 @@
 		<li class="<?=($active_menu=='categories' || $active_menu=='medium' || $active_menu=='curriculum' || $active_menu=='classes' || $active_menu=='facilities')? 'active' : '';?>"><a><i class="sl sl-icon-settings"></i> Settings</a>
 					<ul>
 						<li><a href="<?=base_url('admin/system_settings');?>">System Settings</a></li>
+						<li><a href="<?=base_url('tefy-about_us');?>">About Us</a></li>
 						<li><a href="<?=base_url('terms');?>">Terms & Conditions</a></li>
 						<li><a href="<?=base_url('privacy');?>">Privacy Policy</a></li>
 					</ul>	
