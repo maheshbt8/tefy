@@ -1,10 +1,13 @@
+<div class="container img-top"></div>
 <div class="container">
 
         <div class="row">
-            <div class="col-lg-12">
-                <div id="add-listing" class="separated-form">
+                            
+
+            <div class="col-lg-12" class="">
+                <div id="add-listing" class="separated-form content_top">
                     <!-- Section -->
-                    <div class="add-listing-section margin-top-45 switcher-on">
+                    <div class=" margin-top-45 switcher-on ">
                         <?=$condition;?>
                     </div>
                     <!-- Section / End -->

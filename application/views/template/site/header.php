@@ -155,7 +155,7 @@
 						if ($this->ion_auth->logged_in())
 							{
 						?>
-						<div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'));?></div>
+						<div class="user-name adm"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'));?></div>
 						<ul>
 							<li><a href="<?=base_url('auth');?>" target="_blank"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 							<!-- <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li> -->
