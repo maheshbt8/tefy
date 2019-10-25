@@ -62,7 +62,7 @@ class Auth extends MX_Controller {
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
-				$mes['message']='<div class="alert alert-success"><strong>successfully Login</strong></div>';
+				$mes['message']='<div class="alert alert-success"><strong>Successfully Login</strong></div>';
 				$mes['status']=1;
 				echo json_encode($mes);
 			}
@@ -495,7 +495,7 @@ class Auth extends MX_Controller {
 		}
 		else
 		{
-			$mes['message']='<div class="alert alert-success"><strong>'.validation_errors().'</strong></div>';
+			$mes['message']='<div class="alert alert-danger"><strong class="font3">'.validation_errors().'</strong></div>';
 			$mes['status']=0;
 			echo json_encode($mes);
 		}

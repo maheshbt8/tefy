@@ -132,10 +132,10 @@ $class_name=array();
 					</ul>
 					<div class="clearfix"></div>-->
                     <ul class="listing-links contact-links">
-						<li><i class="sl sl-icon-phone"></i>&nbsp; &nbsp;&nbsp; &nbsp; <?=$school['phone'];?></li>
-						<li><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['email'];?>
-						</li>
-						<li><i class="sl sl-icon-globe"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['website'];?></li>
+                        <li><a href="tel:+91-<?=$school['phone'];?>"><i class="sl sl-icon-phone"></i>&nbsp; &nbsp;&nbsp; &nbsp; <?=$school['phone'];?></a></li>
+						<li><a href="mailto:<?=$school['email'];?>?subject = Tefy Contct Support"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['email'];?>
+                        </a></li>
+						<li><a href="http://<?=$school['website'];?>" target="_blank"><i class="sl sl-icon-globe"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['website'];?></a></li>
                         <li><i class="fa fa-link"></i>&nbsp;&nbsp;&nbsp; &nbsp;<?=$school['address'];?>&nbsp;&nbsp;<span class="direction-icon"><!-- (<i class="fa fa-envelope-o"></i>&nbsp;   Directions) --></span></li>
 					</ul>
 					<div class="clearfix"></div>
@@ -247,7 +247,7 @@ $class_name=array();
 
 
 				<!-- Amenities -->
-				<h3 class="listing-desc-headline">Amenities</h3>
+				<h3 class="listing-desc-headline">Facilities</h3>
 				<!--<ul class="listing-features checkboxes margin-top-0">
 					<?php
 					//$ame=json_decode($school['amenities']);

@@ -14156,7 +14156,7 @@ input:checked+.slider:before {
 
 .add-listing-section {
     border-radius: 4px;
-    background-color: #fff;
+/*    background-color: #fff;*/
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, .06);
     padding: 0 40px 25px
 }
@@ -20912,5 +20912,5 @@ height: 51px;
 #header.cloned.sticky .popup-with-zoom-anim:hover{color:#dad6d7}
 #header.cloned.sticky .user-menu .user-name:before {color:#fff}
 #header.cloned.sticky .user-menu .user-name:after {color:#dad6d7}
-.pswd{font-size: 16px}
+.font3{font-size: 12px; line-height: 18px}
 /*End CSS By veerababu*/

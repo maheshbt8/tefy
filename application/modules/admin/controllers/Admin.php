@@ -285,6 +285,7 @@ class Admin extends MY_Controller
         $this->data['edit_data'] = $this->common_model->select_results_info('listings',array('id'=>$listing_id))->row_array();
         $this->data['title'] = 'Edit Listing';
         $this->data['content'] = 'edit_listing';
+        $this->data['active_menu'] = 'edit_listing';
         $this->_render_page($this->template, $this->data);
     }
     public  function is_unique_school_code($value,$listing_id){
