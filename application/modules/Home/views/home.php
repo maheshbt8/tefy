@@ -153,11 +153,6 @@ $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'
                                         <div class="padding-top-5"><b>Grade: </b><span> <?=implode(', ',$class);?> </span> </div>
                                         <div class="padding-top-5"><b>Category:</b><span>Day Care </span> </div>
                                         <div ><span class="more2"><b>Address</b>: <?=$row['address'];?></span> </div>
-
-<!--                                         <span><?=$this->common_model->get_type_name_by_where('curriculum',array('id'=>$row['curriculum']));?></span>
-                                        <div class="padding-top-15"><span><b>Address</b>: <?=$row['address'];?></span> </div>
-                                        <div class="padding-top-5"><span><b>Classes</b>: <?=implode(', ',$class);?></span> </div>
-                                        <div class="padding-top-5 text-size"><span><b>Vision</b>: <?=$row['vision'];?></span> </div> -->
                                     </div>
                                     <?php if ($this->ion_auth->logged_in()){?>
                                     <span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span>

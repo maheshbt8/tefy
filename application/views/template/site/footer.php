@@ -13,10 +13,10 @@
 				<h4>Helpful Links</h4>
 				<ul class="footer-links">
 					<li><a href="<?=base_url('about_us');?>">About Us</a></li>
-					
 					<li><a href="#">Blog</a></li>
 					<li><a href="<?=base_url('contact_us');?>">Contact Us</a></li>
-			
+                    <li><a hret="<?=base_url('privacy-policy');?>">Privacy Policy</a></li>
+                    <li><a href="<?=base_url('terms-and-conditions');?>">Terms of use</a></li>    
 				</ul>
 
 				<!--<ul class="footer-links">
@@ -43,7 +43,6 @@
 					<li><a class="instagram" href="#"><i class="icon-instagram"></i></a></li>
 					<li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
 					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
-					
 				</ul>
 
 			</div>
@@ -53,7 +52,11 @@
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="copyrights">© 2019 TEFY. All Rights Reserved. <span>Designed& Developed by Grepthor Software</span></div>
+				<div class="copyrights">&copy; 2019 - One7 Incredic Services Private Limited.All rights Reserved. 
+                    
+<!--                    <span>Designed & Developed by Grepthor Software</span>-->
+                    
+                </div>
 			</div>
 		</div>
 

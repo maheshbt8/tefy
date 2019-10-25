@@ -20810,14 +20810,14 @@ height: 51px;
 }
 .list-img-size {
     
-        max-height: 20em;
-   height: 20em;
+
+   height: 225px;
 }
 
 @media (max-width: 767.98px) { 
     .list-img-size {
     
-        max-height: 24em;
+   max-height: 24em;
    height:24em;
 }}
 
@@ -20912,4 +20912,5 @@ height: 51px;
 #header.cloned.sticky .popup-with-zoom-anim:hover{color:#dad6d7}
 #header.cloned.sticky .user-menu .user-name:before {color:#fff}
 #header.cloned.sticky .user-menu .user-name:after {color:#dad6d7}
+.pswd{font-size: 16px}
 /*End CSS By veerababu*/

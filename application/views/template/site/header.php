@@ -1,7 +1,7 @@
 <header id="header-container">
 <style type="text/css">
 	div#register_response {
-    color: red;
+   color: red;*
 }
 </style>
 	<!-- Header -->
@@ -208,14 +208,17 @@
 								<p class="form-row form-row-wide">
 									<label for="username">Username:
 										<i class="im im-icon-Male"></i>
-										<input type="text" class="input-text" name="identity" id="identity" value="" />
+										<input type="text" class="input-text" placeholder="Email Id" name="identity" id="identity" value="" onfocus="this.placeholder = ''"
+onblur="this.placeholder = 'Email Id'" />
 									</label>
 								</p>
 
 								<p class="form-row form-row-wide">
 									<label for="password">Password:
 										<i class="im im-icon-Lock-2"></i>
-										<input class="input-text" type="password" name="password" id="password"/>
+										<input class="input-text pswd" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" name="password" id="password" 
+                                            onfocus="this.placeholder = ''"
+onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"   />
 									</label>
 									<span class="lost_password">
 										<a href="#small-dialog" class="popup-with-zoom-anim" >Lost Your Password?</a>
@@ -243,7 +246,8 @@
 							<p class="form-row form-row-wide">
 								<label for="username2">Name:
 									<i class="im im-icon-Male"></i>
-									<input type="text" class="input-text" name="name" id="name" value="" />
+									<input type="text" placeholder="Full Name" class="input-text" name="name" id="name" value="" onfocus="this.placeholder = ''"
+onblur="this.placeholder = 'Full Name'" />
 								</label>
 								<span id='name_id'></span>
 							</p>
@@ -251,21 +255,24 @@
 							<p class="form-row form-row-wide">
 								<label for="email2">Email Address:
 									<i class="im im-icon-Mail"></i>
-									<input type="text" class="input-text" name="email" id="email2" value="" />
+									<input type="text" class="input-text" placeholder="Email Id"  name="email" id="email2" value="" onfocus="this.placeholder = ''"
+onblur="this.placeholder = 'Email Id'" />
 								</label>
 								<span id='email_id'></span>
 							</p>
 							<p class="form-row form-row-wide">
 								<label for="email2">Mobile:
 									<i class="im im-icon-Mail"></i>
-									<input type="text" class="input-text" name="phone" id="phone" value="" />
+									<input type="text" class="input-text" name="phone" placeholder="Mobile Number" id="phone" value="" onfocus="this.placeholder = ''"
+onblur="this.placeholder = 'Mobile Number'" />
 								</label>
 								<span id='phone_id'></span>
 							</p>
 							<p class="form-row form-row-wide">
 								<label for="password1">Password:
 									<i class="im im-icon-Lock-2"></i>
-									<input class="input-text" type="password" name="password1" id="password1"/>
+									<input class="input-text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" type="password" name="password1" id="password1" onfocus="this.placeholder = ''"
+onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'" />
 								</label>
 								<span id='pass1_id'></span>
 							</p>
@@ -273,7 +280,8 @@
 							<p class="form-row form-row-wide">
 								<label for="password2">Repeat Password:
 									<i class="im im-icon-Lock-2"></i>
-									<input class="input-text" type="password" name="password_confirm" id="password2"/>
+									<input class="input-text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" type="password" name="password_confirm" id="password2" onfocus="this.placeholder = ''"
+onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'" />
 								</label>
 								<span id='pass2_id'></span>
 							</p>
