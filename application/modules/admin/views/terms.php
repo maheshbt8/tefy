@@ -13,7 +13,7 @@
                                         <h2 class="card-title"><?=$title;?></h2>
                                     </header> -->
                                     <div class="card-body">
-                                        <form class="form-horizontal form-bordered" action="<?=base_url().$type;?>" method="post">
+                                        <form class="form-horizontal form-bordered" action="<?=current_url();?>" method="post">
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
                                                 <textarea type="text" class="form-control" name="message" value=""><?php echo $condition;?></textarea>
