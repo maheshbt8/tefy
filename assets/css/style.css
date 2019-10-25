@@ -7405,7 +7405,8 @@ a.send-message-to-owner.button {
 
 .comment-content {
     color: #666;
-    padding: 0 0 0 100px
+    padding: 0 0 0 100px;
+    max-width: 87%;
 }
 
 .comments ul li ul {
