@@ -486,14 +486,14 @@ $this->session->set_userdata('last_page',current_url());
 
 
 						<!-- Checkboxes -->
-						<h5 class="margin-top-30 margin-bottom-10">Amenities <span>(optional)</span></h5>
+						<h5 class="margin-top-30 margin-bottom-10">Facilities <span>(optional)</span></h5>
 						<div class="checkboxes in-row margin-bottom-20">
 					<?php $res=$this->common_model->select_results_info('facilities',array('row_status'=>1),"'name','ASC'")->result_array();
-                                  foreach ($res as $row) {
+                                  $f=0;foreach ($res as $row) {
                                   ?>
-							<input id="check-a" type="checkbox" name="amenities[]" value="<?=$row['id'];?>" <?php if(strpos($edit_data['amenities'],$row['id'])){ echo 'checked';} ?>>
-							<label for="check-a"><?=$row['name'];?></label>
-						<?php }?>
+							<input id="check<?=$f;?>" type="checkbox" name="amenities[]" value="<?=$row['id'];?>" <?php if(strpos($edit_data['amenities'],$row['id'])){ echo 'checked';} ?>>
+							<label for="check<?=$f;?>"><?=$row['name'];?></label>
+						<?php $f++;}?>
 							
 					<?php echo form_error('amenities[]', '<div class="error">', '</div>'); ?>
 						</div>

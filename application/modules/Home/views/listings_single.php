@@ -573,7 +573,7 @@ for ($i=0; $i < count($days); $i++) {
 			</div>
             <div class="col-md-12">
 				 <!-- Achievement title -->
-				<h3 class="listing-desc-headline">Records & Achievements</h3>
+				<h3 class="listing-desc-headline">Rewards & Achievements</h3>
 				
                    
                 <!--<ul class="achievement-list  margin-top-0">
@@ -631,6 +631,7 @@ if($achievements!=''){
             
            
 		</div>
+        
 	</div>
     <div class= "container" style="">
         <!-- Reviews -->

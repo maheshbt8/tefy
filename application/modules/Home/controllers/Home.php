@@ -27,6 +27,7 @@ class Home extends MY_Controller
         $this->data['title'] = 'About Us';
         $this->data['content'] = 'about_us';
         $this->data['active_menu'] = 'about_us';
+        $this->data['condition'] = $this->db->get_where('settings', array('setting_type' => 'about_us'))->row()->description;
         $this->_render_page($this->template, $this->data);
     }
     public function listings_list(){

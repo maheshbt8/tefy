@@ -15,7 +15,7 @@
 					<li><a href="<?=base_url('about_us');?>">About Us</a></li>
 					<li><a href="#">Blog</a></li>
 					<li><a href="<?=base_url('contact_us');?>">Contact Us</a></li>
-                    <li><a hret="<?=base_url('privacy-policy');?>">Privacy Policy</a></li>
+                    <li><a href="<?=base_url('privacy-policy');?>">Privacy Policy</a></li>
                     <li><a href="<?=base_url('terms-and-conditions');?>">Terms of use</a></li>    
 				</ul>
 
@@ -34,15 +34,15 @@
 				<div class="text-widget">
 				<!--	<span>Hyderabad</span> <br>-->
 					Phone: <span>+91 XXX XXX XXXX </span><br>
-					E-Mail:<span> <a href="#"><span class="__cf_email__" data->info@tefy.in</span></a> </span><br>
+					Email:<span> <a href="#"><span class="__cf_email__" data->info@tefy.in</span></a> </span><br>
 				</div>
 
 				<ul class="social-icons margin-top-20">
-					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="instagram" href="#"><i class="icon-instagram"></i></a></li>
-					<li><a class="youtube" href="#"><i class="icon-youtube"></i></a></li>
-					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+					<li><a class="facebook" href="https://www.facebook.com/"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="https://twitter.com/"><i class="icon-twitter"></i></a></li>
+					<li><a class="instagram" href="https://www.instagram.com/"><i class="icon-instagram"></i></a></li>
+					<li><a class="youtube" href="https://www.youtube.com/"><i class="icon-youtube"></i></a></li>
+					<li><a class="linkedin" href="https://in.linkedin.com/"><i class="icon-linkedin"></i></a></li>
 				</ul>
 
 			</div>
