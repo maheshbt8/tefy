@@ -24,7 +24,7 @@ $this->session->set_userdata('last_page',current_url());
 						<div class="my-profile">
 
 							<label>Your Name</label>
-							<input value="<?=$user_details['username'];?>" type="text" name="username" required="" >
+							<input value="<?=$user_details['first_name'];?>" type="text" name="username" required="" >
 
 							<label>Phone</label>
 							<input value="<?=$user_details['phone'];?>" type="text" name="phone" required="" >

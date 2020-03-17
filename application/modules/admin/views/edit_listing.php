@@ -12,6 +12,7 @@ $this->session->set_userdata('last_page',current_url());
 
 
 <form method="post" action="<?=base_url('admin/edit_listing/').$edit_id;?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
+	<input type="hidden" name="list_type" value="list">
 <div class="row">
 			<div class="col-lg-12">
 
@@ -155,7 +156,7 @@ $this->session->set_userdata('last_page',current_url());
 						<div class="row with-forms">
 
 							<!-- Vision -->
-							<div class="col-md-6">
+							<!-- <div class="col-md-6">
                                 <h5>Classes</h5>
                                 <select class="chosen-select-no-single form-control selectric"  name="class[]" required="" multiple="">
 									<option label="blank" disabled="">Select Class</option>	
@@ -167,8 +168,26 @@ $this->session->set_userdata('last_page',current_url());
 									
 								</select>
                              <?php echo form_error('class[]', '<div class="error">', '</div>'); ?>
+							</div> -->
+							<div class="col-md-3">
+                                <h5>Classes</h5>
+								<input type="text" placeholder="Enter Classes to show"  name="class" required="" value="<?=$edit_data['class'];?>">
+                             	<?php echo form_error('class', '<div class="error">', '</div>'); ?>
+                          	
 							</div>
-							<div class="col-md-6">
+                            <div class="col-md-3">
+                                <h5>Price From</h5>
+								<input type="text" placeholder="Enter Price From"  name="price_from" required="" value="<?=$edit_data['price_from'];?>">
+                             	<?php echo form_error('price_from', '<div class="error">', '</div>'); ?>
+                          	
+							</div>
+							<div class="col-md-3">
+                                <h5>Transport Fee</h5>
+								<input type="number" placeholder="Enter Transport Fee"  name="transport_fee" required="" value="<?=$edit_data['transport_fee'];?>">
+                             	<?php echo form_error('transport_fee', '<div class="error">', '</div>'); ?>
+                          	
+							</div>
+							<div class="col-md-3">
                                 <h5>Medium</h5>
                                 <select class="chosen-select-no-single form-control selectric"  name="medium[]" required="" multiple="">
                                 	<option label="blank" disabled="">Select Medium</option>
@@ -199,45 +218,45 @@ $this->session->set_userdata('last_page',current_url());
 						<div class="row with-forms">
 							<div class="col-md-6">
 								<h5>Founders Name </h5>
-								<input class="search-field" type="text" value="<?=$edit_data['founders_name'];?>" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['founders_name'];?>" name="founders_name" placeholder="Founders Name(If any)" autocomplete="off" />
 								<?php echo form_error('founders_name', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Brand Name </h5>
-								<input class="search-field" type="text" value="<?=$edit_data['brand_name'];?>" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['brand_name'];?>" name="brand_name" placeholder="Brand name" autocomplete="off" />
 								<?php echo form_error('brand_name', '<div class="error">', '</div>'); ?>
 							</div>
 					
 							<div class="col-md-6">
 								<h5>Number of Branches </h5>
-								<input class="search-field" type="text" value="<?=$edit_data['no_of_branches'];?>" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['no_of_branches'];?>" name="no_of_branches" placeholder="Brand name" autocomplete="off" />
 								<?php echo form_error('no_of_branches', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of brand</h5>
-								<input class="search-field" type="text" value="<?=$edit_data['est_year'];?>" name="est_year" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['est_year'];?>" name="est_year" placeholder="" autocomplete="off" />
 								<?php echo form_error('est_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of the specific branch</h5>
-								<input class="search-field" type="text" value="<?=$edit_data['est_branch_year'];?>" name="est_branch_year" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['est_branch_year'];?>" name="est_branch_year" placeholder="" autocomplete="off" />
 								<?php echo form_error('est_branch_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
                    
 							<div class="col-md-6">
 								<h5>Average Expirience of Faculty</h5>
-								<input class="search-field" type="text" value="<?=$edit_data['faculty_exp'];?>" name="faculty_exp" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['faculty_exp'];?>" name="faculty_exp" placeholder="" autocomplete="off" />
 								<?php echo form_error('faculty_exp', '<div class="error">', '</div>'); ?>
 							</div>
 						
                         
 							<div class="col-md-6">
 								<h5>Any Notable Alumni</h5>
-								<input class="search-field" type="text" value="<?=$edit_data['alumni'];?>" name="alumni" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=$edit_data['alumni'];?>" name="alumni" placeholder="" autocomplete="off" />
 								<?php echo form_error('alumni', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -337,71 +356,20 @@ $this->session->set_userdata('last_page',current_url());
                                 <input type="url" class="form-control-file" placeholder="Eg:https://www.google.com/maps/embed?" name="address_url" value="<?=$edit_data['address_url'];?>">
                                 <?php echo form_error('address_url', '<div class="error">', '</div>'); ?>
                             	</div>
-							</div>
-							<!-- Row / End -->
-
-						</div>
-					</div>
-					<!-- Section / End -->
-
-
-					<!-- Section -->
-					<div class="add-listing-section margin-top-45">
-
-						<!-- Headline -->
-						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-picture"></i> Gallery</h3>
-						</div>
-                        <div class="row with-forms">
-
-							<div class="col-md-4 ">
-                                <h5>Thumb Image </h5><p>(select image for list view)</p>
-                                <input type="file" class="form-control-file" name="thumb" >
-                                
-                            </div>
-                            <div class="col-md-4">
-                                <h5>Banner Image </h5><p>(select banner image for school page)</p>
-                                <input type="file" class="form-control-file" name="banner">
-                            </div>
-                            <div class="col-md-4">
-                                <h5>Gallery Images </h5><p>(select multiple Images)</p>
-                                <input type="file" class="form-control-file"  name="gallery[]" multiple>
-                            </div>    
-                        </div>
-                        
-                        <div class="row with-forms">
+                            	
 
 							<div class="col-md-12 ">
                                 <h5>Embed video Link(optional)</h5>
                                 <input type="url" class="form-control-file" placeholder="Eg:https://www.tefy.com/embed/yfettefy" name="video" value="<?=$edit_data['video'];?>">
                             </div>
                             
-                        </div>
-                            
-						<!-- Dropzone -->
-						<div class="submit-section">
-							<!-- <form action="" class="dropzone">
-								
+							</div>
+							<!-- Row / End -->
 
-							</form>
-							<form action="<?=base_url();?>uploads" enctype="multipart/form-data" class="dropzone" >
-								
-							</form> -->
-							<!-- 				<form action="/file-upload" class="dropzone">
-  <div class="fallback">
-    <input name="file" type="file" multiple />
-  </div>
-</form>
-<form action="/file-upload" class="dropzone">
-  <div class="fallback">
-    <input name="file" type="file" multiple />
-  </div>
-</form> -->
-						</div> 
-
+						</div>
 					</div>
 					<!-- Section / End -->
-
+					
 
 					<!-- Section -->
 					<div class="add-listing-section margin-top-45">
@@ -519,17 +487,17 @@ $this->session->set_userdata('last_page',current_url());
 
 
 					<!-- Section -->
-					<div class="add-listing-section margin-top-45">
+					<div class="add-listing-section margin-top-45 ">
 						
 						<!-- Headline -->
-						<div class="add-listing-headline">
+						<div class="add-listing-headline ">
 							<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
 							<!-- Switcher -->
 							<label class="switch"><input type="checkbox" name="openings" name="opening_hours" checked ><span class="slider round"></span></label>
 						</div>
 						
 						<!-- Switcher ON-OFF Content -->
-						<div class="switcher-content">
+						<div class="switcher-content ">
 <?php
 $reslut=$this->common_model->get_days();
 
@@ -539,7 +507,7 @@ $reslut=$this->common_model->get_days();
 
 for ($i=0; $i < count($days); $i++) {
 ?>
-<div class="row opening-day">
+<div class="row opening-day  ">
 								<div class="col-md-2"><h5><?=$days[$i];?></h5></div>
 								<div class="col-md-5">
 									<select class="chosen-select" name="opening_time[]" data-placeholder="Opening Time" required="">
@@ -631,17 +599,30 @@ for ($i=0; $i < count($days); $i++) {
 								<div class="col-md-12">
 									<table id="pricing-list-container1">
 										<?php 
-							$class_name=json_decode($edit_data['class_name']);
+/*							$class_name=json_decode($edit_data['class_name']);
 							$admission_fee=json_decode($edit_data['admission_fee']);
 							$tution_fee=json_decode($edit_data['tution_fee']);
-							for($a=0;$a<count($class_name);$a++){
+							for($a=0;$a<count($class_name);$a++){*/
+								foreach ($class_price as $cl_price) {
 										?>
 										<tr class="pricing-list-item pattern school_pr">
 											<td>
 												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-												<div class="fm-input pricing-name"><input type="text" placeholder="Class Name" name="class_name[]" value="<?=$class_name[$a];?>" /></div>
-												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Admission Fee" data-unit="INR" name="admission_fee[]"  value="<?=$admission_fee[$a];?>" /></div>
-												<div class="fm-input pricing-price"><input type="text" placeholder="Tution Fee" data-unit="INR" name="tution_fee[]"  value="<?=$tution_fee[$a];?>" /></div>
+												<div class="fm-input pricing-name">
+												<!-- 	<input type="text" placeholder="Class Name" name="class_name[]" value="<?=$cl_price['name'];?>" /> -->
+												<select class="form-control"  name="class_name[]" required="">
+									<option value="">Select Class</option>	
+									 <?php $res=$this->common_model->select_results_info('classes',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
+									<option value="<?=$row['id'];?>" <?=($row['id']==$cl_price['class_id'])? 'selected' : '' ;?>><?=$row['name'];?></option>
+								<?php }?>
+									
+								</select>
+                             	<?php echo form_error('class_name[]', '<div class="error">', '</div>'); ?>
+												</div>
+												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Admission Fee" data-unit="INR" name="admission_fee[]"  value="<?=$cl_price['admission_fee'];?>" /></div>
+												<div class="fm-input pricing-price"><input type="text" placeholder="Tution Fee" data-unit="INR" name="tution_fee[]"  value="<?=$cl_price['tution_fee'];?>" /></div>
 												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
 											</td>
 										</tr>
@@ -650,6 +631,20 @@ for ($i=0; $i < count($days); $i++) {
 									<a href="#" class="button add-pricing-list-item1">Add Item</a>
 									
 								</div>
+
+								<div class="col-md-12">
+                                <h5>Admission Status</h5>
+                            <div class="col-md-2">
+                        <label><input class="d--inline" type="radio" name="admission_status" value="1" required="" <?=($edit_data['admission_status'] == 1)? 'checked' : '' ?>>Opened</label>
+                            </div>
+                            <div class="col-md-2">
+                        <label><input class="d--inline" type="radio" name="admission_status" value="0" required="" <?=($edit_data['admission_status'] == 0)? 'checked' : '' ?>>Closed</label>
+
+                            </div>             
+                     </div>
+                     <?php echo form_error('admission_status', '<div class="error">', '</div>'); ?> 
+                     <label class="error" for="admission_status"></label> 
+
 							</div>
 
 						</div>
@@ -658,6 +653,80 @@ for ($i=0; $i < count($days); $i++) {
 					</div>
 					<!-- Section / End -->
 					<!-- <a href="#" class="button preview">Preview <i class="fa fa-arrow-circle-right"></i></a> -->
+					<button type="submit" class="button preview">Submit</button>
+
+				</div>
+			</div>
+
+		</div>
+
+</form>
+
+<form method="post" action="<?=base_url('admin/edit_listing/').$edit_id;?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
+	<input type="hidden" name="list_type" value="gallery">
+<div class="row">
+			<div class="col-lg-12">
+
+				<div id="add-listing">
+
+					
+
+					<!-- Section -->
+					<div class="add-listing-section margin-top-45">
+
+						<!-- Headline -->
+						<div class="add-listing-headline">
+							<h3><i class="sl sl-icon-picture"></i> Gallery</h3>
+						</div>
+                        <div class="row with-forms">
+
+							<div class="col-md-4 ">
+                                <h5>Thumb Image </h5><p>(select image for list view)</p>
+                                <input type="file" class="form-control-file" name="thumb" >
+                                <div class="col-md-12">
+                                	<div class="col-md-3">
+                                <img src="<?=base_url('uploads/listings/thumb/'.$edit_data['id'].'.jpg');?>" class="img-fluid" style="height: 180px;">
+                            	</div>
+                            </div>
+                            	
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Banner Image </h5><p>(select banner image for school page)</p>
+                                <input type="file" class="form-control-file" name="banner[]" multiple>
+
+                                <div class="col-md-12">
+                                	<?php
+                                $ban_img=$this->common_model->select_results_info('listing_banner',array('listing_id'=>$edit_data['id']))->result_array();
+                                foreach ($ban_img as $ban) {
+                                ?>
+                                <div class="col-md-3">
+                                		<a href="<?=base_url('delete_listing_img/listing_banner/'.$edit_data['id'].'/'.$ban['id']);?>"><i class="fa fa-trash"></i></a>
+                                <img src="<?=base_url('uploads/listings/banners/'.$edit_data['id'].'/'.$ban['id'].'.jpg');?>" class="img-fluid" style="height: 180px;">
+                            	</div>
+                            <?php }?>
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Gallery Images </h5><p>(select multiple Images)</p>
+                                <input type="file" class="form-control-file"  name="gallery[]" multiple>
+
+                                <div class="col-md-12">
+                                	<?php
+                                $gal_img=$this->common_model->select_results_info('listing_gallery',array('listing_id'=>$edit_data['id']))->result_array();
+                                foreach ($gal_img as $ban) {
+                                ?>
+                                <div class="col-md-3">
+                                		<a href="<?=base_url('delete_listing_img/listing_gallery/'.$edit_data['id'].'/'.$ban['id']);?>"><i class="fa fa-trash"></i></a>
+                                <img src="<?=base_url('uploads/listings/gallery/'.$edit_data['id'].'/'.$ban['id'].'.jpg');?>" class="img-fluid" style="height: 180px;">
+                            	</div>
+                            <?php }?>
+                            </div>
+                            </div>    
+                        </div>
+                             
+
+					</div>
+					<!-- Section / End -->
 					<button type="submit" class="button preview">Submit</button>
 
 				</div>

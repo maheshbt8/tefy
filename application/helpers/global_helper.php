@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+
+
 /****** Send Email ******/
 if ( ! function_exists('sendEmail'))
 {
@@ -12,11 +14,19 @@ if ( ! function_exists('sendEmail'))
         
         $CI = & get_instance();
         if($msg != "") {
-            
+
             $CI->load->library('email');
             //$CI->email->clear();
             $smtp_host = $smtp_port = $smtp_user = $smtp_password = $mandrill_api_key = '';
-            
+
+            $CI =& get_instance();
+$site_settings = $CI->config->item('site_settings');
+$email_settings = $CI->config->item('email_settings');            
+
+            $smtp_host = $email_settings->smtp_host;
+            $smtp_port = $email_settings->smtp_port;
+            $smtp_user = $email_settings->smtp_username;
+            $smtp_password = $email_settings->smtp_password;
                 
                 $config = Array(
                     'protocol' 	=> 'smtp',
@@ -29,10 +39,10 @@ if ( ! function_exists('sendEmail'))
                     'newline' 	=> "\r\n",
                     'wordwrap' 	=> TRUE
                     );
-                
+               // print_r($config);die;
                 $CI->email->initialize($config);
                 
-                $CI->email->from($smtp_user, $CI->config->item('site_settings')->site_title);
+                $CI->email->from($site_settings->system_email, $site_settings->system_name);
                 
                 $CI->email->to($to);
                 

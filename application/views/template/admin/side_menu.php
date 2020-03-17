@@ -14,11 +14,24 @@
 			</ul>
 			
 			<ul data-submenu-title="Listings">
+				<li class="<?=($active_menu=='admissions')? 'active' : '';?>"><a href="<?=base_url('admin/admissions')?>"><i class="sl sl-icon-star"></i> Admissions</a></li>
 				<li class="<?=($active_menu=='listings')? 'active' : '';?>"><a><i class="sl sl-icon-layers"></i> My Listings</a>
 					<ul>
 						<li class="<?=($active_menu=='listings' && (isset($_GET['status']) && $_GET['status']==''))? 'active' : '';?>"><a href="<?=base_url('admin/listings');?>">All <!-- <span class="nav-tag green">6</span> --></a></li>
 						<li class="<?=($active_menu=='listings' && (isset($_GET['status']) && $_GET['status']=='active'))? 'active' : '';?>"><a href="<?=base_url('admin/listings?status=active');?>">Active <!-- <span class="nav-tag green">6</span> --></a></li>
 						<li class="<?=($active_menu=='listings' && (isset($_GET['status']) && $_GET['status']=='expired'))? 'active' : '';?>"><a href="<?=base_url('admin/listings?status=expired');?>">Expired <!-- <span class="nav-tag red">2</span> --></a></li>
+					</ul>	
+				</li>
+				<li class="<?=($active_menu=='users')? 'active' : '';?>"><a><i class="sl sl-icon-layers"></i> Users</a>
+					<ul>
+						<li class="<?=($active_menu=='users' && (isset($_GET['status']) && $_GET['status']=='active'))? 'active' : '';?>"><a href="<?=base_url('admin/users?status=active');?>">Active </a></li>
+						<li class="<?=($active_menu=='users' && (isset($_GET['status']) && $_GET['status']=='inactive'))? 'active' : '';?>"><a href="<?=base_url('admin/users?status=inactive');?>">Inactive </a></li>
+					</ul>	
+				</li>
+				<li class="<?=($active_menu=='blogs')? 'active' : '';?>"><a><i class="sl sl-icon-layers"></i> My Blogs</a>
+					<ul>
+						<li class="<?=($active_menu=='blogs' && (isset($_GET['status']) && $_GET['status']=='active'))? 'active' : '';?>"><a href="<?=base_url('admin/blogs?status=active');?>">Active </a></li>
+						<li class="<?=($active_menu=='blogs' && (isset($_GET['status']) && $_GET['status']=='inactive'))? 'active' : '';?>"><a href="<?=base_url('admin/blogs?status=inactive');?>">Inactive </a></li>
 					</ul>	
 				</li>
 				<!-- <li><a href="<?=base_url('admin/listings');?>"><i class="sl sl-icon-layers"></i> My Listings</a></li> -->
@@ -33,20 +46,27 @@
 				</li>
 				<!-- <li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li> -->
+				<li class="<?=($active_menu=='promo_code')? 'active' : '';?>"><a href="<?=base_url('admin/promo_code')?>"><i class="sl sl-icon-star"></i> Promo Codes</a></li>
 				<li class="<?=($active_menu=='reviews')? 'active' : '';?>"><a href="<?=base_url('admin/reviews')?>"><i class="sl sl-icon-star"></i> Reviews</a></li>
 				<li class="<?=($active_menu=='add_listing')? 'active' : '';?>"><a href="<?php echo SITEURL2.'/admin/add_listing';?>"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
+				<li class="<?=($active_menu=='users_says')? 'active' : '';?>"><a href="<?=base_url('admin/users_says')?>"><i class="sl sl-icon-star"></i> Users Says</a></li>
 			</ul>	
 
 <?php }elseif ($this->ion_auth->is_student()){
 	?>
 	<ul data-submenu-title="Main">
 		<li class="<?=($active_menu=='dashboard')? 'active' : '';?>"><a href="<?=base_url('student');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+		<li class="<?=($active_menu=='admissions')? 'active' : '';?>"><a href="<?=base_url('student/admissions');?>"><i class="sl sl-icon-settings"></i> Admission  Status</a></li>
 		<li class="<?=($active_menu=='bookmarks')? 'active' : '';?>"><a href="<?=base_url('student/bookmarks');?>"><i class="fa fa-calendar-check-o"></i> Bookmarks</a></li>
-		<!-- <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>
+		<li class="<?=($active_menu=='childs')? 'active' : '';?>"><a href="<?=base_url('student/childs');?>"><i class="fa fa-calendar-check-o"></i> Student Profiles</a></li>
+		<!-- <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>-->
 		
-		<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> Wallet</a></li> -->
+		<li class="<?=($active_menu=='refer_earn')? 'active' : '';?>"><a href="<?=base_url('student/refer_earn');?>"><i class="sl sl-icon-wallet"></i> Refer & Earn</a></li> 
 
 	</ul>
+	
+	
+	
 
 <?php }?>
 			<ul data-submenu-title="Account">
@@ -71,4 +91,7 @@
 			</ul>
 			
 		</div>
+		<!--<div class=" fixed-bottom">
+        				<div class="copyrights">© 2020 - One7 Incredic Services Private <br>Limited. All rights Reserved.</div>
+        			</div>-->
 	</div>

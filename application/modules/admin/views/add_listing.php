@@ -4,6 +4,1139 @@
     }
 
 </style>
+<?php
+//$geolocation = $latitude.','.$longitude;
+$geolocation='17.5042406,78.395598';
+$request = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAZ-5bkYW9Wb5k2JLBoaas0HSx7ZBkMwAM&latlng='.$geolocation.'&sensor=false';
+//echo $request;die;
+/*$res='{
+   "plus_code" : {
+      "compound_code" : "C9WJ+R8 Hyderabad, Telangana, India",
+      "global_code" : "7J9WC9WJ+R8"
+   },
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "59",
+               "short_name" : "59",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Street Number 3",
+               "short_name" : "Street Number 3",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Patrika Nagar",
+               "short_name" : "Patrika Nagar",
+               "types" : [ "political", "sublocality", "sublocality_level_2" ]
+            },
+            {
+               "long_name" : "HITEC City",
+               "short_name" : "HITEC City",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "500081",
+               "short_name" : "500081",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "59, Street Number 3, Patrika Nagar, HITEC City, Hyderabad, Telangana 500081, India",
+         "geometry" : {
+            "location" : {
+               "lat" : 17.4469167,
+               "lng" : 78.38075850000001
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.4482656802915,
+                  "lng" : 78.38210748029152
+               },
+               "southwest" : {
+                  "lat" : 17.4455677197085,
+                  "lng" : 78.37940951970852
+               }
+            }
+         },
+         "place_id" : "ChIJxSFST96TyzsRthiyD6o_jhQ",
+         "plus_code" : {
+            "compound_code" : "C9WJ+Q8 Hyderabad, Telangana, India",
+            "global_code" : "7J9WC9WJ+Q8"
+         },
+         "types" : [ "street_address" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "59",
+               "short_name" : "59",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Street Number 3",
+               "short_name" : "Street Number 3",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Patrika Nagar",
+               "short_name" : "Patrika Nagar",
+               "types" : [ "political", "sublocality", "sublocality_level_2" ]
+            },
+            {
+               "long_name" : "HITEC City",
+               "short_name" : "HITEC City",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "500081",
+               "short_name" : "500081",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "59, Street Number 3, Patrika Nagar, HITEC City, Hyderabad, Telangana 500081, India",
+         "geometry" : {
+            "location" : {
+               "lat" : 17.447118,
+               "lng" : 78.38081579999999
+            },
+            "location_type" : "RANGE_INTERPOLATED",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.4484669802915,
+                  "lng" : 78.3821647802915
+               },
+               "southwest" : {
+                  "lat" : 17.4457690197085,
+                  "lng" : 78.3794668197085
+               }
+            }
+         },
+         "place_id" : "ElI1OSwgU3RyZWV0IE51bWJlciAzLCBQYXRyaWthIE5hZ2FyLCBISVRFQyBDaXR5LCBIeWRlcmFiYWQsIFRlbGFuZ2FuYSA1MDAwODEsIEluZGlhIhoSGAoUChIJw50eRd6TyzsRNNhE0YYtgVAQOw",
+         "types" : [ "street_address" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "59",
+               "short_name" : "59",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Street Number 3",
+               "short_name" : "Street Number 3",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Patrika Nagar",
+               "short_name" : "Patrika Nagar",
+               "types" : [ "political", "sublocality", "sublocality_level_2" ]
+            },
+            {
+               "long_name" : "HITEC City",
+               "short_name" : "HITEC City",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "500081",
+               "short_name" : "500081",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "59, Street Number 3, Patrika Nagar, HITEC City, Hyderabad, Telangana 500081, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.4473266,
+                  "lng" : 78.3811353
+               },
+               "southwest" : {
+                  "lat" : 17.4470454,
+                  "lng" : 78.37989829999999
+               }
+            },
+            "location" : {
+               "lat" : 17.447186,
+               "lng" : 78.3805168
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.44853498029151,
+                  "lng" : 78.38186578029151
+               },
+               "southwest" : {
+                  "lat" : 17.4458370197085,
+                  "lng" : 78.3791678197085
+               }
+            }
+         },
+         "place_id" : "ChIJw50eRd6TyzsRNNhE0YYtgVA",
+         "types" : [ "route" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Patrika Nagar",
+               "short_name" : "Patrika Nagar",
+               "types" : [ "political", "sublocality", "sublocality_level_2" ]
+            },
+            {
+               "long_name" : "HITEC City",
+               "short_name" : "HITEC City",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "500081",
+               "short_name" : "500081",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Patrika Nagar, HITEC City, Hyderabad, Telangana 500081, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.4514871,
+                  "lng" : 78.38378709999999
+               },
+               "southwest" : {
+                  "lat" : 17.4464829,
+                  "lng" : 78.37847099999999
+               }
+            },
+            "location" : {
+               "lat" : 17.4471055,
+               "lng" : 78.37959769999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.4514871,
+                  "lng" : 78.38378709999999
+               },
+               "southwest" : {
+                  "lat" : 17.4464829,
+                  "lng" : 78.37847099999999
+               }
+            }
+         },
+         "place_id" : "ChIJ8WQrAt-TyzsRLqop6p0QBDc",
+         "types" : [ "political", "sublocality", "sublocality_level_2" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "HITEC City",
+               "short_name" : "HITEC City",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "500081",
+               "short_name" : "500081",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "HITEC City, Hyderabad, Telangana 500081, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.4575351,
+                  "lng" : 78.38618699999999
+               },
+               "southwest" : {
+                  "lat" : 17.4379716,
+                  "lng" : 78.3668517
+               }
+            },
+            "location" : {
+               "lat" : 17.4434646,
+               "lng" : 78.3771953
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.4575351,
+                  "lng" : 78.38618699999999
+               },
+               "southwest" : {
+                  "lat" : 17.4379716,
+                  "lng" : 78.3668517
+               }
+            }
+         },
+         "place_id" : "ChIJ32ldjNyTyzsR7qB_VeuLaBk",
+         "types" : [ "political", "sublocality", "sublocality_level_1" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "500081",
+               "short_name" : "500081",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Hyderabad, Telangana 500081, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.4669043,
+                  "lng" : 78.3991011
+               },
+               "southwest" : {
+                  "lat" : 17.4191474,
+                  "lng" : 78.3626306
+               }
+            },
+            "location" : {
+               "lat" : 17.4433571,
+               "lng" : 78.38221109999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.4669043,
+                  "lng" : 78.3991011
+               },
+               "southwest" : {
+                  "lat" : 17.4191474,
+                  "lng" : 78.3626306
+               }
+            }
+         },
+         "place_id" : "ChIJs_uL8OCTyzsRGj99UiwzVCQ",
+         "types" : [ "postal_code" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Hyderabad, Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.6078088,
+                  "lng" : 78.6561694
+               },
+               "southwest" : {
+                  "lat" : 17.2168886,
+                  "lng" : 78.1599217
+               }
+            },
+            "location" : {
+               "lat" : 17.385044,
+               "lng" : 78.486671
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.6078088,
+                  "lng" : 78.6561694
+               },
+               "southwest" : {
+                  "lat" : 17.2168886,
+                  "lng" : 78.1599217
+               }
+            }
+         },
+         "place_id" : "ChIJx9Lr6tqZyzsRwvu6koO3k64",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Ranga Reddy, Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.7082,
+                  "lng" : 78.8461499
+               },
+               "southwest" : {
+                  "lat" : 16.8456899,
+                  "lng" : 77.36438989999999
+               }
+            },
+            "location" : {
+               "lat" : 17.3891379,
+               "lng" : 77.8367282
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.7082,
+                  "lng" : 78.8461499
+               },
+               "southwest" : {
+                  "lat" : 16.8456899,
+                  "lng" : 77.36438989999999
+               }
+            }
+         },
+         "place_id" : "ChIJx9Lr6tqZyzsRQZtu9ErRBAs",
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 19.916715,
+                  "lng" : 81.31614890000002
+               },
+               "southwest" : {
+                  "lat" : 15.8373113,
+                  "lng" : 77.23791299999999
+               }
+            },
+            "location" : {
+               "lat" : 18.1124372,
+               "lng" : 79.01929969999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 19.916715,
+                  "lng" : 81.31614890000002
+               },
+               "southwest" : {
+                  "lat" : 15.8373113,
+                  "lng" : 77.23791299999999
+               }
+            }
+         },
+         "place_id" : "ChIJQ-0plNtQMzoRWUBZQad772M",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 35.513327,
+                  "lng" : 97.39535869999999
+               },
+               "southwest" : {
+                  "lat" : 6.4626999,
+                  "lng" : 68.1097
+               }
+            },
+            "location" : {
+               "lat" : 20.593684,
+               "lng" : 78.96288
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 35.513327,
+                  "lng" : 97.39535869999999
+               },
+               "southwest" : {
+                  "lat" : 6.4626999,
+                  "lng" : 68.1097
+               }
+            }
+         },
+         "place_id" : "ChIJkbeSa_BfYzARphNChaFPjNc",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}';*/
+/*print_r(json_decode($res)->results[1]->formatted_address);die;
+echo "<pre>";
+print_r($res);die; */
+/*$request='{
+   "plus_code" : {
+      "compound_code" : "G93X+G4 Hyderabad, Telangana, India",
+      "global_code" : "7J9WG93X+G4"
+   },
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "561",
+               "short_name" : "561",
+               "types" : [ "premise" ]
+            },
+            {
+               "long_name" : "HMT Hills",
+               "short_name" : "HMT Hills",
+               "types" : [ "political", "sublocality", "sublocality_level_2" ]
+            },
+            {
+               "long_name" : "Kukatpally",
+               "short_name" : "Kukatpally",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "500085",
+               "short_name" : "500085",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "561, HMT Hills, Kukatpally, Hyderabad, Telangana 500085, India",
+         "geometry" : {
+            "location" : {
+               "lat" : 17.503799,
+               "lng" : 78.397746
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.5051479802915,
+                  "lng" : 78.39909498029151
+               },
+               "southwest" : {
+                  "lat" : 17.5024500197085,
+                  "lng" : 78.3963970197085
+               }
+            }
+         },
+         "place_id" : "ChIJX5x-he-RyzsRUfnsQ_AzPus",
+         "plus_code" : {
+            "compound_code" : "G93X+G3 Hyderabad, Telangana, India",
+            "global_code" : "7J9WG93X+G3"
+         },
+         "types" : [ "street_address" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Unnamed Road",
+               "short_name" : "Unnamed Road",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "HMT Hills",
+               "short_name" : "HMT Hills",
+               "types" : [ "political", "sublocality", "sublocality_level_2" ]
+            },
+            {
+               "long_name" : "Kukatpally",
+               "short_name" : "Kukatpally",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "500090",
+               "short_name" : "500090",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Unnamed Road, HMT Hills, Kukatpally, Hyderabad, Telangana 500090, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.5040221,
+                  "lng" : 78.3979305
+               },
+               "southwest" : {
+                  "lat" : 17.5036233,
+                  "lng" : 78.39782509999999
+               }
+            },
+            "location" : {
+               "lat" : 17.5038227,
+               "lng" : 78.3978778
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.5051716802915,
+                  "lng" : 78.3992267802915
+               },
+               "southwest" : {
+                  "lat" : 17.5024737197085,
+                  "lng" : 78.39652881970849
+               }
+            }
+         },
+         "place_id" : "ChIJa1Gphe-RyzsRxmtKnDtnv5M",
+         "types" : [ "route" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "HMT Hills",
+               "short_name" : "HMT Hills",
+               "types" : [ "political", "sublocality", "sublocality_level_2" ]
+            },
+            {
+               "long_name" : "Kukatpally",
+               "short_name" : "Kukatpally",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "HMT Hills, Kukatpally, Hyderabad, Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.5054221,
+                  "lng" : 78.39976999999999
+               },
+               "southwest" : {
+                  "lat" : 17.5011401,
+                  "lng" : 78.39456799999999
+               }
+            },
+            "location" : {
+               "lat" : 17.5035541,
+               "lng" : 78.3963095
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.5054221,
+                  "lng" : 78.39976999999999
+               },
+               "southwest" : {
+                  "lat" : 17.5011401,
+                  "lng" : 78.39456799999999
+               }
+            }
+         },
+         "place_id" : "ChIJqaZ4ne-RyzsRVEHTPAki7WM",
+         "types" : [ "political", "sublocality", "sublocality_level_2" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "500085",
+               "short_name" : "500085",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Hyderabad, Telangana 500085, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.5058636,
+                  "lng" : 78.40244799999999
+               },
+               "southwest" : {
+                  "lat" : 17.4710565,
+                  "lng" : 78.3657949
+               }
+            },
+            "location" : {
+               "lat" : 17.4879651,
+               "lng" : 78.3822011
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.5058636,
+                  "lng" : 78.40244799999999
+               },
+               "southwest" : {
+                  "lat" : 17.4710565,
+                  "lng" : 78.3657949
+               }
+            }
+         },
+         "place_id" : "ChIJ628nxiaSyzsRonDP2NGHyE0",
+         "types" : [ "postal_code" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Kukatpally",
+               "short_name" : "Kukatpally",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Kukatpally, Hyderabad, Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.5151729,
+                  "lng" : 78.4342887
+               },
+               "southwest" : {
+                  "lat" : 17.46322,
+                  "lng" : 78.37520309999999
+               }
+            },
+            "location" : {
+               "lat" : 17.4947934,
+               "lng" : 78.3996441
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.5151729,
+                  "lng" : 78.4342887
+               },
+               "southwest" : {
+                  "lat" : 17.46322,
+                  "lng" : 78.37520309999999
+               }
+            }
+         },
+         "place_id" : "ChIJPfRiAeyRyzsRSM9YQ_7GiDI",
+         "types" : [ "political", "sublocality", "sublocality_level_1" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Hyderabad",
+               "short_name" : "Hyderabad",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Hyderabad, Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.6078088,
+                  "lng" : 78.6561694
+               },
+               "southwest" : {
+                  "lat" : 17.2168886,
+                  "lng" : 78.1599217
+               }
+            },
+            "location" : {
+               "lat" : 17.385044,
+               "lng" : 78.486671
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.6078088,
+                  "lng" : 78.6561694
+               },
+               "southwest" : {
+                  "lat" : 17.2168886,
+                  "lng" : 78.1599217
+               }
+            }
+         },
+         "place_id" : "ChIJx9Lr6tqZyzsRwvu6koO3k64",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Ranga Reddy",
+               "short_name" : "R.R. District",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Ranga Reddy, Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.7082,
+                  "lng" : 78.8461499
+               },
+               "southwest" : {
+                  "lat" : 16.8456899,
+                  "lng" : 77.36438989999999
+               }
+            },
+            "location" : {
+               "lat" : 17.3891379,
+               "lng" : 77.8367282
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.7082,
+                  "lng" : 78.8461499
+               },
+               "southwest" : {
+                  "lat" : 16.8456899,
+                  "lng" : 77.36438989999999
+               }
+            }
+         },
+         "place_id" : "ChIJx9Lr6tqZyzsRQZtu9ErRBAs",
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Telangana",
+               "short_name" : "Telangana",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Telangana, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 19.916715,
+                  "lng" : 81.31614890000002
+               },
+               "southwest" : {
+                  "lat" : 15.8373113,
+                  "lng" : 77.23791299999999
+               }
+            },
+            "location" : {
+               "lat" : 18.1124372,
+               "lng" : 79.01929969999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 19.916715,
+                  "lng" : 81.31614890000002
+               },
+               "southwest" : {
+                  "lat" : 15.8373113,
+                  "lng" : 77.23791299999999
+               }
+            }
+         },
+         "place_id" : "ChIJQ-0plNtQMzoRWUBZQad772M",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 35.513327,
+                  "lng" : 97.39535869999999
+               },
+               "southwest" : {
+                  "lat" : 6.4626999,
+                  "lng" : 68.1097
+               }
+            },
+            "location" : {
+               "lat" : 20.593684,
+               "lng" : 78.96288
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 35.513327,
+                  "lng" : 97.39535869999999
+               },
+               "southwest" : {
+                  "lat" : 6.4626999,
+                  "lng" : 68.1097
+               }
+            }
+         },
+         "place_id" : "ChIJkbeSa_BfYzARphNChaFPjNc",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}';*/
+//$file_contents = file_get_contents($request);
+$json_decode = json_decode($request);
+if(isset($json_decode->results[0])) {
+    echo $json_decode->results[0]->formatted_address;
+}
+/*echo "<pre>";
+print_r($request);*/
+?>
 
 <form method="post" action="<?=base_url('admin/add_listing');?>" enctype="multipart/form-data" novalidate="novalidate" class="form-horizontal" id="form">
 <div class="row">
@@ -41,7 +1174,7 @@
 							<!-- Status -->
 							<div class="col-md-6">
 								<h5>Category</h5>
-								<select class="form-control selectric chosen-select-no-single" id="category"  name="category[]" required=""  multiple="">
+								<select class="form-control chosen-select-no-single" id="category"  name="category[]" required=""  multiple="">
 									<option value="" disabled="">Select Category</option>	
                                   <?php $res=$this->common_model->select_results_info('category',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
@@ -149,12 +1282,12 @@
 						</div>
                         
                         <!-- Row -->
-						<div class="row with-forms">
+						<div class="row with-forms ">
 
 							<!--  -->
-							<div class="col-md-6">
+							<div class="col-md-3">
                                 <h5>Classes</h5>
-                                <select class="chosen-select-no-single form-control selectric"  name="class[]" required="" multiple="">
+                                <!-- <select class="chosen-select-no-single form-control  "  name="class[]" required="">
 									<option label="blank" disabled="">Select Class</option>	
 									 <?php $res=$this->common_model->select_results_info('classes',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
@@ -162,15 +1295,27 @@
 									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
 								<?php }?>
 									
-								</select>
-                             	<?php echo form_error('class[]', '<div class="error">', '</div>'); ?>
+								</select> -->
+								<input type="text" placeholder="Enter Classes to show"  name="class" required="" value="<?=set_value('class');?>">
+                             	<?php echo form_error('class', '<div class="error">', '</div>'); ?>
                           	
 							</div>
-                            
+                            <div class="col-md-3">
+                                <h5>Price From</h5>
+								<input type="text" placeholder="Enter Price From"  name="price_from" required="" value="<?=set_value('price_from');?>">
+                             	<?php echo form_error('price_from', '<div class="error">', '</div>'); ?>
+                          	
+							</div>
+							<div class="col-md-3">
+                                <h5>Transport Fee</h5>
+								<input type="number" placeholder="Enter Transport Fee"  name="transport_fee" required="" value="<?=set_value('transport_fee');?>">
+                             	<?php echo form_error('transport_fee', '<div class="error">', '</div>'); ?>
+                          	
+							</div>
 							<!--  -->
-							<div class="col-md-6">
+							<div class="col-md-3">
                                 <h5>Medium</h5>
-                                <select class="chosen-select-no-single form-control selectric"  name="medium[]" required="" multiple="">
+                                <select class="chosen-select-no-single form-control  "  name="medium[]" required="" multiple="">
                                 	<option label="blank" disabled="">Select Medium</option>
 									<?php $res=$this->common_model->select_results_info('medium',array('row_status'=>1),"'name','ASC'")->result_array();
                                   foreach ($res as $row) {
@@ -201,45 +1346,45 @@
 						<div class="row with-forms">
 							<div class="col-md-6">
 								<h5>Founders Name </h5>
-								<input class="search-field" type="text" value="<?=set_value('founders_name');?>" name="founders_name" placeholder="Founders Name(If any)" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('founders_name');?>" name="founders_name" placeholder="Founders Name(If any)" autocomplete="off" />
 								<?php echo form_error('founders_name', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Brand Name </h5>
-								<input class="search-field" type="text" value="<?=set_value('brand_name');?>" name="brand_name" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('brand_name');?>" name="brand_name" placeholder="Brand name" autocomplete="off" />
 								<?php echo form_error('brand_name', '<div class="error">', '</div>'); ?>
 							</div>
 					
 							<div class="col-md-6">
 								<h5>Number of Branches </h5>
-								<input class="search-field" type="text" value="<?=set_value('no_of_branches');?>" name="no_of_branches" placeholder="Brand name" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('no_of_branches');?>" name="no_of_branches" placeholder="Brand name" autocomplete="off" />
 								<?php echo form_error('no_of_branches', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of brand</h5>
-								<input class="search-field" type="text" value="<?=set_value('est_year');?>" name="est_year" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('est_year');?>" name="est_year" placeholder="" autocomplete="off" />
 								<?php echo form_error('est_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
 							<div class="col-md-6">
 								<h5>Year of Establishment of the specific branch</h5>
-								<input class="search-field" type="text" value="<?=set_value('est_branch_year');?>" name="est_branch_year" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('est_branch_year');?>" name="est_branch_year" placeholder="" autocomplete="off" />
 								<?php echo form_error('est_branch_year', '<div class="error">', '</div>'); ?>
 							</div>
 						
                    
 							<div class="col-md-6">
 								<h5>Average Expirience of Faculty</h5>
-								<input class="search-field" type="text" value="<?=set_value('faculty_exp');?>" name="faculty_exp" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('faculty_exp');?>" name="faculty_exp" placeholder="" autocomplete="off" />
 								<?php echo form_error('faculty_exp', '<div class="error">', '</div>'); ?>
 							</div>
 						
                         
 							<div class="col-md-6">
 								<h5>Any Notable Alumni</h5>
-								<input class="search-field" type="text" value="<?=set_value('alumni');?>" name="alumni" placeholder="" required="" autocomplete="off" />
+								<input class="search-field" type="text" value="<?=set_value('alumni');?>" name="alumni" placeholder="" autocomplete="off" />
 								<?php echo form_error('alumni', '<div class="error">', '</div>'); ?>
 							</div>
 						</div>
@@ -327,13 +1472,13 @@
 									<input type="text"  id="pac-input" placeholder="e.g. My School Street" name="landmark" required="" autocomplete="off" value="<?=set_value('landmark');?>">
 									<input type="hidden" id="lat" name="latitude" value="<?=set_value('lat');?>">
                                          <input type="hidden" id="lng" value="<?=set_value('lng');?>" name="longitude">
-                                         <input type="hidden" id="address" value="<?=set_value('address');?>" name="address">
+                                         <!-- <input type="hidden" id="address" value="<?=set_value('address');?>" name="address"> -->
                                          <?php echo form_error('landmark', '<div class="error">', '</div>'); ?>
 								</div>
                                 <!-- Address -->
 								<div class="col-md-12">
 									<h5>Address</h5>
-									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required=""><?=set_value('address');?></textarea>
+									<textarea type="text" placeholder="e.g. 964 School Street" name="address" required="" id="address" ><?=set_value('address');?></textarea>
 									<?php echo form_error('address', '<div class="error">', '</div>'); ?>
 								</div>
 
@@ -511,7 +1656,7 @@
 
 
 					<!-- Section -->
-					<div class="add-listing-section margin-top-45">
+					<div class="add-listing-section margin-top-45 ">
 						
 						<!-- Headline -->
 						<div class="add-listing-headline">
@@ -522,6 +1667,41 @@
 						
 						<!-- Switcher ON-OFF Content -->
 						<div class="switcher-content">
+                    <!--  <div class="row opening-day">
+                     <?php
+$reslut=$this->common_model->get_days();
+
+  $days=$reslut['days'];
+  $loop=$reslut['timings'];
+for ($i=0; $i < count($days); $i++) {
+?>
+   <div class="col-md-1"><h5><input type="checkbox" name="" value="<?=$days['']?>"><?=$days[$i];?></h5></div>
+<?php }?>
+
+<div class="col-md-6">
+                           <select class="chosen-select" name="opening_time[]" data-placeholder="Opening Time" required="">
+                              <option label="Opening Time"></option>
+                              <option value="Closed">Closed</option>
+                           <?php 
+                           for ($j=0;$j<count($loop);$j++) {?>
+                              <option><?=$loop[$j];?></option>
+                           <?php }
+                           ?>
+                           </select>
+                        </div>
+                        <div class="col-md-6">
+                           <select class="chosen-select" name="closing_time[]" data-placeholder="Closing Time" required="">
+                              <option label="Closing Time"></option>
+                              <option value="Closed">Closed</option>
+      <?php 
+                           for ($j=0;$j<count($loop);$j++) {?>
+                              <option><?=$loop[$j];?></option>
+                           <?php }
+                           ?>
+                           </select>
+                        </div>
+</div> -->
+
 <?php
 $reslut=$this->common_model->get_days();
 
@@ -531,7 +1711,7 @@ for ($i=0; $i < count($days); $i++) {
 ?>
 <div class="row opening-day">
 								<div class="col-md-2"><h5><?=$days[$i];?></h5></div>
-								<div class="col-md-5">
+								<div class="col-md-5 ">
 									<select class="chosen-select" name="opening_time[]" data-placeholder="Opening Time" required="">
 										<option label="Opening Time"></option>
 										<option value="Closed">Closed</option>
@@ -618,7 +1798,18 @@ for ($i=0; $i < count($days); $i++) {
 										<tr class="pricing-list-item pattern school_pr">
 											<td>
 												<div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
-												<div class="fm-input pricing-name"><input type="text" placeholder="Class Name" name="class_name[]" /></div>
+												<div class="fm-input pricing-name"><!-- <input type="text" placeholder="Class Name" name="class_name[]" /> -->
+													<select class="form-control"  name="class_name[]" required="">
+									<option value="">Select Class</option>	
+									 <?php $res=$this->common_model->select_results_info('classes',array('row_status'=>1),"'name','ASC'")->result_array();
+                                  foreach ($res as $row) {
+                                  ?>
+									<option value="<?=$row['id'];?>"><?=$row['name'];?></option>
+								<?php }?>
+									
+								</select>
+                             	<?php echo form_error('class_name[]', '<div class="error">', '</div>'); ?>
+												</div>
 												<div class="fm-input pricing-ingredients"><input type="text" placeholder="Admission Fee" data-unit="INR" name="admission_fee[]" /></div>
 												<div class="fm-input pricing-price"><input type="text" placeholder="Tution Fee" data-unit="INR" name="tution_fee[]" /></div>
 												<div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
@@ -628,6 +1819,17 @@ for ($i=0; $i < count($days); $i++) {
 									<a href="#" class="button add-pricing-list-item1">Add Item</a>
 									
 								</div>
+                        <div class="col-md-12">
+                                <h5>Admission Status</h5>
+                            <div class="col-md-2">
+                        <label><input class="d--inline" type="radio" name="admission_status" value="1" required="" <?=(set_value('admission_status') == 1)? 'checked' : '' ?>>Opened</label>
+                            </div>
+                            <div class="col-md-2">
+                        <label><input class="d--inline" type="radio" name="admission_status" value="0" required="" <?=(set_value('admission_status') == 0)? 'checked' : '' ?>>Closed</label>
+                            </div>             
+                     </div>
+                     <?php echo form_error('admission_status', '<div class="error">', '</div>'); ?> 
+                     <label class="error" for="admission_status"></label> 
 							</div>
 
 						</div>
@@ -685,9 +1887,14 @@ for ($i=0; $i < count($days); $i++) {
           var place = autocomplete.getPlace();
           console.log(place.geometry.location.lat()+', '+place.geometry.location.lng());
           //alert(place.geometry);
-          $("#lat").val(place.geometry.location.lat());
-           $("#lng").val(place.geometry.location.lng());
-            $("#address").val(place.name);
+          var lat_v=place.geometry.location.lat();
+          var lng_v=place.geometry.location.lng();
+          $("#lat").val(lat_v);
+           $("#lng").val(lng_v);
+            //$("#address").val(place.name);
+
+            get_location(lat_v,lng_v);
+
           console.log(place.name);  
           if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
@@ -717,7 +1924,20 @@ for ($i=0; $i < count($days); $i++) {
         async defer></script>
 
 
-
+<script type="text/javascript">
+	function get_location(lat,lng) {
+		//alert(lat);alert(lng);
+		 $.ajax({
+        'url' : '<?=base_url('common/get_location/');?>'+lat+'/'+lng,
+        'type' : 'GET',
+        'success' : function(data) { 
+       // alert(data);             
+        	$('#address').html(data);
+            //alert('Data: '+data);
+        }
+    	});
+	}
+</script>
 
 
 

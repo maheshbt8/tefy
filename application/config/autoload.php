@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'email', 'session', 'ion_auth','pagination','encryption');
+$autoload['libraries'] = array('database', 'email', 'session', 'ion_auth','pagination','encryption','googleplus','smstemplates');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('common_model','mail_model');
+$autoload['model'] = array('common_model','mail_model','sms_model');

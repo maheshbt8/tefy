@@ -1,6 +1,10 @@
 <?php
 $this->session->set_userdata('last_page',current_url());
 ?>
+<?php
+if($user_details['active_phone'] == 0){?>
+<div class="notification warning closeable"><strong>Please Verify Your Mobile Number For Admissions To Get Alerts On Admissions</strong></div>
+<?php }?>
 <div class="row">
 
 			<!-- Profile -->
@@ -24,11 +28,38 @@ $this->session->set_userdata('last_page',current_url());
 						<div class="my-profile">
 
 							<label>Your Name</label>
-							<input value="<?=$user_details['username'];?>" type="text" name="username" required="" >
+							<input value="<?=$user_details['first_name'];?>" type="text" name="username" required="" >
 
-							<label>Phone</label>
-							<input value="<?=$user_details['phone'];?>" type="text" name="phone" required="" >
-
+							<label>Mobile Number</label>
+							<div class="row">
+							    <div class="col-md-9 col-sm-9 col-xs-8">
+							        <input  value="<?=$user_details['phone'];?>" type="text" name="phone" required="" <?=(($user_details['active_phone'])? 'readonly' : '');?>>
+							     </div>
+							     <?php if($user_details['phone']!='' && $user_details['active_phone']==0){?>
+							    <div class="col-md-3 col-sm-3 col-xs-4">
+							        <a href="#small-dialog" class="rate-review popup-with-zoom-anim" onclick="send_otp()"> Verify</a>
+							    </div>
+							    <?php }?>
+							    </div>
+							    
+							<?php if($user_details['phone']!='' && $user_details['active_phone']==0){?>
+                <div class="notverified">Mobile number not verified </div>
+                <!--<a href="#small-dialog" class="rate-review popup-with-zoom-anim" onclick="send_otp()"><i class="sl sl-icon-action-undo"></i> Reply to this review</a>-->
+                <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+						<div class="small-dialog-header">
+							<h3>Mobile Verification OTP</h3>
+						</div>
+						<div class="message-reply margin-top-0">
+							<input type="text" name="otp" id="otp" placeholder="OTP" autocomplete="off" autofocus="">
+							<span id="otp_message"></span>
+							<button class="button" onclick="check_otp()">Submit</button>
+						</div>
+					</div>
+                <?php }if($user_details['phone']!='' && $user_details['active_phone']==1){?>
+                <div class="verified">Mobile number verified </div>
+                <?php }/*else{*/?>
+                	<!-- <span class="notverified">If you update mobile number you need to verify</span> -->
+                <?php /*}*/ ?>
 							<label>Email</label>
 							<input value="<?=$user_details['email'];?>" type="email" name="email" required="" readonly='' >
 							<!--<label>Notes</label>

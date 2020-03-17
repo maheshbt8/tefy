@@ -40,7 +40,7 @@
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-                                <table class="table">
+                                <table class="table table-striped table-hover" id="tableExport">
                                 <thead class="thead-dark">
                                 <tr>
                                   <th scope="col">#</th>

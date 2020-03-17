@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-<!-- Mirrored from www.vasterad.com/themes/listeo_082019/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 29 Aug 2019 16:17:55 GMT -->
 <head>
 
 <!-- Basic Page Needs
@@ -54,9 +53,9 @@
         </div>
                 <!-- start: page -->
                     <?php if($this->session->flashdata('error_message')!=''){
-                                        echo '<div class="alert alert-danger alert_message">'.$this->session->flashdata('error_message').'</div>';
+                                        echo '<div class="notification error closeable">'.$this->session->flashdata('error_message').'</div>';
                                     }elseif($this->session->flashdata('success_message')!=''){
-                                        echo '<div class="alert alert-success alert_message">'.$this->session->flashdata('success_message').'</div>';
+                                        echo '<div class="notification success closeable">'.$this->session->flashdata('success_message').'</div>';
                                     }?>
                                     <!-- <div class="row">
             <div class="col-md-12">
@@ -68,9 +67,9 @@
         </div> -->
         		<?php $this->load->view($content);?>
         			<!-- Copyrights -->
-        			<div class="col-md-12">
-        				<div class="copyrights">© 2019 TEFY. All Rights Reserved.</div>
-        			</div>
+        			<!--<div class="col-md-12 fixed-bottom">
+        				<div class="copyrights">© 2019 - One7 Incredic Services Private Limited. All rights Reserved.</div>
+        			</div>-->
         	</div>
         
         </div>
@@ -90,5 +89,6 @@
  <?php }?>
        });
        </script>
+       
 </body>
 </html>

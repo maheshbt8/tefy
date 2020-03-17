@@ -5,48 +5,36 @@
 		<div class="container">
 			
 			<!-- Left Side Content -->
-			<div class="left-side">
+			<div class="left-side w--100">
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="<?=base_url('auth');?>"><img src="<?php echo base_url('assets')?>/images/logo3.png" alt=""></a>
-					<a href="<?=base_url('auth');?>" class="dashboard-logo"><img src="<?php echo base_url('assets')?>/images/logo3.png" alt=""></a>
+					<a href="<?=base_url('auth');?>"><img src="<?php echo base_url('assets')?>/front-end/images/logo2.svg" alt=""></a>
+					<a href="<?=base_url('auth');?>" class="dashboard-logo"><img src="<?php echo base_url('assets')?>/front-end/images/logo3.svg" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->
-				<div class="mmenu-trigger">
+				<!--<div class="mmenu-trigger">
 					<button class="hamburger hamburger--collapse" type="button">
 						<span class="hamburger-box">
 							<span class="hamburger-inner"></span>
 						</span>
 					</button>
 				</div>
-
+-->
 				<!-- Main Navigation -->
-				<!-- <nav id="navigation" class="style-1">
-					<ul id="responsive">
+				<!-- <nav id="navigation" class="style-1">-->
+					<ul style="">
 
-						<li><a href="<?=base_url();?>" target="_blank">Home</a></li>
+						<li class="hom1"><a href="<?=base_url();?>" target="_blank" style="color: black"><i class="fa fa-home" aria-hidden="true"></i><span class="name-line-hide-resp">Home</span></a></li>
 						
-					</ul>
-				</nav> -->
-				<div class="clearfix"></div>
-				<!-- Main Navigation / End -->
-				
-			</div>
-			<!-- Left Side Content / End -->
-
-			<!-- Right Side Content / End -->
-			<div class="right-side">
-				<!-- Header Widget -->
-				<div class="header-widget">
-					
-					<!-- User Menu -->
-					<div class="user-menu">
-						<div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'));?></div>
+						<li class="hom1 margin-top-0">
+						    <div class="user-menu">
+                                <div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><a class="name-line-hide-resp"><?=ucwords(substr($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'),0,6));?>...</a></div>
 						<ul>
 							<li><a href="<?=base_url('auth');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 							<?php if ($this->ion_auth->is_student()){?>
+							<li><a href="<?=base_url('student/admissions')?>"><i class="fa fa-calendar-check-o"></i> Admission Status</a></li>
 							<li><a href="<?=base_url('student/bookmarks')?>"><i class="fa fa-calendar-check-o"></i> Bookmarks</a></li>
 							<li><a href="<?=base_url('student/profile')?>"><i class="fa fa-user"></i> My Profile</a></li>
 							<?php }?>
@@ -57,13 +45,19 @@
 						if ($this->ion_auth->is_admin())
 							{
 						?>
-					<a href="<?=base_url('admin/add_listing');?>" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
+					<!-- <a href="<?=base_url('admin/add_listing');?>" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a> -->
 				<?php }?>
-				</div>
-				<!-- Header Widget / End -->
+						</li>
+						
+					</ul>
+				<!--</nav> -->
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
 			</div>
-			<!-- Right Side Content / End -->
+			<!-- Left Side Content / End -->
 
+		
 		</div>
 	</div>
 	<!-- Header / End -->

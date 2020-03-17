@@ -72,7 +72,39 @@ $config['random_rounds']  = FALSE;
 $config['min_rounds']     = 5;
 $config['max_rounds']     = 9;
 $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' : '$2y$';
-
+    $CI =& get_instance();
+    $CI->load->database();
+    
+    /*Emial settings*/
+    $results = $CI->db->query("SELECT `setting_type`, `description` FROM `settings` WHERE `setting_type` IN('smtp_port', 'smtp_host', 'smtp_username', 'smtp_password')")->result();
+    $email_settings = array();
+    foreach($results as $r) {
+        $email_settings[strtolower($r->setting_type)] =  $r->description;
+    }
+    // echo "<pre>"; print_r($site_settings); die();
+    $CI->config->set_item('email_settings', (object)$email_settings);
+    
+    /*SMS settings*/
+    $results = $CI->db->query("SELECT `setting_type`, `description` FROM `settings` WHERE `setting_type` IN('sms_username', 'sms_sender', 'sms_hash')")->result();
+    $sms_settings = array();
+    foreach($results as $r) {
+        $sms_settings[strtolower($r->setting_type)] =  $r->description;
+    }
+    // echo "<pre>"; print_r($site_settings); die();
+    $CI->config->set_item('sms_settings', (object)$sms_settings);
+    
+    /*Site settings*/
+    $results = $CI->db->query("SELECT `setting_type`, `description` FROM `settings` WHERE `setting_type` IN('system_name', 'system_title','system_email', 'address', 'mobile', 'privacy', 'terms', 'facebook', 'twiter', 'youtube')")->result();
+    $site_settings = array();
+    foreach($results as $r) {
+        $site_settings[strtolower($r->setting_type)] =  $r->description;
+    }
+    // echo "<pre>"; print_r($site_settings); die();
+    $CI->config->set_item('site_settings', (object)$site_settings);
+    
+$site_settings = $CI->config->item('site_settings');
+$email_settings = $CI->config->item('email_settings');
+$sms_settings = $CI->config->item('sms_settings');
 /*
  | -------------------------------------------------------------------------
  | Authentication options.
@@ -82,13 +114,13 @@ $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' 
  | The controller should check this function and act
  | appropriately. If this variable set to 0, there is no maximum.
  */
-$config['site_title']                 = "Tefy";       // Site Title, example.com
-$config['admin_email']                = "info@tefy.in"; // Admin Email, admin@example.com
+$config['site_title']                 = $site_settings->system_name;       // Site Title, example.com
+$config['admin_email']                = $site_settings->system_email; // Admin Email, admin@example.com
 $config['default_group']              = 'student';           // Default group, use name
 $config['admin_group']                = 'admin';             // Default administrators group, use name
 $config['school_group']               = 'school';           //school group
 $config['identity']                   = 'email';             // You can use any unique column in your table as identity column. The values in this column, alongside password, will be used for login purposes
-$config['min_password_length']        = 8;                   // Minimum Required Length of Password
+$config['min_password_length']        = 6;                   // Minimum Required Length of Password
 $config['max_password_length']        = 20;                  // Maximum Allowed Length of Password
 $config['email_activation']           = TRUE;               // Email Activation for registration
 $config['manual_activation']          = FALSE;               // Manual Activation for registration
@@ -128,10 +160,10 @@ $config['use_ci_email'] = TRUE; // Send Email using the builtin CI email class, 
 $config['email_config'] = array(
 	'mailtype' => 'html',
 	'protocol' => 'smtp',
-    'smtp_host' => 'smtp.hostinger.in',
-    'smtp_port' => 587,
-    'smtp_user' => 'info@tefy.in',
-    'smtp_pass' => 'Tefy@123',
+    'smtp_host' => $email_settings->smtp_host,
+    'smtp_port' => $email_settings->smtp_port,
+    'smtp_user' => $email_settings->smtp_username,
+    'smtp_pass' => $email_settings->smtp_password,
     'mailtype' => 'html',
     'charset' => 'UTF-8',
     'wordwrap' => 'TRUE',
@@ -198,3 +230,5 @@ $config['error_end_delimiter']     = '</p>';	// Error message end delimiter
 
 /* End of file ion_auth.php */
 /* Location: ./application/config/ion_auth.php */
+
+

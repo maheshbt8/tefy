@@ -28,7 +28,7 @@ $this->session->set_userdata('last_page',current_url());
 					<h4>Visitor Reviews</h4> 
 
 					<!-- Reply to review popup -->
-					<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+					<!-- <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
 						<div class="small-dialog-header">
 							<h3>Reply to review</h3>
 						</div>
@@ -36,9 +36,40 @@ $this->session->set_userdata('last_page',current_url());
 							<textarea cols="40" rows="3"></textarea>
 							<button class="button">Reply</button>
 						</div>
-					</div>
-
-					<ul>
+					</div> -->
+				<div class="table-responsive">
+<table class="table table-striped table-hover" id="tableExport">
+        <thead>
+            <tr>
+                <th>Seq.</th>
+                <th>User</th>
+                <th>School</th>
+                <th>Review</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<?php
+$i=0;
+foreach ($users_record as $res) {
+?>
+            <tr>
+                <td><?=$i+1;?></td>
+                <td><img src="<?=base_url().$this->common_model->get_image_url('users',$res['user_id'])?>" alt="" /><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$res['user_id']),'first_name'));?></td>
+                <td><?=ucwords($this->common_model->get_type_name_by_where('listings',array('id'=>$res['listing_id']),'school_name'));?></td>
+                <td><?=$res['review']?></td>
+                <td><?=date('M d,Y',strtotime($res['created_at']));?></td>
+                <td>
+					<a href="<?=base_url('set_row_status/ratings/id/').$res['id'].'/0'?>" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
+										
+                </td>
+            </tr>
+        <?php $i++;}?>
+        </tbody>
+    </table>
+</div>
+				<!-- 	<ul>
 <?php 
 foreach ($users_record as $res) {
 ?>
@@ -55,17 +86,13 @@ foreach ($users_record as $res) {
 											<div class="buttons-to-right">
 											<a href="<?=base_url('set_row_status/ratings/id/').$res['id'].'/0'?>" class="button gray"><i class="sl sl-icon-close"></i> Delete</a>
 										</div>
-											<!-- <div class="review-images mfp-gallery-container">
-												<a href="images/review-image-01.jpg" class="mfp-gallery"><img src="images/review-image-01.jpg" alt=""></a>
-											</div> -->
-											<!-- <a href="#small-dialog" class="rate-review popup-with-zoom-anim"><i class="sl sl-icon-action-undo"></i> Reply to this review</a> -->
 										</div>
 									</li>
 								</ul>
 							</div>
 						</li>
 <?php }?>
-					</ul>
+					</ul> -->
 				</div>
 
 				<!-- Pagination -->
@@ -79,7 +106,7 @@ foreach ($users_record as $res) {
 						</ul>
 					</nav> -->
 					<?php
-					print_r($pagination);
+					//print_r($pagination);
 					?>
 				</div>
 				<!-- Pagination / End -->

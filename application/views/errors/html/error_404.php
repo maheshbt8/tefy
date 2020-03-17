@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 <meta charset="utf-8">
 <title>404 Page Not Found</title>
-<style type="text/css">
+<!--<style type="text/css">
 
 ::selection { background-color: #E13300; color: white; }
 ::-moz-selection { background-color: #E13300; color: white; }
@@ -53,12 +53,32 @@ code {
 p {
 	margin: 12px 15px 12px 15px;
 }
-</style>
+</style>-->
+<link rel="stylesheet" href="<?php echo base_url('assets/front-end/')?>css/style.css">
 </head>
 <body>
 	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+		<!-- <h1><?php echo $heading; ?></h1>
+		<?php echo $message; ?> -->
+		 <center>
+ <div class="container">
+  
+  <div class="row">
+		<div class="col-md-12">
+
+			<section id="not-found" class="center">
+				<h2>404 <i class="fa fa-question-circle"></i></h2>
+				<p>We're sorry, but the page you were looking for doesn't exist.</p>
+
+				
+
+			</section>
+			<h4><a href="<?php echo base_url(); ?>">Go Back to Home</a></h4>
+
+		</div>
+	</div>
+</div>
+ </center>
 	</div>
 </body>
 </html>

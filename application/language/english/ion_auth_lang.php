@@ -62,13 +62,13 @@ $lang['group_name_required']                 = 'Group name is a required field';
 $lang['group_name_admin_not_alter']          = 'Admin group name can not be changed';
 
 // Activation Email
-$lang['email_activation_subject']            = 'Account Activation';
+$lang['email_activation_subject']            = 'Activate Your TEFY Account';
 $lang['email_activate_heading']              = 'Activate account for %s';
 $lang['email_activate_subheading']           = 'Please click this link to %s.';
 $lang['email_activate_link']                 = 'Activate Your Account';
 
 // Forgot Password Email
-$lang['email_forgotten_password_subject']    = 'Forgotten Password Verification';
+$lang['email_forgotten_password_subject']    = 'Reset Your Password';
 $lang['email_forgot_password_heading']       = 'Reset Password for %s';
 $lang['email_forgot_password_subheading']    = 'Please click this link to %s.';
 $lang['email_forgot_password_link']          = 'Reset Your Password';

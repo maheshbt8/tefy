@@ -1,23 +1,33 @@
-
+<?php
+$this->session->set_userdata('last_page',current_url());
+?>
 <!-- Container / Start -->
-<div class="container margin-top-100" >
+<div class="container-fluid margin-top-" >
 
 	<div class="row">
+        
+            <img src="<?php echo base_url('assets')?>/front-end/images/contact.png" width="100%">
+      
+    </div>
+</div>
+<div class="container" >
 
+	<div class="row">
+        
 		<!-- Contact Details -->
 		<div class="col-md-4">
 
-			<h4 class="headline margin-bottom-30">Find Us There</h4>
+			<h3 class="listing-desc-headline ">Let's talk more!!!</h3>
 
 			<!-- Contact Details -->
 			<div class="sidebar-textbox">
-				<p>Collaboratively administrate channels whereas virtual. Objectively seize scalable metrics whereas proactive e-services.</p>
+				<!--<p>Collaboratively administrate channels whereas virtual. Objectively seize scalable metrics whereas proactive e-services.</p>-->
 
 				<ul class="contact-details">
-					<li><i class="im im-icon-Phone-2"></i> <strong>Phone:</strong> <span>(123) 123-456 </span></li>
-					<li><i class="im im-icon-Fax"></i> <strong>Fax:</strong> <span>(123) 123-456 </span></li>
-					<li><i class="im im-icon-Globe"></i> <strong>Web:</strong> <span><a href="#">www.example.com</a></span></li>
-					<li><i class="im im-icon-Envelope"></i> <strong>E-Mail:</strong> <span><a href="#"><span class="__cf_email__" data-cfemail="046b62626d676144617c65697468612a676b69">[email&#160;protected]</span></a></span></li>
+					<li><i class="fa fa-mobile" aria-hidden="true"></i>  <span><?=$this->db->get_where('settings', array('setting_type' => 'mobile'))->row()->description; ?>,<br> <?=$this->db->get_where('settings', array('setting_type' => 'whatsapp_number'))->row()->description; ?> </span></li>
+					<!--<li><i class="im im-icon-Fax"></i> <strong>Fax:</strong> <span>(123) 123-456 </span></li>-->
+					<!--<li><i class="im im-icon-Globe"></i> <strong>Web:</strong> <span><a href="#">www.tefy.in</a></span></li>-->
+					<li><i class="fa fa-envelope" aria-hidden="true"></i>  <span><a href="#"><span class="__cf_email__" data-cfemail="046b62626d676144617c65697468612a676b69"><?=$this->db->get_where('settings', array('setting_type' => 'system_email'))->row()->description; ?></span></a></span></li>
 				</ul>
 			</div>
 
@@ -27,12 +37,18 @@
 		<div class="col-md-8">
 
 			<section id="contact">
-				<h4 class="headline margin-bottom-35">Contact Form</h4>
+				<h3 class="listing-desc-headline ">Contact Us</h3>
 
 				<div id="contact-message"></div> 
 
-					<form method="post" action="http://www.vasterad.com/themes/listeo_082019/contact.php" name="contactform" id="contactform" autocomplete="on">
-
+					<form method="post" action="<?=base_url('home/get_in_touch')?>" autocomplete="on" novalidate="novalidate" id="form">
+						    <?php
+                  if($this->session->flashdata('touch_message')!=''){
+                  ?>
+                  <div class="notification notice closeable">
+  <strong><?=$this->session->flashdata('touch_message');?></strong>
+</div>
+<?php }?>
 					<div class="row">
 						<div class="col-md-6">
 							<div>
@@ -48,11 +64,11 @@
 					</div>
 
 					<div>
-						<input name="subject" type="text" id="subject" placeholder="Subject" required="required" />
+						<input name="mobile" type="text" id="mobile" placeholder="Mobile No." required="required" />
 					</div>
 
 					<div>
-						<textarea name="comments" cols="40" rows="3" id="comments" placeholder="Message" spellcheck="true" required="required"></textarea>
+						<textarea name="query" cols="40" rows="3" id="query" placeholder="Your Query" spellcheck="true" required="required"></textarea>
 					</div>
 
 					<input type="submit" class="submit button" id="submit" value="Submit Message" />

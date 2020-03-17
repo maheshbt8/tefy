@@ -52,7 +52,84 @@ class Common_model extends CI_Model{
         else
             return $query;
     }
-    
+    function multi_unique($src){
+     $output = array_map("unserialize",
+     array_unique(array_map("serialize", $src)));
+        return $output;
+    }
+    public function select_listing_results_info($where,$where_cls='', $order_by='', $limit='',$data_start='')
+    {
+        //echo $where;die;
+        $this->db->distinct('listings.id');
+if($where_cls!=''){
+        $this->db->select('listings.*,school_class_prices.listing_id,school_class_prices.admission_fee,school_class_prices.tution_fee');
+        }else{
+        $this->db->select('listings.*');
+        }
+$this->db->from('listings');
+if($where_cls!=''){
+        $this->db->join('school_class_prices', 'listings.id = school_class_prices.listing_id');
+        }
+$this->db->where($where);
+if($where_cls!=''){
+$this->db->where($where_cls);
+}
+if($order_by!=''){
+            $this->db->order_by($order_by);
+        }
+        if($limit!=''){
+            $this->db->limit($limit,$data_start);
+        }
+$query = $this->db->get();
+//echo $this->db->last_query();
+//echo "<pre>";
+
+//$output=$this->multi_unique($query->result_array());
+//echo "<pre>";
+$query=$query->result_array();
+$tempArr = array_unique(array_column($query, 'id'));
+$qry=array_intersect_key($query, $tempArr);
+//print_r($output);die;
+/*if(count($qry) == 0){
+    $this->db->select('listings.*');
+    if($order_by!=''){
+            $this->db->order_by($order_by);
+        }
+        if($limit!=''){
+            $this->db->limit($limit,$data_start);
+        }
+$qry = $this->db->get('listings')->result_array();
+}*/
+//print_r($query->result_array());die;
+return $qry;
+/*echo "<pre>";
+print_r($query->result_array());die;*/
+    }
+/*    public function select_listing_results_info($table, $where='', $order_by='',$limit='',$data_start='',$join_table='')
+    {
+        $this->db->select('*');
+        if($where != ''){
+            $this->db->where($where);
+        }
+        if($order_by!=''){
+            $this->db->order_by($order_by);
+        }
+        if($limit!=''){
+            $this->db->limit($limit,$data_start);
+        }
+        $this->db->from($table);
+        if($join_table != ''){
+            $this->db->join($join_table, )
+        }
+        $query = $this->db->get();
+        if($this->type_of != '' && $this->type_of == 'array')
+            return $query->result_array();
+        elseif($this->type_of != '' && $this->type_of == 'object')
+             return $query->result_object();
+        else
+            return $query;
+    }*/
+
     /**
      *@author Mahesh
      *@param table string
@@ -271,4 +348,95 @@ if ( !empty($string) )
             echo "<a href='".base_url()."'>Visit Tefy Home</a>";
         }
     }
+
+    public function get_address_by_latlong($lat,$long)
+    {
+           
+    }
+    public function get_users($id=1,$status='')
+    {
+        //$this->trigger_events('get_users_group');
+
+        // if no id was passed use the current users id
+        //$id || $id = $this->session->userdata('user_id');
+        $this->db->select('users.*' );
+        $this->db->where('users_groups.group_id', $id);
+        $this->db->join('users', 'users_groups.user_id=users.id');
+        if($status!=''){
+        $this->db->where('users.'.$status);
+        }
+        return $this->db->get('users_groups');
+    }
+
+
+    function thousandsCurrencyFormat($num) {
+
+  if($num>1000) {
+
+        $x = round($num);
+        $x_number_format = number_format($x);
+        $x_array = explode(',', $x_number_format);
+        $x_parts = array('k', 'm', 'b', 't');
+        $x_count_parts = count($x_array) - 1;
+        $x_display = $x;
+        $x_display = $x_array[0] . ((int) $x_array[1][0] !== 0 ? '.' . $x_array[1][0] : '');
+        $x_display .= $x_parts[$x_count_parts - 1];
+
+        return $x_display.'+';
+
+     }
+
+     return $num;
+    }
+
+function get_last_unique_id($group_id){
+        return $this->db->get_where('groups', array('id' => $group_id))->row()->unique_id;
+    }
+function get_tables_code($group_id){
+        return $this->db->get_where('groups', array('id' => $group_id))->row()->code;
+    }
+    function update_last_unique_id($group_id,$unique_id){
+        $data['unique_id'] = $unique_id;
+        $this->db->where('id',$group_id);
+        return $this->db->update('groups', $data);
+    }
+    function generate_unique_id($lid,$group_id){
+if($lid==1){
+$num=1001;
+}elseif($lid!=1){
+/*$my=explode('_',$this->common_model->get_last_unique_id($group_id));
+$year=substr($my[0], -2);
+if($year==date('y')){
+$num=$my[1]+1;
+}else{
+$num=1001;
+}*/
+$my=$this->common_model->get_last_unique_id($group_id);
+$my_n=substr($my,4);
+$num=$my_n+1;
+}
+//$code=$this->common_model->get_tables_code($group_id);
+$code=$this->db->get_where('users',array('id'=>$lid))->row()->first_name;
+$code=strtoupper(substr($code,0,4));
+$pid=$code.$num;
+//$pid=$code.'_'.$num;
+$this->common_model->update_last_unique_id($group_id,$pid);
+return $pid;
+    }
+
+public function generate_application_id($user_id,$school_id)
+{
+    $school_code=$this->common_model->get_type_name_by_where('listings',array('id'=>$school_id),'school_code');
+    $unique_id=$this->common_model->get_type_name_by_where('users',array('id'=>$user_id),'unique_id');
+    $my_code=explode('_', $unique_id);
+    return $code=$my_code[1].$school_code;
+}
+
+
+
+
+
+
+
+
 }

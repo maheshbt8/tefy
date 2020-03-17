@@ -39,9 +39,9 @@
         	<div class="dashboard-content">
                 <!-- start: page -->
                     <?php if($this->session->flashdata('error_message')!=''){
-                                        echo '<div class="alert alert-danger alert_message">'.$this->session->flashdata('error_message').'</div>';
+                                        echo '<div class="notification error closeable">'.$this->session->flashdata('error_message').'</div>';
                                     }elseif($this->session->flashdata('success_message')!=''){
-                                        echo '<div class="alert alert-success alert_message">'.$this->session->flashdata('success_message').'</div>';
+                                        echo '<div class="notification success closeable">'.$this->session->flashdata('success_message').'</div>';
                                     }?>
         		<?php $this->load->view($content);?>
         			<!-- Copyrights -->

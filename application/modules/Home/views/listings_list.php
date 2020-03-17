@@ -1,94 +1,28 @@
-<style>
-.accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
 
-.active, .accordion:hover {
-/*  background-color: #ccc;*/
-}
-
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-</style>
-
-<?php
-$this->session->set_userdata('last_page',current_url());
-?>
-<!-- Titlebar
+<!-- Body start
 ================================================== -->
-<div id="titlebar" class="gradient">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-
-				<h2>All Schools</h2><span>List of all schools listed in TEFY</span>
-
-				<!-- Breadcrumbs -->
-				<nav id="breadcrumbs">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li>All Schools</li>
-					</ul>
-				</nav>
-
+<div class="container margin-top-30">
+	<div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div >
+                <?php
+                $this->load->view('short_search');
+                ?>
 			</div>
 		</div>
-	</div>
-</div>
-
-
-<!-- Content
-================================================== -->
-<div class="container">
-	<div class="row">
-
-		<div class="col-lg-9 col-md-8 padding-right-30">
-
-			<!-- Sorting / Layout Switcher -->
-			<div class="row margin-bottom-25">
-
-				<div class="col-md-6 col-xs-6">
-					<!-- Layout Switcher -->
-					<!--<div class="layout-switcher">
-						<a href="listings-grid-with-sidebar-1.html" class="grid"><i class="fa fa-th"></i></a>
-						<a href="#" class="list active"><i class="fa fa-align-justify"></i></a>
-					</div>-->
-				</div>
-
-				<div class="col-md-6 col-xs-6">
-					<!-- Sort by -->
-					<!-- <div class="sort-by">
-						<div class="sort-by-select">
-							<select data-placeholder="Default order" class="chosen-select-no-single">
-								<option>Default Order</option>	
-								<option>Highest Rated</option>
-								<option>Most Reviewed</option>
-								<option>Newest Listings</option>
-								<option>Oldest Listings</option>
-							</select>
-						</div>
-					</div> -->
-				</div>
-			</div>
-			<!-- Sorting / Layout Switcher / End -->
-
+		
+     
+        
+		<div class="col-lg-9 col-md-8 col-sm-8 padding-right-30">
+             <h3 class="listing-desc-headline ">Schools for you</h3>
+		
 
 			<div class="row">
-<?php
+
+				<!-- Listing Item -->
+				<div class="col-lg-12 col-md-12">
+					<?php
+					if(count($schools) > 0){
 $i=0;
 foreach ($schools as $row) {
 	$category='';
@@ -125,59 +59,73 @@ $where['listing_id']=$row['id'];
 $where['row_status']=1;
 $rating=round($this->common_model->rating_of_product('ratings', $where ,'rating'),1);
 
-$class=array();
+/*$class=array();
 	$classes=json_decode($row['class']);
 	for($c=0; $c < count($classes); $c++) { 
 		$class[]=$this->common_model->get_type_name_by_where('classes',array('id'=>$classes[$c]));
-	}
+	}*/
 
 ?>
-		 <!-- Listing Item -->
-				<div class="col-lg-12 col-md-12">
-					<div class="listing-item-container list-layout">
-						<a href="<?php if ($this->ion_auth->logged_in()){ echo base_url('listings-single/').base64_encode(base64_encode($row['id']));}else{echo '#sign-in-dialog';}?>" class="listing-item <?php if ($this->ion_auth->logged_in()==''){ echo 'popup-with-zoom-anim';}?>">
-							
-							<!-- Image -->
-							<div class="listing-item-image">
-								<img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>" alt="">
-								<!--<span class="tag">Eat & Drink</span>-->
-							</div>
-							
-							<!-- Content -->
-							<div class="listing-item-content">
-								<div class="listing-badge <?=$opening_col;?>"><?=$opening;?></div>
 
-								<div class="listing-item-inner">
-									<h3><?=$row['school_name'];?> <!-- <i class="verified-icon"></i> --></h3>
-
-									<span class="padding-top-5  more2"><span><b>Vision</b>: <?=$row['vision'];?></span> </span>
-                                        <div class="padding-top-15"><b>Board: </b><?=$this->common_model->get_type_name_by_where('curriculum',array('id'=>$row['curriculum']));?></div>
-                                        <div class="padding-top-5"><b>Grade: </b><span> <?=implode(', ',$class);?> </span> </div>
-                                        <div class="padding-top-5"><b>Category: </b><span> <?=$category;?> </span> </div>
-                                        <div ><span class="more3"><b>Address</b>: <?=$row['address'];?></span> </div>
-                                    <div class="star-rating" data-rating="<?=$rating;?>">
-                                        <div class="rating-counter">(<b><?=$rating;?></b>/5)</div>
-                                    </div>
-
-
-									<!-- <span><?=$row['address'];?></span> -->
-									<!-- <div class="star-rating" data-rating="<?=$rating;?>">
-										<div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
-									</div> -->
-									<!-- <div class="padding-top-5">
-                                        <span><b>Vision :</b>
-                                            <span class="more2"><?=$row['vision'];?></span>
-                                        </span> 
-                                    </div> -->
-								</div>
-								<?php if ($this->ion_auth->logged_in()){?>
+<div class="row padding-top-15 padding-bottom-15 margin-top-15 margin-bottom-15" style="background-color: #f7f7f7; border-radius: 5px;">
+	<a href="<?=base_url().str_replace(" ","-",$row['school_name']).'?school_code='.$row['school_code'];?>">
+		<!-- <a href="<?php echo base_url('listings-single?school=').$row['school_name'].'&school_code='.$row['school_code'];?>"> -->
+                        <div class="col-md-4 col-sm-4 col-xs-3 padding-right-0">
+                            <img src="<?=base_url('uploads/listings/thumb/').$row['id'].'.jpg';?>"class="" style="border-radius: 5px;" alt="">
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-9">
+                            <div class="listing-item-inner">
+                                <div class="listing-titlez single-line"><b><?=$row['school_name'];?></b></div>
+                                <span class="vision-txt single-line margin-bottom-20">"<?=$row['vision'];?>"</span>
+                            </div>
+                            <?php if ($this->ion_auth->logged_in()){?>
 								<span class="like-icon <?php if($this->common_model->get_type_name_by_where('bookmarks',array('user_id'=>$this->session->userdata('user_id'),'listing_id'=>$row['id']),'row_status')==1){echo 'liked';}?>" onclick="return add_bookmark('<?=$row['id'];?>')"></span><?php }?>
-							</div>
-						</a>
-					</div>
+                        </div>
+
+                        <div class="col-md-8 col-sm-8 col-xs-8 single-line"><b>Board:</b> <?=$this->common_model->get_type_name_by_where('curriculum',array('id'=>$row['curriculum']));?></div>
+                        <div class="col-md-8 col-sm-8 col-xs-8 single-line"><b>Grade:</b> <?=$row['class'];?></div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 single-line"><b>Category:</b> <?=$category;?></div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 single-line"><b>Address:</b> <?=$row['address'];?></div>
+                        <div class="col-md-8 col-sm-8 col-xs-12 single-line">
+                        <?php if(isset($_GET['class']) && $_GET['class']!=''){?>       
+                            <div class="resp-subtitle txtoverflow resp-tut-fee">Tution fee for <?=$this->common_model->get_type_name_by_where('classes',array('id'=>$row['class_id']));?><b>-&nbsp;<i class="fa fa-inr"></i>&nbsp; <?=$row['tution_fee'];?></b></div>
+                        <?php }?>
+                            <div class="star-rating" data-rating="<?=$rating;?>">
+                                <div class="rating-counter">(<?=$this->common_model->count_records('ratings',$where);?> reviews)</div>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                  <!--  <div class="col-lg-12 col-md-12">
+                        <section id="not-found" class="center">
+                            <img src="<?=base_url('assets/front-end/');?>images/no-data.png" width="70%">
+                            <p>Awww!<br> We are trying hard to onboard more schools of your choice until then we have more options for you!</p>
+                        </section>
+                    </div>-->
+		 <!-- Listing Item -->
+				
+				<!-- Listing Item / End -->
+<?php $i++;}}else{
+
+	echo '<section id="not-found" class="center"><img src="'.base_url('assets/front-end/').'images/no-data.png" width="70%"><p>Awww!<br> We are trying hard to onboard more schools of your choice until then we have more options for you!</p>
+    <a href="'.base_url('listings-list').'" class="button border margin-top-10">View all schools</a>
+    </section>';
+}?>
+					
+                    
+                    
+                    
+                  
+                        
+                        
+				
 				</div>
 				<!-- Listing Item / End -->
-<?php $i++;}?>
+
+				
+
+				
+
 			</div>
 
 			<!-- Pagination -->
@@ -187,12 +135,7 @@ $class=array();
 					<!-- Pagination -->
 					<div class="pagination-container margin-top-20 margin-bottom-40">
 						<nav class="pagination">
-							<!-- <ul>
-								<li><a href="#" class="current-page">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
-							</ul> -->
+							
 							<?php echo $pagination; ?>
 						</nav>
 					</div>
@@ -205,111 +148,45 @@ $class=array();
 
 		<!-- Sidebar
 		================================================== -->
-		<div class="col-lg-3 col-md-4">
-			<div class="sidebar">
-
-				<!-- Widget -->
-				<div class="widget margin-bottom-40">
-					<h3 class="margin-top-0 margin-bottom-30">Filters</h3>
-<form action="<?=base_url('listings-list');?>" method="get">
-					<!-- Row -->
-					<div class="row with-forms">
-						<!-- Cities -->
-						<div class="col-md-12">
-							<input type="text" placeholder="What are you looking for?" value="" name="keyword" />
-						</div>
-					</div>
-					<!-- Row / End -->
-					<!-- Row -->
-					<div class="row with-forms">
-						<!-- Cities -->
-						<div class="col-md-12">
-
-							<div class="input-with-icon location">
-								<div id="autocomplete-container">
-									<input id="pac-input" type="text" placeholder="Location" name="location">
-								</div>
-								<a href="#"><i class="fa fa-map-marker"></i></a>
-							</div>
-
-						</div>
-					</div>
-					<!-- Row / End -->
-    
-        <!-- Customized accordian tabs start-->
-        <button type="button" class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" 
-         id="inpt-stl">Boards</button>
-        <div class="panel">
-        <!-- Checkboxes 1 -->
-            <div class="checkboxes one-in-row margin-bottom-15">
-        <?php
-        $category=$this->common_model->select_results_info('curriculum',array('row_status'=>1))->result_array();
-        if($category!=''){
-        $c=0;foreach ($category as $cat) {
-        ?>
-                <input id="boards<?=$c;?>" type="checkbox" name="board[]" value="<?=$cat['id'];?>">
-                <label for="boards<?=$c;?>"><?=$cat['name'];?></label>
-        <?php $c++;}}?>
-            </div>
-            <!-- Checkboxes 1 / End -->
-        </div>
-        <button class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" id="inpt-stl" type="button">Medium</button>
-        <div class="panel">
-
-        <!-- Checkboxes 2 -->
-            <div class="checkboxes one-in-row margin-bottom-15">
-        <?php
-        $category=$this->common_model->select_results_info('medium',array('row_status'=>1))->result_array();
-        if($category!=''){
-        $c=0;foreach ($category as $cat) {
-        ?>
-                <input id="medium<?=$c;?>" type="checkbox" name="medium[]" value="<?=$cat['id'];?>">
-                <label for="medium<?=$c;?>"><?=$cat['name'];?></label>
-        <?php $c++;}}?>
-            </div>
-            <!-- Checkboxes 2 / End -->
-        </div>
-        <button class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" id="inpt-stl" type="button">Category</button>
-        <div class="panel">
-        <!-- Checkboxes 3 -->
-            <div class="checkboxes one-in-row margin-bottom-15">
-        <?php
-        $category=$this->common_model->select_results_info('category',array('row_status'=>1))->result_array();
-        if($category!=''){
-        $c=0;foreach ($category as $cat) {
-        ?>
-                <input id="cate<?=$c;?>" type="checkbox" name="category[]" value="<?=$cat['id'];?>">
-                <label for="cate<?=$c;?>"><?=$cat['name'];?></label>
-        <?php $c++;}}?>
-            </div>
-            <!-- Checkboxes 3 / End --> 
-        </div>
-        <button class="accordion more-search-options-trigger margin-bottom-5 margin-top-20" id="inpt-stl" type="button">Facilities</button>
-        <div class="panel">
-
-        <!-- Checkboxes 4 -->
-        <div class="checkboxes one-in-row margin-bottom-15">
-        <?php
-        $facilities=$this->common_model->select_results_info('facilities',array('row_status'=>1))->result_array();
-        if($facilities!=''){
-        $c=0;foreach ($facilities as $fac) {
-        ?>
-        <input id="face-<?=$c;?>" type="checkbox" name="facilities[]" value="<?=$fac['id'];?>">
-        <label for="face-<?=$c;?>"><?=$fac['name'];?></label>
-        <?php $c++;}}?>
-        </div>
-            <!-- Checkboxes 4 / End -->
-        </div>
-        <!-- Customized accordian tabs end-->
-    
-					<button class="button fullwidth margin-top-25">Update</button>
-</form>
-
-				</div>
-				<!-- Widget / End -->
-
+		<div class="col-lg-3 col-md-4 col-sm-4">
+      
+		    <div id="side-filter" class="side-filter">
+             
+                <?php
+                $this->load->view('list_filter');
+                ?>
+			</div>
+			 
+			<div id="filter-dialog" class=" zoom-anim-dialog mfp-hide filter-dialog1">
+           
+                <?php
+                $this->load->view('list_filter');
+                ?>
 			</div>
 		</div>
-		<!-- Sidebar / End -->
+		<!-- Sidebar / End --> 
+        
+
 	</div>
 </div>
+
+            
+
+<div class="bottom-nav">
+<div class="bottom-menus" href="#" style="background-color: black; width: 100vw;">
+    <ul>
+        <a href="#filter-dialog" class="sign-in popup-with-zoom-anim"> 
+            <li class="mw-100">
+              <i class="sl sl-icon-filter"></i>  Apply Filters
+            </li>
+        </a>
+        
+    </ul>
+     
+      </div>
+</div>
+  
+<!-- <?php
+echo "<pre>";
+print_r($_GET);
+?> -->

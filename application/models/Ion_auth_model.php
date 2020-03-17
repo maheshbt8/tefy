@@ -925,7 +925,7 @@ class Ion_auth_model extends CI_Model
 		    'ip_address' => $ip_address,
 		    'created_on' => time(),
 		    'phone_code' => $additional_data['phone_code'],
-		    'active'     => 1 //$actv (($manual_activation === false) ? 1 : 0)
+		    'active'     => $actv (($manual_activation === false) ? 1 : 0)
 		);
 
 		if ($this->store_salt)

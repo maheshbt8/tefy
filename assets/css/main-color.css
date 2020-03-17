@@ -119,7 +119,7 @@ input:checked+.slider,
 #scrollEnabling:hover,
 #scrollEnabling.enabled,
 #mapnav-buttons a:hover,
-#sign-in-dialog .mfp-close:hover,
+#sign-up-dialog .mfp-close:hover,
 #small-dialog .mfp-close:hover {
     background-color: #373435
 }

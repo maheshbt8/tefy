@@ -298,6 +298,13 @@ class Ion_auth
 
 		$id = $this->ion_auth_model->register($identity, $password, $email, $additional_data, $group_ids);
 
+		$registered_by=$additional_data['registered_by'];
+		//echo $registered_by;
+		if(($registered_by == "googleplus") || ($registered_by == "facebook")){
+			//$actv=1;
+			return $id;
+		}
+
 		if (!$email_activation)
 		{
 			if ($id !== FALSE)
@@ -358,7 +365,7 @@ class Ion_auth
 				$this->email->clear();
 				$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));
 				$this->email->to($email);
-				$this->email->subject($this->config->item('site_title', 'ion_auth') . ' - ' . $this->lang->line('email_activation_subject'));
+				$this->email->subject($this->lang->line('email_activation_subject'));
 				$this->email->message($message);
 
 				if ($this->email->send() == TRUE)

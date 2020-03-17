@@ -1,386 +1,384 @@
-<header id="header-container">
-<style type="text/css">
-	div#register_response {
-   color: red;*
-}
-</style>
-	<!-- Header -->
-	<div id="header">
-		<div class="container">
-			
-			<!-- Left Side Content -->
-			<div class="left-side">
-				
-				<!-- Logo -->
-				<div id="logo">
-					<a href="<?=base_url();?>"><img src="<?php echo base_url('assets')?>/images/logo2.png" data-sticky-logo="<?php echo base_url('assets')?>/images/logo3.png" alt=""></a>
-				</div>
+<header id="header-container" class="padding-bottom-80">
+    <style type="text/css">
+        div#register_response { 
+                                color: red;
+            
+                                }
+        
+    </style>
+    <!-- Header --> 
+    <div id="header" >
+        <div class="container" style="">
+            
+                <!-- Left Side Content -->
+                <div class="wd">
+            <div class="left-side">
+                 
+                <!-- Logo -->
+                <div id="logo">
+                    <a href="<?=base_url();?>">
+                        <img src="<?php echo base_url('assets')?>/front-end/images/logo2.svg" data-sticky-logo="<?php echo base_url('assets')?>/front-end/images/logo3.svg" alt="">
+                    </a>
+                    
+                </div>
+                <!--logoend-->
+                 <!--login-->
+              <div class="right-side">
+                <div class="header-widget">
+                    <div class="user-menu">
+                        <?php
+                        if ($this->ion_auth->logged_in())
+                            {
+                        ?> 
+                        <div class="user-name adm">
+                            
+                                <img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt="" width="" height="35px" class="">
+                           <span class="d-carrot margin-left-5">
+                            <?=ucwords(substr($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'),0,6));?>...&#9660;</span>
+                        </div>
+                        <ul>
+                            <li><a href="<?=base_url('auth');?>" target="_blank"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                            <?php if ($this->ion_auth->is_student()){?>
+                            <li><a href="<?=base_url('student/admissions')?>"><i class="fa fa-calendar-check-o"></i> Admission Status</a></li>
+                            <li><a href="<?=base_url('student/bookmarks')?>"><i class="fa fa-calendar-check-o"></i> Bookmarks</a></li>
+                            <li><a href="<?=base_url('student/profile')?>"><i class="fa fa-user"></i> My Profile</a></li>
+                            <?php }?>
 
-				<!-- Mobile Navigation -->
-				<div class="mmenu-trigger">
-					<button class="hamburger hamburger--collapse" type="button">
-						<span class="hamburger-box">
-							<span class="hamburger-inner"></span>
-						</span>
-					</button>
-				</div>
-
-				<!-- Main Navigation -->
-				<nav id="navigation" class="style-1">
-					<ul id="responsive">
-
-						<li><a  href="<?=base_url();?>">Home</a>
-							<!--<ul>
-								<li><a href="index-2.html">Home 1</a></li>
-								<li><a href="index-2-airbnb.html">Home 2 (Airbnb)</a></li>
-								<li><a href="index-3.html">Home 3</a></li>
-								<li><a href="index-4.html">Home 4</a></li>
-								<li><a href="index-5.html">Home 5</a></li>
-								<li><a href="index-6.html">Home 6</a></li>
-							</ul>-->
-						</li>
-
-						<li><a href="<?=base_url('about_us');?>">About Us</a>
-							<!--<ul>
-								<li><a href="#">List Layout</a>
-									<ul>
-										<li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
-										<li><a href="listings-list-full-width-with-map.html">Full Width + Map</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Grid Layout</a>
-									<ul>
-										<li><a href="listings-grid-with-sidebar-1.html">With Sidebar 1</a></li>
-										<li><a href="listings-grid-with-sidebar-2.html">With Sidebar 2</a></li>
-										<li><a href="listings-grid-full-width.html">Full Width</a></li>
-										<li><a href="listings-grid-full-width-with-map.html">Full Width + Map</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Half Screen Map</a>
-									<ul>
-										<li><a href="listings-half-screen-map-list.html">List Layout</a></li>
-										<li><a href="listings-half-screen-map-grid-1.html">Grid Layout 1</a></li>
-										<li><a href="listings-half-screen-map-grid-2.html">Grid Layout 2</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Single Listings</a>
-									<ul>
-										<li><a href="listings-single-page.html">Single Listing 1</a></li>
-										<li><a href="listings-single-page-2.html">Single Listing 2</a></li>
-										<li><a href="listings-single-page-3.html">Single Listing 3</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Open Street Map</a>
-									<ul>
-										<li><a href="listings-half-screen-map-list-OpenStreetMap.html">Half Screen Map List Layout</a></li>
-										<li><a href="listings-half-screen-map-grid-1-OpenStreetMap.html">Half Screen Map Grid Layout 1</a></li>
-										<li><a href="listings-half-screen-map-grid-2-OpenStreetMap.html">Half Screen Map Grid Layout 2</a></li>
-										<li><a href="listings-list-full-width-with-map-OpenStreetMap.html">Full Width List</a></li>
-										<li><a href="listings-grid-full-width-with-map-OpenStreetMap.html">Full Width Grid</a></li>
-										<li><a href="listings-single-page-OpenStreetMap.html">Single Listing</a></li>
-									</ul>
-								</li>
-							</ul>-->
-						</li>
-
-						<li><a href="<?=base_url('contact_us');?>">Contact Us</a>
-							<!--<ul>
-								<li><a href="dashboard.html">Dashboard</a></li>
-								<li><a href="dashboard-messages.html">Messages</a></li>
-								<li><a href="dashboard-bookings.html">Bookings</a></li>
-								<li><a href="dashboard-wallet.html">Wallet</a></li>
-								<li><a href="dashboard-my-listings.html">My Listings</a></li>
-								<li><a href="dashboard-reviews.html">Reviews</a></li>
-								<li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
-								<li><a href="dashboard-add-listing.html">Add Listing</a></li>
-								<li><a href="dashboard-my-profile.html">My Profile</a></li>
-								<li><a href="dashboard-invoice.html">Invoice</a></li>
-							</ul>-->
-						</li>
+                            <li><a href="<?=base_url('auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
+                        </ul>
+                    <?php }else{?>
                         
+                        <div class="user-name">
+                            <a href="#sign-in-dialog" class="popup-with-zoom-anim ">Login/SignUp</a>
+                        </div>
+
+                    <?php }?>
+                    </div>
+
+
+                   
+                </div>
+            </div> 
+               <!--end-->
+               
+                
+                <!-- Mobile Navigation -->
+                <div class="mmenu-trigger">
+                    <button class="hamburger hamburger--collapse" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+   
+                <!-- Main Navigation -->
+                <nav id="navigation" class="style-1">
+                    <ul id="responsive">
+
+                        <li><a  href="<?=base_url();?>">Home</a>
+                           
+                        </li>
+
+                        <li><a href="<?=base_url('about_us');?>">About Us</a>
+                            
+                        </li>
+                         <li><a href="<?=base_url('blogs');?>">Blog</a></li>
+                        <li><a href="<?=base_url('contact_us');?>">Contact Us</a></li>
+           <!--             <?php
+                        if ($this->ion_auth->logged_in())
+                            {
+                        ?>
+                         <li><a  href="#"><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'));?></a>
+                            <ul>
+                                 <li><a href="<?=base_url('auth');?>" target="_blank"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                            <?php if ($this->ion_auth->is_student()){?>
+                            <li><a href="<?=base_url('student/bookmarks')?>"><i class="fa fa-calendar-check-o"></i> Bookmarks</a></li>
+                            <li><a href="<?=base_url('student/profile')?>"><i class="fa fa-user"></i> My Profile</a></li>
+                            <?php }?>
+
+                            <li><a href="<?=base_url('auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
+                            </ul>
+                        </li>
+<?php }else{?>
+                        <li><a href="#sign-in-dialog" class="popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a></li>
                       
+ <?php }?>-->
+                        
+                    </ul>
+                </nav>
+                
+                
+                
+                
+                <div class="clearfix"></div>
+                <!-- Main Navigation / End -->
+            </div>
+            
+        </div>
 
-						<!--<li><a href="#">Pages</a>
-							<div class="mega-menu mobile-styles three-columns">
+            <!-- Right Side Content / End -->
+           
+            <!-- Right Side Content / End -->
+            
+            
+            
+            
+          
 
-									<div class="mega-menu-section">
-										<ul>
-											<li class="mega-menu-headline">Pages #1</li>
-											<li><a href="pages-user-profile.html"><i class="sl sl-icon-user"></i> User Profile</a></li>
-											<li><a href="pages-booking.html"><i class="sl sl-icon-check"></i> Booking Page</a></li>
-											<li><a href="pages-add-listing.html"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
-											<li><a href="pages-blog.html"><i class="sl sl-icon-docs"></i> Blog</a></li>
-										</ul>
-									</div>
-		
-									<div class="mega-menu-section">
-										<ul>
-											<li class="mega-menu-headline">Pages #2</li>
-											<li><a href="pages-contact.html"><i class="sl sl-icon-envelope-open"></i> Contact</a></li>
-											<li><a href="pages-coming-soon.html"><i class="sl sl-icon-hourglass"></i> Coming Soon</a></li>
-											<li><a href="pages-404.html"><i class="sl sl-icon-close"></i> 404 Page</a></li>
-											<li><a href="pages-masonry-filtering.html"><i class="sl sl-icon-equalizer"></i> Masonry Filtering</a></li>
-										</ul>
-									</div>
+           
 
-									<div class="mega-menu-section">
-										<ul>
-											<li class="mega-menu-headline">Other</li>
-											<li><a href="pages-elements.html"><i class="sl sl-icon-settings"></i> Elements</a></li>
-											<li><a href="pages-pricing-tables.html"><i class="sl sl-icon-tag"></i> Pricing Tables</a></li>
-											<li><a href="pages-typography.html"><i class="sl sl-icon-pencil"></i> Typography</a></li>
-											<li><a href="pages-icons.html"><i class="sl sl-icon-diamond"></i> Icons</a></li>
-										</ul>
-									</div>
-									
-							</div>
-						</li>-->
-						
-					</ul>
-				</nav>
-				<div class="clearfix"></div>
-				<!-- Main Navigation / End -->
-				
-			</div>
-			<!-- Left Side Content / End -->
+            <!-- Sign In Popup -->
+            
+            <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
 
+                <!--<div class="small-dialog-header">
+                    <h3>Sign In</h3>
+                    
+                </div>-->
+                <div class="popup_scroll">
+                <div style="text-align: center; " >
+                    <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-30 margin-bottom-30" style="">
+                    <br>
+                    <a href="<?php echo $this->googleplus->loginURL();?>" class="signin-google" style="border: 1px solid #000; padding: 8px 25px;  border-radius: 7px;">
+                       <img src="<?php echo base_url('assets/front-end/')?>images/google.png" width="22px">&nbsp;
+                        Sign in with Google
+                    </a>
+                    <br><br>
+                    <span style="color:#000">or</span>
+                     <hr>
+                      
+                </div>
 
-			<!-- Right Side Content / End -->
-			<div class="right-side">
-				<div class="header-widget">
-					<!-- User Menu -->
-					<div class="user-menu">
-						<?php
-						if ($this->ion_auth->logged_in())
-							{
-						?>
-						<div class="user-name adm"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><?=ucwords($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'));?></div>
-						<ul>
-							<li><a href="<?=base_url('auth');?>" target="_blank"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-							<!-- <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li> -->
-							<?php if ($this->ion_auth->is_student()){?>
-							<li><a href="<?=base_url('student/bookmarks')?>"><i class="fa fa-calendar-check-o"></i> Bookmarks</a></li>
-							<li><a href="<?=base_url('student/profile')?>"><i class="fa fa-user"></i> My Profile</a></li>
-							<?php }?>
+                <!--Tabs -->
+                <div class="sign-in-form style-1">
+                            <div id="login_response">
 
-							<li><a href="<?=base_url('auth/logout');?>"><i class="sl sl-icon-power"></i> Logout</a></li>
-						</ul>
-					<?php }else{?>
-						<div class="user-name">
-						<!-- <a href="<?=base_url('auth');?>">Login</a> -->
-						<a href="#sign-in-dialog" class="popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
-						<!-- <a href="#small-dialog" class="popup-with-zoom-anim"><i class="sl sl-icon-login"></i> In</a> -->
-						</div>
+                            </div>
+                            <p class="form-row form-row-wide">
+                                <label for="username">
+                                    <i class="im im-icon-Male"></i>
+                                    <input type="text" class="input-text" placeholder="Email Id" name="identity" id="identity" value="" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Id'" />
+                                </label>
+                             </p>
 
-					<?php }?>
-					</div>
+                            <p class="form-row form-row-wide">
+                                <label for="password">
+                                    <i class="im im-icon-Lock-2"></i>
+                                    <input class="input-text pswd" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" name="password" id="password" onfocus="this.placeholder = ''" onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'" />
+                                </label>
+                            </p>
 
-
-					<!-- <a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a> -->
-				</div>
-			</div>
-			<!-- Right Side Content / End -->
-
-			<!-- Sign In Popup -->
-			<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-
-				<div class="small-dialog-header">
-					<h3>Sign In</h3>
-				</div>
-
-				<!--Tabs -->
-				<div class="sign-in-form style-1">
-
-					<ul class="tabs-nav">
-						<li class=""><a href="#tab1">Log In</a></li>
-						<li><a href="#tab2">Register</a></li>
-					</ul>
-
-					<div class="tabs-container alt">
-
-						<!-- Login -->
-						<div class="tab-content" id="tab1" style="display: none;">
-							<!-- <form class="login"> -->
-								<div id="login_response">
-									
-								</div>
-								<p class="form-row form-row-wide">
-									<label for="username">Username:
-										<i class="im im-icon-Male"></i>
-										<input type="text" class="input-text" placeholder="Email Id" name="identity" id="identity" value="" onfocus="this.placeholder = ''"
-onblur="this.placeholder = 'Email Id'" />
-									</label>
-								</p>
-
-								<p class="form-row form-row-wide">
-									<label for="password">Password:
-										<i class="im im-icon-Lock-2"></i>
-										<input class="input-text pswd" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" name="password" id="password" 
-                                            onfocus="this.placeholder = ''"
-onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'"   />
-									</label>
-									<span class="lost_password">
-										<a href="#small-dialog" class="popup-with-zoom-anim" >Lost Your Password?</a>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                   <div class="checkboxes margin-top-10">
+                                        <div>
+                                        <input id="remember-me" type="checkbox" name="check">
+                                        <label for="remember-me">Remember Me</label>
+                                        </div>
+                                        <input type="submit" class="button border margin-top-5 b-1-000" name="login" value="Login" onclick="return submit_login();" />
+                                    </div>
+                                   
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                    <span class="lost_password pull-right margin-top-10">
+										<a href="#small-dialog" class="popup-with-zoom-anim" >Forgot Password?</a>
+                                        <br/>
+                                       
+                                        <a href="#sign-up-dialog" class="button border margin-top-5 text-center popup-with-zoom-anim"> Sign Up &nbsp;&gt;&gt;</a>
 									</span>
-								</p>
+                                </div>
+                            </div>
+                    
+                </div>
+            </div>
+        </div>
+            <!-- Sign Up Popup / End -->
+                     <!-- Sign In Popup -->
+                      
+            <div id="sign-up-dialog" class="zoom-anim-dialog mfp-hide">
 
-								<div class="form-row">
-									<input type="submit" class="button border margin-top-5" name="login" value="Login"  onclick="return submit_login();"/>
-									<div class="checkboxes margin-top-10">
-										<input id="remember-me" type="checkbox" name="check">
-										<label for="remember-me">Remember Me</label>
-									</div>
-								</div>
-								
-							<!-- </form> -->
-						</div>
+                <!--<div class="small-dialog-header">
+                    <h3>Sign In</h3>
+                    
+                </div>-->
+                <div class="popup_scroll">
+                <div style="text-align: center; " >
+                    <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-30 margin-bottom-30" style="">
+                    <br>
+                    <a href="<?php echo $this->googleplus->loginURL();?>" class="signin-google" style="border: 1px solid #000; padding: 8px 25px;  border-radius: 7px;">
+                       <img src="<?php echo base_url('assets/front-end/')?>images/google.png" width="22px">&nbsp;
+                        Sign in with Google
+                    </a>
+                    <br><br>
+                    <span style="color:#000">or</span>
+                     <hr>
+                      
+                </div>
 
-						<!-- Register -->
-						<div class="tab-content" id="tab2" style="display: none;">
+                <!--Tabs -->
+                <div class="sign-up-form style-1">
+                        <!-- Login -->
+                        
+                        <!-- Register -->
+                      
+                            <div id="register_response">
 
-							<!-- <form method="post" class="register"> -->
-								<div id="register_response">
-									
-								</div>
-							<p class="form-row form-row-wide">
-								<label for="username2">Name:
-									<i class="im im-icon-Male"></i>
-									<input type="text" placeholder="Full Name" class="input-text" name="name" id="name" value="" onfocus="this.placeholder = ''"
-onblur="this.placeholder = 'Full Name'" />
-								</label>
-								<span id='name_id'></span>
-							</p>
-								
-							<p class="form-row form-row-wide">
-								<label for="email2">Email Address:
-									<i class="im im-icon-Mail"></i>
-									<input type="text" class="input-text" placeholder="Email Id"  name="email" id="email2" value="" onfocus="this.placeholder = ''"
-onblur="this.placeholder = 'Email Id'" />
-								</label>
-								<span id='email_id'></span>
-							</p>
-							<p class="form-row form-row-wide">
-								<label for="email2">Mobile:
-									<i class="im im-icon-Mail"></i>
-									<input type="text" class="input-text" name="phone" placeholder="Mobile Number" id="phone" value="" onfocus="this.placeholder = ''"
-onblur="this.placeholder = 'Mobile Number'" />
-								</label>
-								<span id='phone_id'></span>
-							</p>
-							<p class="form-row form-row-wide">
-								<label for="password1">Password:
-									<i class="im im-icon-Lock-2"></i>
-									<input class="input-text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" type="password" name="password1" id="password1" onfocus="this.placeholder = ''"
-onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'" />
-								</label>
-								<span id='pass1_id'></span>
-							</p>
+                            </div>
+                            <p class="form-row form-row-wide">
+                                <label for="username2"><!--Name:-->
+                                   <!-- <i class="im im-icon-Male"></i>-->
+                                    <input type="text" placeholder="Full Name" class="input-text" name="name" id="name" value="" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full Name'" />
+                                </label>
+                                <span id='name_id'></span>
+                            </p>
 
-							<p class="form-row form-row-wide">
-								<label for="password2">Repeat Password:
-									<i class="im im-icon-Lock-2"></i>
-									<input class="input-text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" type="password" name="password_confirm" id="password2" onfocus="this.placeholder = ''"
-onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'" />
-								</label>
-								<span id='pass2_id'></span>
-							</p>
+                            <p class="form-row form-row-wide">
+                                <label for="email2"><!--Email Address:-->
+                                    <!--<i class="im im-icon-Mail"></i>-->
+                                    <input type="text" class="input-text" placeholder="Email Id" name="email" id="email2" value="" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Id'" />
+                                </label>
+                                <span id='email_id'></span>
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="email2"><!--Mobile:-->
+                                    <!--<i class="im im-icon-Mail"></i>-->
+                                    <input type="text" class="input-text" name="phone" placeholder="Mobile Number" id="phone" value="" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mobile Number'" />
+                                </label>
+                                <span id='phone_id'></span>
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="password1"><!--Password:-->
+<!--
+                                    <i class="im im-icon-Lock-2"></i>
+-->
+                                    <input class="input-text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" type="password" name="password1" id="password1" onfocus="this.placeholder = ''" onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'" />
+                                </label>
+                                <span id='pass1_id'></span>
+                            </p>
 
-							<input type="submit" class="button border fw margin-top-10" name="register" value="Register" onclick="return submit_registration();" />
-	
-							<!-- </form> -->
-						</div>
+                            <!--<p class="form-row form-row-wide">
+                                <label for="password2">Repeat Password:
+                                    <i class="im im-icon-Lock-2"></i>
+                                    <input class="input-text" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" type="password" name="password_confirm" id="password2" onfocus="this.placeholder = ''" onblur="this.placeholder = '&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'" />
+                                </label>
+                                <span id='pass2_id'></span>
+                            </p>-->
+                            
+                            <a href="#sign-in-dialog" class="button border fw margin-top-10 popup-with-zoom-anim">&lt;&lt;&nbsp;Login</a>
+                           
+                            <input type="submit" class="button border fw margin-top-10 f-right" name="register" value="Sign Up >>" onclick="return submit_registration();" />
+                            <!-- <a href="#sign-in-dialog" class="button border fw margin-top-10">Login</a> -->
+                            
+                     
+                </div>
+            </div>
+        </div>
+            <!-- Sign Up Popup / End -->
+            <!-- forgot password Popup -->
+            <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
 
-					</div>
-				</div>
-			</div>
-			<!-- Sign In Popup / End -->
-<!-- forgot password Popup -->
-			<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+                <div class="small-dialog-header">
+                    <h3>Forgot Password</h3>
+                </div>
 
-				<div class="small-dialog-header">
-					<h3>Forgot Password</h3>
-				</div>
-
-				<!--Tabs -->
-				<!-- <div class="sign-in-form style-1"> -->
-								<span id="forgot_response">
-									
-								</span>
-								<p class="form-row form-row-wide">
-									<label for="username">Email:
-										<i class="im im-icon-Male"></i>
-										<input type="email" class="input-text" name="forgot_email" id="forgot_email" value="" />
-									</label>
-								</p>
-								<div class="form-row">
-									<input type="submit" class="button border margin-top-5" name="submit" value="Submit"  onclick="return submit_forgot_pass();"/>
-								</div>
-				<!-- </div> -->
-			</div>
-			<!-- forgot password Popup / End -->
-		</div>
-	</div>
-	<!-- Header / End -->
+                <!--Tabs -->
+                <!-- <div class="sign-in-form style-1"> -->
+                <span id="forgot_response"></span>
+                <p class="form-row form-row-wide">
+                    <label for="username">Email:
+                        <i class="im im-icon-Male"></i>
+                        <input type="email" class="input-text" name="forgot_email" id="forgot_email" value="" />
+                    </label>
+                </p>
+                <div class="form-row">
+                    <input type="submit" class="button border margin-top-5" name="submit" value="Submit" onclick="return submit_forgot_pass();" />
+                </div>
+                <!-- </div> -->
+            </div>
+            <!-- forgot password Popup / End -->
+        </div>
+    </div>
+    <!-- Header / End -->
 
 </header>
 <div class="clearfix"></div>
 <script type="text/javascript">
     function submit_login() {
-    	var identity = $('#identity').val();
+        var identity = $('#identity').val();
         var password = $('#password').val();
-        var data_list={ identity: identity, password: password};
- $.ajax({
-                    url:'<?=base_url();?>auth/login_ajax/',
-                    type:'POST',
-                    data: data_list,
-                    dataType: 'json',
-                    success:function(result){
-         			/*alert(result.message);*/
-         			$('#login_response').html(result.message);
-	         			if(result.status == 1){
-	         				setInterval('location.reload()', 3000);
-	         			}
-                    }
-	});
-}
+        var data_list = {
+            identity: identity,
+            password: password
+        };
+        $.ajax({
+            url: '<?=base_url();?>auth/login_ajax/',
+            type: 'POST',
+            data: data_list,
+            dataType: 'json',
+            success: function(result) {
+                /*alert(result.message);*/
+                $('#login_response').html(result.message);
+                if (result.status == 1) {
+                    setInterval('location.reload()', 1500);
+                }
+            }
+        });
+    }
+
     function submit_registration() {
-    	var name = $('#name').val();
-    	var email = $('#email2').val();
-    	var phone = $('#phone').val();
+        var name = $('#name').val();
+        var email = $('#email2').val();
+        var phone = $('#phone').val();
         var password1 = $('#password1').val();
         var password2 = $('#password2').val();
-        var data_list={ name: name, email: email, phone: phone, password1: password1, password_confirm: password2};
- $.ajax({
-                    url:'<?=base_url();?>auth/create_user_ajax/',
-                    type:'POST',
-                    data: data_list,
-                    dataType: 'json',
-                    success:function(result){
-                    /*alert(result);
+        var data_list = {
+            name: name,
+            email: email,
+            phone: phone,
+            password1: password1,
+            password_confirm: password2
+        };
+        $.ajax({
+            url: '<?=base_url();?>auth/create_user_ajax/',
+            type: 'POST',
+            data: data_list,
+            dataType: 'json',
+            success: function(result) {
+                /*alert(result);
          			alert(result.message);*/
-         			$('#register_response').html(result.message);
-	         			if(result.status == 1){
-	         				setInterval('location.reload()', 3000);
-	         			}
-                    }
-	});
-}
+                /*$('#register_response').html(result.message);*/
+                if(result.message == 'yes'){
+                    $('#name_id').html(result.name_id);
+                    $('#email_id').html(result.email_id);
+                    $('#phone_id').html(result.phone_id);
+                    $('#pass1_id').html(result.password1);    
+                }else{
+                $('#register_response').html(result.message);
+                }
+                if (result.status == 1) {
+                    setInterval('location.reload()', 3000);
+                }
+            }
+        });
+    }
+
     function submit_forgot_pass() {
         var identity = $('#forgot_email').val();
-        var data_list={ identity: identity};
- $.ajax({
-                    url:'<?=base_url();?>auth/ajax_forgot_password/',
-                    type:'POST',
-                    data: data_list,
-                    dataType: 'json',
-                    success:function(result){
-         			alert(result.message);
-         			$('#forgot_response').html(result.message);
-	         			/*if(result.status == 1){
-	         				setInterval('location.reload()', 3000);
-	         			}*/
-                    }
-	});
-}
+        var data_list = {
+            identity: identity
+        };
+        $.ajax({
+            url: '<?=base_url();?>auth/ajax_forgot_password/',
+            type: 'POST',
+            data: data_list,
+            dataType: 'json',
+            success: function(result) {
+                //alert(result.message);
+                $('#forgot_response').html(result.message);
+                /*if(result.status == 1){
+                	setInterval('location.reload()', 3000);
+                }*/
+            }
+        });
+    }
 </script>

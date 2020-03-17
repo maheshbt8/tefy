@@ -45,7 +45,7 @@ class Auth extends MX_Controller {
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
-			$this->_render_page('auth/index', $this->data);
+			$this->_render_page('home', $this->data);
 		}
 	}
 	public function login_ajax()
@@ -62,27 +62,93 @@ class Auth extends MX_Controller {
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
-				$mes['message']='<div class="alert alert-success"><strong>Successfully Login</strong></div>';
+				$mes['message']='<div class="notification success closeable"><strong>Logged in. Welcome to TEFY</strong></div>';
 				$mes['status']=1;
 				echo json_encode($mes);
 			}
 			else
 			{
-				$mes['message']='<div class="alert alert-danger"><strong>In Valid Username or Password</strong></div>';
+				$mes['message']='<div class="notification error closeable"><strong>In Valid Username or Password</strong></div>';
 				$mes['status']=0;
 				echo json_encode($mes);
 			}
 		}
 		else
 		{
-			$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Both fields are required</strong></div>';
+			$mes['message']='<div class="notification error closeable"><strong>Both fields are required</strong></div>';
 			$mes['status']=0;
 				echo json_encode($mes);
 		}
 	}
+    function template(){
+        $this->load->view('email/activate.tpl.php');
+    }
+    function template1(){
+        $this->load->view('email/forgot_password.tpl.php');
+    }
+    function template2(){
+        /*$this->load->view('email/invoice.tpl.php');*/
+        $data['name']='mahi';
+        $data['heading']='Testing';
+$data['message']='<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<td>Invoice No: <b>123456</b></td><td>Invoice Date: <b>2020-03-06 15:18:30</b><td>
+</tr>
+<tr>
+<td>Application ID: <b>123456</b></td>
+</tr>
+<tr>
+<td>Student Name: <b>Mahesh</b></td>
+<tr>
+<td>Father: <b>Prasad</b></td>
+</tr>
+<tr>
+<td>Class: <b>I st Class</b></td>
+</tr>
+<tr>
+<td>School: <b>Vikas</b></td>
+</tr>
+<tr>
+<td>School Address: <b>Hyderabad</b></td>
+</tr>
+</table>
+
+<h3>Payment Summary</h3>
+
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th>Description</th><th>Amount<th>
+</tr>
+<tr>
+<td colspan="2">
+<hr/></td></tr>
+<tr>
+<td>Admission Fee (Including 18% GST)</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>Discount</td>
+<td>-500</td>
+</tr>
+<td colspan="2">
+<hr/></td></tr>
+<tr>
+<tr>
+	<td>Total</td>
+	<td>Rs. 9,500</td>
+</tr>
+<td colspan="2">
+<hr/></td></tr>
+<tr>
+</table>
+<p>Note: This is computer generated invoice. No signature is required</p>
+';
+$this->load->view('template/mail/invoice',$data);
+    }
 	// log the user in
-	/*public function login()
+/*	public function login()
 	{
+		redirect(base_url('home'), 'refresh');
 		$this->data['title'] = $this->lang->line('login_heading');
 
 		//validate form input
@@ -155,7 +221,7 @@ class Auth extends MX_Controller {
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			redirect('home', 'refresh');
 		}
 
 		$user = $this->ion_auth->user()->row();
@@ -451,6 +517,107 @@ class Auth extends MX_Controller {
 	{
 		$this->mail_model->account_activation($res,'maheshbt.grepthor@gmail.com');
 	}
+	 public function check_user_email_unique($value='')
+    {//echo "string";die;
+        $validation=$this->common_model->select_results_info('users',array('email'=>$value))->num_rows();
+            if($validation != 0){
+                $this->form_validation->set_message('check_user_email_unique','Email Existed');
+                //echo "string2";
+                return false;
+            }//echo "string1";
+            return true;
+    }
+    /* public function google($value='')
+    {
+			$data=array(
+				'email'=>'ma@g.com',
+				'name'=>'mahi',
+				'id'=>'123456789',
+			);
+			$check_data=$this->common_model->select_results_info('users',array('email'=>$data['email']));
+			if($check_data->num_rows()==0){
+				$email    = strtolower($data['email']);
+            	$identity = $data['id'];
+            	$password = '1234';
+
+            	$additional_data = array(
+                'first_name' => $data['name'],
+                'phone' => NULL,
+                'registered_by'=>'googleplus'
+            		);
+            	$res=$this->ion_auth->register($identity, $password, $email, $additional_data);
+            	$pid=$this->common_model->generate_unique_id($res,2);
+        $this->db->where('id',$res)->update('users',array('unique_id'=>$pid,'modified_at'=>date('Y-m-d H:i:s')));
+			}
+
+			$this->ion_auth->login($data['email'], '1234', TRUE ,TRUE);
+			redirect('home');
+		
+    }
+    public function my($value='')
+    {
+    	$data['picture']='https://lh6.googleusercontent.com/-Kt05yHrAkc4/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3reskhM6_hXP_GPb1EB-liQuhEx1hA/photo.jpg';
+
+    	if(copy($data['picture'], "uploads/users/2.jpg")){
+            		echo "string";
+            	}else{
+            		echo "sdtring";
+            	}die;
+    }*/
+    public function google_login($value='')
+    {
+    	if(isset($_GET['code']))
+		{
+			$this->googleplus->getAuthenticate();
+			$this->session->set_userdata('login',true);
+			$data=$this->googleplus->getUserInfo();
+			//$this->session->set_userdata('userProfile',$this->googleplus->getUserInfo());
+			$check_data=$this->common_model->select_results_info('users',array('email'=>$data['email']));
+			if($check_data->num_rows()==0){
+				$email    = strtolower($data['email']);
+            	$identity = $data['id'];
+            	$password = '1234';
+
+            	$additional_data = array(
+                'first_name' => $data['name'],
+                'phone' => NULL,
+                'registered_by'=>'googleplus'
+            		);
+            	$res=$this->ion_auth->register($identity, $password, $email, $additional_data);
+            	copy($data['picture'], "uploads/users/". $res.'.jpg');
+            	$pid=$this->common_model->generate_unique_id($res,2);
+        $this->db->where('id',$res)->update('users',array('unique_id'=>$pid,'modified_at'=>date('Y-m-d H:i:s')));
+			}
+
+			$this->ion_auth->login($data['email'], '1234', TRUE ,TRUE);
+			redirect('home');
+		}
+    }
+    /*public function profile(){
+		if($this->session->userdata('login') == true)
+		{
+			$data['profileData'] = $this->session->userdata('userProfile');
+$userProfile=$this->session->userdata('userProfile');
+			 //$userProfile = $google_oauthV2->userinfo->get();
+            // Preparing data for database insertion
+            $userData['oauth_provider'] = 'google';
+            $userData['oauth_uid'] = $userProfile['id'];
+            $userData['first_name'] = $userProfile['given_name'];
+            $userData['last_name'] = $userProfile['family_name'];
+            $userData['email'] = $userProfile['email'];
+            $userData['locale'] = $userProfile['locale'];
+            $userData['picture_url'] = $userProfile['picture'];
+            echo "<pre>";
+            print_r($userData);
+
+			print_r($data);die;
+			$this->load->view('profile',$data);
+		}
+		else
+		{
+			redirect('');
+		}
+	}*/
 	//Create new user using ajax
 	public function create_user_ajax()
 	{
@@ -460,13 +627,16 @@ class Auth extends MX_Controller {
         $this->data['identity_column'] = $identity_column;
 
         $this->form_validation->set_rules('name', 'Name', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[' . $tables['users'] . '.email]',
-        array(
-                'is_unique'     => 'This %s already exists.'
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[' . $tables['users'] . '.email]', array(
+                'is_unique'     => 'This %s is already registered with TEFY.'
         ));
+        //$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+        //$this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_check_user_email_unique');
+        //$this->form_validation->set_rules('email', 'Email', 'trim|required|callback_check_user_email_unique');
         $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim|required');
-        $this->form_validation->set_rules('password1', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
-        $this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
+        //$this->form_validation->set_rules('password1', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+        $this->form_validation->set_rules('password1', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
+        //$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
 
 		if ($this->form_validation->run() == true)
@@ -477,28 +647,43 @@ class Auth extends MX_Controller {
 
             $additional_data = array(
                 'first_name' => $this->input->post('name'),
-                'phone'      => $this->input->post('phone')
+                'phone'      => $this->input->post('phone'),
+                'registered_by'=>'Normal'
             );
             $res=$this->ion_auth->register($identity, $password, $email, $additional_data);
 			if ($res>0)
 			{
+				$pid=$this->common_model->generate_unique_id($res,2);
+        $this->db->where('id',$res)->update('users',array('unique_id'=>$pid,'modified_at'=>date('Y-m-d H:i:s')));
 				/*$this->mail_model->account_activation($res,$email);*/
-				$mes['message']='<div class="alert alert-success"><strong>successfully Registered
-				Check your email to activate your account
+				$mes['message']='<div class="notification success closeable"><strong>Registration successful. Activate your account by clicking the verification link sent to your email, Yaaay!! You are one step away from becoming TEFY member, please check your email to activate account. 
 				</strong></div>';
-				$mes['status']=0;
+				$mes['status']=1;
 				echo json_encode($mes);
 			}
 			else
 			{
-				$mes['message']='<div class="alert alert-danger"><strong>Not Registered</strong></div>';
+				$mes['message']='<div class="notification error closeable"><strong>Not Registered</strong></div>';
 				$mes['status']=0;
 				echo json_encode($mes);
 			}
 		}
 		else
 		{
-			$mes['message']='<div class="alert alert-danger"><strong class="font3">'.validation_errors().'</strong></div>';
+			/*$mes['message']='<div class="notification error closeable"><strong class="font3">'.validation_errors().'</strong></div>';*/
+            $mes['message']='yes';
+            if(form_error('name') != ''){
+                $mes['name_id']='<div class="error">'.form_error('name').'</div>';
+            }
+            if(form_error('email') != ''){
+                $mes['email_id']='<div class="error">'.form_error('email').'</div>';
+            }
+            if(form_error('phone') != ''){
+                $mes['phone_id']='<div class="error">'.form_error('phone').'</div>';
+            }
+            if(form_error('password1') != ''){
+                $mes['password1']='<div class="error">'.form_error('password1').'</div>';
+            }
 			$mes['status']=0;
 			echo json_encode($mes);
 		}
@@ -532,7 +717,7 @@ if (!empty($identity))
 echo json_encode($mes);*/
 			/*if ($forgotten)
 			{*/
-				$mes['message']='<div class="alert alert-success alert-dismissible fade in"><strong>Reset Password link Sent to your Email</strong></div>';
+				$mes['message']='<div class="notification success closeable"><strong>Reset Password link Sent to your Email</strong></div>';
 				$mes['status']=1;
 				echo json_encode($mes);
 			/*}
@@ -545,7 +730,7 @@ echo json_encode($mes);*/
 			}
 			else
 			{
-				$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Email Not Found In Our Records</strong></div>';
+				$mes['message']='<div class="notification error closeable"><strong>Email Not Found In Our Records</strong></div>';
 			$mes['status']=0;
 				echo json_encode($mes);
 			}
@@ -565,7 +750,7 @@ echo json_encode($mes);*/
 				echo json_encode($mes);
 			}*/
 		}else{
-			$mes['message']='<div class="alert alert-danger alert-dismissible fade in"><strong>Email is required</strong></div>';
+			$mes['message']='<div class="notification error closeable"><strong>Email is required</strong></div>';
 			$mes['status']=0;
 				echo json_encode($mes);
 		}

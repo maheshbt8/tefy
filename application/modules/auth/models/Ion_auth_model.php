@@ -877,7 +877,7 @@ echo json_encode($mes);die;
 	 * @return bool
 	 * @author Mathew
 	 **/
-	public function register($identity, $password, $email, $additional_data = array(), $groups = array())
+	public function register($identity, $password, $email, $additional_data = array(), $groups = array(), $registered_by='')
 	{
 		$this->trigger_events('pre_register');
 
@@ -910,6 +910,15 @@ echo json_encode($mes);die;
 		$salt       = $this->store_salt ? $this->salt() : FALSE;
 		$password   = $this->hash_password($password, $salt);
 
+		if($manual_activation === false ){
+		$actv= 1;}else{ $actv=0;};
+
+		$registered_by=$additional_data['registered_by'];
+		//echo $registered_by;
+		if(($registered_by == "googleplus") || ($registered_by == "facebook")){
+			$actv=1;
+		}
+		//echo $actv;die;
 		// Users table.
 		$data = array(
 		    $this->identity_column   => $identity,
@@ -918,7 +927,7 @@ echo json_encode($mes);die;
 		    'email'      => $email,
 		    'ip_address' => $ip_address,
 		    'created_on' => time(),
-		    'active'     => ($manual_activation === false ? 1 : 0)
+		    'active'     => $actv,
 		);
 
 		if ($this->store_salt)
@@ -934,7 +943,8 @@ echo json_encode($mes);die;
 
 		$this->db->insert($this->tables['users'], $user_data);
 
-		$id = $this->db->insert_id($this->tables['users'] . '_id_seq');
+		//$id = $this->db->insert_id($this->tables['users'] . '_id_seq');
+		$id = $this->db->insert_id();
 
 		// add in groups array if it doesn't exists and stop adding into default group if default group ids are set
 		if( isset($default_group->id) && empty($groups) )
@@ -962,8 +972,10 @@ echo json_encode($mes);die;
 	 * @return bool
 	 * @author Mathew
 	 **/
-	public function login($identity, $password, $remember=FALSE)
+	public function login($identity, $password, $remember=FALSE, $fb=FALSE)
 	{
+
+	//echo $identity.'/'.$password;die;
 		$this->trigger_events('pre_login');
 
 		if (empty($identity) || empty($password))
@@ -973,7 +985,7 @@ echo json_encode($mes);die;
 		}
 
 		$this->trigger_events('extra_where');
-
+		
 		$query = $this->db->select($this->identity_column . ', email, id, password, active, last_login')
 		                  ->where($this->identity_column, $identity)
 		                  ->limit(1)
@@ -995,7 +1007,11 @@ echo json_encode($mes);die;
 		{
 			$user = $query->row();
 
-			$password = $this->hash_password_db($user->id, $password);
+			//$password = $this->hash_password_db($user->id, $password);
+			if(!$fb)
+                $password = $this->hash_password_db($user->id, $password);
+            if($fb)
+                $password=TRUE;
 
 			if ($password === TRUE)
 			{
