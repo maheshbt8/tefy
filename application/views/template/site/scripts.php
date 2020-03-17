@@ -465,7 +465,7 @@ function showposition(position) {
 }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ-5bkYW9Wb5k2JLBoaas0HSx7ZBkMwAM&libraries=places&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?=$this->db->get_where('settings', array('setting_type' => 'google_api_key'))->row()->description; ?>&libraries=places&callback=initMap"
         async defer></script>
 
 

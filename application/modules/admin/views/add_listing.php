@@ -7,7 +7,7 @@
 <?php
 //$geolocation = $latitude.','.$longitude;
 $geolocation='17.5042406,78.395598';
-$request = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAZ-5bkYW9Wb5k2JLBoaas0HSx7ZBkMwAM&latlng='.$geolocation.'&sensor=false';
+$request = 'https://maps.googleapis.com/maps/api/geocode/json?key='.$this->db->get_where('settings', array('setting_type' => 'google_api_key'))->row()->description.'&latlng='.$geolocation.'&sensor=false';
 //echo $request;die;
 /*$res='{
    "plus_code" : {
@@ -1920,7 +1920,7 @@ for ($i=0; $i < count($days); $i++) {
       }
       
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ-5bkYW9Wb5k2JLBoaas0HSx7ZBkMwAM&libraries=places&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?=$this->db->get_where('settings', array('setting_type' => 'google_api_key'))->row()->description; ?>&libraries=places&callback=initMap"
         async defer></script>
 
 

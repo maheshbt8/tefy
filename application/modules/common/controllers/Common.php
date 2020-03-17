@@ -101,7 +101,7 @@ if(isset($json_decode->results[0])) {
     }*/
     function get_location($latitude,$longitude){
         //$address = "India+Panchkula";
-$url = 'https://maps.google.com/maps/api/geocode/json?latlng='.trim($latitude).','.trim($longitude).'&sensor=false&region=India&key=AIzaSyAZ-5bkYW9Wb5k2JLBoaas0HSx7ZBkMwAM';
+$url = 'https://maps.google.com/maps/api/geocode/json?latlng='.trim($latitude).','.trim($longitude).'&sensor=false&region=India&key='.$this->db->get_where('settings', array('setting_type' => 'google_api_key'))->row()->description;
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
