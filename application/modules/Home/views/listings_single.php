@@ -1,5 +1,5 @@
 
- <!-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e133cc97dc3a500126f4cd6&product=inline-share-buttons" async="async"></script> -->
+ <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e133cc97dc3a500126f4cd6&product=inline-share-buttons" async="async"></script>
 
  <!-- <title>ShareThis: Free Social Share Buttons &amp; Plugins for Websites &amp; Blogs</title>
 
@@ -686,7 +686,76 @@ if($achievements!=''){
                     
                     
                     <div class="copy-link  margin-top-10">
-                        ><button class="js-emailcopybtn" style="width: 100%; background-color: black; border: 0; border-radius: 5px; font-size: 13px;">Copy link</button>
+                      <!-- <button class="js-emailcopybtn" style="width: 100%; background-color: black; border: 0; border-radius: 5px; font-size: 13px;">Copy link</button> -->
+                      
+
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+
+<input type="text" value="<?=current_url().'?school_code='.$school['school_code'];?>" id="myInput">
+
+<div class="tooltip">
+<button onclick="myFunction()" onmouseout="outFunc()" style="width: 100%; background-color: black; border: 0; border-radius: 5px; font-size: 13px;">
+  <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+  Copy link
+  </button>
+</div>
+
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  //var copyText = $('#p2').text();alert(copyText);
+  //var copyText = "<?=current_url();?>";
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied";
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
+
                     </div>
                 </div>
                 <div id="share-buttons">
