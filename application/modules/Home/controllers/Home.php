@@ -374,7 +374,7 @@ $system_email = $CI->config->item('site_settings')->system_email;
 $res=sendEmail($system_email,$user_details['mail'],'TEFY - Application Submission',$email_message);
 $res=sendEmail($system_email,$system_email,'New Application Submitted',$email_message);
 /*<a href="'.$this->session->userdata('last_page').'">Go Back To School: <b>'.$_GET['school'].'</b></a><br/>*/
-                $this->session->set_flashdata('admission_message','<div class="col-md-12 promo-confirmation"><div class="booking-confirmation-page"><i class="fa fa-check-circle"></i><h2 class="margin-top-0">Submitted successfully, Go to previous tab in your browser and Refresh the page to apply Admission. Track your application status at <a href="'.base_url('student/admissions').'" class="button gray">Admission Status</a></h2></div></div>');
+                $this->session->set_flashdata('admission_message','<div class="col-md-12 promo-confirmation"><div class="booking-confirmation-page"><i class="fa fa-check-circle"></i><h2 class="margin-top-0">Submitted successfully, Go to previous tab in your browser and Refresh the page to apply Admission. Track your application status at <a href="'.base_url('student/admissions').'" class="button tf-black" style="margin-bottom:-10px;">Admission Status</a></h2></div></div>');
             }else{
                 $this->session->set_flashdata('admission_message','<div class="col-md-12 promo-confirmation"><div class="booking-confirmation-page"><i class="fa fa-times wrong"></i><h2 class="margin-top-0">Admission Application Failed</h2><a href="'.$this->session->userdata('last_page').'" >Go Back To School: <b>'.$_GET['school'].'</b></a></div></div>');
             }
@@ -966,7 +966,8 @@ if(!empty($reply)){
             if(!empty($childs)){
             $re .='<option value=""> --Select Student Profile-- </option>';
             foreach ($childs as $chi) {
-                $re .='<option value="'.$chi['id'].'">'.$chi['name'].'</option>';
+                $chi_ad=$this->common_model->select_results_info('admissions',array('school_id'=>$listing_id,'child_id'=>$chi['id']))->row_array();
+                $re .='<option value="'.$chi['id'].'" '.(($chi_ad != '')? 'disabled' : '').'>'.$chi['name'].' ('.(($chi_ad != '')? 'This student applied for this school.' : '').')</option>';
             }
         }else{
             $re .='<option value=""> --No Student Profile Available-- </option>';

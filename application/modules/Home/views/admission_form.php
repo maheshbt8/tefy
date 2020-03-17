@@ -140,7 +140,9 @@ $school=$this->common_model->select_results_info('listings',array('school_code'=
                     <button type="button"  class="verified-badge tf-black" onclick="return get_coupon_dis()">Apply Code</button>
 				</div>
                 
-                
+                <div class="col-lg-12 col-md-12 margin-top-0 text-center" >
+            <input type="submit" value="Submit Application"/>
+        </div>
                 
                 <div class="clearfix"></div>
 
@@ -183,9 +185,7 @@ $school=$this->common_model->select_results_info('listings',array('school_code'=
 			<!-- Booking Summary / End -->
 
 		</div>
-        <div class="col-lg-12 col-md-12 margin-top-0 text-center" >
-            <input type="submit" value="Submit Application"/>
-        </div>
+        
 	</div>
     </form>
     <?php }?>

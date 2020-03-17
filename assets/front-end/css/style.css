@@ -4047,7 +4047,7 @@ button.fs-map-btn.button {
     transition: .3s;
     display: block;
    /* position: fixed;*/
-   /* z-index: 1017;*/
+    z-index: 996 !important;
     
 }
 
@@ -4611,8 +4611,8 @@ button.fs-map-btn.button {
 
 .booking-confirmation-page a.button {
     padding: 11px 35px;
-    background-color: #eee;
-    color: #444;
+    background-color: #171717;
+    color: #fff;
     font-weight: 600;
     font-size: 16px
 }
@@ -8715,7 +8715,7 @@ a.button.border {
     background-color: transparent;
     color: #66676b;
     border: 1px solid #66676b;
-    padding: 9px 21px
+    padding: 9px 15px;
 }
 
 a.button.border:hover {
@@ -17969,6 +17969,7 @@ button.mfp-close {
 #small-dialog {
     background: #fff;
     padding: 40px;
+    padding-bottom: 0px;
     padding-top: 0;
     text-align: left;
     max-width: 610px;
@@ -17979,7 +17980,7 @@ button.mfp-close {
     overflow: scroll;
     -ms-overflow-style: none;
     position: fixed;
-    top: 10%;
+    top: 5%;
     left: 25%;
 }
 
@@ -20127,7 +20128,7 @@ h4 span.headline-detail {
         display: block;
         position: sticky;
         top: 0px;
-        z-index: 9999;
+        z-index: 999;
     }
     a.dashboard-responsive-nav-trigger i {
         margin-right: 5px;

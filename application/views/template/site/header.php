@@ -137,7 +137,7 @@
                 </div>-->
                 <div class="popup_scroll">
                 <div style="text-align: center; " >
-                    <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-30 margin-bottom-30" style="">
+                    <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-10 margin-bottom-10" style="">
                     <br>
                     <a href="<?php echo $this->googleplus->loginURL();?>" class="signin-google" style="border: 1px solid #000; padding: 8px 25px;  border-radius: 7px;">
                        <img src="<?php echo base_url('assets/front-end/')?>images/google.png" width="22px">&nbsp;
@@ -145,7 +145,7 @@
                     </a>
                     <br><br>
                     <span style="color:#000">or</span>
-                     <hr>
+                     
                       
                 </div>
 
@@ -169,7 +169,7 @@
                             </p>
 
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
                                    <div class="checkboxes margin-top-10">
                                         <div>
                                         <input id="remember-me" type="checkbox" name="check">
@@ -179,7 +179,7 @@
                                     </div>
                                    
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
                                     <span class="lost_password pull-right margin-top-10">
 										<a href="#small-dialog" class="popup-with-zoom-anim" >Forgot Password?</a>
                                         <br/>
@@ -201,17 +201,17 @@
                     <h3>Sign In</h3>
                     
                 </div>-->
-                <div class="popup_scroll">
+                <div class="popup_scroll" style="height: auto !important;">
                 <div style="text-align: center; " >
-                    <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-30 margin-bottom-30" style="">
+                    <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-10 margin-bottom-10" style="">
                     <br>
                     <a href="<?php echo $this->googleplus->loginURL();?>" class="signin-google" style="border: 1px solid #000; padding: 8px 25px;  border-radius: 7px;">
                        <img src="<?php echo base_url('assets/front-end/')?>images/google.png" width="22px">&nbsp;
                         Sign in with Google
                     </a>
-                    <br><br>
+                    <br>
                     <span style="color:#000">or</span>
-                     <hr>
+                     
                       
                 </div>
 

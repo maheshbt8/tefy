@@ -729,10 +729,10 @@ if($achievements!=''){
 }
 </style>
 
-<input type="text" value="<?=current_url().'?school_code='.$school['school_code'];?>" id="myInput">
+<input type="text" style="width:80%" value="<?=current_url().'?school_code='.$school['school_code'];?>" id="myInput">
 
 <div class="tooltip">
-<button onclick="myFunction()" onmouseout="outFunc()" style="width: 100%; background-color: black; border: 0; border-radius: 5px; font-size: 13px;">
+<button onclick="myFunction()" onmouseout="outFunc()" style="width: 100%; background-color: black; border: 0; border-radius: 5px; font-size: 13px;padding: 11px;">
   <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
   Copy link
   </button>

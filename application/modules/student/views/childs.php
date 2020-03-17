@@ -23,9 +23,18 @@ $this->session->set_userdata('last_page',current_url());
 			<!-- Profile -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
+				<div class="col-lg-12" style="background: #fbfbfb;">
+					<div class="col-lg-8">
 					<h4 class="gray">Student Profiles</h4>
+                    </div>
+                    <div class="col-lg-4">
+                    <?php if($child ==''){?>
+                    <button class="add-stu" onclick="return show_form();">Add Student Profile</button>
+                    <?php }?>
+                    </div>
+                </div>
 					<div class="dashboard-list-box-static">
-					<table class="table table-striped table-hover"> <!--id="tableExport"-->
+					<table class="table table-hover table-bordered table-responsive"> <!--id="tableExport"-->
                         <thead>
                           <tr>
                             <th>Student Name</th>
@@ -56,11 +65,7 @@ $this->session->set_userdata('last_page',current_url());
 			</div>
 </div>
 <br/>
-<div class="row">
-<?php if($child ==''){?>
-<button class="add-stu" onclick="return show_form();">Add Student Profile</button>
-<?php }?>
-</div>
+
 	<div class="row" id="student-form" style="display: none">
 				<!-- Change Password -->
 				<div class="col-lg-12 col-md-12">
@@ -96,7 +101,7 @@ $this->session->set_userdata('last_page',current_url());
 								<div class="col-md-4">
 									<label>Gender</label>
 	                                <div class="col-md-6">
-	                                    <label><input class="d--inline" type="radio"  name="gender" value="Male" required="" <?=(isset($child) && $child['gender']=='Male')? 'checked' : '';?>> Male</label>
+	                                    <label><input class="d--inline" type="radio"  name="gender" value="Male" required="" <?=(isset($child) && $child['gender']=='Male')? 'checked' : 'checked';?>> Male</label>
 	                                </div>
 	                                <div class="col-md-6">
 	                                    <label><input class="d--inline" type="radio"  name="gender" value="Female" required="" <?=(isset($child) && $child['gender']=='Female')? 'checked' : '';?>> Female</label>
@@ -149,7 +154,7 @@ $this->session->set_userdata('last_page',current_url());
 								<div class="col-md-12">
 	                             <label>User Relation</label>
 	                             <div class="col-md-2">
-								<label><input type="radio" name="relation" class="d--inline" required="" value="father" <?=(isset($child) && $child['relation']=='father')? 'checked' : '';?>> Father</label>
+								<label><input type="radio" name="relation" class="d--inline" required="" value="father" <?=(isset($child) && $child['relation']=='father')? 'checked' : 'checked';?>> Father</label>
 							</div>
 							<div class="col-md-2">
 								<label><input type="radio" name="relation" class="d--inline" required="" value="mother" <?=(isset($child) && $child['relation']=='mother')? 'checked' : '';?>> Mother</label>

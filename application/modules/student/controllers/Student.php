@@ -168,7 +168,7 @@ class Student extends MY_Controller
                 $res=$this->common_model->insert_results_info('childs',$input_data);
             }
             if($res>0){
-                $this->session->set_flashdata('success_message','Submited Successfully');
+                $this->session->set_flashdata('success_message','<b>Submitted Successfully, Go the previous tab in your browser and refresh the page to Apply admission.</b>');
             }else{
                 $this->session->set_flashdata('error_message','Not Submited');
             }
