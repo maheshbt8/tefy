@@ -17985,10 +17985,14 @@ button.mfp-close {
 }
 
 #sign-in-dialog, #sign-up-dialog {
-    max-width: 50%
+    max-width: 50%;
+    overflow: scroll;
+    position: initial;
 }
 #refer-earn {
-    max-width: 50%
+    max-width: 50%;
+    overflow: scroll;
+    position: initial;
 }
 
 #sign-in-dialog span.line,#refer-earn span.line,#sign-up-dialog span.line,
