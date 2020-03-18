@@ -135,7 +135,7 @@
                     <h3>Sign In</h3>
                     
                 </div>-->
-                <div class="popup_scroll">
+                <div class="">
                 <div style="text-align: center; " >
                     <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-10 margin-bottom-10" style="">
                     <br>
@@ -201,7 +201,7 @@
                     <h3>Sign In</h3>
                     
                 </div>-->
-                <div class="popup_scroll" style="height: auto !important;">
+                <div class="" style="height: auto !important;">
                 <div style="text-align: center; " >
                     <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-10 margin-bottom-10" style="">
                     <br>
