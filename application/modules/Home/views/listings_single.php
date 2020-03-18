@@ -10,6 +10,16 @@
   .admissions_closed{
     background: #ff0000 !important;
   }
+  @media (max-width: 450px){
+#st-3 {
+    bottom: 50px;
+    display: flex;
+    left: 0;
+    right: 0;
+    top: auto;
+    width: 100%;
+}
+}
 </style>
 
 <!-- <meta property="og:title" content="Title of the page">

@@ -962,7 +962,7 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
 
 .user-name span {
     display: inline-block;
-    width: 38px;
+    /*width: 38px;*/
     height: 38px;
     margin-right: 10px;
     border-radius: 50%;
@@ -1038,7 +1038,7 @@ body #navigation.style-1 ul ul li:hover ul li a:hover {
 }
 
 .user-name span {
-    width: 35px;
+    /*width: 35px;*/
     height: 35px;
     left: -28px;
     top: -8px

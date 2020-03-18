@@ -33,7 +33,7 @@ $this->session->set_userdata('last_page',current_url());
                     <?php }?>
                     </div>
                 </div>
-					<div class="dashboard-list-box-static">
+					<div class="dashboard-list-box-static" style="overflow: auto;">
 					<table class="table table-hover table-bordered table-responsive"> <!--id="tableExport"-->
                         <thead>
                           <tr>

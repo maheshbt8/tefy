@@ -30,7 +30,7 @@
 						
 						<li class="hom1 margin-top-0">
 						    <div class="user-menu">
-                                <div class="user-name"><span><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt=""></span><a class="name-line-hide-resp"><?=ucwords(substr($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'),0,6));?>...</a></div>
+                                <div class="user-name"><img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt="" style="height: 35px;">&nbsp;<a class="name-line-hide-resp"><?=ucwords(substr($this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'first_name'),0,6));?>...</a></div>
 						<ul>
 							<li><a href="<?=base_url('auth');?>"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 							<?php if ($this->ion_auth->is_student()){?>
