@@ -37,12 +37,13 @@ $this->session->set_userdata('last_page',current_url());
 					<table class="table table-hover table-bordered table-responsive"> <!--id="tableExport"-->
                         <thead>
                           <tr>
+                          	<th>Action</th>
                             <th>Student Name</th>
                             <th>Father Name</th>
                             <th>Mother Name</th>
                             <th>Relation</th>
                             <th>Contact Number</th>
-                            <th>Action</th>
+                            
                           </tr>
                         </thead>
                         <tbody>
@@ -50,12 +51,13 @@ $this->session->set_userdata('last_page',current_url());
                             foreach ($childs as $ch) {
                             ?>
                           <tr>
+                          	<td><a  class="add-stu" href="<?=base_url('student/childs?child=').base64_encode(base64_encode($ch['id']));?>">Edit</a></td>
                             <td><?=$ch['name'];?></td>
                             <td><?=$ch['father'];?></td>
                             <td><?=$ch['mother'];?></td>
                             <td><?=ucwords($ch['relation']);?></td>
                             <td><?=$ch['c_number'];?></td>
-                            <td><a href="<?=base_url('student/childs?child=').base64_encode(base64_encode($ch['id']));?>">Edit</a></td>
+                            
                           </tr>
                       <?php }?>
                         </tbody>

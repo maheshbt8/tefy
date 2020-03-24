@@ -3,7 +3,7 @@ $this->session->set_userdata('last_page',current_url());
 ?>
 <?php
 if($user_details['active_phone'] == 0){?>
-<div class="notification warning closeable"><strong>Please Verify Your Mobile Number For Admissions To Get Alerts On Admissions</strong></div>
+<div class="notification warning closeable"><strong>Please verify your mobile number to apply admissions and get instant alerts of your Admission Status.</strong></div>
 <?php }?>
 <div class="row">
 

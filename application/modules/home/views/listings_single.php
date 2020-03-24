@@ -1,5 +1,5 @@
 
- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e133cc97dc3a500126f4cd6&product=inline-share-buttons" async="async"></script>
+<!--  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e133cc97dc3a500126f4cd6&product=inline-share-buttons" async="async"></script> -->
 
  <!-- <title>ShareThis: Free Social Share Buttons &amp; Plugins for Websites &amp; Blogs</title>
 
@@ -694,7 +694,22 @@ if($achievements!=''){
                         
                     </div>
                     
-                    
+                    <div class="row">
+                            <span class="col-auto"><strong>Share :</strong></span>
+                            <span class="col">
+                                <!-- AddToAny BEGIN -->
+                                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                    <a class="a2a_button_facebook"></a>
+                                    <a class="a2a_button_twitter"></a>
+                                    <a class="a2a_button_email"></a>
+                                    <a class="a2a_button_whatsapp"></a>
+                                </div>
+                                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                <!-- AddToAny END -->
+                            </span>
+                            
+                        </div>
                     <div class="copy-link  margin-top-10">
                       <!-- <button class="js-emailcopybtn" style="width: 100%; background-color: black; border: 0; border-radius: 5px; font-size: 13px;">Copy link</button> -->
                       

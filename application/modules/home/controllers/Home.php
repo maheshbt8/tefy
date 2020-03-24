@@ -203,7 +203,7 @@ print_r($res_arr);die;*/
         $this->data['school'] = $this->common_model->select_results_info('listings',array('school_code'=>$_GET['school_code']))->row_array();
         $this->data['list_enc_id']=$this->data['school']['school_code'];
         $this->data['title']=ucwords($this->data['school']['school_name']);
-
+        $this->data['og_image']=base_url('uploads/listings/thumb/').$data['school']['id'].'.jpg';
         if($this->input->post()){
             $input=$this->input->post();
             $input_data['rating']=$input['rating'];
@@ -293,6 +293,8 @@ print_r($res_arr);die;*/
         $this->data['active_menu'] = 'blog_single';
 
         $this->data['blog'] = $this->common_model->select_results_info('blogs',array('id'=>$_GET['blog']))->row_array();
+        $this->data['title']=ucwords($this->data['blog']['title']);
+        $this->data['og_image']=base_url('uploads/blogs/').$this->data['blog']['id'].'.jpg';
         if($this->input->post()){
             $input=$this->input->post();
             $input_data['review']=$input['review'];
@@ -374,7 +376,7 @@ $system_email = $CI->config->item('site_settings')->system_email;
 $res=sendEmail($system_email,$user_details['mail'],'TEFY - Application Submission',$email_message);
 $res=sendEmail($system_email,$system_email,'New Application Submitted',$email_message);
 /*<a href="'.$this->session->userdata('last_page').'">Go Back To School: <b>'.$_GET['school'].'</b></a><br/>*/
-                $this->session->set_flashdata('admission_message','<div class="col-md-12 promo-confirmation"><div class="booking-confirmation-page"><i class="fa fa-check-circle"></i><h2 class="margin-top-0">Submitted successfully, Go to previous tab in your browser and Refresh the page to apply Admission. Track your application status at <a href="'.base_url('student/admissions').'" class="button tf-black" style="margin-bottom:-10px;">Admission Status</a></h2></div></div>');
+                $this->session->set_flashdata('admission_message','<div class="col-md-12 promo-confirmation"><div class="booking-confirmation-page"><i class="fa fa-check-circle"></i><h2 class="margin-top-0">Your Application is Submitted successfully. Click to track your <a href="'.base_url('student/admissions').'" class="button tf-black" style="margin-bottom:-10px;">Admission Status</a></h2></div></div>');
             }else{
                 $this->session->set_flashdata('admission_message','<div class="col-md-12 promo-confirmation"><div class="booking-confirmation-page"><i class="fa fa-times wrong"></i><h2 class="margin-top-0">Admission Application Failed</h2><a href="'.$this->session->userdata('last_page').'" >Go Back To School: <b>'.$_GET['school'].'</b></a></div></div>');
             }

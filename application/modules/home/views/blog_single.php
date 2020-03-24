@@ -77,15 +77,30 @@ $share_url=urlencode(base_url('blog?title='.$_GET['title'].'&blog='.$_GET['blog'
   <?php
 $r++;}}
                     	?>
-
-<div class="col-md-12 col-sm-12">
+<div class="row">
+                            <span class="col-auto"><strong>Share :</strong></span>
+                            <span class="col">
+                                <!-- AddToAny BEGIN -->
+                                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                    <a class="a2a_button_facebook"></a>
+                                    <a class="a2a_button_twitter"></a>
+                                    <a class="a2a_button_email"></a>
+                                    <a class="a2a_button_whatsapp"></a>
+                                </div>
+                                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                <!-- AddToAny END -->
+                            </span>
+                            
+                        </div>
+<!-- <div class="col-md-12 col-sm-12">
 	<ul class="share-buttons margin-top-40 margin-bottom-0">
             <li><a class="fb-share" href="http://www.facebook.com/sharer.php?u=<?=$share_url;?>" target="_blank"><i class="fa fa-facebook"></i> Share</a></li>
             <li><a class="twitter-share" href="https://twitter.com/share?url=<?=$share_url;?>&amp;text=<?=$blog['title']?>&amp;hashtags=simplesharebuttons" target="_blank"><i class="fa fa-twitter"></i> Tweet</a></li>
             <li><a class="gplus-share" href="https://plus.google.com/share?url=<?=$share_url;?>" target="_blank"><i class="fa fa-google-plus"></i> Share</a></li>
             <li><a class="pinterest-share" href="https://api.whatsapp.com/send?text=<?=$share_url;?>"  target="_blank"><i class="fa fa-whatsapp"></i> whatsapp</a></li>
           </ul>
-      </div>
+      </div> -->
                     </div>
                     <!-- Overview -->
       <div id="listing-overview" class="listing-section">

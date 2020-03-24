@@ -1,3 +1,6 @@
+<?php
+$login_unique_id=$this->common_model->get_type_name_by_where('users',array('id'=>$this->session->userdata('user_id')),'unique_id');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,8 @@
 <?php
 if($active_menu == 'listings_single' || $active_menu == 'blog_single'){
 ?>
-<title><?php echo $title;?>-TEFY</title>
+
+<title><?php echo $title;?>-TEFY <?php if($active_menu == 'listings_single'){?>: Refer the school to your friend and upon his successful admission through TEFY, you will be rewarded with <?=$this->db->get_where('settings', array('setting_type' => 'refer_money'))->row()->description; ?> Tefy coins use Referral Code: <?php echo $login_unique_id;?><?php }?></title>
 <?php }else{?>
 <title>Online Search for Schools CBSE, SSC, ICSE,IB, Play, International schools, Admission and Online Pay fee | TEFY</title>
 <?php }?>
@@ -26,6 +30,20 @@ if(isset($meta_keywords) && !empty($meta_keywords)){
     echo '<meta name="keywords" content="'.$meta_keywords.'">';
 }
 ?>
+
+<?php
+if($active_menu == 'listings_single' || $active_menu == 'blog_single'){
+?>
+ <meta name="og:image" itemprop="image" content="<?=$og_image;?>"/>  
+
+          <meta property="og:title" content="<?=$title;?> - TEFY" />
+          <meta property="og:description" content="<?=$meta_description;?>"/>
+          <meta property="og:image" content="<?=$og_image;?>" />
+        <meta property="og:image:secure_url" content="<?=$og_image;?>" />
+    
+    
+        <?php }?>
+        
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="google-site-verification" content="hRlFhKey7dC5YP-qr3VlNfI1w_X0ULiPfDIzxnXf0Xw" /> 
@@ -101,6 +119,7 @@ if(isset($meta_keywords) && !empty($meta_keywords)){
     <!-- Header Container
     ================================================== --> 
     <?php $this->load->view('template/site/header');?>
+
     <!-- Header Container / End --> 
     <div class="clearfix"></div>
     <!-- Content
