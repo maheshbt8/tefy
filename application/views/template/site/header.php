@@ -25,11 +25,16 @@
                  <!--login-->
               <div class="right-side">
                 <div class="header-widget">
+                     
+
+
                     <div class="user-menu">
                         <?php
                         if ($this->ion_auth->logged_in())
                             {
                         ?> 
+
+                        
                         <div class="user-name adm">
                             
                                 <img src="<?=base_url().$this->common_model->get_image_url('users',$this->session->userdata('user_id'));?>" alt="" width="" height="35px" class="">

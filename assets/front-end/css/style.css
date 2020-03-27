@@ -21603,7 +21603,8 @@ div#tableExport_filter {
     color: green;
 }
 .title-whatwedo{
-    
+ font-size: 19px;
+    font-weight: 600;   
 }
 .add-stu{
     margin: auto;

@@ -41,8 +41,7 @@ if($promo['admission_status']==1){
     <center style="padding:5px;"><img draggable="false" src="<?=base_url('assets/images/logo3.png');?>"  style="max-height:55px; margin: 2px;"/></center>
     </div>
 </div>
-    <br/>
-    <br/>
+   
        <!--  </div>-->
         <!-- <div class="row status-content-box">  -->
             <div class="col-md-12">
