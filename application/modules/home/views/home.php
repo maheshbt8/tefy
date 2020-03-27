@@ -145,18 +145,17 @@
 
 </section>-->
 <!-- Fullwidth Section / End --> 
-<section class="fullwidth padding-top-75 padding-bottom-30" data-background-color="rgb(237, 237, 237)">
+<section class="fullwidth padding-top-75 padding-bottom-30" data-background-color="rgb(255, 255, 255)">
     <!-- Info Section -->
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3 class="headline centered headline-extra-spacing">
                     <strong class="headline-with-separator">The <b>TEFY</b> Path</strong>
-                   <h3>&nbsp;</h3>
+                   
                 </h3>
             </div>
             <div class="col-md-3 col-xs-6 col-sm-6 text-center">
-              
                 <img class="col-md-12 " src="<?php echo base_url('assets/front-end/')?>search-schools.png">
                 <div class="col-md-12 "><h5 class="title-whatwedo">Search Schools</h5></div>
             </div>
