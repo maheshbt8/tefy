@@ -203,7 +203,7 @@ print_r($res_arr);die;*/
         $this->data['school'] = $this->common_model->select_results_info('listings',array('school_code'=>$_GET['school_code']))->row_array();
         $this->data['list_enc_id']=$this->data['school']['school_code'];
         $this->data['title']=ucwords($this->data['school']['school_name']);
-        $this->data['og_image']=base_url('uploads/listings/thumb/').$data['school']['id'].'.jpg';
+        $this->data['og_image']=base_url('uploads/listings/thumb/').$this->data['school']['id'].'.jpg';
         if($this->input->post()){
             $input=$this->input->post();
             $input_data['rating']=$input['rating'];
