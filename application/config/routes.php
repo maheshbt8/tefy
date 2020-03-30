@@ -79,8 +79,8 @@ $route['listings-list/(.+)']='home/listings_list/$1';
 $route['terms-and-conditions'] = 'home/conditions/terms';
 $route['privacy-policy'] = 'home/conditions/privacy';
 
-$route['about_us'] = 'home/about_us';
-$route['contact_us'] = 'home/contact_us';
+$route['about-us'] = 'home/about_us';
+$route['contact-us'] = 'home/contact_us';
 $route['blogs'] = 'home/blog_list';
 $route['blogs/(.+)'] = 'home/blog_list/$1';
 $route['blog'] = 'home/blog';

@@ -510,7 +510,7 @@ for ($i=0; $i < count($days); $i++) {
 <div class="row opening-day  ">
 								<div class="col-md-2"><h5><?=$days[$i];?></h5></div>
 								<div class="col-md-5">
-									<select class="chosen-select" name="opening_time[]" data-placeholder="Opening Time" required="">
+									<!-- <select class="chosen-select" name="opening_time[]" data-placeholder="Opening Time" required="">
 										<option label="Opening Time"></option>
 										<option value="Closed" value="Closed" <?php if($opening_hours->opening_time[$i] == 'Closed'){echo 'selected';}?>>Closed</option>
 									<?php 
@@ -518,10 +518,12 @@ for ($i=0; $i < count($days); $i++) {
 										<option value="<?=$loop[$j];?>" <?php if($opening_hours->opening_time[$i] == $loop[$j]){echo 'selected';}?>><?=$loop[$j];?></option>
 									<?php }
 									?>
-									</select>
+									</select> -->
+									<input type="time" name="opening_time[]" required="" value="<?=$opening_hours->opening_time[$i];?>">
+									
 								</div>
 								<div class="col-md-5">
-									<select class="chosen-select" name="closing_time[]" data-placeholder="Closing Time" required="">
+									<!-- <select class="chosen-select" name="closing_time[]" data-placeholder="Closing Time" required="">
 										<option label="Closing Time"></option>
 										<option value="Closed" <?php if($opening_hours->closing_time[$i] == 'Closed'){echo 'selected';}?>>Closed</option>
 		<?php 
@@ -529,7 +531,9 @@ for ($i=0; $i < count($days); $i++) {
 										<option value="<?=$loop[$j];?>" <?php if($opening_hours->closing_time[$i] == $loop[$j]){echo 'selected';}?>><?=$loop[$j];?></option>
 									<?php }
 									?>
-									</select>
+									</select> -->
+									<input type="time" name="closing_time[]" required="" value="<?=$opening_hours->closing_time[$i];?>">
+									
 								</div>
 							</div>
 <?php }?>

@@ -156,19 +156,19 @@
                 </h3>
             </div>
             <div class="col-md-3 col-xs-6 col-sm-6 text-center">
-                <img class="col-md-12 " src="<?php echo base_url('assets/front-end/')?>search-schools.png">
+                <img class="col-md-12 " src="<?php echo base_url('assets/front-end/')?>search-schools.png" alt="<?php echo base_url('assets/front-end/')?>search-schools.png">
                 <div class="col-md-12 "><h5 class="title-whatwedo">Search Schools</h5></div>
             </div>
             <div class="col-md-3 col-xs-6 col-sm-6  text-center">
-                <img class="col-md-12" src="<?php echo base_url('assets/front-end/')?>apply-admission.png">
+                <img class="col-md-12" src="<?php echo base_url('assets/front-end/')?>apply-admission.png" alt="<?php echo base_url('assets/front-end/')?>apply-admission.png">
                 <div class="col-md-12 "><h5 class="title-whatwedo">Apply Admission</h5></div>
             </div>
             <div class="col-md-3 col-xs-6 col-sm-6  text-center">
-                <img class="col-md-12 " src="<?php echo base_url('assets/front-end/')?>fee-pay.png">
+                <img class="col-md-12 " src="<?php echo base_url('assets/front-end/')?>fee-pay.png" alt="<?php echo base_url('assets/front-end/')?>fee-pay.png">
                 <div class="col-md-12"><h5 class="title-whatwedo">Pay Fee</h5></div>
             </div>
             <div class="col-md-3 col-xs-6 col-sm-6  text-center">
-                <img class="col-md-12 " src="<?php echo base_url('assets/front-end/')?>get-cashbacks.png">
+                <img class="col-md-12 " src="<?php echo base_url('assets/front-end/')?>get-cashbacks.png" alt="<?php echo base_url('assets/front-end/')?>get-cashbacks.png">
                 <div class="col-md-12 "><h5 class="title-whatwedo">Get Cashbacks</h5></div>
             </div>
            

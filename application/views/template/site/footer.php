@@ -14,9 +14,9 @@
 			<div class="col-md-4 col-sm-4 ">
 				<h4 class="footerh4">Helpful Links</h4>
 				<ul class="footer-links">
-					<li><a href="<?=base_url('about_us');?>">About Us</a></li>
+					<li><a href="<?=base_url('about-us');?>">About Us</a></li>
 					<li><a href="<?=base_url('blogs');?>">Blog</a></li>
-					<li><a href="<?=base_url('contact_us');?>">Contact Us</a></li>
+					<li><a href="<?=base_url('contact-us');?>">Contact Us</a></li>
                     <li><a href="<?=base_url('privacy-policy');?>">Privacy Policy</a></li>
                     <li><a href="<?=base_url('terms-and-conditions');?>">Terms of use</a></li>    
 				</ul>

@@ -14,7 +14,7 @@ if($active_menu == 'listings_single' || $active_menu == 'blog_single'){
 <title>Online Search for Schools CBSE, SSC, ICSE,IB, Play, International schools, Admission and Online Pay fee | TEFY</title>
 <?php }?>
 
-<link rel=”canonicalize” href=”https://www.tefy.in”> 
+<link rel=”canonical” href=”https://www.tefy.in”> 
 
  
 <meta charset="utf-8">

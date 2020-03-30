@@ -506,7 +506,7 @@ for ($i=0; $i < count($days); $i++) {
       </div>
           <?php
 $achievements=json_decode($school['achievements']);
-if($achievements!=''){
+if($achievements[0]!=''){
 ?>    
             <!-- Records& achievements Carousel -->
             <div class="fullwidth-carousel-container margin-top-20 no-dots">
