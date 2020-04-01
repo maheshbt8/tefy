@@ -211,7 +211,7 @@
                     <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-10 margin-bottom-10" style="">
                     <br>
                     <a href="<?php echo $this->googleplus->loginURL();?>" class="signin-google" style="border: 1px solid #000; padding: 8px 25px;  border-radius: 7px;">
-                       <img src="<?php echo base_url('assets/front-end/')?>images/google.png" width="22px">&nbsp;
+                       <img src="<?php echo base_url('assets/front-end/')?>images/google.png" width="22px" alt="<?php echo base_url('assets/front-end/')?>images/google.png">&nbsp;
                         Sign in with Google
                     </a>
                     <br>

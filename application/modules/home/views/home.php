@@ -278,7 +278,7 @@ foreach ($blogs as $blog) {
 
 
 <!-- Flip banner -->
-<a href="<?=base_url('listings-list');?>" class="flip-banner parallax" data-background="<?php echo base_url('assets/front-end/')?>images/slider-bg-02.jpg" data-color="#000" data-color-opacity="0.85" data-img-width="2500" data-img-height="1666">
+<a href="<?=base_url('listings-list');?>" class="flip-banner parallax" data-background="<?php echo base_url('assets/front-end/')?>images/slider-bg-02.png" data-color="#000" data-color-opacity="0.85" data-img-width="2500" data-img-height="1666">
     <div class="flip-banner-content">
         <!-- <h2 class="flip-visible">Explore top-rated Schools nearby you</h2> -->
         <!--<h2 class="flip-hidden">Browse all School <i class="sl sl-icon-arrow-right"></i></h2>-->
@@ -286,4 +286,4 @@ foreach ($blogs as $blog) {
         <h2 class="flip-hidden">Browse All Schools <i class="sl sl-icon-arrow-right"></i></h2>-->
     </div>
 </a>
-<!-- Flip banner / End
+<!-- Flip banner / End -->

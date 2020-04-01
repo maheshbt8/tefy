@@ -30,6 +30,14 @@ if($promo['admission_status']==1){
 <div class="row">
    <!--  <input type="button"class="btn btn-success"  onclick="downloadDiv('ext_file')" value="Download"> -->
    <div class="col-md-12">
+    <style type="text/css">
+      @media (max-width: 767px){
+.notfy {
+  display:none !important;
+}
+}
+    </style>
+    <div class="notification warning closeable notfy"><strong>Switch to desktop version to print the admission form.</strong></div>
     <a href="<?=base_url('student/admissions')?>" class="button gray pull-right">Back To Admissions</a>
     <?php 
   if(empty($_GET['formtype'])){

@@ -9,12 +9,13 @@ $login_unique_id=$this->common_model->get_type_name_by_where('users',array('id'=
 if($active_menu == 'listings_single' || $active_menu == 'blog_single'){
 ?>
 
-<title><?php echo $title;?>-TEFY <?php if($active_menu == 'listings_single'){?>: Refer the school to your friend and upon his successful admission through TEFY, you will be rewarded with <?=$this->db->get_where('settings', array('setting_type' => 'refer_money'))->row()->description; ?> Tefy coins use Referral Code: <?php echo $login_unique_id;?><?php }?></title>
+<title><?php echo $title;?>-TEFY <?php if($active_menu == 'listings_single'){?>: Your TEFY friend has invited you to check this school at TEFY. Search schools, apply admissions and get discounts on fee.
+USE Referal Code: <?php echo $login_unique_id;?>  to avail discounts on admission.<?php }?></title>
 <?php }else{?>
 <title>Online Search for Schools CBSE, SSC, ICSE,IB, Play, International schools, Admission and Online Pay fee | TEFY</title>
 <?php }?>
 
-<link rel=”canonical” href=”https://www.tefy.in”> 
+<link rel="canonical" href="https://www.tefy.in"> 
 
  
 <meta charset="utf-8">
@@ -30,6 +31,17 @@ if(isset($meta_keywords) && !empty($meta_keywords)){
     echo '<meta name="keywords" content="'.$meta_keywords.'">';
 }
 ?>
+<meta property="og:title" content="TEFY – A One Place Destination for School Admissions" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.tefy.in/" />
+<meta property="og:image" content="<?php echo base_url('assets')?>/front-end/images/logo2.svg" />
+<meta property="og:image:height" content="200" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:secure_url" content="<?php echo base_url('assets')?>/front-end/images/logo2.svg" />
+<meta property="og:site_name" content="TEFY" />
+<meta property="fb:admins" content="TEFY" />
+<meta property="og:locale" content="en_us" />
+<meta property="og:description" content="Online Search for Schools CBSE, SSC, ICSE,IB, Play, International schools, Admission and Online Pay fee | TEFY." />
 
 <?php
 if($active_menu == 'listings_single' || $active_menu == 'blog_single'){
@@ -60,35 +72,52 @@ if($active_menu == 'listings_single' || $active_menu == 'blog_single'){
 
 <?php $this->load->view('template/site/topcss');?>
   
+<script type="application/ld+json"> 
+  { 
+  "@context": "https://schema.org", 
+  "@type": "Organization", 
+  "name": "TEFY", 
+  "url": "https://www.tefy.in/", 
+  "logo": "<?php echo base_url('assets')?>/front-end/images/logo2.svg", 
+  "contactPoint": [{ 
+  "@type": "ContactPoint", 
+  "telephone": "+91- 7075418792", 
+  "contactType": "customer service" 
+  }], 
+  "sameAs": [ 
+                "https://twitter.com/tefyindia", 
+  
+     "https://www.facebook.com/tefy.india", 
+  
+     "https://www.instagram.com/tefy.india", 
+  
+  "https://www.pinterest.com/tefyindia", 
+  
+  "https://www.tefy.in/blog"
+
+
+
+
+  ] 
+  } 
+
+  </script>
+
+
   <script type="application/ld+json"> 
+  { 
+  "@context": "https://schema.org", 
+  "@type": "WebSite", 
+  "name": "TEFY", 
+  "url": "https://www.tefy.in/", 
+  "potentialAction": { 
+  "@type": "SearchAction", 
+  "target": "https://www.tefy.in/google-search/?search_query={search_term_string}", 
+  "query-input": "required name=search_term_string" 
+  } 
+  } 
+  </script>
 
-{ 
-
- "@context" : "http://schema.org", 
-
- "@type" : "Organization", 
-
- "name" : "tefy", 
-
- "url" : "https://www.tefy.com", 
-
- "sameAs" : [ 
-
-   "https://twitter.com/tefyindia", 
-
-   "https://www.facebook.com/tefy.india", 
-
-   "https://www.instagram.com/tefy.india", 
-
-   "https://www.pinterest.com/tefyindia", 
-
-   "https://www.tefy.in/blog" 
-
-  ], 
-
-} 
-
-}</script> 
   <!-- Global site tag (gtag.js) - Google Analytics --> 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158327011-1"></script> 

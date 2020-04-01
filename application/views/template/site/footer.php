@@ -35,11 +35,45 @@
 				</div>
 
 				<ul class="social-icons margin-top-20">
-					<li><a class="facebook" href="<?=$this->db->get_where('settings', array('setting_type' => 'facebook'))->row()->description; ?>"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="<?=$this->db->get_where('settings', array('setting_type' => 'twiter'))->row()->description; ?>"><i class="icon-twitter"></i></a></li>
-					<li><a class="instagram" href="https://www.instagram.com/"><i class="icon-instagram"></i></a></li>
-					<li><a class="youtube" href="<?=$this->db->get_where('settings', array('setting_type' => 'youtube'))->row()->description; ?>"><i class="icon-youtube"></i></a></li>
-					<li><a class="linkedin" href="https://in.linkedin.com/"><i class="icon-linkedin"></i></a></li>
+					<?php
+					$facebook=$this->db->get_where('settings', array('setting_type' => 'facebook'))->row()->description;
+					if(!empty($facebook)){
+						?>
+					<li><a class="facebook" href="<?=$facebook;?>"><i class="icon-facebook"></i></a></li>
+				<?php }
+
+					$twitter=$this->db->get_where('settings', array('setting_type' => 'twiter'))->row()->description;
+					if(!empty($twitter)){
+						?>
+					<li><a class="twitter" href="<?=$twitter;?>"><i class="icon-twitter"></i></a></li>
+				<?php }
+				$instagram=$this->db->get_where('settings', array('setting_type' => 'instagram'))->row()->description;
+					if(!empty($instagram)){
+						?>
+					<li><a class="instagram" href="<?=$instagram;?>"><i class="icon-instagram"></i></a></li>
+				<?php }
+				$youtube=$this->db->get_where('settings', array('setting_type' => 'youtube'))->row()->description;
+					if(!empty($youtube)){
+						?>
+					<li><a class="youtube" href="<?=$youtube;?>"><i class="icon-youtube"></i></a></li>
+				<?php }
+				$linkedin=$this->db->get_where('settings', array('setting_type' => 'linkedin'))->row()->description;
+					if(!empty($linkedin)){
+						?>
+					<li><a class="linkedin" href="<?=$linkedin;?>"><i class="icon-linkedin"></i></a></li>
+				<?php }
+				$pinterest=$this->db->get_where('settings', array('setting_type' => 'pinterest'))->row()->description;
+					if(!empty($pinterest)){
+						?>
+					<li><a class="pinterest" href="<?=$pinterest;?>"><i class="icon-pinterest"></i></a></li>
+				<?php }
+				$tumblr=$this->db->get_where('settings', array('setting_type' => 'tumblr'))->row()->description;
+					if(!empty($tumblr)){
+						?>
+					<li><a class="tumblr" href="<?=$tumblr;?>"><i class="icon-tumblr"></i></a></li>
+				<?php }
+				?>
+					
 				</ul>
 
 			</div>

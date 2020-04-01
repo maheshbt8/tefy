@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.tefy.in/</loc>
+  <lastmod>2020-03-30T17:58:14+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/about-us</loc>
+  <lastmod>2020-03-30T17:58:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/blogs</loc>
+  <lastmod>2020-03-30T17:58:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/contact-us</loc>
+  <lastmod>2020-03-30T17:58:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/listings-list?board%5B%5D=1</loc>
+  <lastmod>2020-03-30T17:58:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/listings-list?board%5B%5D=2</loc>
+  <lastmod>2020-03-30T17:58:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/listings-list?board%5B%5D=3</loc>
+  <lastmod>2020-03-30T17:58:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/listings-list?board%5B%5D=4</loc>
+  <lastmod>2020-03-30T17:58:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/listings-list</loc>
+  <lastmod>2020-03-30T17:58:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/privacy-policy</loc>
+  <lastmod>2020-03-30T17:58:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/terms-and-conditions</loc>
+  <lastmod>2020-03-30T17:58:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/Little-Ville-Preschool?school_code=9002</loc>
+  <lastmod>2020-03-30T17:58:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/The-Tree-House-Play-School?school_code=9001</loc>
+  <lastmod>2020-03-30T17:58:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/pages-user-profile.html</loc>
+  <lastmod>2020-03-30T17:58:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.tefy.in/auth</loc>
+  <lastmod>2020-03-30T17:58:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
