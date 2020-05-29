@@ -11,6 +11,7 @@
             ?>
 <?php
 $this->session->set_userdata('last_page1',current_url().'?school='.$_GET['school'].'&school_code='.$_GET['school_code'].'&referer='.$_GET['referer']);
+$this->session->set_userdata('last_admission_from',current_url().'?school='.$_GET['school'].'&school_code='.$_GET['school_code'].'&referer='.$_GET['referer']);
 $school=$this->common_model->select_results_info('listings',array('school_code'=>$_GET['school_code']))->row_array();
 
 ?>

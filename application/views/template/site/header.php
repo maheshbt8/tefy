@@ -140,7 +140,11 @@
                     <h3>Sign In</h3>
                     
                 </div>-->
-                <div class="">
+                <div class="loader" id="pre-loader" style="display: none;">Loading...</div>
+                <div id="loader1" style="display: none;">
+                    <img src='<?=base_url('uploads/spinner.gif');?>'/>
+                </div>
+                <div id="loginscr">
                 <div style="text-align: center; " >
                     <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-10 margin-bottom-10" style="">
                     <br>
@@ -156,6 +160,7 @@
 
                 <!--Tabs -->
                 <div class="sign-in-form style-1">
+
                             <div id="login_response">
 
                             </div>
@@ -206,7 +211,8 @@
                     <h3>Sign In</h3>
                     
                 </div>-->
-                <div class="" style="height: auto !important;">
+                <div class="loader" id="pre-loader2" style="display: none;">Loading...</div>
+                <div id="signupscr" style="height: auto !important;">
                 <div style="text-align: center; " >
                     <img src="<?php echo base_url('assets/front-end/')?>images/logo-icon.png" alt="" width="30%" class="margin-top-10 margin-bottom-10" style="">
                     <br>
@@ -281,7 +287,8 @@
             <!-- Sign Up Popup / End -->
             <!-- forgot password Popup -->
             <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-
+                <div class="loader" id="pre-loader3" style="display: none;">Loading...</div>
+<div id="forgotscr">
                 <div class="small-dialog-header">
                     <h3>Forgot Password</h3>
                 </div>
@@ -299,6 +306,7 @@
                     <input type="submit" class="button border margin-top-5" name="submit" value="Submit" onclick="return submit_forgot_pass();" />
                 </div>
                 <!-- </div> -->
+                </div>
             </div>
             <!-- forgot password Popup / End -->
         </div>
@@ -306,6 +314,78 @@
     <!-- Header / End -->
 
 </header>
+<style type="text/css">
+.loader {
+  color: #686868;
+  font-size: 20px;
+  margin: 100px auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
+</style>
 <div class="clearfix"></div>
 <script type="text/javascript">
     function submit_login() {
@@ -315,6 +395,9 @@
             identity: identity,
             password: password
         };
+        //$('#loader').html("<img src='<?=base_url('uploads/spinner.gif');?>' />");
+        $('#loginscr').hide();
+        $('#pre-loader').show();
         $.ajax({
             url: '<?=base_url();?>auth/login_ajax/',
             type: 'POST',
@@ -322,10 +405,16 @@
             dataType: 'json',
             success: function(result) {
                 /*alert(result.message);*/
+                $( "#pre-loader" ).fadeOut(3000, function() {
+                //$('#loader').hide();    
+                $('#loginscr').show();
                 $('#login_response').html(result.message);
                 if (result.status == 1) {
                     setInterval('location.reload()', 1500);
                 }
+                })
+                
+                
             }
         });
     }
@@ -343,15 +432,17 @@
             password1: password1,
             password_confirm: password2
         };
+        $('#signupscr').hide();
+        $('#pre-loader2').show();
         $.ajax({
             url: '<?=base_url();?>auth/create_user_ajax/',
             type: 'POST',
             data: data_list,
             dataType: 'json',
             success: function(result) {
-                /*alert(result);
-         			alert(result.message);*/
-                /*$('#register_response').html(result.message);*/
+            $( "#pre-loader2" ).fadeOut(3000, function() {
+                //$('#loader').hide();    
+                $('#signupscr').show();
                 if(result.message == 'yes'){
                     $('#name_id').html(result.name_id);
                     $('#email_id').html(result.email_id);
@@ -363,6 +454,11 @@
                 if (result.status == 1) {
                     setInterval('location.reload()', 3000);
                 }
+            });
+                /*alert(result);
+         			alert(result.message);*/
+                /*$('#register_response').html(result.message);*/
+                
             }
         });
     }
@@ -372,6 +468,8 @@
         var data_list = {
             identity: identity
         };
+        $('#forgotscr').hide();
+        $('#pre-loader3').show();
         $.ajax({
             url: '<?=base_url();?>auth/ajax_forgot_password/',
             type: 'POST',
@@ -379,7 +477,12 @@
             dataType: 'json',
             success: function(result) {
                 //alert(result.message);
+                $( "#pre-loader3" ).fadeOut(3000, function() {
+                //$('#loader').hide();    
+                $('#forgotscr').show();
                 $('#forgot_response').html(result.message);
+            });
+                
                 /*if(result.status == 1){
                 	setInterval('location.reload()', 3000);
                 }*/

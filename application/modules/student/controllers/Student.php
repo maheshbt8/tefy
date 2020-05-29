@@ -169,6 +169,9 @@ class Student extends MY_Controller
             }
             if($res>0){
                 $this->session->set_flashdata('success_message','<b>Submitted Successfully, Go the previous tab in your browser and refresh the page to Apply admission.</b>');
+                if(!empty($this->session->userdata('last_admission_from'))){
+                 redirect($this->session->userdata('last_admission_from'));   
+                }
             }else{
                 $this->session->set_flashdata('error_message','Not Submited');
             }
