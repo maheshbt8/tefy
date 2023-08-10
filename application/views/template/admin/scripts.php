@@ -456,7 +456,13 @@ $('#exp-date-range').on('hide.daterangepicker', function(ev, picker) {
               if(response.status==1){
                 $('#otp_message').html(response.message);
                 if (response.status == 1) {
-                    setInterval('location.reload()', 1500);
+                   // setInterval('location.reload()', 1500);
+                   var ch_r='<?=$this->session->userdata('add_chaild');?>';
+                    if(ch_r != ''){
+                        window.location.href='<?=$this->session->userdata('add_chaild');?>';
+                    }else{
+                        setInterval('location.reload()', 1500);
+                    }
                 }
               }else if(response.status==0){
                 $('#otp_message').html(response.message);

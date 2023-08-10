@@ -1,3 +1,6 @@
+<?php
+$this->session->set_userdata('add_chaild',current_url());
+?>
 <script type="text/javascript">
         <?php if ($this->ion_auth->is_student()){?>
         	/*alert('To Add Students You Need To Verify Your Phone Number!');*/
@@ -9,6 +12,10 @@
 <?php }?>
            
        </script>
+       <?php
+
+echo "string";die;
+?>
 <style>
     .d--inline{
         display: inline!important;
@@ -83,7 +90,7 @@ $this->session->set_userdata('last_page',current_url());
 								<div class="col-md-12">
 									<div class="col-md-4">
 								<label>Student Name</label>
-								<input type="text" name="name" class="form-control" placeholder="Name " required="" value="<?=(isset($child) && $child['name']!='')? $child['name'] : '';?>">
+								<input type="text" name="name" class="form-control" placeholder="Name " required="" value="<?=(isset($child) && $child['name']!='')? $child['name'] : '';?>" autofocus>
 								<input type="hidden" name="child_id" class="form-control" value="<?=(isset($child) && $child['id']!='')? $child['id'] : '';?>">
 	                             <?php echo form_error('name', '<div class="error">', '</div>'); ?>
 	                         		</div>

@@ -151,8 +151,8 @@ if($rating==''){
       <div id="listing-nav" class="listing-nav-container" style="z-index: 999;">
         <ul class="listing-nav" style="background: rgb(222, 220, 220);">
           <li><a href="#listing-overview" class="active">Overview</a></li>
-          <li><a href="#listing-contact" class="active">Contact_Info</a></li>
-          <li><a href="#listing-amenities">Key_info</a></li>
+          <li><a href="#listing-contact" class="active">Contact</a></li>
+          <li><a href="#listing-amenities">Key information</a></li>
           <li><a href="#listing-admission">Admission</a></li>
           <li><a href="#listing-facilities">Facilities</a></li>
           <li><a href="#listing-reviews">Reviews</a></li>

@@ -68,7 +68,7 @@ if(isset($_GET['promo_code']) && $_GET['promo_code'] != ''){
 							</div>
 							<div class="col-md-6">
 								<h5>Valid Date</h5>
-								<input class="search-field"  placeholder="From - To" id="booking-date-search" value="<?=((!empty($e_data))? $e_data['valid_from'] : set_value('date') );?>" name="date" required="" autocomplete="off" />
+								<input class="search-field"  placeholder="From - To" id="booking-date-search" value="<?=((!empty($e_data))? date('m/d/Y',strtotime($e_data['valid_from'])).'-'.date('m/d/Y',strtotime($e_data['valid_to'])) : set_value('date') );?>" name="date" required="" autocomplete="off" />
 								<?php echo form_error('date', '<div class="error">', '</div>'); ?>
 							</div>
 							<div class="col-md-6">
@@ -173,7 +173,9 @@ if(isset($_GET['promo_code']) && $_GET['promo_code'] != ''){
                   			<td><?=$promo['valid_from'].' to '.$promo['valid_to'];?></td>
                   			<td><?=$promo['promo_label'];?></td>
                   			<td><?=$promo['discount'];?></td>
-                  			<td><a href="<?=base_url('admin/promo_code?promo_code=').$promo['id'];?>" class="button gray"> Edit</a></td>
+                  			<td><a href="<?=base_url('admin/promo_code?promo_code=').$promo['id'];?>" class="button gray"> Edit</a>
+                  			<a href="<?=base_url('set_row_status/').'promo_codes/id/'.$promo['id'].'/0';?>" class="mr-2  text-danger" onclick="return delete_row('<?=base_url('set_row_status/').'promo_codes/id/'.$promo['id'].'/0';?>');"><i class="sl sl-icon-trash"></i></a>
+                  			</td>
                   		</tr>
                   <?php $i++;}?>
                               </tbody>

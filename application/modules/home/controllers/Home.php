@@ -969,7 +969,7 @@ if(!empty($reply)){
             $re .='<option value=""> --Select Student Profile-- </option>';
             foreach ($childs as $chi) {
                 $chi_ad=$this->common_model->select_results_info('admissions',array('school_id'=>$listing_id,'child_id'=>$chi['id']))->row_array();
-                $re .='<option value="'.$chi['id'].'" '.(($chi_ad != '')? 'disabled' : '').'>'.$chi['name'].' ('.(($chi_ad != '')? 'This student applied for this school.' : '').')</option>';
+                $re .='<option value="'.$chi['id'].'" '.(($chi_ad != '')? 'disabled' : '').'>'.ucwords($chi['name']).(($chi_ad != '')? '( This student applied for this school. )' : '').'</option>';
             }
         }else{
             $re .='<option value=""> --No Student Profile Available-- </option>';

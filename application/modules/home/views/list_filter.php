@@ -12,7 +12,7 @@
                         <div class="toggle-container padding-left-15 padding-right-15"> 
                              <!-- Area Range -->
                             <div class="range-slider">
-                                <input class="distance-radius" type="range" min="10000" max="100000" step="1000" value="50" data-title="Tution Fees Upto" name="tution_fee">
+                                <input class="distance-radius" type="range" min="0" max="1000000" step="1000" value="<?=$_GET['tution_fee']?>" data-title="Tution Fees Upto" name="tution_fee">
                             </div>
                               <!-- Row -->
                             <div class="row with-forms">
